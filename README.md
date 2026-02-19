@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/version-0.04-4BFF84" alt="Game version">
   <img src="https://img.shields.io/github/commit-activity/m/dsansthedsans/Yume-Danpu?color=4BFF84" alt="Commit activity">
   <img src="https://img.shields.io/github/license/dsansthedsans/Yume-Danpu?color=4BFF84" alt="License">
-  <a href="https://dsansthedsans.itch.io/yume-danpu">
+  <a href="https://dsansthedsans.itch.io/Yume-Danpu">
     <img src="https://img.shields.io/badge/Itch.io-FA5C5C?logo=itchdotio&logoColor=f5f5f5" alt="Itch.io"></a>
   <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd">
     <img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=f5f5f5" alt="YouTube"></a>
@@ -64,6 +64,6 @@
 <blockquote>A shark plushie asked me to. I'm not sure why, though.</blockquote>
 <h3>Why GameMaker instead of RPG Maker 2003?</h3>
 <blockquote>GameMaker gives us a lot more freedom to do whatever we want compared to RPG Maker 2003.</blockquote>
-<a href="https://dsansthedsans.itch.io/yume-danpu">
+<a href="https://dsansthedsans.itch.io/Yume-Danpu">
   <img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" align="right" alt="If you're reading this, I messed up somehow.">
 </a>
