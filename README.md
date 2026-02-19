@@ -4,9 +4,9 @@
   <img src="https://img.shields.io/badge/version-0.04-4BFF84" alt="Game version">
   <img src="https://img.shields.io/github/commit-activity/m/dsansthedsans/Yume-Danpu?color=4BFF84" alt="Commit activity">
   <img src="https://img.shields.io/github/license/dsansthedsans/Yume-Danpu?color=4BFF84" alt="License">
-  <a href="https://dsansthedsans.itch.io/Yume-Danpu">
+  <a href="https://dsansthedsans.itch.io/Yume-Danpu" target="_blank">
     <img src="https://img.shields.io/badge/Itch.io-FA5C5C?logo=itchdotio&logoColor=f5f5f5" alt="Itch.io"></a>
-  <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd">
+  <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">
     <img src="https://img.shields.io/badge/YouTube-FF0000?logo=youtube&logoColor=f5f5f5" alt="YouTube"></a>
 </p>
 
@@ -16,22 +16,19 @@
   <li><strong>Only two worlds to explore...?</strong> (The next version. The next version.)</li>
   <li><strong>Not one, but three types of collectibles you can find while exploring:</strong><ul>
     <li>Effects, eggs that give you a new body with special abilities.</li>
-    <li>Items, ordinary objects that help you in some way, like a <strong>drivable go-kart</strong>.</li>
+    <li>Items, ordinary objects that help you in some way, like the <strong>drivable go-kart</strong>.</li>
     <li>Themes, visual styles for menus. They are ultimately useless.</li>
   </ul></li>
-  <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds.</li>
+  <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds!!</li>
   <li><strong>At least one monkey.</strong></li>
 </ul>
 <h4 align="center">Think the game is ugly? Yeah, we also do. <br>𝓦𝓸𝓻𝓴 𝓲𝓷 𝓹𝓻𝓸𝓰𝓻𝓮𝓼𝓼</h4>
 
 <h2><br>Install instructions</h2>
 <ol>
-  <li>Download the .zip of your desired version of the game.</li>
-  <li>Wait for the .zip file to finish downloading.</li>
-  <li>Right-click the .zip file and extract it.</li>
-  <li>Wait for the .zip file to finish extracting.</li>
-  <li>Inside the extracted folder, run the "Yume Danpu.exe" file.</li>
-  <li>Ignore any pop-up warnings about an unrecognized app. Trust me</li>
+  <li>Download the .zip of the latest version <a href="https://dsansthedsans.itch.io/Yume-Danpu" target="_blank">here</a></li>
+  <li>In your Downloads folder, right-click the .zip and extract it</li>
+  <li>In the extracted folder, open the .exe</li>
 </ol>
 
 <h2><br>Report a bug</h2>
@@ -40,7 +37,7 @@
 <h2><br>Behind the scenes</h2>
 <p>We <b>very occasionally</b> post videos on YouTube showing upcoming updates for Yume Danpu. For those who don't really care about spoilers, if you wanna see what we're doing next, you should check out <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">the playlist by both creators!</a><br><br>Also, we keep this repository updated as we work on the game, not just when we release a new version. Below is a very cute image.</p>
 <p align="center">
-  <a href="https://www.star-history.com/#dsansthedsans/Yume-Danpu&type=date&legend=top-left">
+  <a href="https://www.star-history.com/#dsansthedsans/Yume-Danpu&type=date&legend=top-left" target="_blank">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=dsansthedsans/Yume-Danpu&type=date&theme=dark&legend=top-left"/>
       <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=dsansthedsans/Yume-Danpu&type=date&legend=top-left"/>
@@ -64,6 +61,9 @@
 <blockquote>A shark plushie asked me to. I'm not sure why, though.</blockquote>
 <h3>Why GameMaker instead of RPG Maker 2003?</h3>
 <blockquote>GameMaker gives us a lot more freedom to do whatever we want compared to RPG Maker 2003.</blockquote>
-<a href="https://dsansthedsans.itch.io/Yume-Danpu">
-  <img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" align="right" alt="If you're reading this, I messed up somehow.">
-</a>
+
+<p align="center"><br>
+  <a href="https://youtu.be/eRBOgtp0Hac?si=o2ZIr6UQAJwUYyTt" target="_blank">
+    <img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" alt="If you're reading this, I messed up somehow.">
+  </a>
+</p>
