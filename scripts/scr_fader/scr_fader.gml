@@ -9,9 +9,14 @@ function fn_fader_evCreate()
 	type.fade.iris.snd_asset = snd_fader_portal;
 	type.fade.iris.snd_style = CONFIG_AUD_EMTR.PROP;
 	
-	
 	switch (src.obj)
 	{
+		// Menus
+		case obj_menu_home:
+			tgt.rm = rm_condo_apt;
+			type.fade.act = true;
+		break;
+		
 		// Doors
 		case obj_prop_condo_apt_bed: // Bed in Eleanor's Apartment
 			tgt.rm = rm_nexus;
@@ -49,7 +54,6 @@ function fn_fader_evCreate()
 		break;
 	}
 }
-
 
 function fn_fader_obj_create(_tgt_rm = -1)
 {

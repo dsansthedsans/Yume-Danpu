@@ -84,19 +84,22 @@ if (is_array(lvl) == true)
 	else if (lvl_fader.stg > -1)
 	{
 		lvl[lvl_curr].alpha = fn_lerp(lvl[lvl_curr].alpha, 0, lvl_fader.alpSpd);
+		if (lvl_fader.prev.snd != undefined)
+			fn_aud_play(lvl_fader.prev.snd, CONFIG_AUD_EMTR.MENU);
+		lvl_fader.prev.snd = undefined;
 		
-		if (lvl_fader.wait_dur <= 0)
+		if (lvl_fader.next.wait_dur <= 0)
 		{
-			lvl[lvl_fader.tgt.lvl].alpha = fn_lerp(lvl[lvl_fader.tgt.lvl].alpha, 1, lvl_fader.alpSpd);
-			if (lvl[lvl_fader.tgt.lvl].alpha >= (1 - lvl_fader.alpJump))
+			lvl[lvl_fader.next.lvl].alpha = fn_lerp(lvl[lvl_fader.next.lvl].alpha, 1, lvl_fader.alpSpd);
+			if (lvl[lvl_fader.next.lvl].alpha >= (1 - lvl_fader.alpJump))
 			{
 				lvl[lvl_curr].alpha = 0;
-				lvl[lvl_fader.tgt.lvl].alpha = 1;
-				lvl_curr = lvl_fader.tgt.lvl;
+				lvl[lvl_fader.next.lvl].alpha = 1;
+				lvl_curr = lvl_fader.next.lvl;
 				lvl_fader.stg = -1;
-				if (lvl_fader.tgt.snd != undefined)
-					fn_aud_play(lvl_fader.tgt.snd, CONFIG_AUD_EMTR.MENU);
-				lvl_fader.tgt.snd = undefined;
+				if (lvl_fader.next.snd != undefined)
+					fn_aud_play(lvl_fader.next.snd, CONFIG_AUD_EMTR.MENU);
+				lvl_fader.next.snd = undefined;
 			}
 		}
 		else

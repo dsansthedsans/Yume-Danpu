@@ -2,7 +2,7 @@
 if (is_array(lvl) == true)
 {
 	// Main level
-	if (lvl_curr == LVL_MAIN) || (lvl_fader.tgt.lvl == LVL_MAIN)
+	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
 	{	
 		var l = LVL_MAIN;
 		
@@ -47,7 +47,7 @@ if (is_array(lvl) == true)
 	// Video, Music & Sounds and Accessibility levels
 	for (var l = LVL_VID; l <= LVL_ACCESS; l++)
 	{
-		if (lvl_curr == l) || (lvl_fader.tgt.lvl == l)
+		if (lvl_curr == l) || (lvl_fader.next.lvl == l)
 		{
 			// Panel
 			var _panel = lvl[l].panel[0];
@@ -107,7 +107,7 @@ if (is_array(lvl) == true)
 	}
 	
 	// Video level
-	if (lvl_curr == LVL_VID) || (lvl_fader.tgt.lvl == LVL_VID)
+	if (lvl_curr == LVL_VID) || (lvl_fader.next.lvl == LVL_VID)
 	{	
 		var l = LVL_MAIN;
 	}

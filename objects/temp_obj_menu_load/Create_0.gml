@@ -2,7 +2,7 @@
 if (global.player.file_curr == -1)
 {
 	fn_player_setup(0);
-	room_goto(temp_rm_condo_apt);
+	room_goto(rm_condo_apt);
 }
 else
 {

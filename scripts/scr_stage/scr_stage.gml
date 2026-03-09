@@ -4,7 +4,7 @@
 
 function fn_stage_evCreate()
 {
-	if (room == temp_rm_condo_apt) // Eleanor's Apartment
+	if (room == rm_condo_apt) // Eleanor's Apartment
 	{
 		global.player.awake = true;
 	}

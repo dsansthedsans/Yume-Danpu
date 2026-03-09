@@ -1,7 +1,6 @@
 
 event_inherited();
 
-
 // Language level
 LVL_LANG = 1;
 var l = LVL_LANG;
@@ -17,7 +16,6 @@ for (var o = 0; o < array_length(global.config.lang); o++) // Options and decora
 	fn_menu_lvl_decor_add(l, o);
 }
 lvl[l].option_move.list.key = [CONFIG_KEY.LT, CONFIG_KEY.RT];
-
 
 // Main level
 LVL_MAIN = 2;
@@ -35,29 +33,3 @@ for (var o = 0; o < 3; o++)
 }
 fn_menu_lvl_decor_add(l, 0);
 fn_menu_lvl_train_add(l, 0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

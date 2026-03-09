@@ -2,7 +2,7 @@
 if (is_array(lvl) == true)
 {
 	// Language level
-	if (lvl_curr == LVL_LANG) || (lvl_fader.tgt.lvl == LVL_LANG)
+	if (lvl_curr == LVL_LANG) || (lvl_fader.next.lvl == LVL_LANG)
 	{	
 		var l = LVL_LANG;
 	
@@ -59,7 +59,7 @@ if (is_array(lvl) == true)
 	}
 	
 	// Main level
-	if (lvl_curr == LVL_MAIN) || (lvl_fader.tgt.lvl == LVL_MAIN)
+	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
 	{	
 		var l = LVL_MAIN;
 		
@@ -85,7 +85,7 @@ if (is_array(lvl) == true)
 		// Panel (start menu)
 		var _panel_outDist = 8;
 		var _panel_x = -_panel_outDist;
-		var _panel_y = (global.config.vid.resH / 2);
+		var _panel_y = round(global.config.vid.resH / 1.75);
 		var _panel_width = (abs(_panel_x) + (16 * 7));
 		var _panel_height = ((global.config.vid.resH - _panel_y) + _panel_outDist);
 		lvl[l].panel[1].x = _panel_x;

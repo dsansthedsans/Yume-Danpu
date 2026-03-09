@@ -64,22 +64,29 @@ function fn_menu_lvl_add(_idx)
 }
 
 	// Fade transition
-function fn_menu_lvl_fader_start(_tgt_lvl, _tgt_snd = undefined, _tgt_destroy = false, _wait_dur = 0)
+function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy = false, _next_endgame = false, _next_wait_dur = 0, _prev_snd = undefined)
 {
 	lvl_fader =
 	{
 		stg : 0, // ID number of the current stage of the fade transition
+		alpTgt : 1, // Alpha target (the value that alpha will change to)
 		alpSpd : 0.25, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
 		alpJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
 		
-		tgt :
+		prev :
 		{
-			lvl : _tgt_lvl,
-			snd : _tgt_snd,
-			destroy : _tgt_destroy
+			snd : _prev_snd,
 		},
 		
-		wait_dur : _wait_dur,
+		next :
+		{
+			lvl : _next_lvl,
+			snd : _next_snd,
+			destroy : _next_destroy,
+			endgame : _next_endgame,
+			
+			wait_dur : _next_wait_dur,
+		}
 	}
 }
 
@@ -229,7 +236,6 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		xAlign : fa_left,
 		yAlign : fa_top,
 		
-		
 		// Selection indicator
 		select :
 		{
@@ -245,7 +251,6 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 			width : 0,
 			height : 0,
 		},
-		
 		
 		// Checkbox
 		check : -1,

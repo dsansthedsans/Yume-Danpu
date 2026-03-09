@@ -3,7 +3,7 @@
 if (is_array(lvl) == true)
 {
 	// ??? level
-	if (lvl_curr == 0) || (lvl_fader.tgt.lvl == 0)
+	if (lvl_curr == 0) || (lvl_fader.next.lvl == 0)
 	{	
 		var l = 0;
 	}

@@ -1,7 +1,6 @@
 
 fn_obj_img( , , , , 0);
 
-
 LVL_EMPTY = 0;
 lvl = -1;
 lvl_curr = LVL_EMPTY;

@@ -26,17 +26,14 @@ if (global.config.vid.showFps.act == true) // Draws FPS
 	var _showFps_width = fn_text_width(_showFps_text);
 	var _showFps_x = (320 - 4 - _showFps_width);
 	var _showFps_y = 2;
-	
 	var _showFps_color = [global.player.thm[global.player.thm_curr].color.whiteLight, global.player.thm[global.player.thm_curr].color.whiteDark];
 	var _showFps_alpha = 0.5;
-	
 	fn_draw_text(_showFps_text, _showFps_x, _showFps_y, _showFps_color[0], _showFps_color[1], _showFps_alpha);
 }
 if (global.config.vid.showBdr.act == true) // Draws Border
 {
 	var _showBdr_spr = spr_config_vid_showBdr;
 	var _showBdr_scale = 0.5;
-	
 	fn_draw_spr(_showBdr_spr, 0, 0, 0, , , _showBdr_scale, _showBdr_scale);
 }
 
