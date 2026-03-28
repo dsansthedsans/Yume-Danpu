@@ -7,8 +7,8 @@ if (type.fade.act == true)
 		stg = 0;
 	else if (_iris.act == true)
 	{
-		if (_iris.snd_asset != -1 && _iris.snd_style != -1 && _iris.snd_id == -1)
-			_iris.snd_id = fn_aud_play(_iris.snd_asset, _iris.snd_style);
+		if (_iris.snd_asset != -1 && _iris.snd_emtr != -1 && _iris.snd_id == -1)
+			_iris.snd_id = fn_aud_play(_iris.snd_asset, _iris.snd_emtr);
 		
 		_iris.sineVal += 0.1;
 		_iris.xOfs += (cos(_iris.sineVal) / 2);
@@ -38,23 +38,23 @@ if (type.fade.act == true)
 	else if (stg == 1 && type.fade.wait.dur > 0)
 	{
 		type.fade.wait.dur -= 1;
-		if (fn_obj_exists(obj_actor_player) == true)
+		if (fn_obj_exists(obj_actor_user) == true)
 		{
-			with (obj_actor_player)
+			with (obj_actor_user)
 			{
-				if (other.tgt.player.x != 0)
+				if (other.tgt.user.x != 0)
 				{
-					x = other.tgt.player.x;
+					x = other.tgt.user.x;
 					myself.x = x;
 				}
-				if (other.tgt.player.y != 0)
+				if (other.tgt.user.y != 0)
 				{
-					y = other.tgt.player.y;
+					y = other.tgt.user.y;
 					myself.y = y;
 				}
 				fn_obj_depth();
-				if (other.tgt.player.dir != -1)
-					dir_curr = other.tgt.player.dir;
+				if (other.tgt.user.dir != -1)
+					dir_curr = other.tgt.user.dir;
 				move.stg = -2;
 			}
 		}
@@ -67,9 +67,8 @@ if (type.fade.act == true)
 			stg = 2;
 			type.fade.alp = 0;
 			fn_obj_destroy();
-			
-			if (fn_obj_exists(obj_actor_player) == true)
-				obj_actor_player.move.stg = -1;
+			if (fn_obj_exists(obj_actor_user) == true)
+				obj_actor_user.move.stg = -1;
 		}
 	}
 }

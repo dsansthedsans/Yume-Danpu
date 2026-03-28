@@ -7,7 +7,7 @@ function fn_fader_evCreate()
 	type.fade.iris.x = (src.obj.x + (src.obj_id.sprite_width / 2));
 	type.fade.iris.y = (src.obj.y - (src.obj_id.sprite_height / 4));
 	type.fade.iris.snd_asset = snd_fader_portal;
-	type.fade.iris.snd_style = CONFIG_AUD_EMTR.PROP;
+	type.fade.iris.snd_emtr = CONFIG_AUD_EMTR.PROP;
 	
 	switch (src.obj)
 	{
@@ -17,12 +17,11 @@ function fn_fader_evCreate()
 			type.fade.act = true;
 		break;
 		
-		// Doors
+		// Props
 		case obj_prop_condo_apt_bed: // Bed in Eleanor's Apartment
 			tgt.rm = rm_nexus;
 			type.fade.act = true;
 		break;
-		
 		case obj_prop_macaco_door: // Door of Macacolandia
 			type.fade.act = true;
 			if (src.rm == rm_nexus)
@@ -33,11 +32,10 @@ function fn_fader_evCreate()
 			else if (src.rm == rm_macaco)
 			{
 				tgt.rm = rm_nexus;
-				tgt.player.x = 160;
-				tgt.player.y = 112;
+				tgt.user.x = 160;
+				tgt.user.y = 112;
 			}
 		break;
-		
 		case obj_prop_dbgwrld_door: // Door of Debug World
 			type.fade.act = true;
 			if (src.rm == rm_nexus)
@@ -48,8 +46,8 @@ function fn_fader_evCreate()
 			else if (src.rm == rm_dbgwrld)
 			{
 				tgt.rm = rm_nexus;
-				tgt.player.x = 272;
-				tgt.player.y = 224;
+				tgt.user.x = 272;
+				tgt.user.y = 224;
 			}
 		break;
 	}

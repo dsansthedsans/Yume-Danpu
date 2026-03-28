@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"config",
-    "path":"folders/menu/config.yy",
+    "name":"Config",
+    "path":"folders/Menu/Config.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

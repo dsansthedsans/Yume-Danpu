@@ -6,7 +6,7 @@
   "name":"scr_menu_home",
   "parent":{
     "name":"home",
-    "path":"folders/[!] old/old menu/home.yy",
+    "path":"folders/[!] Unused + Old/old menu/home.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

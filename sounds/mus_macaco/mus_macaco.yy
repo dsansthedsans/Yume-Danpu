@@ -15,7 +15,7 @@
   "name":"mus_macaco",
   "parent":{
     "name":"Macacolandia",
-    "path":"folders/Macacolandia.yy",
+    "path":"folders/Map/Macacolandia.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

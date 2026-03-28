@@ -18,8 +18,8 @@
   ],
   "name":"temp_rm_menu_home",
   "parent":{
-    "name":"home",
-    "path":"folders/menu/home.yy",
+    "name":"Home",
+    "path":"folders/Menu/Home.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

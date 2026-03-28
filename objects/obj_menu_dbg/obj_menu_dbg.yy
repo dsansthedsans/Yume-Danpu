@@ -13,12 +13,12 @@
   "name":"obj_menu_dbg",
   "overriddenProperties":[],
   "parent":{
-    "name":"dbg",
-    "path":"folders/menu/dbg.yy",
+    "name":"Dbg",
+    "path":"folders/Menu/Dbg.yy",
   },
   "parentObjectId":{
-    "name":"obj_menu_parent",
-    "path":"objects/obj_menu_parent/obj_menu_parent.yy",
+    "name":"obj_menu",
+    "path":"objects/obj_menu/obj_menu.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_menu_child",
-    "path":"sprites/spr_menu_child/spr_menu_child.yy",
+    "name":"spr_child",
+    "path":"sprites/spr_child/spr_child.yy",
   },
   "spriteMaskId":null,
   "visible":true,

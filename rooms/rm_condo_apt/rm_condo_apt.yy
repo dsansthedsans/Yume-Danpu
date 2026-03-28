@@ -17,7 +17,7 @@
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_FD4DFF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FD4DFF","objectId":{"name":"obj_actor_player","path":"objects/obj_actor_player/obj_actor_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":144.0,},
+        {"$GMRInstance":"v4","%Name":"inst_FD4DFF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_FD4DFF","objectId":{"name":"obj_actor_user","path":"objects/obj_actor_user/obj_actor_user.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":160.0,"y":144.0,},
         {"$GMRInstance":"v4","%Name":"inst_6B7B3A96","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6B7B3A96","objectId":{"name":"obj_prop_condo_apt_bed","path":"objects/obj_prop_condo_apt_bed/obj_prop_condo_apt_bed.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":112.0,},
         {"$GMRInstance":"v4","%Name":"inst_2D1D76ED","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2D1D76ED","objectId":{"name":"obj_prop_wall","path":"objects/obj_prop_wall/obj_prop_wall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":7.0,"scaleY":1.0,"x":48.0,"y":112.0,},
         {"$GMRInstance":"v4","%Name":"inst_36227AD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_36227AD","objectId":{"name":"obj_prop_wall","path":"objects/obj_prop_wall/obj_prop_wall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":13.0,"scaleY":1.0,"x":48.0,"y":96.0,},
@@ -43,7 +43,7 @@
   "name":"rm_condo_apt",
   "parent":{
     "name":"Apt",
-    "path":"folders/Condo/Apt.yy",
+    "path":"folders/Map/Condo/Apt.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

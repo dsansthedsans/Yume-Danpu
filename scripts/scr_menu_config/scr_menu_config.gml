@@ -19,7 +19,7 @@ function fn_menu_config_evCreate_0()
 	for (var l = 0; l < lvl_lenMax; l++)
 	{
 		// Dark translucent background
-		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.player.thm[global.player.thm_curr].col.blur, 0.75);
+		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, 0.75);
 		
 		// Box
 		var _box_xMargin = (draw_dist * 4);

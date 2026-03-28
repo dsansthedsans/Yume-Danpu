@@ -15,7 +15,7 @@
   "name":"snd_actor_macaco_monkey_6",
   "parent":{
     "name":"Macacolandia",
-    "path":"folders/Macacolandia.yy",
+    "path":"folders/Map/Macacolandia.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

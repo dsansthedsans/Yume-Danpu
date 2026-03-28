@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_user_thm_error_madot",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.2261678,
+  "exportDir":"",
+  "name":"snd_user_thm_error_madot",
+  "parent":{
+    "name":"Madotsuki (2)",
+    "path":"folders/User/Themes/Madotsuki (2).yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_user_thm_error_madot.WAV",
+  "volume":1.0,
+}

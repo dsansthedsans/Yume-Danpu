@@ -1,5 +1,5 @@
 
-// Video
+// Video/Graphics
 	// Toggles Fullscreen on/off
 if (fn_config_key_pressed(CONFIG_KEY.FSCR) == true)
 {
@@ -17,15 +17,13 @@ if (fscr_wait <= 0)
 }
 else
 	fscr_wait -= 1
-
 	// Toggles Vsync on/off
 if (vsync_act != global.config.vid.vsync.act)
 {
 	display_reset(0, global.config.vid.vsync.act)
 	vsync_act = global.config.vid.vsync.act;
 }
-
-	// Toggles Show Cursor on/off
+	// Toggles Hide Cursor on/off
 if (hideCsr_act != global.config.vid.hideCsr.act)
 {
 	window_set_cursor(cr_default);

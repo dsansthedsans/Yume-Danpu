@@ -19,9 +19,9 @@ function fn_prop_evCreate()
 			talk.act = true;
 			talk.type.door.act = true;
 			talk.type.door.open.snd_asset = snd_prop_talk_door_open;
-			talk.type.door.open.snd_style = CONFIG_AUD_EMTR.PROP;
+			talk.type.door.open.snd_emtr = CONFIG_AUD_EMTR.PROP;
 			talk.type.door.close.snd_asset = snd_prop_talk_door_close;
-			talk.type.door.close.snd_style = CONFIG_AUD_EMTR.PROP;
+			talk.type.door.close.snd_emtr = CONFIG_AUD_EMTR.PROP;
 		break;
 		
 		
@@ -53,7 +53,7 @@ function fn_prop_evCreate()
 		// Gifts
 		case obj_prop_gift:
 			if (room == rm_nexus)
-				talk.type.gift.content[0] = global.player.fcn[PLAYER_FCN.KART];
+				talk.type.gift.content[0] = global.user.fcn[USER_FCN.KART];
 		break;
 		
 		
@@ -97,7 +97,7 @@ function fn_prop_evStep()
 		case obj_prop_dbgwrld_door: // Door of Debug World
 			if (room == rm_nexus)
 			{
-				var _alp = clamp((abs(distance_to_object(obj_player)) / 32), 0, 1);
+				var _alp = clamp((abs(distance_to_object(obj_actor_user)) / 32), 0, 1);
 				image_alpha = fn_lerp(image_alpha, (1 - _alp), 0.05);
 			}
 		break;

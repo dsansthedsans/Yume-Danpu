@@ -75,7 +75,7 @@
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":0,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-        {"$GMRInstance":"v4","%Name":"inst_4A5D0BE1_1_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4A5D0BE1_1_1","objectId":{"name":"obj_actor_player","path":"objects/obj_actor_player/obj_actor_player.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":640.0,"y":560.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4A5D0BE1_1_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4A5D0BE1_1_1","objectId":{"name":"obj_actor_user","path":"objects/obj_actor_user/obj_actor_user.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":640.0,"y":560.0,},
         {"$GMRInstance":"v4","%Name":"inst_790046F0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_790046F0","objectId":{"name":"obj_prop_macaco_tree","path":"objects/obj_prop_macaco_tree/obj_prop_macaco_tree.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":672.0,"y":512.0,},
         {"$GMRInstance":"v4","%Name":"inst_6E8DAFE7","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6E8DAFE7","objectId":{"name":"obj_prop_macaco_tree","path":"objects/obj_prop_macaco_tree/obj_prop_macaco_tree.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":560.0,"y":544.0,},
         {"$GMRInstance":"v4","%Name":"inst_1F1CDA50","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1F1CDA50","objectId":{"name":"obj_prop_macaco_tree","path":"objects/obj_prop_macaco_tree/obj_prop_macaco_tree.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":272.0,"y":608.0,},
@@ -147,7 +147,7 @@
   "name":"rm_macaco",
   "parent":{
     "name":"Macacolandia",
-    "path":"folders/Macacolandia.yy",
+    "path":"folders/Map/Macacolandia.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

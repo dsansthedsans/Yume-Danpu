@@ -14,7 +14,7 @@ function fn_menu_pse_evCreate_0()
 	
 		// Options [#0]
 	fn_menu_opt_add_ext(l, "menu_pse_main_opt_");
-	opt_slct_snd[l, 2] = global.player.thm[global.player.thm_curr].opt_error_snd;
+	opt_slct_snd[l, 2] = global.user.thm[global.user.thm_curr].opt_error_snd;
 	opt_cncl_key[l, 1] = CONFIG_KEY.PSE;
 	var _opt_yDist = draw_dist;
 	var _opt_hAll = (_opt_yDist * (opt_len[l] - 1) + global.game.fnt_h);
@@ -46,7 +46,7 @@ function fn_menu_pse_evCreate_0()
 	for (var l = 0; l < lvl_lenMax; l++)
 	{
 		// Dark translucent background
-		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.player.thm[global.player.thm_curr].col.blur, 0.75);
+		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, 0.75);
 	}
 }
 function fn_menu_pse_evCreate_1()
@@ -78,7 +78,7 @@ function fn_menu_pse_evCreate_1()
 	instance_activate_object(obj_stage);
 	instance_activate_object(obj_dbg);
 	audio_pause_all();
-	fn_aud_play(global.player.thm[global.player.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
+	fn_aud_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
 }
 function fn_menu_pse_evDrawGUI_0(l)
 {
@@ -133,10 +133,10 @@ function fn_menu_pse_resume() // Resumes the game
 	instance_activate_all();
 	audio_resume_all();
 	
-	if (fn_obj_exists(obj_player) == true && obj_player.move.stg == -2)
+	if (fn_obj_exists(obj_actor_user) == true && obj_actor_user.move.stg == -2)
 	{
-		obj_player.move.stg = -1;
-		obj_player.MENUDELAY = 5;
+		obj_actor_user.move.stg = -1;
+		obj_actor_user.MENUDELAY = 5;
 	}
 }
 function fn_menu_pse_sshot_destroy()

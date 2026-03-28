@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_actor",
   "parent":{
-    "name":"actor",
-    "path":"folders/actor.yy",
+    "name":"Actors",
+    "path":"folders/Props/Actors.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -2,7 +2,6 @@
 fn_obj_img( , , , , 0);
 fn_obj_depth( , -11000);
 
-
 stg = -1; // ID number of the current stage of the transition
 
 // Source, data about the transition's origin
@@ -18,7 +17,7 @@ tgt =
 {
 	rm : -1,
 	
-	player :
+	user :
 	{
 		x : 0,
 		y : 0,
@@ -61,7 +60,7 @@ type =
 			surf : -1,
 			
 			snd_asset : -1,
-			snd_style : -1,
+			snd_emtr : -1,
 			snd_id : -1
 		},
 		

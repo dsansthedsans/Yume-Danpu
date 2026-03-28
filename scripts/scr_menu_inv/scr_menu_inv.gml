@@ -19,7 +19,7 @@ function fn_menu_inv_evCreate_0()
 		var _rect_alp = 0.5;
 		if (l != LVL_MAIN)
 			_rect_alp = 0.75;
-		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.player.thm[global.player.thm_curr].col.blur, _rect_alp);
+		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, _rect_alp);
 	}
 	
 	
@@ -37,15 +37,15 @@ function fn_menu_inv_evCreate_0()
 	fn_menu_box_add(l, 0, _box_x, _box_y, _box_w, _box_h);
 	
 			// Player's picture frame
-	main_picFrm_spr = global.player.thm[global.player.thm_curr].inv_picFrm_spr;
+	main_picFrm_spr = global.user.thm[global.user.thm_curr].inv_picFrm_spr;
 	main_picFrm_w = fn_spr_width(main_picFrm_spr);
 	main_picFrm_h = fn_spr_height(main_picFrm_spr);
 	main_picFrm_x = (box_x[l, 0] + round(box_w[l, 0] / 2) - round(main_picFrm_w / 2));
 	main_picFrm_y = (box_y[l, 0] + draw_dist);
 	
 			// Player's picture
-	main_pic_spr = obj_player.dir[obj_player.DIR_DN].spr;
-	main_pic_snd = snd_player_fstep;
+	main_pic_spr = obj_actor_user.dir[obj_actor_user.DIR_DN].spr;
+	main_pic_snd = snd_user_fstep;
 	if (irandom_range(1, 100) == 1)
 	{
 		main_pic_spr = spr_actor_macaco_monkey;
@@ -62,7 +62,7 @@ function fn_menu_inv_evCreate_0()
 	main_pic_scSpd = 0.35;
 	
 			// Player's name
-	var _name_text = global.player.name;
+	var _name_text = global.user.name;
 	fn_menu_info_add(l, 0, _name_text);
 	var _name_w = info_w[l, 0];
 	var _name_h = info_h[l, 0];
@@ -73,17 +73,17 @@ function fn_menu_inv_evCreate_0()
 	info_y[l, 0] = _name_y;
 	
 			// Player's currency [#0]
-	var _ccy_text = global.player.money[global.player.awake].ccy;
+	var _ccy_text = global.user.money[global.user.awake].ccy;
 	fn_menu_info_add(l, 1, _ccy_text);
 	var _ccy_w = info_w[l, 1];
 	var _ccy_h = info_h[l, 1];
 	
 			// Player's money [#0]
-	var _mny_text = global.player.money[global.player.awake].amt;
+	var _mny_text = global.user.money[global.user.awake].amt;
 	fn_menu_info_add(l, 2, _mny_text);
 	var _mny_w = info_w[l, 2];
 	
-			// Icon of the player's money
+			// Icon of the user's money
 	main_mnyIco_spr = spr_menu_inv_mnyIco;
 	main_mnyIco_w = fn_spr_width(main_mnyIco_spr);
 	main_mnyIco_h = fn_spr_height(main_mnyIco_spr);
@@ -92,13 +92,13 @@ function fn_menu_inv_evCreate_0()
 	main_mnyIco_x = (main_picFrm_x + round(main_picFrm_w / 2) - round(_mnyIco_wAll / 2) - 1);
 	var _mnyIco_yNameGap = (draw_dist / 2);
 	main_mnyIco_y = (_name_y + _name_h + _mnyIco_yNameGap);
-	main_mnyIco_col = global.player.thm[global.player.thm_curr].col.whiteLight;
+	main_mnyIco_col = global.user.thm[global.user.thm_curr].col.whiteLight;
 	
 			// Player's currency [#1]
 	var _ccy_x = (main_mnyIco_x + main_mnyIco_w + _mnyIco_xTextGap);
 	var _ccy_y = (main_mnyIco_y + round(main_mnyIco_h / 2) - round(_ccy_h / 2) - 1);
-	var _ccy_col_0 = global.player.thm[global.player.thm_curr].col.grayLight;
-	var _ccy_col_1 = global.player.thm[global.player.thm_curr].col.grayDark;
+	var _ccy_col_0 = global.user.thm[global.user.thm_curr].col.grayLight;
+	var _ccy_col_1 = global.user.thm[global.user.thm_curr].col.grayDark;
 	info_x[l, 1] = _ccy_x;
 	info_y[l, 1] = _ccy_y;
 	info_col[l][1][0] = _ccy_col_0;
@@ -107,8 +107,8 @@ function fn_menu_inv_evCreate_0()
 			// Player's money [#1]
 	var _mny_x = (_ccy_x + _ccy_w);
 	var _mny_y = _ccy_y;
-	var _mny_col_0 = global.player.thm[global.player.thm_curr].col.whiteLight;
-	var _mny_col_1 = global.player.thm[global.player.thm_curr].col.whiteDark;
+	var _mny_col_0 = global.user.thm[global.user.thm_curr].col.whiteLight;
+	var _mny_col_1 = global.user.thm[global.user.thm_curr].col.whiteDark;
 	info_x[l, 2] = _mny_x;
 	info_y[l, 2] = _mny_y;
 	info_col[l][2][0] = _mny_col_0;
@@ -164,18 +164,18 @@ function fn_menu_inv_evCreate_0()
 	{
 		// Get data of the current level
 		other_textData_key = "eff";
-		other_arr = global.player.eff;
+		other_arr = global.user.eff;
 		
 		if (l == LVL_OTHER_FCN)
 		{
 			other_textData_key = "fcn";
-			other_arr = global.player.fcn;
+			other_arr = global.user.fcn;
 		}
 		
 		else if (l == LVL_OTHER_THM)
 		{
 			other_textData_key = "thm";
-			other_arr = global.player.thm;
+			other_arr = global.user.thm;
 		}
 		
 		other_lenMax = 14;
@@ -201,7 +201,7 @@ function fn_menu_inv_evCreate_0()
 		{
 			// Options
 			var _opt_text = "----------";
-			var _opt_slct_snd = global.player.thm[global.player.thm_curr].opt_error_snd;
+			var _opt_slct_snd = global.user.thm[global.user.thm_curr].opt_error_snd;
 			if (o < array_length(other_arr) && array_get(other_arr, o).unlocked == true)
 				_opt_text = array_get(other_arr, o).name;
 			
@@ -237,7 +237,7 @@ function fn_menu_inv_evCreate_1()
 {
 	// Main level
 	lvl = LVL_MAIN;
-	fn_aud_play(global.player.thm[global.player.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
+	fn_aud_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
 }
 function fn_menu_inv_evDrawGUI_2(l)
 {
@@ -245,10 +245,10 @@ function fn_menu_inv_evDrawGUI_2(l)
 	if (l == LVL_MAIN)
 	{	
 		// Information box
-			// Draws the player's picture frame
+			// Draws the user's picture frame
 		fn_draw_spr(main_picFrm_spr, 0, main_picFrm_x, main_picFrm_y, , (lvl_alp[l] * draw_alp));
 		
-			// Draws the player's picture
+			// Draws the user's picture
 		if (global.config_hideCsr == false && mouse_check_button_pressed(mb_any) == true)
 		{
 			var _ptr_x = (window_mouse_get_x() / 2);
@@ -264,7 +264,7 @@ function fn_menu_inv_evDrawGUI_2(l)
 				main_pic_ySc -= (main_pic_scLen * random_range(_pic_scLen_mulMin, _pic_scLen_mulMax));
 				
 				var _ptr_snd_pitch = random_range(0.75, 2.25);
-				var _ptr_snd = fn_aud_play(main_pic_snd, CONFIG_AUD_EMTR.PLAYER);
+				var _ptr_snd = fn_aud_play(main_pic_snd, CONFIG_AUD_EMTR.USER);
 				fn_aud_pch(_ptr_snd, _ptr_snd_pitch);
 			}
 		}
@@ -273,7 +273,7 @@ function fn_menu_inv_evDrawGUI_2(l)
 		main_pic_xSc = lerp(main_pic_xSc, 1, main_pic_scSpd);
 		main_pic_ySc = lerp(main_pic_ySc, 1, main_pic_scSpd);
 		
-			// Draws the icon of the player's money
+			// Draws the icon of the user's money
 		fn_draw_spr(main_mnyIco_spr, 0, main_mnyIco_x, main_mnyIco_y, main_mnyIco_col, (lvl_alp[l] * draw_alp), , , , true);
 		
 		
@@ -298,32 +298,32 @@ function fn_menu_inv_opt_slct()
 	// Other levels (effects, items and themes)
 	else if (l == LVL_OTHER_FCN)
 	{
-		if (o < array_length(global.player.fcn) && global.player.fcn[o].unlocked == true)
+		if (o < array_length(global.user.fcn) && global.user.fcn[o].unlocked == true)
 		{
-			if (global.player.fcn_curr != o)
+			if (global.user.fcn_curr != o)
 			{
-				fn_player_fcn_equip(o);
-				opt_slct_snd[l, o] = global.player.thm[global.player.thm_curr].equip_snd[0];
+				fn_user_fcn_equip(o);
+				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[0];
 			}
 			else
 			{
-				global.player.fcn_curr = -1;
-				opt_slct_snd[l, o] = global.player.thm[global.player.thm_curr].equip_snd[1];
+				global.user.fcn_curr = -1;
+				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[1];
 			}
 		}
 	}
 	else if (l == LVL_OTHER_THM)
 	{
-		if (o < array_length(global.player.thm) && global.player.thm[o].unlocked == true)
+		if (o < array_length(global.user.thm) && global.user.thm[o].unlocked == true)
 		{
-			if (global.player.thm_curr != o)
+			if (global.user.thm_curr != o)
 			{
-				fn_player_thm_equip(o);
-				opt_slct_snd[l, o] = global.player.thm[global.player.thm_curr].equip_snd[0];
+				fn_user_thm_equip(o);
+				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[0];
 			}
 		}
 		else
-			opt_slct_snd[l, o] = global.player.thm[global.player.thm_curr].opt_error_snd;
+			opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].opt_error_snd;
 	}
 }
 function fn_menu_inv_opt_cncl()

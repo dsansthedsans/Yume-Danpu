@@ -1,5 +1,5 @@
 
-//////// Functions related to the player's settings 
+//////// Functions related to the user's settings 
 
 
 function fn_config_setup()
@@ -144,7 +144,7 @@ function fn_config_setup()
 		AMB, // Ambience
 		
 		MENU, // Menu
-		PLAYER, // Player
+		USER, // Player
 		PROP, // Props
 		ACTOR, // Entities
 	}
@@ -152,7 +152,7 @@ function fn_config_setup()
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.MUS,		"mus");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.AMB,		"amb");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.MENU,	"menu");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.PLAYER,	"player");
+	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.USER,	"user");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.PROP,	"prop");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.ACTOR,	"actor");
 	
@@ -163,34 +163,22 @@ function fn_config_setup()
 		fn_config_file_load();
 }
 
-
 	// File
 function fn_config_file_save()
 {
 	ini_open(global.config.file_name);
-	ini_write_string("README", "msg", global.config.file_msg);
-	
-	
-	// Languages
+	ini_write_string("about", "msg", global.config.file_msg);
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
-	
-	// Graphics
 	ini_write_real("vid", "fscr_act", global.config.vid.fscr.act);
 	ini_write_real("vid", "vsync_act", global.config.vid.vsync.act);
 	ini_write_real("vid", "showVer_act", global.config.vid.showVer.act);
 	ini_write_real("vid", "hideCsr_act", global.config.vid.hideCsr.act);
 	ini_write_real("vid", "showFps_act", global.config.vid.showFps.act);
 	ini_write_real("vid", "showBdr_act", global.config.vid.showBdr.act);
-	
-	// Music & Sounds
 	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
 		ini_write_real("aud", $"emtr_{e}_vol", global.config.aud.emtr[e].vol);
-	
-	// Accessibility
 	ini_write_real("access", "rdcdMot_act", global.config.access.rdcdMot.act);
-	
-	
 	ini_close();
 }
 function fn_config_file_load()
@@ -225,7 +213,6 @@ function fn_config_file_erase()
 	file_delete(global.config.file_name)
 }
 
-
 	// Languages
 function fn_config_lang_add(_idx, _code)
 {
@@ -240,6 +227,7 @@ function fn_config_lang_mod(_new)
 {
 	global.config.lang_curr = _new;
 	fn_config_file_save();
+	fn_user_setup();
 }
 function textdata(_key)
 {
@@ -249,12 +237,12 @@ function textdata(_key)
 		_text = global.config.lang_data[# (1 + global.config.lang_curr), ds_grid_value_y(_grid, 0, 0, ds_grid_width(_grid), ds_grid_height(_grid), _key)];
 	if (_text == undefined)
 	{
-		if (global.dbg.logOverdose == true) 
+		if (global.config_dbg.logOverdose == true) 
 			fn_log($"The function lang_data() was called and unable to retrieve the desired text. The provided key was \"{_key}\".");
 		_text = _key;
 	}
 	
-	if (global.dbg.textdataCorruption == true)
+	if (global.config_dbg.textdataCorruption == true)
 	{
 		var _text_old = _text;
 		_text = "";
@@ -264,7 +252,6 @@ function textdata(_key)
 	
 	return _text;
 }
-
 
 	// Keybinds
 function fn_config_key_add(_idx, _code, _main, _alt = -1)
@@ -294,7 +281,6 @@ function fn_config_key_lazy()
 		pressed[k] = fn_config_key_pressed(k);
 	}
 }
-
 
 	// Music & Sounds
 function fn_config_aud_emtr_add(_idx, _code, _vol = 1, _pitch = 1)

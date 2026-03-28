@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"old_scr_config_lang",
   "parent":{
-    "name":"[!] old",
-    "path":"folders/[!] old.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_fader_portal",
   "parent":{
-    "name":"fader",
-    "path":"folders/fader.yy",
+    "name":"Fader",
+    "path":"folders/Fader.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

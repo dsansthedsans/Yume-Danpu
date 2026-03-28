@@ -21,24 +21,24 @@ config_aud_emtr_master,Master,Geral
 config_aud_emtr_mus,Music,Música
 config_aud_emtr_amb,Ambience,Ambiente
 config_aud_emtr_menu,Menu,Menu
-config_aud_emtr_player,Player,Jogador
+config_aud_emtr_user,Player,Jogador
 config_aud_emtr_prop,Props,Objetos
 config_aud_emtr_actor,Entities,Entidades
 config_access_rdcdMot_name,Reduced Motion,Reduzir Movimento
-player_eff_name_sal0,Salenis 0,Salenis 0
-player_eff_name_sal1,Salenis 1,Salenis 1
-player_eff_name_sal2,Salenis 2,Salenis 2
-player_eff_desc_sal0,Salenis is a world-famous dish.\nIt tastes funny.,O Salenis é uma comida muito famosa.\nO gosto dele é peculiar.
-player_eff_desc_sal1,Salenis is a fascinating creation.\nIts smell is pleasing.,O Salenis é uma criação fascinante.\nO cheiro dele é delicioso.
-player_eff_desc_sal2,Salenis is a political symbol.\nIts texture is horrifying.,O Salenis é um símbolo político.\nA textura dele é horrível.
-player_fcn_name_kart,Kart,Kart
-player_fcn_desc_kart,The fastest in the West.,O mais rápido do Oeste.
-player_thm_name_dflt,Default,Padrão
-player_thm_name_simple,Simple,Simples
-player_thm_name_madot,Madotsuki,Madotsuki
-player_thm_desc_dflt,The default theme.,O tema padrão.
-player_thm_desc_simple,"A simple, yet elegant, theme.","Um tema simples, mas elegante."
-player_thm_desc_madot,A familiar theme.,Um tema familiar.
+user_eff_name_sal0,Salenis 0,Salenis 0
+user_eff_name_sal1,Salenis 1,Salenis 1
+user_eff_name_sal2,Salenis 2,Salenis 2
+user_eff_desc_sal0,Salenis is a world-famous dish.\nIt tastes funny.,O Salenis é uma comida muito famosa.\nO gosto dele é peculiar.
+user_eff_desc_sal1,Salenis is a fascinating creation.\nIts smell is pleasing.,O Salenis é uma criação fascinante.\nO cheiro dele é delicioso.
+user_eff_desc_sal2,Salenis is a political symbol.\nIts texture is horrifying.,O Salenis é um símbolo político.\nA textura dele é horrível.
+user_fcn_name_kart,Kart,Kart
+user_fcn_desc_kart,The fastest in the West.,O mais rápido do Oeste.
+user_thm_name_dflt,Default,Padrão
+user_thm_name_simple,Simple,Simples
+user_thm_name_madot,Diary,Diário
+user_thm_desc_dflt,The default theme.,O tema padrão.
+user_thm_desc_simple,"A simple, yet elegant, theme.","Um tema simples, mas elegante."
+user_thm_desc_madot,A familiar theme.,Um tema familiar.
 menu_home_main_option_0,Start,Jogar
 menu_home_main_option_1,Settings,Opções
 menu_home_main_option_2,Shut down,Desligar

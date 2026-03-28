@@ -15,7 +15,7 @@
   "name":"mus_menu_home",
   "parent":{
     "name":"home",
-    "path":"folders/[!] old/old menu/home.yy",
+    "path":"folders/[!] Unused + Old/old menu/home.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

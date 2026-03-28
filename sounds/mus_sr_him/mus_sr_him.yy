@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"mus_sr_him",
   "parent":{
-    "name":"[!] Music",
-    "path":"folders/[!] Music.yy",
+    "name":"Yume Danpu",
+    "path":"Yume Danpu.yyp",
   },
   "preload":false,
   "resourceType":"GMSound",

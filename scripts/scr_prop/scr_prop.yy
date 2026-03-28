@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_prop",
   "parent":{
-    "name":"prop",
-    "path":"folders/prop.yy",
+    "name":"Props",
+    "path":"folders/Props.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

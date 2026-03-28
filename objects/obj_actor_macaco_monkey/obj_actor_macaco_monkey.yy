@@ -7,11 +7,11 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Macacolandia",
-    "path":"folders/Macacolandia.yy",
+    "path":"folders/Map/Macacolandia.yy",
   },
   "parentObjectId":{
-    "name":"obj_actor_parent",
-    "path":"objects/obj_actor_parent/obj_actor_parent.yy",
+    "name":"obj_actor",
+    "path":"objects/obj_actor/obj_actor.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

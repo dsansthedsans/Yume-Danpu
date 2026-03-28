@@ -15,7 +15,7 @@
   "name":"mus_nexus",
   "parent":{
     "name":"Nexus",
-    "path":"folders/Nexus.yy",
+    "path":"folders/Map/Nexus.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

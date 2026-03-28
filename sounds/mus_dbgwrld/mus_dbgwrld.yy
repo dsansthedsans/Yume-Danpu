@@ -15,7 +15,7 @@
   "name":"mus_dbgwrld",
   "parent":{
     "name":"Debug World",
-    "path":"folders/Debug World.yy",
+    "path":"folders/Map/Debug World.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

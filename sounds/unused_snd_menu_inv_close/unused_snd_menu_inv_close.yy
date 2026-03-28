@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"unused_snd_menu_inv_close",
   "parent":{
-    "name":"[!] unused",
-    "path":"folders/[!] unused.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

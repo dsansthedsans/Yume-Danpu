@@ -9,7 +9,7 @@ cam =
 	w : 320,
 	h : 240,
 	
-	tgt : obj_player,
+	tgt : obj_actor_user,
 	
 	lock :
 	{
@@ -24,7 +24,6 @@ view_set_wport(0, 640);
 view_set_hport(0, 480);
 view_set_camera(0, cam.id);
 
-
 // Background
 for (var b = 0; b < bg_lenMax; b++)
 {
@@ -35,13 +34,11 @@ for (var b = 0; b < bg_lenMax; b++)
 	}
 }
 
-
 // Loop
 loop =
 {
 	xAct : false, // Determines whether the room loops infinitely along the horizontal axis
 	yAct : false // Determines whether the room loops infinitely along the vertical axis
 }
-
 
 fn_stage_evCreate();

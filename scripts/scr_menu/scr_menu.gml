@@ -33,7 +33,7 @@ function fn_menu_lvl_add(_idx)
 		option_move : // Movement
 		{
 			act : true,
-			snd : global.player.thm[global.player.thm_curr].snd.move,
+			snd : global.user.thm[global.user.thm_curr].snd.move,
 			
 			// List type
 			list :
@@ -52,13 +52,13 @@ function fn_menu_lvl_add(_idx)
 		{
 			act : true,
 			key : CONFIG_KEY.CONFIRM,
-			snd : global.player.thm[global.player.thm_curr].snd.confirm
+			snd : global.user.thm[global.user.thm_curr].snd.confirm
 		},
 		option_cancel : // Cancellation
 		{
 			act : true,
 			key : CONFIG_KEY.CANCEL,
-			snd : global.player.thm[global.player.thm_curr].snd.cancel
+			snd : global.user.thm[global.user.thm_curr].snd.cancel
 		}
 	}
 }
@@ -84,7 +84,6 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 			snd : _next_snd,
 			destroy : _next_destroy,
 			endgame : _next_endgame,
-			
 			wait_dur : _next_wait_dur,
 		}
 	}
@@ -107,7 +106,7 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd
 		xOfs : 0,
 		yOfs : 0,
 		
-		color : global.player.thm[global.player.thm_curr].color.grayDark,
+		color : global.user.thm[global.user.thm_curr].color.grayDark,
 		alpha : _alpha,
 		
 		angle : _angle
@@ -122,7 +121,7 @@ function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _widt
 	
 	lvl[l].panel[p] =
 	{
-		spr : global.player.thm[global.player.thm_curr].spr.panel,
+		spr : global.user.thm[global.user.thm_curr].spr.panel,
 		img : 0,
 		
 		x : _x,
@@ -144,14 +143,14 @@ function fn_menu_lvl_panel_title_add(_lvl, _idx, _title_label_text = undefined)
 	
 	lvl[l].panel[p].title =
 	{
-		spr : global.player.thm[global.player.thm_curr].spr.panel_title,
+		spr : global.user.thm[global.user.thm_curr].spr.panel_title,
 		height : (fn_text_height("Salenis") + 4),
 			
 		label :
 		{
 			text : _title_label_text,
 			xMarg : 7,
-			color : [global.player.thm[global.player.thm_curr].color.whiteLight, global.player.thm[global.player.thm_curr].color.whiteDark],
+			color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark],
 			alpha : 0.5,
 			shadow_alpha : 0,
 		}
@@ -166,7 +165,7 @@ function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 	
 	lvl[l].card[c] =
 	{
-		spr :  global.player.thm[global.player.thm_curr].spr.card,
+		spr :  global.user.thm[global.user.thm_curr].spr.card,
 		img : 0,
 		
 		x : _x,
@@ -177,7 +176,7 @@ function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 }
 
 	// Labels
-function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _color = [global.player.thm[global.player.thm_curr].color.whiteLight, global.player.thm[global.player.thm_curr].color.whiteLight], _xAlign = fa_left, _yAlign = fa_top)
+function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _color = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight], _xAlign = fa_left, _yAlign = fa_top)
 {
 	var l = _lvl;
 	var a = _idx;
@@ -229,8 +228,8 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		
 		color : // Colors
 		[
-			[global.player.thm[global.player.thm_curr].color.grayLight, global.player.thm[global.player.thm_curr].color.grayDark], // Inactive (Unselected)
-			[global.player.thm[global.player.thm_curr].color.whiteLight, global.player.thm[global.player.thm_curr].color.whiteDark] // Active (Selected)
+			[global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark], // Inactive (Unselected)
+			[global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark] // Active (Selected)
 		],
 		
 		xAlign : fa_left,
@@ -241,7 +240,7 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		{
 			act : _select_act,
 			
-			spr : global.player.thm[global.player.thm_curr].spr.option_select,
+			spr : global.user.thm[global.user.thm_curr].spr.option_select,
 			img : 0,
 			
 			x : 0,
@@ -289,7 +288,7 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 		y : 0,
 		xGap : _xGap,
 			
-		color : [global.player.thm[global.player.thm_curr].color.grayLight, global.player.thm[global.player.thm_curr].color.grayDark],
+		color : [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark],
 		colorVal : 0,
 		colorValTGT : [0 /* Inactive (Not cycling) */, 100 /* Active (Cycling) */],
 		colorValSPD : 0.1,
@@ -318,7 +317,7 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			xGap : 10,
 			xSign : ((a == 0) ? -1 : 1),
 			
-			color : [global.player.thm[global.player.thm_curr].color.whiteLight, global.player.thm[global.player.thm_curr].color.whiteLight],
+			color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight],
 			alpha : 0.5,
 			alphaTgt : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
 			alphaSpd : 0.1,
@@ -389,7 +388,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 	
 	lvl[l].option[o].check =
 	{
-		spr : global.player.thm[global.player.thm_curr].spr.option_check,
+		spr : global.user.thm[global.user.thm_curr].spr.option_check,
 			
 		x : 0,
 		y : 0,
@@ -402,7 +401,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		mark :
 		{
 			act : false,
-			spr : global.player.thm[global.player.thm_curr].spr.option_check_mark,
+			spr : global.user.thm[global.user.thm_curr].spr.option_check_mark,
 			
 			x : 0,
 			y : 0,
@@ -420,7 +419,7 @@ function fn_menu_lvl_option_button_add(_lvl, _idx)
 	
 	lvl[l].option[o].button =
 	{
-		spr : global.player.thm[global.player.thm_curr].spr.option_button,
+		spr : global.user.thm[global.user.thm_curr].spr.option_button,
 		img_inact : 0, // image_index while inactive (unselected)
 		img_act : 1, // image_index while active (selected)
 			

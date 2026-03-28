@@ -18,7 +18,7 @@
   "name":"rm_menu_load",
   "parent":{
     "name":"load",
-    "path":"folders/[!] old/old menu/load.yy",
+    "path":"folders/[!] Unused + Old/old menu/load.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

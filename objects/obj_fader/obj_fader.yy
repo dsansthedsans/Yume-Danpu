@@ -11,8 +11,8 @@
   "name":"obj_fader",
   "overriddenProperties":[],
   "parent":{
-    "name":"fader",
-    "path":"folders/fader.yy",
+    "name":"Fader",
+    "path":"folders/Fader.yy",
   },
   "parentObjectId":null,
   "persistent":true,

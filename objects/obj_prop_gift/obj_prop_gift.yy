@@ -6,12 +6,12 @@
   "name":"obj_prop_gift",
   "overriddenProperties":[],
   "parent":{
-    "name":"gift",
-    "path":"folders/prop/gift.yy",
+    "name":"Props",
+    "path":"folders/Props.yy",
   },
   "parentObjectId":{
-    "name":"obj_prop_parent",
-    "path":"objects/obj_prop_parent/obj_prop_parent.yy",
+    "name":"obj_prop",
+    "path":"objects/obj_prop/obj_prop.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

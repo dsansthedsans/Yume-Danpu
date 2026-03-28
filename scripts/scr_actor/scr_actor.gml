@@ -1,5 +1,5 @@
 
-//////// Functions related to actors (characters like entities and the player)
+//////// Functions related to actors (characters like entities and the user)
 
 
 function fn_actor_evCreate() // Create Event determined by the actor's object index
@@ -9,8 +9,8 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 	{
 		// Good/Peaceful entities
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
-			talk.type.bell.aud_style = CONFIG_AUD_EMTR.ACTOR;
-			noise.aud.style = CONFIG_AUD_EMTR.ACTOR;
+			talk.type.bell.aud_emtr = CONFIG_AUD_EMTR.ACTOR;
+			noise.aud.emtr = CONFIG_AUD_EMTR.ACTOR;
 			move.wait.act = true;
 			move.mode.auto.act = true;
 			move.type.walk.act = true;
@@ -21,11 +21,11 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		
 		// Evil/Hostile entities
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey
-			noise.aud.style = CONFIG_AUD_EMTR.ACTOR;
+			noise.aud.emtr = CONFIG_AUD_EMTR.ACTOR;
 			noise.aud.asset = snd_prop_noise_weird;
 			move.mode.auto.act = true;
 			move.mode.auto.chase_act = true;
-			move.mode.auto.chase_tgt = obj_player;
+			move.mode.auto.chase_tgt = obj_actor_user;
 			move.type.walk.act = true;
 			move.type.walk.dur = 24;
 		break;
@@ -36,24 +36,24 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 	switch (object_index)
 	{
 		// Player
-		case obj_player:
+		case obj_actor_user:
 			myself.draw.act = true;
 			talkTrig.act = true;
-			dir[DIR_LT].spr = spr_player_dir_lt;
-			dir[DIR_RT].spr = spr_player_dir_rt;
-			dir[DIR_UP].spr = spr_player_dir_up;
-			dir[DIR_DN].spr = spr_player_dir_dn;
+			dir[DIR_LT].spr = spr_user_dir_lt;
+			dir[DIR_RT].spr = spr_user_dir_rt;
+			dir[DIR_UP].spr = spr_user_dir_up;
+			dir[DIR_DN].spr = spr_user_dir_dn;
 			move.precise = false;
 			move.mode.manual.act = true;
 			move.type.walk.act = true;
 			move.type.walk.fstep.act = true;
-			move.type.walk.fstep.snd_asset = snd_player_fstep;
-			move.type.walk.fstep.snd_style = CONFIG_AUD_EMTR.PLAYER;
+			move.type.walk.fstep.snd_asset = snd_user_fstep;
+			move.type.walk.fstep.snd_emtr = CONFIG_AUD_EMTR.USER;
 			move.type.roll.act = false;
 			
-			if (global.player.eff_curr == -1 && global.player.fcn_curr == -1)
+			if (global.user.eff_curr == -1 && global.user.fcn_curr == -1)
 			{
-				if (fcn_old == PLAYER_FCN.KART)
+				if (fcn_old == USER_FCN.KART)
 				{
 					x = fn_actor_xRound(id, x);
 					y = fn_actor_xRound(id, y);
@@ -62,20 +62,20 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 					move.type.roll.dist = 0;
 				}
 			}
-			else if (global.player.fcn_curr == PLAYER_FCN.KART)
+			else if (global.user.fcn_curr == USER_FCN.KART)
 			{
 				myself.draw.act = false;
 				move.precise = false;
 				move.type.walk.act = false;
 				move.type.roll.act = true;
-				move.type.roll.snd_asset = snd_player_fcn_kart;
-				move.type.roll.snd_style = CONFIG_AUD_EMTR.PLAYER;
-				move.type.roll.start.snd_asset = snd_player_fcn_kart_start;
-				move.type.roll.start.snd_style = CONFIG_AUD_EMTR.PLAYER;
-				move.type.roll.turn.snd_asset = snd_player_fcn_kart_turn;
-				move.type.roll.turn.snd_style = CONFIG_AUD_EMTR.PLAYER;
-				move.type.roll.hit.snd_asset = snd_player_fcn_kart_hit;
-				move.type.roll.hit.snd_style = CONFIG_AUD_EMTR.PLAYER;
+				move.type.roll.snd_asset = snd_user_fcn_kart;
+				move.type.roll.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.start.snd_asset = snd_user_fcn_kart_start;
+				move.type.roll.start.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.turn.snd_asset = snd_user_fcn_kart_turn;
+				move.type.roll.turn.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.hit.snd_asset = snd_user_fcn_kart_hit;
+				move.type.roll.hit.snd_emtr = CONFIG_AUD_EMTR.USER;
 			}
 		break;
 		

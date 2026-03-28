@@ -46,8 +46,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"[!] unused",
-    "path":"folders/[!] unused.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

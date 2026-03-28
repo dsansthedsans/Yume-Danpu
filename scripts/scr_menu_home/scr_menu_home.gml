@@ -28,7 +28,7 @@ function fn_menu_home_evCreate_0()
 	
 		// Flag selector [#0]
 	lang_flag_slctr_spr = spr_menu_home_flag_slctr;
-	lang_flag_slctr_col = global.player.thm[global.player.thm_curr].col.whiteLight;
+	lang_flag_slctr_col = global.user.thm[global.user.thm_curr].col.whiteLight;
 	
 		// Title info [#0]
 	fn_menu_info_add_ext(l, 0, "menu_home_lang_info_0");
@@ -62,7 +62,7 @@ function fn_menu_home_evCreate_0()
 		lang_flag_slctr_alp[f] = 0;
 	}
 	
-	lang_snd = global.player.thm[global.player.thm_curr].start_snd;
+	lang_snd = global.user.thm[global.user.thm_curr].start_snd;
 	
 	
 	

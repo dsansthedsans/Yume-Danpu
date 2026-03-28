@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"home",
-    "path":"folders/menu/home.yy",
+    "name":"Home",
+    "path":"folders/Menu/Home.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -53,7 +53,7 @@ if (is_array(lvl) == true)
 			lvl[l].decor[o].spr = spr_menu_home_flag_select
 			lvl[l].decor[o].x = (__flag_x + round(_flag_width / 2));
 			lvl[l].decor[o].y = (__flag_y + _flag_height + 5);
-			lvl[l].decor[o].color = global.player.thm[global.player.thm_curr].color.whiteLight;
+			lvl[l].decor[o].color = global.user.thm[global.user.thm_curr].color.whiteLight;
 			lvl[l].decor[o].alpha = (o == lvl[l].option_curr);
 		}
 	}
@@ -120,7 +120,7 @@ if (is_array(lvl) == true)
 			lvl[l].option[o].icon.img = o;
 			lvl[l].option[o].x = round(_card_x + (_card_width / 2) - (fn_menu_lvl_option_getWidthMax(l) / 2) + (fn_menu_lvl_option_icon_xGap_getDflt(l, o) / 2));
 			lvl[l].option[o].y = round((_card_y + (_card_height / 2)) - (_opt_heightAll / 2) + (_opt_yGap * o));
-			//lvl[l].option[o].icon.color = [global.player.thm[global.player.thm_curr].color.grayDark /* Inactive (Unselected) */, global.player.thm[global.player.thm_curr].color.whiteLight /* Active (Selected) */];
+			//lvl[l].option[o].icon.color = [global.user.thm[global.user.thm_curr].color.grayDark /* Inactive (Unselected) */, global.user.thm[global.user.thm_curr].color.whiteLight /* Active (Selected) */];
 		}
 		
 		// Logo decoration

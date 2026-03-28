@@ -6,7 +6,7 @@
   "name":"scr_menu_config",
   "parent":{
     "name":"config",
-    "path":"folders/[!] old/old menu/config.yy",
+    "path":"folders/[!] Unused + Old/old menu/config.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

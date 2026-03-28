@@ -6,7 +6,7 @@ if (lvl_curr == LVL_LANG)
 {
 	global.config.lang_hasChosen = true;
 	fn_config_file_save();
-	fn_menu_lvl_fader_start(LVL_MAIN, , , 120);
+	fn_menu_lvl_fader_start(LVL_MAIN, , , , 120);
 }
 else if (lvl_curr == LVL_MAIN)
 {

@@ -12,12 +12,12 @@
   "name":"obj_menu_config",
   "overriddenProperties":[],
   "parent":{
-    "name":"config",
-    "path":"folders/menu/config.yy",
+    "name":"Config",
+    "path":"folders/Menu/Config.yy",
   },
   "parentObjectId":{
-    "name":"obj_menu_parent",
-    "path":"objects/obj_menu_parent/obj_menu_parent.yy",
+    "name":"obj_menu",
+    "path":"objects/obj_menu/obj_menu.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -37,8 +37,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_menu_child",
-    "path":"sprites/spr_menu_child/spr_menu_child.yy",
+    "name":"spr_child",
+    "path":"sprites/spr_child/spr_child.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_config",
   "parent":{
-    "name":"config",
-    "path":"folders/config.yy",
+    "name":"Config",
+    "path":"folders/Config.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

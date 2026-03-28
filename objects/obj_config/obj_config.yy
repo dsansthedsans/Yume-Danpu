@@ -11,8 +11,8 @@
   "name":"obj_config",
   "overriddenProperties":[],
   "parent":{
-    "name":"config",
-    "path":"folders/config.yy",
+    "name":"Config",
+    "path":"folders/Config.yy",
   },
   "parentObjectId":null,
   "persistent":true,
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_config",
-    "path":"sprites/spr_config/spr_config.yy",
+    "name":"spr_main",
+    "path":"sprites/spr_main/spr_main.yy",
   },
   "spriteMaskId":null,
   "visible":true,

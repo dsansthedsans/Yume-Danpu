@@ -47,7 +47,7 @@
   "origin":0,
   "parent":{
     "name":"inv",
-    "path":"folders/[!] old/old menu/inv.yy",
+    "path":"folders/[!] Unused + Old/old menu/inv.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

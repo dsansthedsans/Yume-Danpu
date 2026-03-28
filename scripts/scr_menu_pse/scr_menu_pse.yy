@@ -6,7 +6,7 @@
   "name":"scr_menu_pse",
   "parent":{
     "name":"pse",
-    "path":"folders/[!] old/old menu/pse.yy",
+    "path":"folders/[!] Unused + Old/old menu/pse.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

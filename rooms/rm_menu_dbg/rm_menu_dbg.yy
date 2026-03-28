@@ -17,8 +17,8 @@
   ],
   "name":"rm_menu_dbg",
   "parent":{
-    "name":"dbg",
-    "path":"folders/menu/dbg.yy",
+    "name":"Dbg",
+    "path":"folders/Menu/Dbg.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

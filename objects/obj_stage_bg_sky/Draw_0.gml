@@ -2,11 +2,10 @@
 var _loop = sky.loop;
 var _move = sky.loop.move;
 
-
 // Movement
 if (_move.xDur > 0 && _move.yDur > 0 && global.config.access.rdcdMot.act == false)
 {
-	sky.xOfs += ((_loop.xDist * _move.xSign) / _move.xDur);
+	sky.xOfs += ((_loop.xDist * _move.xSign) / _move.xDur); 
 	if (abs(sky.x + sky.xOfs) >= _loop.xDist)
 		sky.xOfs -= (_loop.xDist * _move.xSign);
 	
@@ -14,7 +13,6 @@ if (_move.xDur > 0 && _move.yDur > 0 && global.config.access.rdcdMot.act == fals
 	if (abs(sky.y + sky.yOfs) >= _loop.yDist)
 		sky.yOfs -= (_loop.yDist * _move.ySign);
 }
-
 
 // Draws the sky background
 for (var w = 0; w < _loop.xLen; w++)

@@ -11,8 +11,8 @@
   "name":"obj_stage",
   "overriddenProperties":[],
   "parent":{
-    "name":"stage",
-    "path":"folders/stage.yy",
+    "name":"Stage",
+    "path":"folders/Stage.yy",
   },
   "parentObjectId":null,
   "persistent":true,

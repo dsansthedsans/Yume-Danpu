@@ -6,7 +6,7 @@
   "name":"scr_menu_unlock",
   "parent":{
     "name":"unlock",
-    "path":"folders/[!] old/old menu/unlock.yy",
+    "path":"folders/[!] Unused + Old/old menu/unlock.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

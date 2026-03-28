@@ -9,8 +9,8 @@
   "name":"obj_stage_bg_sky",
   "overriddenProperties":[],
   "parent":{
-    "name":"stage",
-    "path":"folders/stage.yy",
+    "name":"Stage",
+    "path":"folders/Stage.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_prop_noise_weird",
   "parent":{
-    "name":"prop",
-    "path":"folders/prop.yy",
+    "name":"Props",
+    "path":"folders/Props.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

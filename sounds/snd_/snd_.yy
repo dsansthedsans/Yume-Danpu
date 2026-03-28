@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_",
   "parent":{
-    "name":"[!] Sounds",
-    "path":"folders/[!] Sounds.yy",
+    "name":"Yume Danpu",
+    "path":"Yume Danpu.yyp",
   },
   "preload":false,
   "resourceType":"GMSound",

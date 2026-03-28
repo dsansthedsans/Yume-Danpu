@@ -149,8 +149,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"config",
-    "path":"folders/config.yy",
+    "name":"Config",
+    "path":"folders/Config.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

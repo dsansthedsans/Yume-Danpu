@@ -2,7 +2,6 @@
 var _loop = clouds.loop;
 var _move = clouds.loop.move;
 
-
 // Movement
 if (_move.xDur > 0 && _move.yDur > 0 && global.config.access.rdcdMot.act == false)
 {
@@ -14,7 +13,6 @@ if (_move.xDur > 0 && _move.yDur > 0 && global.config.access.rdcdMot.act == fals
 	if (abs(clouds.y + clouds.yOfs) >= _loop.yDist)
 		clouds.yOfs -= (_loop.yDist * _move.ySign);
 }
-
 
 // Draws the cloud background
 for (var w = 0; w < _loop.xLen; w++)

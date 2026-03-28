@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_stage",
   "parent":{
-    "name":"stage",
-    "path":"folders/stage.yy",
+    "name":"Stage",
+    "path":"folders/Stage.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
