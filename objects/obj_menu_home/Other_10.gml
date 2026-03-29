@@ -22,6 +22,6 @@ else if (lvl_curr == LVL_MAIN)
 	}
 	else if (_opt_curr == 2)
 	{
-		fn_menu_lvl_fader_start(LVL_EMPTY);
+		fn_menu_lvl_fader_start(LVL_EMPTY, , , true, 90, snd_fader_portal);
 	}
 }

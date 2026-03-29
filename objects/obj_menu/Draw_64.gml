@@ -21,9 +21,9 @@ if (is_array(lvl) == true)
 			{
 				for (var r = 0; r < array_length(lvl[l].rect); r++)
 				{
-					var _rect = lvl[l].rect[l];
+					var _rect = lvl[l].rect[r];
 					if (_rect.x != undefined && _rect.y != undefined && _rect.weight != undefined && _rect.height != undefined)
-						fn_draw_rect(_rect.x, _rect.y, _rect.weight, _rect.height, _rect.color, _rect.color, _rect.color, _rect.color, _rect.alpha);
+						fn_draw_rect(_rect.x, _rect.y, _rect.weight, _rect.height, _rect.color, _rect.color, _rect.color, _rect.color, (_rect.alpha * lvl[l].alpha));
 				}
 			}
 			
@@ -90,7 +90,21 @@ if (is_array(lvl) == true)
 				{
 					var _label = lvl[l].label[a];
 					if (_label.text != undefined && _label.x != undefined && _label.y != undefined)
+					{
+							// Icon
+						if (is_struct(_label.icon) == true && _label.icon.spr != -1)
+						{
+							var _icon_xGap = round((_label.icon.xGap != 0) ? _label.icon.xGap : fn_menu_lvl_label_icon_xGap_getDflt(l, o));
+							var _icon_x = round((_label.icon.x != 0) ? _label.icon.x : (_label.x - _icon_xGap));
+							var _icon_y = round((_label.icon.y != 0) ? _label.icon.y : (_label.y + round(fn_textdata_height(_label.text) / 2) - round(fn_spr_height(_label.icon.spr) / 2) + 1));
+							var _icon_color = _label.icon.color;
+							var _icon_alpha = (_label.icon.alpha * lvl[l].alpha);
+							fn_draw_spr(_label.icon.spr, _label.icon.img, _icon_x, _icon_y, _icon_color, _icon_alpha, , , , true);
+						}
+						
+						// Label
 						fn_draw_text(textdata(_label.text), round(_label.x), round(_label.y), _label.color[0], _label.color[1], lvl[l].alpha, , , _label.xAlign, _label.yAlign);
+					}
 				}
 			}
 			

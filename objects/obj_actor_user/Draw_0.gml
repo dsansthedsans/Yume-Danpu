@@ -1,7 +1,5 @@
 
 event_inherited();
-
-
 if (myself.draw.act == false)
 {
 	if (global.user.fcn_curr != -1) // An item is equipped

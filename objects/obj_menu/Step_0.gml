@@ -49,7 +49,7 @@ if (is_array(lvl) == true)
 			}
 			
 			// Cancellation
-			else if (lvl[l].option_cancel.act == true && fn_config_key_pressed(lvl[l].option_cancel.key) == true)
+			else if (lvl[l].option_cancel.act == true && (fn_config_key_pressed(lvl[l].option_cancel.key[0]) == true || (lvl[l].option_cancel.key[1] != undefined && fn_config_key_pressed(lvl[l].option_cancel.key[1]) == true)))
 			{
 				_cancel_snd = lvl[l].option_cancel.snd;
 				event_user(1);
@@ -100,6 +100,14 @@ if (is_array(lvl) == true)
 				if (lvl_fader.next.snd != undefined)
 					fn_aud_play(lvl_fader.next.snd, CONFIG_AUD_EMTR.MENU);
 				lvl_fader.next.snd = undefined;
+				if (lvl_fader.next.destroy == true)
+				{
+					if (fn_obj_exists(obj_actor_user) == true && obj_actor_user.move.act == false)
+						obj_actor_user.move.act = true;
+					fn_obj_destroy();
+				}
+				if (lvl_fader.next.endgame == true)
+					game_end();
 			}
 		}
 		else

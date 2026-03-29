@@ -91,8 +91,7 @@ function fn_config_setup()
 	else if (file_exists(global.config.file_name) == true)
 	{
 		if (irandom_range(1, 100) <= 5)
-			global.config.name = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume-Danpu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy", "Yum Djampp");
-		
+			global.config.name = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume-Danpu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy", "Yum Djampp", "Danbu Yambu", "Dumpgame 2");		
 		ini_open(global.config.file_name);
 		global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 		ini_close();
@@ -111,29 +110,29 @@ function fn_config_setup()
 		// Keybinds
 	enum CONFIG_KEY
 	{
-		LT,		// Left
-		RT,		// Right
-		UP,		// Up
-		DN,		// Down
+		LT,			// Left
+		RT,			// Right
+		UP,			// Up
+		DN,			// Down
 		CONFIRM,	// Confirm
-		CANCEL,	// Cancel
-		INV,	// Inventory
-		USE,	// Effect/Item
-		ATWLK,	// Autowalk
-		PSE,	// Pause
-		FSCR,	// Fullscreen
+		CANCEL,		// Cancel
+		USE,		// Effect/Item
+		AUTOWALK,	// Autowalk
+		FSCR,		// Fullscreen
+		MENU_USER,	// Inventory and hotbar menus
+		MENU_PAUSE,	// Pause menu
 	}
-	fn_config_key_add(CONFIG_KEY.LT,	"lt",		vk_left, ord("A"));
-	fn_config_key_add(CONFIG_KEY.RT,	"rt",		vk_right, ord("D"));
-	fn_config_key_add(CONFIG_KEY.UP,	"up",		vk_up, ord("W"));
-	fn_config_key_add(CONFIG_KEY.DN,	"dn",		vk_down, ord("S"));
-	fn_config_key_add(CONFIG_KEY.CONFIRM,	"confirm",	ord("Z"), vk_enter);
-	fn_config_key_add(CONFIG_KEY.CANCEL,	"cancel",	ord("X"), vk_shift);
-	fn_config_key_add(CONFIG_KEY.INV,	"inv",		ord("C"), vk_control);
-	fn_config_key_add(CONFIG_KEY.USE,	"use",		ord("F"));
-	fn_config_key_add(CONFIG_KEY.ATWLK,	"atwlk",	ord("R"));
-	fn_config_key_add(CONFIG_KEY.PSE,	"pse",		vk_escape);
-	fn_config_key_add(CONFIG_KEY.FSCR,	"fscr",		vk_f4, vk_f11);
+	fn_config_key_add(CONFIG_KEY.LT,			"lt",			vk_left, ord("A"));
+	fn_config_key_add(CONFIG_KEY.RT,			"rt",			vk_right, ord("D"));
+	fn_config_key_add(CONFIG_KEY.UP,			"up",			vk_up, ord("W"));
+	fn_config_key_add(CONFIG_KEY.DN,			"dn",			vk_down, ord("S"));
+	fn_config_key_add(CONFIG_KEY.CONFIRM,		"confirm",		ord("Z"), vk_enter);
+	fn_config_key_add(CONFIG_KEY.CANCEL,		"cancel",		ord("X"), vk_shift);
+	fn_config_key_add(CONFIG_KEY.USE,			"use",			ord("F"));
+	fn_config_key_add(CONFIG_KEY.AUTOWALK,		"autowalk",		ord("R"));
+	fn_config_key_add(CONFIG_KEY.FSCR,			"fscr",			vk_f4, vk_f11);
+	fn_config_key_add(CONFIG_KEY.MENU_USER,		"menu_user",	ord("C"), vk_control);
+	fn_config_key_add(CONFIG_KEY.MENU_PAUSE,	"menu_pause",	vk_escape);
 	
 		// Music & Sounds
 	enum CONFIG_AUD_EMTR

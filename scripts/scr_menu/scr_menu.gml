@@ -45,7 +45,7 @@ function fn_menu_lvl_add(_idx)
 		option_cancel : // Cancellation
 		{
 			act : true,
-			key : CONFIG_KEY.CANCEL,
+			key : [CONFIG_KEY.CANCEL, undefined],
 			snd : global.user.thm[global.user.thm_curr].snd.cancel
 		}
 	}
@@ -58,7 +58,7 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 	{
 		stg : 0, // ID number of the current stage of the fade transition
 		alpTgt : 1, // Alpha target (the value that alpha will change to)
-		alpSpd : 0.25, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
+		alpSpd : 0.2, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
 		alpJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
 		
 		prev :
@@ -185,12 +185,30 @@ function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y
 		text : _text,
 		x : _x,
 		y : _y,
-		
 		color : _color,
-		
 		xAlign : _xAlign,
 		yAlign : _yAlign,
+		icon : -1, // Icon
 	}
+}
+function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
+{
+	var l = _lvl;
+	var a = _idx;
+	lvl[l].label[a].icon =
+	{
+		spr : _spr,
+		img : _img,	
+		x : 0,
+		y : 0,
+		xGap : 0,
+		color : c_white,
+		alpha : 1,
+	}
+}
+function fn_menu_lvl_label_icon_xGap_getDflt(_lvl, _idx)
+{
+	return (4 + fn_spr_width(lvl[_lvl].label[_idx].icon.spr))
 }
 
 	// Decorations
@@ -250,17 +268,10 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 			height : 0,
 		},
 		
-		// Checkbox
-		check : -1,
-		
-		// Value label (the text beside the options in the settings menu, like "Yes", "No" and "100%")
-		value : -1,
-		
-		// Icon
-		icon : -1,
-		
-		// Button
-		button : -1
+		check : -1, // Checkbox
+		value : -1, // Value label (the text beside the options in the settings menu, like "Yes", "No" and "100%")
+		icon : -1, // Icon
+		button : -1 // Button
 	}
 }
 function fn_menu_lvl_option_getWidthMax(_lvl)

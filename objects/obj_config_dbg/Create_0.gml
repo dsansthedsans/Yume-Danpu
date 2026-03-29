@@ -19,7 +19,7 @@ global.config_dbg =
 		
 		// Fader, starts a room transition to the specified room
 		fader_key : ord("F"),
-		fader_rm : [rm_menu_dbg, temp_rm_menu_home, rm_dbgwrld],
+		fader_rm : [rm_menu_dbg, temp_rm_menu_home, rm_nexus],
 		
 		// Reset, restarts the game
 		reset_key : [ord("R"), vk_shift, vk_control]

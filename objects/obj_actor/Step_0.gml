@@ -10,7 +10,6 @@ if (move.act == true)
 	// May God have mercy on my soul.
 	// i'll try to make this better. eventually. eventually. eventually.
 	
-	
 	if (move.type.roll.act == true && move.type.roll.snd_asset != -1 && move.type.roll.snd_emtr != -1)
 	{
 		if (move.type.roll.snd_id == -1)
@@ -28,7 +27,6 @@ if (move.act == true)
 		move.type.roll.snd_id = -1;
 	}
 	
-	
 	// Idle (movement sequence is inactive, waiting/preparing for movement)
 	if (move.stg == -1 && ((move.wait.act == false) || (move.wait.act == true && move.wait.durCurr <= 0)))
 	{
@@ -36,14 +34,12 @@ if (move.act == true)
 		var _dir_old = dir_curr;
 		var _dir_new = -1;
 		
-		
 		// Manual mode
 		if (move.mode.manual.act == true)
 		{
 			for (var d = 0; d < 4; d++)
 			{
 				move.mode.manual.held = fn_config_key_held(dir[d].key);
-				
 				if (move.mode.manual.held == true)
 				{
 					_dir_new = d;
@@ -52,18 +48,14 @@ if (move.act == true)
 				else
 					continue;
 			}
-			
 			if (_dir_new == -1 && move.mode.manual.held == false && move.type.roll.act == true && move.type.roll.dist > move.type.roll.distMin)
-			{
 				_dir_new = dir_curr;
-			}
 		}
 		
 		// Automatic mode
 		else if (move.mode.auto.act == true)
 		{
 			_dir_new = irandom(3);
-			
 			if (move.mode.auto.chase_act == true)
 			{
 				var _chase_tgt = instance_nearest(x, y, move.mode.auto.chase_tgt);
@@ -87,7 +79,6 @@ if (move.act == true)
 				}
 			}
 		}
-		
 		
 		if (_dir_new != -1)
 		{
@@ -206,7 +197,6 @@ if (move.act == true)
 	else if (move.stg == -1 && move.wait.act == true && move.wait.durCurr > 0)
 		move.wait.durCurr -= 1;
 	
-	
 	// Moving (movement sequence is active)
 	if (move.stg == 0)
 	{
@@ -215,7 +205,6 @@ if (move.act == true)
 		{
 			myself.x += ((move.xTgt - move.xStart) / move.type.walk.dur);
 			myself.y += ((move.yTgt - move.yStart) / move.type.walk.dur);
-			
 			
 			// Walking animation
 			if (move.type.walk.fstep.act == true)
@@ -228,7 +217,6 @@ if (move.act == true)
 						image_index += 1;
 						if (image_index % 2 == 1 && move.type.walk.fstep.snd_asset != -1 && move.type.walk.fstep.snd_emtr != -1)
 							fn_aud_play(move.type.walk.fstep.snd_asset, move.type.walk.fstep.snd_emtr);
-						
 						move.type.walk.fstep.amtCurr += 1;
 						move.type.walk.fstep.wait_durCurr = floor(move.type.walk.dur / _fstep_amt);
 					}
@@ -236,7 +224,6 @@ if (move.act == true)
 						move.type.walk.fstep.wait_durCurr -= 1;
 				}
 			}
-			
 			
 			move.type.walk.durCurr += 1;
 			if (move.type.walk.durCurr >= move.type.walk.dur)
@@ -259,13 +246,11 @@ if (move.act == true)
 			}
 		}
 		
-		
 		// Roll type
 		else if (move.type.roll.act == true)
 		{
 			myself.x = move.xTgt;
 			myself.y = move.yTgt;
-			
 			move.stg = -1;
 			if (move.mode.manual.act == true)
 			{
@@ -276,7 +261,6 @@ if (move.act == true)
 				move.type.roll.dist = clamp(move.type.roll.dist, move.type.roll.distMin, move.type.roll.distMax);
 			}
 		}
-		
 		
 		fn_actor_stage_loop();
 		depth = -myself.y;

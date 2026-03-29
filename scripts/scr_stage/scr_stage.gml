@@ -58,7 +58,7 @@ function fn_stage_evStep()
 	if (room == temp_rm_menu_home) // Main Menu
 	{
 		if (global.config.lang_hasChosen == true && fn_obj_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
-			fn_stage_mus_add(0, mus_menu_home);
+			fn_stage_mus_add(0, mus_menu_home, , 1);
 	}
 	else if (room == rm_nexus) // Nexus
 	{

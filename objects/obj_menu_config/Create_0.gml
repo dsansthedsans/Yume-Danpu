@@ -1,7 +1,6 @@
 
 event_inherited();
 
-
 // Main level
 LVL_MAIN = 1;
 var l = LVL_MAIN;
@@ -15,7 +14,6 @@ for (var o = 0; o < 4; o++) // Options
 	fn_menu_lvl_option_icon_add(l, o); // Option's icon
 }
 fn_menu_lvl_option_value_add(l, 0); // Language option's value
-
 
 // Graphics, Music & Sounds and Accessibility level
 LVL_VID = 2;

@@ -31,7 +31,6 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		break;
 	}
 	
-	
 	// Other data (object-specific personalization)
 	switch (object_index)
 	{
@@ -79,7 +78,6 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 			}
 		break;
 		
-		
 		// Good/Peaceful entities
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
 			myself.imgSpd = (random_range(0.5, 1.5) / 30);
@@ -88,7 +86,6 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 			for (var a = 0; a < 7; a++)
 				talk.type.bell.aud_asset[a] = asset_get_index($"snd_actor_macaco_monkey_{a}");
 		break;
-		
 		
 		// Evil/Hostile entities
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey

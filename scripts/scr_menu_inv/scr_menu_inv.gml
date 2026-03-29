@@ -124,7 +124,7 @@ function fn_menu_inv_evCreate_0()
 	
 			// Options [#0]
 	fn_menu_opt_add_ext(l, "menu_inv_main_opt_");
-	opt_cncl_key[l, 1] = CONFIG_KEY.INV;
+	opt_cncl_key[l, 1] = CONFIG_KEY.MENU_USER;
 	
 			// Icon of the options [#0]
 	main_optIco_spr = spr_menu_inv_optIco;

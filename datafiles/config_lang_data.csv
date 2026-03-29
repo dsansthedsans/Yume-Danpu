@@ -6,11 +6,11 @@ config_key_up,Up,Cima
 config_key_dn,Down,Baixo
 config_key_confirm,Confirm,Confirmar
 config_key_cancel,Cancel,Cancelar
-config_key_inv,Inventory,Inventário
 config_key_use,Effect/Function,Efeito/Função
-config_key_atwlk,Autowalk,Autowalk
-config_key_pse,Pause,Pausar
+config_key_autowalk,Autowalk,Autowalk
 config_key_fscr,Fullscreen,Tela Cheia
+config_key_menu_user,Inventory,Inventário
+config_key_menu_pause,Pause,Pausar
 config_video_fscr_name,Fullscreen,Tela Cheia
 config_video_vsync_name,Vsync,Vsync
 config_video_hideCsr_name,Hide Cursor,Esconder Cursor
@@ -48,3 +48,6 @@ menu_config_main_option_2,Music & Sounds,Músicas & Sons
 menu_config_main_option_3,Accessibility,Acessibilidade
 menu_config_all_option_value_0,No,Não
 menu_config_all_option_value_1,Yes,Sim
+menu_user_main_option_0,Effects,Efeitos
+menu_user_main_option_1,Functions,Funções
+menu_user_main_option_2,Themes,Temas
