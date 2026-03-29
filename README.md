@@ -11,7 +11,7 @@
 </p>
 
 <h2><br>Features</h2>
-<p>Play as Eleanor, a Brazilian hikikomori avoiding life to explore her dreams. How long until she starts avoiding her dreams, too?</p>
+<p>You play as Eleanor, a Brazilian hikikomori who's been avoiding life to explore her dreams. How long until she starts avoiding her dreams, too?</p>
 <ul>
   <li><strong>Only two worlds to explore...?</strong> (The next version. The next version.)</li>
   <li><strong>Not one, but three types of collectibles you can find while exploring:</strong><ul>
@@ -19,8 +19,8 @@
     <li>Items, ordinary objects that help you in some way, like the <strong>drivable go-kart</strong>.</li>
     <li>Themes, visual styles for menus. They are ultimately useless.</li>
   </ul></li>
-  <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds!!</li>
-  <li><strong>At least one monkey.</strong></li>
+  <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds...!</li>
+  <li><strong>At least one monkey.</strong> Allegedly.</li>
 </ul>
 <h4 align="center">Think the game is ugly? Yeah, we also do. <br>𝓦𝓸𝓻𝓴 𝓲𝓷 𝓹𝓻𝓸𝓰𝓻𝓮𝓼𝓼</h4>
 
@@ -32,10 +32,10 @@
 </ol>
 
 <h2><br>Report a bug</h2>
-<p>Noticed anything that clearly wasn't supposed to happen? Fill out <a href="https://forms.gle/zZaioLfNXEoNXhyE7" target="_blank">this Google Form</a> to help us make the game a little less broken, please!! You'll win our hearts <3 (or, if you prefer, a place in the Special Thanks.)</p>
+<p>Noticed anything that clearly wasn't supposed to happen? Fill out <a href="https://forms.gle/zZaioLfNXEoNXhyE7" target="_blank">this Google Form</a> to help us make the game a little less broken, please!!! You'll win our hearts <3 (or, if you prefer, a place in the Special Thanks.)</p>
 
 <h2><br>Behind the scenes</h2>
-<p>We <b>very occasionally</b> post videos on YouTube showing upcoming updates for Yume Danpu. For those who don't really care about spoilers, if you wanna see what we're doing next, you should check out <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">the playlist by both creators!</a><br><br>Also, we keep this repository updated as we work on the game, not just when we release a new version. Below is a very cute image.</p>
+<p>We <b>very occasionally</b> post videos on YouTube showing upcoming updates for Yume Danpu. For those who don't really care about spoilers, if you wanna see what we're doing next, you should check out <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">the playlist by both creators</a>!<br><br>Also, we keep this repository updated as we work on the game, not just when we release a new version. Below is a very cute image.</p>
 <p align="center">
   <a href="https://www.star-history.com/#dsansthedsans/Yume-Danpu&type=date&legend=top-left" target="_blank">
     <picture>
@@ -48,15 +48,15 @@
 
 <h2><br>Never asked questions</h2>
 <h3>Is Yume Danpu still in development?</h3>
-<blockquote>Yes, as of February 17, 2026. Keep in mind it may slow down from time to time.</blockquote>
+<blockquote>Yes, as of March 28, 2026. Keep in mind it may slow down from time to time.</blockquote>
 <h3>Is Yume Danpu associated with Yume Nikki?</h3>
 <blockquote>No, Yume Danpu is purely a fangame.</blockquote>
 <h3>Is Yume Danpu AI-generated?</h3>
-<blockquote>No, nothing related to Yume Danpu is AI-generated, including this README.</blockquote>
+<blockquote>No, nothing related to Yume Danpu is AI-generated, not even this README.</blockquote>
 <h3>Is Yume Danpu a virus?</h3>
 <blockquote>No. If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky and Bitdefender won't flag the file as malicious.</blockquote>
 <h3>Why "Yume Danpu"?</h3>
-<blockquote>Yume Danpu is like a spiritual successor to the first game I ever made, <a href="https://dsansthedsans.itch.io/dumpgame" target="_blank">Dumpgame</a>.</blockquote>
+<blockquote>Yume Danpu is a spiritual successor to the first game I ever made, <a href="https://dsansthedsans.itch.io/dumpgame" target="_blank">Dumpgame</a>.</blockquote>
 <h3>Why open-source?</h3>
 <blockquote>A shark plushie asked me to. I'm not sure why, though.</blockquote>
 <h3>Why GameMaker instead of RPG Maker 2003?</h3>
