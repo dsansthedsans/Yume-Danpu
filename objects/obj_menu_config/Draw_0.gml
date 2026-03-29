@@ -10,10 +10,10 @@ if (is_array(lvl) == true)
 		var _panel = lvl[l].panel[0];
 		var _panel_xMarg = 48;
 		var _panel_yMarg = 64;
-		_panel.width = round(global.config.vid.resW - (_panel_xMarg * 2));
-		_panel.height = round(global.config.vid.resH - (_panel_yMarg * 2));
-		_panel.x = round((global.config.vid.resW / 2) - (_panel.width / 2));
-		_panel.y = round((global.config.vid.resH / 2) - (_panel.height / 2) + (_panel.title.height / 2));
+		_panel.width = round(global.config.video.res_width - (_panel_xMarg * 2));
+		_panel.height = round(global.config.video.res_height - (_panel_yMarg * 2));
+		_panel.x = round((global.config.video.res_width / 2) - (_panel.width / 2));
+		_panel.y = round((global.config.video.res_height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
 		_panel.title.label.text = "menu_home_main_option_1";
 		var _panel_yPad = (16 + 4);
 		
@@ -53,28 +53,28 @@ if (is_array(lvl) == true)
 			var _panel = lvl[l].panel[0];
 			var _panel_xMarg = (48 - 16);
 			var _panel_yMarg = (64 - 16);
-			_panel.width = (global.config.vid.resW - (_panel_xMarg * 2));
-			_panel.height = (global.config.vid.resH - (_panel_yMarg * 2));
-			_panel.x = round((global.config.vid.resW / 2) - (_panel.width / 2));
-			_panel.y = round((global.config.vid.resH / 2) - (_panel.height / 2) + (_panel.title.height / 2));
+			_panel.width = (global.config.video.res_width - (_panel_xMarg * 2));
+			_panel.height = (global.config.video.res_height - (_panel_yMarg * 2));
+			_panel.x = round((global.config.video.res_width / 2) - (_panel.width / 2));
+			_panel.y = round((global.config.video.res_height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
 			_panel.title.label.text = $"menu_config_main_option_{l - 1}";
 			
 			// Options
 			var _opt = lvl[l].option;
 			if (l == LVL_VID)
 			{
-				_opt[0].text = global.config.vid.fscr.name;
-				_opt[0].value.text = $"menu_config_all_option_value_{global.config.vid.fscr.act}";
-				_opt[1].text = global.config.vid.vsync.name;
-				_opt[1].value.text = $"menu_config_all_option_value_{global.config.vid.vsync.act}";
-				_opt[2].text = global.config.vid.hideCsr.name;
-				_opt[2].value.text = $"menu_config_all_option_value_{global.config.vid.hideCsr.act}";
-				_opt[3].text = global.config.vid.showVer.name;
-				_opt[3].value.text = $"menu_config_all_option_value_{global.config.vid.showVer.act}";
-				_opt[4].text = global.config.vid.showBdr.name;
-				_opt[4].value.text = $"menu_config_all_option_value_{global.config.vid.showBdr.act}";
-				_opt[5].text = global.config.vid.showFps.name;
-				_opt[5].value.text = $"menu_config_all_option_value_{global.config.vid.showFps.act}";
+				_opt[0].text = global.config.video.fscr.name;
+				_opt[0].value.text = $"menu_config_all_option_value_{global.config.video.fscr.act}";
+				_opt[1].text = global.config.video.vsync.name;
+				_opt[1].value.text = $"menu_config_all_option_value_{global.config.video.vsync.act}";
+				_opt[2].text = global.config.video.hideCsr.name;
+				_opt[2].value.text = $"menu_config_all_option_value_{global.config.video.hideCsr.act}";
+				_opt[3].text = global.config.video.showVer.name;
+				_opt[3].value.text = $"menu_config_all_option_value_{global.config.video.showVer.act}";
+				_opt[4].text = global.config.video.showBdr.name;
+				_opt[4].value.text = $"menu_config_all_option_value_{global.config.video.showBdr.act}";
+				_opt[5].text = global.config.video.showFps.name;
+				_opt[5].value.text = $"menu_config_all_option_value_{global.config.video.showFps.act}";
 			}
 			else if (l == LVL_AUD)
 			{

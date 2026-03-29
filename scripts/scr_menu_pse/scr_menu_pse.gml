@@ -17,7 +17,7 @@ function fn_menu_pse_evCreate_0()
 	opt_slct_snd[l, 2] = global.user.thm[global.user.thm_curr].opt_error_snd;
 	opt_cncl_key[l, 1] = CONFIG_KEY.PSE;
 	var _opt_yDist = draw_dist;
-	var _opt_hAll = (_opt_yDist * (opt_len[l] - 1) + global.game.fnt_h);
+	var _opt_hAll = (_opt_yDist * (opt_len[l] - 1) + fn_);
 	
 		// Box
 	var _box_wDist = round(draw_dist * 1.5);

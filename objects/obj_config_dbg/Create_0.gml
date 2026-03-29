@@ -25,6 +25,8 @@ global.config_dbg =
 		reset_key : [ord("R"), vk_shift, vk_control]
 	},
 	
-	textdataCorruption : false, // Determines if the function "textdata()" returns ÂÂÂÂÂÂ
-	logOverdose : false // Determines if log messages will show excessively and unnecesarily (affects performance)
+	textdataCorruption : false, // Determines if the function "textdata()" will always return with ÂÂÂÂÂÂ
+	logOverdose : false, // Determines if log messages will show excessively and unnecesarily (affects performance)
 }
+if (global.config_dbg.act == true)
+	global.user.file_curr = 0;

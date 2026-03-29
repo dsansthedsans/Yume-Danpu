@@ -11,12 +11,12 @@ config_key_use,Effect/Function,Efeito/Função
 config_key_atwlk,Autowalk,Autowalk
 config_key_pse,Pause,Pausar
 config_key_fscr,Fullscreen,Tela Cheia
-config_vid_fscr_name,Fullscreen,Tela Cheia
-config_vid_vsync_name,Vsync,Vsync
-config_vid_hideCsr_name,Hide Cursor,Esconder Cursor
-config_vid_showVer_name,Show Version,Mostrar Versão
-config_vid_showFps_name,Show FPS,Mostrar FPS
-config_vid_showBdr_name,Show Border,Mostrar Borda
+config_video_fscr_name,Fullscreen,Tela Cheia
+config_video_vsync_name,Vsync,Vsync
+config_video_hideCsr_name,Hide Cursor,Esconder Cursor
+config_video_showVer_name,Show Version,Mostrar Versão
+config_video_showFps_name,Show FPS,Mostrar FPS
+config_video_showBdr_name,Show Border,Mostrar Borda
 config_aud_emtr_master,Master,Geral
 config_aud_emtr_mus,Music,Música
 config_aud_emtr_amb,Ambience,Ambiente

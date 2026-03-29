@@ -205,7 +205,7 @@ function fn_user_file_save()
 {
 	var _file = global.user.file[global.user.file_curr];	
 	ini_open(_file.name);
-	ini_write_string("about", "ver", global.game.ver);
+	ini_write_string("about", "ver", global.config.ver);
 	ini_write_string("about", "msg", _file.msg);
 	ini_write_string("main", "name", global.user.name);
 	for (var m = 0; m < 2; m++)

@@ -16,6 +16,17 @@ if (is_array(lvl) == true)
 	{
 		if (is_struct(lvl[l]) == true && lvl[l].alpha > 0)
 		{
+			// Rectangles
+			if (is_array(lvl[l].rect) == true)
+			{
+				for (var r = 0; r < array_length(lvl[l].rect); r++)
+				{
+					var _rect = lvl[l].rect[l];
+					if (_rect.x != undefined && _rect.y != undefined && _rect.weight != undefined && _rect.height != undefined)
+						fn_draw_rect(_rect.x, _rect.y, _rect.weight, _rect.height, _rect.color, _rect.color, _rect.color, _rect.color, _rect.alpha);
+				}
+			}
+			
 			// Triangle trains
 			if (is_array(lvl[l].train) == true)
 			{

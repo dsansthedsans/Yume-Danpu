@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"mus_menu_home",
   "parent":{
-    "name":"home",
-    "path":"folders/[!] Unused + Old/old menu/home.yy",
+    "name":"Home",
+    "path":"folders/Menu/Home.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

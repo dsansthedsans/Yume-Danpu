@@ -23,46 +23,46 @@ function fn_config_setup()
 		key : [-1],
 		
 		// Video
-		vid :
+		video :
 		{
-			resW : 320,
-			resH : 240,
-			resMult : 2,
+			res_width : 320,
+			res_height : 240,
+			res_mult : 2,
 			
 			fscr : // Fullscreen
 			{
 				act : false,
-				name : "config_vid_fscr_name"
+				name : "config_video_fscr_name"
 			},
 			
 			vsync : // Vsync
 			{
 				act : false,
-				name : "config_vid_vsync_name"
+				name : "config_video_vsync_name"
 			},
 			
 			showVer : // Show Version
 			{
 				act : true,
-				name : "config_vid_showVer_name"
+				name : "config_video_showVer_name"
 			},
 			
 			hideCsr : // Show Cursor
 			{
 				act : true,
-				name : "config_vid_hideCsr_name"
+				name : "config_video_hideCsr_name"
 			},
 			
 			showFps : // Show FPS
 			{
 				act : false,
-				name : "config_vid_showFps_name"
+				name : "config_video_showFps_name"
 			},
 			
 			showBdr : // Show Border
 			{
 				act : true,
-				name : "config_vid_showBdr_name"
+				name : "config_video_showBdr_name"
 			},
 		},
 		
@@ -170,12 +170,12 @@ function fn_config_file_save()
 	ini_write_string("about", "msg", global.config.file_msg);
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
-	ini_write_real("vid", "fscr_act", global.config.vid.fscr.act);
-	ini_write_real("vid", "vsync_act", global.config.vid.vsync.act);
-	ini_write_real("vid", "showVer_act", global.config.vid.showVer.act);
-	ini_write_real("vid", "hideCsr_act", global.config.vid.hideCsr.act);
-	ini_write_real("vid", "showFps_act", global.config.vid.showFps.act);
-	ini_write_real("vid", "showBdr_act", global.config.vid.showBdr.act);
+	ini_write_real("video", "fscr_act", global.config.video.fscr.act);
+	ini_write_real("video", "vsync_act", global.config.video.vsync.act);
+	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
+	ini_write_real("video", "hideCsr_act", global.config.video.hideCsr.act);
+	ini_write_real("video", "showFps_act", global.config.video.showFps.act);
+	ini_write_real("video", "showBdr_act", global.config.video.showBdr.act);
 	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
 		ini_write_real("aud", $"emtr_{e}_vol", global.config.aud.emtr[e].vol);
 	ini_write_real("access", "rdcdMot_act", global.config.access.rdcdMot.act);
@@ -191,12 +191,12 @@ function fn_config_file_load()
 	global.config.lang_hasChosen = ini_read_real("lang", "hasChosen", false);
 	
 	// Graphics
-	global.config.vid.fscr.act = ini_read_real("vid", "fscr_act", false);
-	global.config.vid.vsync.act = ini_read_real("vid", "vsync_act", false);
-	global.config.vid.showVer.act = ini_read_real("vid", "showVer_act", true);
-	global.config.vid.hideCsr.act = ini_read_real("vid", "hideCsr_act", true);
-	global.config.vid.showFps.act = ini_read_real("vid", "showFps_act", false);
-	global.config.vid.showBdr.act = ini_read_real("vid", "showBdr_act", true);
+	global.config.video.fscr.act = ini_read_real("video", "fscr_act", false);
+	global.config.video.vsync.act = ini_read_real("video", "vsync_act", false);
+	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
+	global.config.video.hideCsr.act = ini_read_real("video", "hideCsr_act", true);
+	global.config.video.showFps.act = ini_read_real("video", "showFps_act", false);
+	global.config.video.showBdr.act = ini_read_real("video", "showBdr_act", true);
 		
 	// Music & Sounds
 	for (var e = 0; e < array_length(global.config.aud.emtr); e++)

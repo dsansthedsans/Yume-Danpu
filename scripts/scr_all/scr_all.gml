@@ -4,12 +4,11 @@
 // Window
 function fn_wnd_name(_text)
 {
-	if (_text == global.game.wnd_name)
+	if (_text == global.config.name)
 	{
 		if (irandom_range(1, 100) <= 5)
 			_text = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy");
 	}
-	
 	window_set_caption(_text);
 }
 

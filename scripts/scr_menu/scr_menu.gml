@@ -8,24 +8,12 @@ function fn_menu_lvl_add(_idx)
 	lvl[_idx] =
 	{
 		alpha : 0,
-		
-		// Triangle trains
-		train : -1,
-		
-		// Title
-		title : -1,
-		
-		// Panels
-		panel : -1,
-		
-		// Cards
-		card : -1,
-		
-		// Labels
-		label : -1,
-		
-		// Decorations
-		decor : -1,
+		rect : -1, // Rectangles
+		train : -1, // Triangle trains
+		panel : -1, // Panels
+		card : -1, // Cards
+		label : -1, // Labels
+		decor : -1, // Decorations
 		
 		// Options
 		option : -1,
@@ -89,6 +77,20 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 	}
 }
 
+	// Rectangles
+function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _weight = undefined, _height = undefined, _color = c_black, _alpha = 1)
+{
+	lvl[_lvl].rect[_idx] =
+	{
+		x : _x,
+		y : _y,
+		weight : _weight,
+		height : _height,
+		color : _color,
+		alpha : _alpha,
+	}
+}
+
 	// Triangle trains
 function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd = 0, _ySpd = 0, _angle = 0, _alpha = 1)
 {
@@ -98,17 +100,14 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd
 	lvl[l].train[t] =
 	{
 		spr : spr_menu_lvl_train,
-		
 		x : _x,
 		y : _y,
 		xSpd : _xSpd,
 		ySpd : _ySpd,
 		xOfs : 0,
 		yOfs : 0,
-		
 		color : global.user.thm[global.user.thm_curr].color.grayDark,
 		alpha : _alpha,
-		
 		angle : _angle
 	}
 }

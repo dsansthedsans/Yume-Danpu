@@ -16,22 +16,22 @@ else if (lvl_curr == LVL_VID)
 	switch (_opt_curr)
 	{
 		case 0:
-			global.config.vid.fscr.act = !global.config.vid.fscr.act;
+			global.config.video.fscr.act = !global.config.video.fscr.act;
 			break;
 		case 1:
-			global.config.vid.vsync.act = !global.config.vid.vsync.act;
+			global.config.video.vsync.act = !global.config.video.vsync.act;
 			break;
 		case 2:
-			global.config.vid.hideCsr.act = !global.config.vid.hideCsr.act;
+			global.config.video.hideCsr.act = !global.config.video.hideCsr.act;
 			break;
 		case 3:
-			global.config.vid.showVer.act = !global.config.vid.showVer.act;
+			global.config.video.showVer.act = !global.config.video.showVer.act;
 			break;
 		case 4:
-			global.config.vid.showBdr.act = !global.config.vid.showBdr.act;
+			global.config.video.showBdr.act = !global.config.video.showBdr.act;
 			break;
 		case 5:
-			global.config.vid.showFps.act = !global.config.vid.showFps.act;
+			global.config.video.showFps.act = !global.config.video.showFps.act;
 			break;
 	}
 
