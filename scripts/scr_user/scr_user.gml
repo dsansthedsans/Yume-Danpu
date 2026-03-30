@@ -6,18 +6,14 @@ function fn_user_setup(_file_curr = -1)
 	global.user =
 	{
 		name : "Eleanor",
-		awake : true,
+		asleep : false,
 		
 		// Money
 		money :
-		[{ // While sleeping
-			amt : 0,
-			ccy : "₢$ "
+		{
+			amt : [(choose(10, 20) + (choose(1, 3, 7, 9) * choose(-1, 1))), 0],
+			ccy : ["R$ ", "₢$ "],
 		},
-		{ // While awake
-			amt : (choose(10, 20) + (choose(1, 3, 7, 9) * choose(-1, 1))),
-			ccy : "R$ "
-		}],
 		
 		// Effects
 		eff : [-1],
@@ -91,13 +87,13 @@ function fn_user_eff_add(_idx, _code, _unlocked = false)
 		desc : $"user_eff_desc_{_code}",
 		code : _code,
 		unlocked : _unlocked,
-		icon_spr : spr_menu_inv_main_option_icon,
+		icon_spr : spr_menu_user_main_option_icon,
 		icon_img : 0
 	}
 	global.user.eff_amt += 1;
 }
 
-	// Items
+	// Functions
 function fn_user_fcn_add(_idx, _code, _unlocked = false)
 {
 	global.user.fcn[_idx] =
@@ -106,7 +102,7 @@ function fn_user_fcn_add(_idx, _code, _unlocked = false)
 		desc : $"user_fcn_desc_{_code}",
 		code : _code,
 		unlocked : _unlocked,
-		icon_spr : spr_menu_inv_main_option_icon,
+		icon_spr : spr_menu_user_main_option_icon,
 		icon_img : 1
 	}
 	global.user.fcn_amt += 1;
@@ -136,7 +132,7 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 		desc : $"user_thm_desc_{_code}",
 		code : _code,
 		unlocked : _unlocked,
-		icon_spr : spr_menu_inv_main_option_icon,
+		icon_spr : spr_menu_user_main_option_icon,
 		icon_img : 2,
 		
 		// Colors

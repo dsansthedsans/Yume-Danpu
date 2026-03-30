@@ -5,11 +5,11 @@ function fn_stage_evCreate()
 {
 	if (room == rm_condo_apt) // Eleanor's Apartment
 	{
-		global.user.awake = true;
+		global.user.asleep = false;
 	}
 	else if (room == rm_nexus) // Nexus
 	{
-		global.user.awake = false;
+		global.user.asleep = true;
 		
 		cam.lock.x = 0;
 		cam.lock.y = 0;
@@ -19,7 +19,7 @@ function fn_stage_evCreate()
 	}
 	else if (room == rm_macaco) // Macacolandia
 	{
-		global.user.awake = false;
+		global.user.asleep = true;
 		
 		fn_stage_bg_sky_add(0, temp_spr_rmCtrl_bg_sky_macaco, , 0.25, 270, 270);
 		fn_stage_bg_clouds_add(1, temp_spr_rmCtrl_bg_clouds_macaco, 0.65, 0.75, 0.35, , , 90, 90); 
@@ -28,7 +28,7 @@ function fn_stage_evCreate()
 	}
 	else if (room == rm_dbgwrld) // Debug World
 	{
-		global.user.awake = false;
+		global.user.asleep = true;
 		
 		var _sky_spr = -1;
 		var _clouds_spr = -1;

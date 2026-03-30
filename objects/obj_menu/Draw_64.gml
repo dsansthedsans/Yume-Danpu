@@ -57,16 +57,29 @@ if (is_array(lvl) == true)
 					var _panel = lvl[l].panel[p];
 					if (_panel.spr != undefined && _panel.x != undefined && _panel.y != undefined && _panel.width != undefined && _panel.height != undefined)
 					{
+						var _panel_x = round(_panel.x);
+						var _panel_y = round(_panel.y);
 						var _panel_img = 0;
-						if (is_struct(_panel.title) == true && _panel.title.spr != undefined && _panel.title.label.text != undefined)
+						
+							// Title
+						if (is_struct(_panel.title) == true && _panel.title.spr != undefined)
 						{
 							_panel_img = 1;
 							var _title = _panel.title;
-							var _title_label_x = round(_panel.x + _title.label.xMarg);
-							var _title_label_y = round(_panel.y - (_panel.title.height / 2) - (fn_text_height("Salenis") / 2) + 1);
-							fn_draw_spr_stretch(_title.spr, 0, round(_panel.x), round(_panel.y - _panel.title.height), _panel.width, _panel.title.height, , (_panel.alpha * lvl[l].alpha));
-							fn_draw_text(textdata(_title.label.text), _title_label_x, _title_label_y, _panel.title.label.color[0], _panel.title.label.color[1], (_title.label.alpha * _panel.alpha * lvl[l].alpha), , , , , , _title.label.shadow_alpha);
+							var _title_y = round(_panel_y - _title.height);
+							fn_draw_spr_stretch(_title.spr, 0, _panel_x, _title_y, _panel.width, _title.height, , (_panel.alpha * lvl[l].alpha));
+							
+								// Label
+							if (_title.label.text != undefined)
+							{
+								var _label = _title.label;
+								var _label_x = round(_panel_x + _title.label.xMarg);
+								var _label_y = round(_panel_y - (_panel.title.height / 2) - (fn_text_height("Salenis") / 2) + 1);
+								fn_draw_text(textdata(_title.label.text), _label_x, _label_y, _label.color[0], _label.color[1], (_label.alpha * _panel.alpha * lvl[l].alpha), , , , , , _label.shadow_alpha);
+							}
 						}
+						
+						// Panel
 						fn_draw_spr_stretch(_panel.spr, _panel_img, round(_panel.x), round(_panel.y), _panel.width, _panel.height, , (_panel.alpha * lvl[l].alpha));
 					}
 				}
@@ -91,19 +104,21 @@ if (is_array(lvl) == true)
 					var _label = lvl[l].label[a];
 					if (_label.text != undefined && _label.x != undefined && _label.y != undefined)
 					{
+						var _label_x = round(_label.x);
+						var _label_y = round(_label.y);
+						
 							// Icon
 						if (is_struct(_label.icon) == true && _label.icon.spr != -1)
 						{
-							var _icon_xGap = round((_label.icon.xGap != 0) ? _label.icon.xGap : fn_menu_lvl_label_icon_xGap_getDflt(l, o));
-							var _icon_x = round((_label.icon.x != 0) ? _label.icon.x : (_label.x - _icon_xGap));
-							var _icon_y = round((_label.icon.y != 0) ? _label.icon.y : (_label.y + round(fn_textdata_height(_label.text) / 2) - round(fn_spr_height(_label.icon.spr) / 2) + 1));
-							var _icon_color = _label.icon.color;
-							var _icon_alpha = (_label.icon.alpha * lvl[l].alpha);
-							fn_draw_spr(_label.icon.spr, _label.icon.img, _icon_x, _icon_y, _icon_color, _icon_alpha, , , , true);
+							var _icon = _label.icon;
+							var _icon_xGap = ((_icon.xGap != undefined) ? _icon.xGap : fn_menu_lvl_label_icon_xGap_getDflt(l, a));
+							var _icon_x = round((_icon.x != undefined) ? _icon.x : (_label_x - _icon_xGap));
+							var _icon_y = round((_icon.y != undefined) ? _icon.y : (_label_y + round(fn_textdata_height(_label.text) / 2) - round(fn_spr_height(_icon.spr) / 2) + 1));
+							fn_draw_spr(_icon.spr, _icon.img, _icon_x, _icon_y, _icon.color, (_icon.alpha * lvl[l].alpha), , , , true);
 						}
 						
 						// Label
-						fn_draw_text(textdata(_label.text), round(_label.x), round(_label.y), _label.color[0], _label.color[1], lvl[l].alpha, , , _label.xAlign, _label.yAlign);
+						fn_draw_text(textdata(_label.text), _label_x, _label_y, _label.color[0], _label.color[1], lvl[l].alpha, , , _label.xAlign, _label.yAlign);
 					}
 				}
 			}
@@ -127,65 +142,67 @@ if (is_array(lvl) == true)
 					var _opt = lvl[l].option[o];
 					if (_opt.text != undefined && _opt.x != undefined && _opt.y != undefined)
 					{
+						var _opt_x = round(_opt.x);
+						var _opt_y = round(_opt.y);
 						var _opt_shadow_col = ((o == lvl[l].option_curr) ? global.user.thm[global.user.thm_curr].color.blackLight : global.user.thm[global.user.thm_curr].color.blackDark);
 						
 							// Button
 						if (is_struct(_opt.button) == true)
 						{
-							var _button_x = round((_opt.button.x != 0) ? _opt.button.x : (_opt.x - _opt.button.xPad));
-							var _button_y = round((_opt.button.y != 0) ? _opt.button.y : (_opt.y - _opt.button.yPad));
-							var _button_width = round((_opt.button.width != 0) ? _opt.button.width : ((_opt.button.xPad * 2) + fn_textdata_width(_opt.text)));
-							var _button_height = round((_opt.button.height != 0) ? _opt.button.height : ((_opt.button.yPad * 2) + fn_textdata_height(_opt.text) + 2));
-							fn_draw_spr_stretch(_opt.button.spr, ((o != lvl[l].option_curr) ? _opt.button.img_inact : _opt.button.img_act), _button_x, _button_y, _button_width, _button_height, , lvl[l].alpha);
+							var _button = _opt.button;
+							var _button_x = round((_button.x != 0) ? _button.x : (_opt.x - _button.xPad));
+							var _button_y = round((_button.y != 0) ? _button.y : (_opt.y - _button.yPad));
+							var _button_width = round((_button.width != 0) ? _button.width : ((_button.xPad * 2) + fn_textdata_width(_opt.text)));
+							var _button_height = round((_button.height != 0) ? _button.height : ((_button.yPad * 2) + fn_textdata_height(_opt.text) + 2));
+							fn_draw_spr_stretch(_button.spr, ((o != lvl[l].option_curr) ? _button.img_inact : _button.img_act), _button_x, _button_y, _button_width, _button_height, , lvl[l].alpha);
 						}
 						
 							// Selection indicator
 						if (_opt.select.act == true && o == lvl[l].option_curr)
 						{
-							var _select_x = round((_opt.select.x != 0) ? _opt.select.x : (_opt.x - _opt.select.xDist));
-							var _select_y = round((_opt.select.y != 0) ? _opt.select.y : (_opt.y - _opt.select.yDist + 1));
-							var _select_width = round((_opt.select.width != 0) ? _opt.select.width : ((_opt.select.xDist * 2) + fn_textdata_width(_opt.text)));
-							var _select_height = round((_opt.select.height != 0) ? _opt.select.height : ((_opt.select.yDist * 2) + fn_textdata_height(_opt.text)));
+							var _select = _opt.select;
+							var _select_x = round((_select.x != 0) ? _select.x : (_opt_x - _select.xDist));
+							var _select_y = round((_select.y != 0) ? _select.y : (_opt_y - _select.yDist + 1));
+							var _select_width = round((_select.width != 0) ? _select.width : ((_select.xDist * 2) + fn_textdata_width(_opt.text)));
+							var _select_height = round((_select.height != 0) ? _select.height : ((_select.yDist * 2) + fn_textdata_height(_opt.text)));
 							if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
 							{
 								var _icon_xGap = round((_opt.icon.xGap != 0) ? _opt.icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
 								_select_x -= _icon_xGap;
 								_select_width += _icon_xGap;
 							}
-							fn_draw_spr_stretch(_opt.select.spr, _opt.select.img, _select_x, _select_y, _select_width, _select_height, , lvl[l].alpha);
+							fn_draw_spr_stretch(_select.spr, _select.img, _select_x, _select_y, _select_width, _select_height, , lvl[l].alpha);
 						}
 						
 							// Icon
 						if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
 						{
-							var _icon_xGap = round((_opt.icon.xGap != 0) ? _opt.icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
-							var _icon_x = round((_opt.icon.x != 0) ? _opt.icon.x : (_opt.x - _icon_xGap));
-							var _icon_y = round((_opt.icon.y != 0) ? _opt.icon.y : (_opt.y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_opt.icon.spr) / 2) + 1));
-							var _icon_color = _opt.icon.color[(o == lvl[l].option_curr)];
-							var _icon_alpha = (_opt.icon.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha);
-							fn_draw_spr(_opt.icon.spr, _opt.icon.img, _icon_x, _icon_y, _icon_color, _icon_alpha, , , , true, _opt_shadow_col);
+							var _icon = _opt.icon;
+							var _icon_xGap = round((_icon.xGap != 0) ? _icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
+							var _icon_x = round((_icon.x != 0) ? _icon.x : (_opt_x - _icon_xGap));
+							var _icon_y = round((_icon.y != 0) ? _icon.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_icon.spr) / 2) + 1));
+							fn_draw_spr(_icon.spr, _icon.img, _icon_x, _icon_y, _icon.color[(o == lvl[l].option_curr)], (_icon.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , true, _opt_shadow_col);
 						}
 						
 							// Checkbox
 						if (is_struct(_opt.check) == true && _opt.check.spr != undefined)
 						{
-							var _check_x = round((_opt.check.x != 0) ? _opt.check.x : (_opt.x - _opt.check.xPad - fn_spr_width(_opt.check.spr)));
-							var _check_y = round((_opt.check.y != 0) ? _opt.check.y : (_opt.y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_opt.check.spr) / 2) + 1));
-							fn_draw_spr(_opt.check.spr, 0, _check_x, _check_y, _opt.check.color, (_opt.check.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha));
+							var _check = _opt.check;
+							var _check_x = round((_check.x != 0) ? _check.x : (_opt_x - _check.xPad - fn_spr_width(_check.spr)));
+							var _check_y = round((_check.y != 0) ? _check.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_check.spr) / 2) + 1));
+							fn_draw_spr(_opt.check.spr, 0, _check_x, _check_y, _check.color, (_check.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha));
 							
 							// Mark
 							if (_opt.check.mark.act == true)
 							{
 								var _mark = _opt.check.mark;
-								var _mark_x = round((_mark.x != 0) ? _mark.x : (_check_x));
-								var _mark_y = round((_mark.y != 0) ? _mark.y : (_check_y));
-								fn_draw_spr(_opt.check.mark.spr, 0, _mark_x, _mark_y, , (_opt.check.mark.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha));
+								var _mark_x = round((_mark.x != 0) ? _mark.x : _check_x);
+								var _mark_y = round((_mark.y != 0) ? _mark.y : _check_y);
+								fn_draw_spr(_mark.spr, 0, _mark_x, _mark_y, , (_mark.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha));
 							}
 						}
 						
 						// Option
-						var _opt_x = round(_opt.x);
-						var _opt_y = round(_opt.y);
 						fn_draw_text(textdata(_opt.text), _opt_x, _opt_y, _opt.color[(o == lvl[l].option_curr), 0], _opt.color[(o == lvl[l].option_curr), 1], lvl[l].alpha, , , _opt.xAlign, _opt.yAlign, _opt_shadow_col);
 						
 							// Value (the text beside the options in the settings menu, like "Yes", "No" and "100%")

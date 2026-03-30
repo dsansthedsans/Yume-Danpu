@@ -199,9 +199,9 @@ function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 	{
 		spr : _spr,
 		img : _img,	
-		x : 0,
-		y : 0,
-		xGap : 0,
+		x : undefined,
+		y : undefined,
+		xGap : undefined,
 		color : c_white,
 		alpha : 1,
 	}

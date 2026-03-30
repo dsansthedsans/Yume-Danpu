@@ -1,7 +1,6 @@
 
 //////// Functions related to the user's settings 
 
-
 function fn_config_setup()
 {
 	global.config =

@@ -28,8 +28,8 @@ if (is_array(lvl) == true)
 		
 		// User's picture
 		var _pic_spr = lvl[l].decor[1].spr;
-		lvl[l].decor[1].x = (_picFrame_x + (_picFrame_width / 2) - (fn_spr_width(_pic_spr) / 2));
-		lvl[l].decor[1].y = (_picFrame_y + (_picFrame_height / 2) + (fn_spr_height(_pic_spr) / 2));
+		lvl[l].decor[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_spr_width(_pic_spr) / 2));
+		lvl[l].decor[1].y = (_picFrame_y + round(_picFrame_height / 2) + round(fn_spr_height(_pic_spr) / 2));
 		
 		// User's name
 		var _name_text = global.user.name;
@@ -38,10 +38,19 @@ if (is_array(lvl) == true)
 		lvl[l].label[0].text = _name_text;
 		lvl[l].label[0].x = _name_x;
 		lvl[l].label[0].y = _name_y;
-		lvl[l].label[0].color = [global.user.thm[global.user.thm_curr].color.whiteDark, global.user.thm[global.user.thm_curr].color.whiteLight];
+		lvl[l].label[0].color = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark];
 		
-		// Currency of the user's money
-		
+		// User's money
+		var _money_ccy_text = global.user.money.ccy[global.user.asleep];
+		var _money_amt_text = global.user.money.amt[global.user.asleep];
+		lvl[l].label[1].text = _money_ccy_text;
+		lvl[l].label[2].text = _money_amt_text;
+		lvl[l].label[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_money_amt_text) / 2));
+		lvl[l].label[1].y = (_name_y + fn_text_height(_name_text) + round(((_panel_y + _panel_height - 16 - 4) - (_name_y + fn_text_height(_name_text))) / 2));
+		lvl[l].label[1].color = [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark];
+		lvl[l].label[2].x = (lvl[l].label[1].x + fn_text_width(_money_ccy_text));
+		lvl[l].label[2].y = lvl[l].label[1].y;
+		lvl[l].label[1].icon.spr = spr_menu_user_main_label_icon;
 	}
 }
 event_inherited();
