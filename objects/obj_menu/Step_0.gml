@@ -68,7 +68,8 @@ if (is_array(lvl) == true)
 						event_user(2);
 						if (global.config.access.rdcdMot.act == false)
 						{
-							lvl[l].option[o].value.colorVal = lvl[l].option[o].value.colorValTGT[true];
+							lvl[l].option[o].value.scale = lvl[l].option[o].value.scaleTgt[true];
+							lvl[l].option[o].value.colorVal = lvl[l].option[o].value.colorValTgt[true];
 							lvl[l].option[o].value.arrow[a].alpha = lvl[l].option[o].value.arrow[a].alphaTgt[true];
 							lvl[l].option[o].value.arrow[a].scale = lvl[l].option[o].value.arrow[a].scaleTgt[true];
 						}

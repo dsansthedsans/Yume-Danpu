@@ -208,7 +208,7 @@ function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 }
 function fn_menu_lvl_label_icon_xGap_getDflt(_lvl, _idx)
 {
-	return (4 + fn_spr_width(lvl[_lvl].label[_idx].icon.spr))
+	return (fn_spr_width(lvl[_lvl].label[_idx].icon.spr) + 5)
 }
 
 	// Decorations
@@ -242,13 +242,11 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		text : _text,
 		x : _x,
 		y : _y,
-		
 		color : // Colors
 		[
 			[global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark], // Inactive (Unselected)
 			[global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark] // Active (Selected)
 		],
-		
 		xAlign : fa_left,
 		yAlign : fa_top,
 		
@@ -256,16 +254,17 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		select :
 		{
 			act : _select_act,
-			
 			spr : global.user.thm[global.user.thm_curr].spr.option_select,
 			img : 0,
-			
 			x : 0,
 			y : 0,
 			xDist : 4,
 			yDist : 2,
 			width : 0,
 			height : 0,
+			alpha : 0,
+			alphaTgt : [0 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
+			alphaSpd : 0.5,
 		},
 		
 		check : -1, // Checkbox
@@ -288,33 +287,25 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 {
 	var l = _lvl;
 	var o = _idx;
-	
-	// Value label
 	lvl[l].option[o].value =
 	{
 		text : "Salenis",
-			
 		x : 0,
 		y : 0,
 		xGap : _xGap,
-			
 		color : [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark],
 		colorVal : 0,
-		colorValTGT : [0 /* Inactive (Not cycling) */, 100 /* Active (Cycling) */],
-		colorValSPD : 0.1,
+		colorValTgt : [0 /* Inactive (Not cycling) */, 150 /* Active (Cycling) */],
+		colorValSpd : 0.2,
 		alpha : [0.5 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
-		
 		scale : 1,
-		scaleTgt : [1 /* Inactive (Not cycling) */, 1 /* Active (Cycling) */],
-		scaleSpd : 0.3,
-		
+		scaleTgt : [1 /* Inactive (Not cycling) */, 1.2 /* Active (Cycling) */],
+		scaleSpd : 0.2,
 		xAlign : fa_center,
-		yAlign : fa_top,
+		yAlign : fa_middle,
 		
-		// Arrows
-		arrow : -1
+		arrow : -1, // Arrows
 	}
-	
 		// Arrows
 	for (var a = 0; a < 2; a++)
 	{
@@ -323,27 +314,23 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			act : true,
 			key : ((a == 0) ? CONFIG_KEY.LT : CONFIG_KEY.RT),
 			text : ((a == 0) ? "<" : ">"),
-			
 			xGap : 10,
 			xSign : ((a == 0) ? -1 : 1),
-			
 			color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight],
 			alpha : 0.5,
 			alphaTgt : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
 			alphaSpd : 0.1,
-			
 			scale : 1,
 			scaleTgt : [1 /* Inactive (Not cycling) */, 2 /* Active (Cycling) */],
 			scaleSpd : 0.2,
-				
+			
+			// Movement
 			move :
 			{
 				act : true,
-				
 				xSpd : 1,
 				xOfs : 0,
 				xOfsMAX : 2,
-				
 				wait : 0,
 				waitMax : 12
 			}
@@ -387,7 +374,7 @@ function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 }
 function fn_menu_lvl_option_icon_xGap_getDflt(_lvl, _idx)
 {
-	return (4 + fn_spr_width(lvl[_lvl].option[_idx].icon.spr))
+	return (fn_spr_width(lvl[_lvl].option[_idx].icon.spr) + 5)
 }
 
 		// Checkbox

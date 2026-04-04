@@ -158,20 +158,24 @@ if (is_array(lvl) == true)
 						}
 						
 							// Selection indicator
-						if (_opt.select.act == true && o == lvl[l].option_curr)
+						if (_opt.select.act == true)
 						{
 							var _select = _opt.select;
-							var _select_x = round((_select.x != 0) ? _select.x : (_opt_x - _select.xDist));
-							var _select_y = round((_select.y != 0) ? _select.y : (_opt_y - _select.yDist + 1));
-							var _select_width = round((_select.width != 0) ? _select.width : ((_select.xDist * 2) + fn_textdata_width(_opt.text)));
-							var _select_height = round((_select.height != 0) ? _select.height : ((_select.yDist * 2) + fn_textdata_height(_opt.text)));
-							if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
+							_select.alpha = fn_lerp(_select.alpha, _select.alphaTgt[(o == lvl[l].option_curr)], ((global.config.access.rdcdMot.act == false) ? _select.alphaSpd : 1));
+							if (_select.alpha > 0)
 							{
-								var _icon_xGap = round((_opt.icon.xGap != 0) ? _opt.icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
-								_select_x -= _icon_xGap;
-								_select_width += _icon_xGap;
+								var _select_x = round((_select.x != 0) ? _select.x : (_opt_x - _select.xDist));
+								var _select_y = round((_select.y != 0) ? _select.y : (_opt_y - _select.yDist + 1));
+								var _select_width = round((_select.width != 0) ? _select.width : ((_select.xDist * 2) + fn_textdata_width(_opt.text)));
+								var _select_height = round((_select.height != 0) ? _select.height : ((_select.yDist * 2) + fn_textdata_height(_opt.text)));
+								if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
+								{
+									var _icon_xGap = round((_opt.icon.xGap != 0) ? _opt.icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
+									_select_x -= _icon_xGap;
+									_select_width += _icon_xGap;
+								}
+								fn_draw_spr_stretch(_select.spr, _select.img, _select_x, _select_y, _select_width, _select_height, , (_select.alpha * lvl[l].alpha));
 							}
-							fn_draw_spr_stretch(_select.spr, _select.img, _select_x, _select_y, _select_width, _select_height, , lvl[l].alpha);
 						}
 						
 							// Icon
@@ -210,12 +214,12 @@ if (is_array(lvl) == true)
 						{
 							var _val = _opt.value;
 							var _val_x = round((_val.x != 0) ? _val.x : (_opt_x + fn_textdata_width(_opt.text) + _opt.value.xGap + (fn_textdata_width(_val.text) / 2)));
-							var _val_y = round((_val.y != 0) ? _val.y : _opt_y);
+							var _val_y = round((_val.y != 0) ? _val.y : (_opt_y + ceil(fn_textdata_height("Salenis") / 2)));
 							var _val_col = [-1];
-							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTGT[false], _val.colorValSPD);
+							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTgt[false], _val.colorValSpd);
 							for (var c = 0; c < 2; c++)
 								_val_col[c] = make_colour_hsv(colour_get_hue(_val.color[c]), colour_get_saturation(_val.color[c]), (colour_get_value(_val.color[c]) + _val.colorVal));
-							_val.scale = fn_lerp(_val.scale, _val.scaleTgt[(o == lvl[l].option_curr)], _val.scaleSpd);
+							_val.scale = fn_lerp(_val.scale, _val.scaleTgt[false], _val.scaleSpd);
 							fn_draw_text(textdata(_val.text), _val_x, _val_y, _val_col[0], _val_col[1], (_val.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha), _val.scale, _val.scale, _val.xAlign, _val.yAlign);
 							
 								// Value's arrows
@@ -247,7 +251,7 @@ if (is_array(lvl) == true)
 									if (_arrow[a].act == true)
 									{
 										var _arrow_x = (_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOfs * _arrow[a].move.act)) * _arrow[a].xSign));
-										var _arrow_y = (_val_y + (fn_text_height(_arrow[a].text) / 2))
+										var _arrow_y = (_val_y /*+ (fn_text_height(_arrow[a].text) / 2)*/)
 										fn_draw_text(_arrow[a].text, _arrow_x, _arrow_y, _arrow[a].color[0], _arrow[a].color[1], (_arrow[a].alpha * lvl[l].alpha), _arrow[a].scale, _arrow[a].scale, fa_center, fa_middle);
 									}
 								}

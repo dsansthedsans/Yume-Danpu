@@ -22,7 +22,7 @@ for (var o = 0; o < 3; o++)
 for (var p = 0; p < 2; p++)
 	fn_menu_lvl_panel_add(l, p);
 fn_menu_lvl_decor_add(l, 0);
-fn_menu_lvl_decor_add(l, 1, (irandom_range(1, 5) != 1 ? (fn_obj_exists(obj_actor_user) == true ? obj_actor_user.dir[obj_actor_user.DIR_DN].spr : spr_user_dir_dn) : spr_actor_macaco_monkey));
+fn_menu_lvl_decor_add(l, 1, (irandom_range(1, 10) != 1 ? (fn_obj_exists(obj_actor_user) == true ? obj_actor_user.dir[obj_actor_user.DIR_DN].spr : spr_user_dir_dn) : spr_actor_macaco_monkey));
 for (var a = 0; a < 3; a++)
 	fn_menu_lvl_label_add(l, a);
 fn_menu_lvl_label_icon_add(l, 1);

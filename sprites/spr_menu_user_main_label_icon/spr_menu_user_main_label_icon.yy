@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_menu_user_main_label_icon",
   "bboxMode":0,
-  "bbox_bottom":10,
+  "bbox_bottom":11,
   "bbox_left":0,
   "bbox_right":11,
   "bbox_top":1,

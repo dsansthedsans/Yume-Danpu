@@ -126,7 +126,6 @@ function fn_aud_stop(_id) // Stops the audio with the specified ID (or asset)
 {
 	audio_stop_sound(_id);
 }
-
 	// Volume
 function fn_aud_vol(_asset, _id, _emtr, _vol = 1)
 {
@@ -252,7 +251,6 @@ function fn_aud_volData(_asset, _vol)
 	return _vol;
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE.  Jesus       !!!!!
 }
-
 	// Offset
 function fn_aud_ofs(_asset, _id, _ofs = 0)
 {
@@ -291,7 +289,6 @@ function fn_aud_ofsData(_asset, _ofs)
 	return _ofs;
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part II: The Hype Never Dies.  Jesus       !!!!!
 }
-
 	// Pitch
 function fn_aud_pch(_asset, _id, _pch = 1)
 {
@@ -310,7 +307,6 @@ function fn_aud_pchData(_asset, _pch)
 	return _pch;
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part III: The Final Chapter.  Jesus       !!!!!
 }
-
 
 // Functions related to sprites
 function fn_spr_width(_asset) // Returns the width of the specified sprite
@@ -333,7 +329,6 @@ function fn_spr_height(_asset) // Returns the height of the specified sprite
 		return 0;
 	}
 }
-
 
 // Functions related to text
 function fn_text_width(_text) // Returns the width of the specified text
@@ -358,7 +353,6 @@ function fn_text_height(_text) // Returns the height of the specified text
 	else
 		return 0;
 }
-
 function fn_textdata_width(_text) // Returns the width of the specified textdata
 {
 	return fn_text_width(textdata(_text));
@@ -367,7 +361,6 @@ function fn_textdata_height(_text) // Returns the height of the specified textda
 {
 	return fn_text_height(textdata(_text));
 }
-
 
 // Functions related to math
 function fn_lerp(_valCur, _valTgt, _spd)
@@ -390,7 +383,6 @@ function fn_lerp_col(_colCur, _colTgt, _spd)
 	
 	return make_color_hsv(_col_hue, _col_sat, _col_vAl);
 }
-
 
 // Other functions
 function fn_log(_msg) // Sends a message to the log
