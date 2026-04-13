@@ -6,7 +6,7 @@ if (is_array(lvl) == true)
 	{	
 		var l = LVL_MAIN;
 		
-		// Label box
+		// Label panel
 		var _panel_x = 16;
 		var _panel_y = 8;
 		var _panel_width = (16 * 6)
@@ -52,7 +52,7 @@ if (is_array(lvl) == true)
 		lvl[l].label[2].y = lvl[l].label[1].y;
 		lvl[l].label[1].icon.spr = spr_menu_user_main_label_icon;
 		
-		// Options box
+		// Option panel
 		var _panel_x = lvl[l].panel[0].x;
 		var _panel_y = (lvl[l].panel[0].y + lvl[l].panel[0].height + lvl[l].panel[0].y);
 		var _panel_width = lvl[l].panel[0].width;
@@ -61,6 +61,61 @@ if (is_array(lvl) == true)
 		lvl[l].panel[1].y = _panel_y;
 		lvl[l].panel[1].width = _panel_width;
 		lvl[l].panel[1].height = _panel_height;
+		
+			// Options
+		var _opt_len = array_length(lvl[l].option);
+		var _opt_yGap = round(fn_text_height("Salenis") * 1.25);
+		var _opt_heightAll = ((_opt_yGap * (_opt_len - 1)) + fn_text_height("Salenis"));
+		for (var o = 0; o < _opt_len; o++)
+		{
+			lvl[l].option[o].text = $"menu_user_main_option_{o}";
+			lvl[l].option[o].icon.spr = spr_menu_user_main_option_icon;
+			lvl[l].option[o].icon.img = o;
+			lvl[l].option[o].x = round(_panel_x + (_panel_width / 2) - (fn_menu_lvl_option_getWidthMax(l) / 2) + (fn_menu_lvl_option_icon_xGap_getDflt(l, o) / 2));
+			lvl[l].option[o].y = round((_panel_y + (_panel_height / 2)) - (_opt_heightAll / 2) + (_opt_yGap * o));
+		}
+	}
+	// User levels
+	if (lvl_curr >= LVL_USER_EFF && lvl_curr <= LVL_USER_THM) || (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
+	{
+		var l;
+		if (lvl_curr >= LVL_USER_EFF && lvl_curr <= LVL_USER_THM)
+			l = lvl_curr;
+		else if (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
+			l = lvl_fader.next.lvl;
+		var _user_item = (l == LVL_USER_EFF ? global.user.eff : (l == LVL_USER_FCN ? global.user.fcn : global.user.thm));
+		
+		// Panel
+		var _panel = lvl[l].panel[0];
+		var _panel_xMarg = 32;
+		var _panel_yMarg = 32;
+		_panel.width = round(global.config.video.res_width - (_panel_xMarg * 2));
+		_panel.height = round(global.config.video.res_height - (_panel_yMarg * 2));
+		_panel.x = round((global.config.video.res_width / 2) - (_panel.width / 2));
+		_panel.y = round((global.config.video.res_height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
+		_panel.title.label.text = $"menu_user_main_option_{(l - 2)}";
+		
+		// Options
+		var _opt = lvl[l].option;
+		var _opt_curr = lvl[l].option_curr;
+		for (var o = 0; o < array_length(lvl[l].option); o++)
+		{
+			_opt[o].text = "----------";
+			if (is_array(_user_item) == true && o < array_length(_user_item) && array_get(_user_item, o).unlocked == true)
+				_opt[o].text = array_get(_user_item, o).name;
+			_opt[o].x = round(_panel.x + (_panel.width / 2) - (fn_menu_lvl_option_getWidthMax(l) / 2) - ((_panel.width / 4) * (o % 2 == 0 ? 1 : -1)));
+			_opt[o].y = round(_panel.y + 16 + (16 * floor(o / 2)));
+		}
+		
+		// Label
+		var _label = lvl[l].label[0];
+		_label.text = "";
+		if (is_array(_user_item) == true && _opt_curr < array_length(_user_item) && array_get(_user_item, _opt_curr).unlocked == true)
+			_label.text = array_get(_user_item, _opt_curr).desc;
+		_label.yAlign = fa_bottom;
+		_label.x = (_panel.x + 16);
+		_label.y = (_panel.y + _panel.height - 16);
+		_label.color = [merge_color(global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.grayLight, 0.65), merge_color(global.user.thm[global.user.thm_curr].color.whiteDark, global.user.thm[global.user.thm_curr].color.grayDark, 0.65)];
 	}
 }
 event_inherited();

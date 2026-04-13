@@ -23,6 +23,31 @@ if (is_array(lvl) == true)
 					if (lvl[l].option_curr >= array_length(lvl[l].option))
 						lvl[l].option_curr = 0;
 				}
+				// Table type
+				else if (lvl[l].option_move.table.act == true)
+				{
+					if (fn_config_key_pressed(CONFIG_KEY.RT) == true) || (fn_config_key_pressed(CONFIG_KEY.LT) == true)
+					{
+						if (lvl[l].option_curr % 2 == 0)
+							lvl[l].option_curr += 1;
+						else if (lvl[l].option_curr % 2 == 1)
+							lvl[l].option_curr -= 1;
+					}
+					if (fn_config_key_pressed(CONFIG_KEY.DN) == true)
+					{
+						if ((lvl[l].option_curr + 2) <= (array_length(lvl[l].option) - 1))
+							lvl[l].option_curr += 2;
+						else
+							lvl[l].option_curr = (0 + (lvl[l].option_curr % 2));
+					}
+					else if (fn_config_key_pressed(CONFIG_KEY.UP) == true)
+					{
+						if ((lvl[l].option_curr - 2) >= 0)
+							lvl[l].option_curr -= 2;
+						else
+							lvl[l].option_curr = (array_length(lvl[l].option) - 1 - !(lvl[l].option_curr % 2));
+					}
+				}
 			
 				if (_option_currOld != lvl[l].option_curr)
 				{
@@ -38,9 +63,9 @@ if (is_array(lvl) == true)
 			// Confirmation
 			if (lvl[l].option_confirm.act == true && fn_config_key_pressed(lvl[l].option_confirm.key) == true)
 			{
-				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? lvl[l].option_confirm.snd : -1);
+				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? lvl[l].option_confirm.snd : undefined);
 				event_user(0);
-				if (_confirm_snd != -1)
+				if (_confirm_snd != undefined)
 					fn_aud_play(_confirm_snd, CONFIG_AUD_EMTR.MENU);
 			
 				// Option's checkbox
@@ -53,12 +78,12 @@ if (is_array(lvl) == true)
 			{
 				_cancel_snd = lvl[l].option_cancel.snd;
 				event_user(1);
-				if (_cancel_snd != -1)
+				if (_cancel_snd != undefined)
 					fn_aud_play(_cancel_snd, CONFIG_AUD_EMTR.MENU);
 			}
 		
 			// Value cycling
-			else if (lvl[l].option[o].value != -1)
+			else if (lvl[l].option[o].value != undefined)
 			{
 				for (var a = 0; a < 2; a++)
 				{

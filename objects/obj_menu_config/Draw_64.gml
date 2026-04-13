@@ -18,7 +18,6 @@ if (is_array(lvl) == true)
 		var _panel_yPad = (16 + 4);
 		
 		// Options
-		 //DEPOIS FAZER option select NAS BANDERIAS DO menu home lvl lang
 		var _opt = lvl[l].option;
 		for (var o = 0; o < array_length(_opt); o++)
 		{

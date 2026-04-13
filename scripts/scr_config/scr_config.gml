@@ -84,7 +84,7 @@ function fn_config_setup()
 	
 		// File [#0] (Creates the file directory if needed; Loads the previously selected language if there's already a file)
 	global.config.file_name = string(global.config.ver) + "/config.ini";
-	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?", "Are you by any chance on Linux?", "Looking for super-secret settings?");
+	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?", "Is the game really that boring...?", "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/);
 	if (directory_exists(global.config.ver) == false)
 		directory_create(global.config.ver);
 	else if (file_exists(global.config.file_name) == true)

@@ -6,7 +6,7 @@ LVL_LANG = 1;
 var l = LVL_LANG;
 fn_menu_lvl_add(l);
 if (global.config.lang_hasChosen == false)
-	fn_menu_lvl_fader_start(l, global.user.thm[global.user.thm_curr].snd.start, , 120);
+	fn_menu_lvl_fader_start(l, global.user.thm[global.user.thm_curr].snd.start, , , 120);
 fn_menu_lvl_panel_add(l, 0); // Panel
 fn_menu_lvl_panel_title_add(l, 0); // Panel's title
 for (var o = 0; o < array_length(global.config.lang); o++) // Options and decorations

@@ -8,41 +8,45 @@ function fn_menu_lvl_add(_idx)
 	lvl[_idx] =
 	{
 		alpha : 0,
-		rect : -1, // Rectangles
-		train : -1, // Triangle trains
-		panel : -1, // Panels
-		card : -1, // Cards
-		label : -1, // Labels
-		decor : -1, // Decorations
-		
+		// Rectangles
+		rect : undefined, 
+		// Triangle trains
+		train : undefined,
+		// Panels
+		panel : undefined,
+		// Cards
+		card : undefined,
+		// Labels
+		label : undefined,
+		// Decorations
+		decor : undefined,
 		// Options
-		option : -1,
-		option_curr : 0,	
-		option_move : // Movement
+		option : undefined,
+		option_curr : 0,
+			// Movement
+		option_move :
 		{
 			act : true,
 			snd : global.user.thm[global.user.thm_curr].snd.move,
-			
-			// List type
-			list :
+			list : // List type
 			{
 				act : true,
 				key : [CONFIG_KEY.UP, CONFIG_KEY.DN]
 			},
-			
-			// Table type
-			table :
+			table : // Table type
 			{
 				act : false
 			}
 		},
-		option_confirm : // Confirmation
+			// Confirmation
+		option_confirm :
 		{
 			act : true,
 			key : CONFIG_KEY.CONFIRM,
 			snd : global.user.thm[global.user.thm_curr].snd.confirm
 		},
-		option_cancel : // Cancellation
+			// Cancellation
+		option_cancel :
 		{
 			act : true,
 			key : [CONFIG_KEY.CANCEL, undefined],
@@ -60,12 +64,12 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 		alpTgt : 1, // Alpha target (the value that alpha will change to)
 		alpSpd : 0.2, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
 		alpJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
-		
+		// Previous level
 		prev :
 		{
 			snd : _prev_snd,
 		},
-		
+		// Next level
 		next :
 		{
 			lvl : _next_lvl,
@@ -113,7 +117,7 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd
 }
 
 	// Panels
-function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined, _alpha = 1, _title_act = false)
+function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined, _alpha = 1)
 {
 	var l = _lvl;
 	var p = _idx;
@@ -122,29 +126,23 @@ function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _widt
 	{
 		spr : global.user.thm[global.user.thm_curr].spr.panel,
 		img : 0,
-		
 		x : _x,
 		y : _y,
 		width : _width,
 		height : _height,
-		
 		alpha : _alpha,
-		
-		
 		// Title
-		title : -1
+		title : undefined
 	}
 }
 function fn_menu_lvl_panel_title_add(_lvl, _idx, _title_label_text = undefined)
 {
 	var l = _lvl;
 	var p = _idx;
-	
 	lvl[l].panel[p].title =
 	{
 		spr : global.user.thm[global.user.thm_curr].spr.panel_title,
 		height : (fn_text_height("Salenis") + 4),
-			
 		label :
 		{
 			text : _title_label_text,
@@ -188,7 +186,8 @@ function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y
 		color : _color,
 		xAlign : _xAlign,
 		yAlign : _yAlign,
-		icon : -1, // Icon
+		// Icon
+		icon : undefined,
 	}
 }
 function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
@@ -235,21 +234,18 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 {	
 	var l = _lvl;
 	var o = _idx;
-	
-	// Option
 	lvl[l].option[o] =
 	{
 		text : _text,
 		x : _x,
 		y : _y,
-		color : // Colors
+		color :
 		[
 			[global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark], // Inactive (Unselected)
 			[global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark] // Active (Selected)
 		],
 		xAlign : fa_left,
 		yAlign : fa_top,
-		
 		// Selection indicator
 		select :
 		{
@@ -266,11 +262,14 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 			alphaTgt : [0 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
 			alphaSpd : 0.5,
 		},
-		
-		check : -1, // Checkbox
-		value : -1, // Value label (the text beside the options in the settings menu, like "Yes", "No" and "100%")
-		icon : -1, // Icon
-		button : -1 // Button
+		// Checkbox
+		check : undefined,
+		// Value label (the text beside the options in the settings menu, like "Yes", "No" and "100%")
+		value : undefined,
+		// Icon
+		icon : undefined,
+		// Button
+		button : undefined,
 	}
 }
 function fn_menu_lvl_option_getWidthMax(_lvl)
@@ -358,16 +357,13 @@ function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 {
 	var l = _lvl;
 	var o = _idx;
-	
 	lvl[l].option[o].icon =
 	{
 		spr : _spr,
 		img : _img,
-			
 		x : 0,
 		y : 0,
 		xGap : 0,
-		
 		color : [c_gray /* Inactive (Unselected) */, c_white /* Active (Selected) */],
 		alpha : [1 /* Inactive (Unselected) */, 1 /* Active (Selected) */]
 	}
@@ -413,13 +409,11 @@ function fn_menu_lvl_option_button_add(_lvl, _idx)
 {
 	var l = _lvl;
 	var o = _idx;
-	
 	lvl[l].option[o].button =
 	{
 		spr : global.user.thm[global.user.thm_curr].spr.option_button,
 		img_inact : 0, // image_index while inactive (unselected)
 		img_act : 1, // image_index while active (selected)
-			
 		x : 0,
 		y : 0,
 		xPad : 6,

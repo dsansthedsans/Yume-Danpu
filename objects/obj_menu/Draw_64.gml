@@ -108,7 +108,7 @@ if (is_array(lvl) == true)
 						var _label_y = round(_label.y);
 						
 							// Icon
-						if (is_struct(_label.icon) == true && _label.icon.spr != -1)
+						if (is_struct(_label.icon) == true && _label.icon.spr != undefined)
 						{
 							var _icon = _label.icon;
 							var _icon_xGap = ((_icon.xGap != undefined) ? _icon.xGap : fn_menu_lvl_label_icon_xGap_getDflt(l, a));
@@ -168,7 +168,7 @@ if (is_array(lvl) == true)
 								var _select_y = round((_select.y != 0) ? _select.y : (_opt_y - _select.yDist + 1));
 								var _select_width = round((_select.width != 0) ? _select.width : ((_select.xDist * 2) + fn_textdata_width(_opt.text)));
 								var _select_height = round((_select.height != 0) ? _select.height : ((_select.yDist * 2) + fn_textdata_height(_opt.text)));
-								if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
+								if (is_struct(_opt.icon) == true && _opt.icon.spr != undefined)
 								{
 									var _icon_xGap = round((_opt.icon.xGap != 0) ? _opt.icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
 									_select_x -= _icon_xGap;
@@ -179,7 +179,7 @@ if (is_array(lvl) == true)
 						}
 						
 							// Icon
-						if (is_struct(_opt.icon) == true && _opt.icon.spr != -1)
+						if (is_struct(_opt.icon) == true && _opt.icon.spr != undefined)
 						{
 							var _icon = _opt.icon;
 							var _icon_xGap = round((_icon.xGap != 0) ? _icon.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
@@ -215,7 +215,7 @@ if (is_array(lvl) == true)
 							var _val = _opt.value;
 							var _val_x = round((_val.x != 0) ? _val.x : (_opt_x + fn_textdata_width(_opt.text) + _opt.value.xGap + (fn_textdata_width(_val.text) / 2)));
 							var _val_y = round((_val.y != 0) ? _val.y : (_opt_y + ceil(fn_textdata_height("Salenis") / 2)));
-							var _val_col = [-1];
+							var _val_col = undefined;
 							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTgt[false], _val.colorValSpd);
 							for (var c = 0; c < 2; c++)
 								_val_col[c] = make_colour_hsv(colour_get_hue(_val.color[c]), colour_get_saturation(_val.color[c]), (colour_get_value(_val.color[c]) + _val.colorVal));
