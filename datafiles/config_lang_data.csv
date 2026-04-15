@@ -11,6 +11,7 @@ config_key_autowalk,Autowalk,Autowalk
 config_key_fscr,Fullscreen,Tela Cheia
 config_key_menu_user,Inventory,Inventário
 config_key_menu_pause,Pause,Pausar
+config_video_scale_name,Resolution,Resolução
 config_video_fscr_name,Fullscreen,Tela Cheia
 config_video_vsync_name,Vsync,Vsync
 config_video_hideCsr_name,Hide Cursor,Esconder Cursor

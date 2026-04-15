@@ -104,14 +104,6 @@ function fn_user_fcn_unlock(_idx)
 		
 	//fn_menu_obj_create("unlock", 1, global.user.fcn[_idx].name);
 }
-function fn_user_fcn_equip(_idx)
-{
-	if (_idx !=	undefined)
-	{
-		global.user.fcn_curr = _idx;
-		fn_user_file_save();
-	}
-}
 
 	// Themes
 function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark, _alpha_shadow = 1, _alpha_blurLight = 0.5, _alpha_blurHeavy = 0.75)
@@ -124,7 +116,6 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 		unlocked : _unlocked,
 		icon_spr : spr_menu_user_main_option_icon,
 		icon_img : 2,
-		
 		// Colors
 		color :
 		{
@@ -135,7 +126,6 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 			blackLight : _color_blackLight,
 			blackDark : _color_blackDark
 		},
-		
 		// Alpha
 		alpha :
 		{
@@ -143,7 +133,6 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 			blurLight : _alpha_blurLight, // Alpha for lightly dimmed background
 			blurHeavy : _alpha_blurHeavy // Alpha for heavily dimmed background
 		},
-		
 		// Sprites
 		spr :
 		{
@@ -156,8 +145,8 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 			option_check_mark : fn_user_thm_asset("spr_user_thm_option_check_mark_", _code),
 			picFrame : fn_user_thm_asset("spr_user_thm_picFrame_", _code),
 		},
-		
-		snd : // Sounds
+		// Sounds
+		snd : 
 		{
 			start : fn_user_thm_asset("snd_user_thm_start_", _code),
 			move : fn_user_thm_asset("snd_user_thm_move_", _code),
@@ -165,7 +154,8 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 			cancel : fn_user_thm_asset("snd_user_thm_cancel_", _code),
 			error : fn_user_thm_asset("snd_user_thm_error_", _code),
 			unlock : [fn_user_thm_asset($"snd_user_thm_unlock_0_", _code), fn_user_thm_asset($"snd_user_thm_unlock_1_", _code), fn_user_thm_asset("snd_user_thm_unlock_2_", _code)],
-			equip : [fn_user_thm_asset("snd_user_thm_equip_0_", _code), fn_user_thm_asset("snd_user_thm_equip_1_", _code)],
+			equip : fn_user_thm_asset("snd_user_thm_equip_", _code),
+			unequip : fn_user_thm_asset("snd_user_thm_unequip_", _code),
 		}
 	}
 }
@@ -175,14 +165,6 @@ function fn_user_thm_asset(_asset_name_noCode, _code)
 	if (_asset == -1)
 		_asset = asset_get_index($"{_asset_name_noCode}{global.user.thm[0].code}");
 	return _asset;
-}
-function fn_user_thm_equip(_idx)
-{
-	if (_idx != undefined)
-	{
-		global.user.thm_curr = _idx;
-		fn_user_file_save();
-	}
 }
 
 	// Save files

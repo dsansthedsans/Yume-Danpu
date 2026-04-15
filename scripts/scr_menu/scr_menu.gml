@@ -8,6 +8,8 @@ function fn_menu_lvl_add(_idx)
 	lvl[_idx] =
 	{
 		alpha : 0,
+		data : [undefined],
+		
 		// Rectangles
 		rect : undefined, 
 		// Triangle trains

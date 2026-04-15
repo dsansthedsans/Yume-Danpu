@@ -51,15 +51,12 @@ if (is_array(lvl) == true)
 			
 				if (_option_currOld != lvl[l].option_curr)
 				{
-					_opt_curr = lvl[l].option_curr;
 					_move_snd = lvl[l].option_move.snd;
 					event_user(4);
 					fn_aud_play(_move_snd, CONFIG_AUD_EMTR.MENU);
 				}
 			}
 			var o = lvl[l].option_curr;
-			_opt_curr = lvl[l].option_curr;
-			
 			// Confirmation
 			if (lvl[l].option_confirm.act == true && fn_config_key_pressed(lvl[l].option_confirm.key) == true)
 			{
@@ -67,12 +64,10 @@ if (is_array(lvl) == true)
 				event_user(0);
 				if (_confirm_snd != undefined)
 					fn_aud_play(_confirm_snd, CONFIG_AUD_EMTR.MENU);
-			
 				// Option's checkbox
 				if (is_struct(lvl[l].option[o].check) == true)
 					lvl[l].option[o].check.mark.act = !lvl[l].option[o].check.mark.act;
 			}
-			
 			// Cancellation
 			else if (lvl[l].option_cancel.act == true && (fn_config_key_pressed(lvl[l].option_cancel.key[0]) == true || (lvl[l].option_cancel.key[1] != undefined && fn_config_key_pressed(lvl[l].option_cancel.key[1]) == true)))
 			{
@@ -81,7 +76,6 @@ if (is_array(lvl) == true)
 				if (_cancel_snd != undefined)
 					fn_aud_play(_cancel_snd, CONFIG_AUD_EMTR.MENU);
 			}
-		
 			// Value cycling
 			else if (lvl[l].option[o].value != undefined)
 			{
@@ -113,7 +107,6 @@ if (is_array(lvl) == true)
 		if (lvl_fader.prev.snd != undefined)
 			fn_aud_play(lvl_fader.prev.snd, CONFIG_AUD_EMTR.MENU);
 		lvl_fader.prev.snd = undefined;
-		
 		if (lvl_fader.next.wait_dur <= 0)
 		{
 			lvl[lvl_fader.next.lvl].alpha = fn_lerp(lvl[lvl_fader.next.lvl].alpha, 1, lvl_fader.alpSpd);

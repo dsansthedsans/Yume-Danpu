@@ -67,9 +67,9 @@ if (is_array(lvl) == true)
 		var _panel = lvl[l].panel[0];
 		var _panel_outDist = 8;
 		var _panel_x = -_panel_outDist;
-		var _panel_y = (global.config.video.res_height - 16);
-		var _panel_width = (global.config.video.res_width + (_panel_outDist * 2));
-		var _panel_height = ((global.config.video.res_height - _panel_y) + _panel_outDist);
+		var _panel_y = (global.config.video.height - 16);
+		var _panel_width = (global.config.video.width + (_panel_outDist * 2));
+		var _panel_height = ((global.config.video.height - _panel_y) + _panel_outDist);
 		_panel.x = _panel_x;
 		_panel.y = _panel_y;
 		_panel.width = _panel_width;
@@ -85,9 +85,9 @@ if (is_array(lvl) == true)
 		// Panel (start menu)
 		var _panel_outDist = 8;
 		var _panel_x = -_panel_outDist;
-		var _panel_y = round(global.config.video.res_height / 1.75);
+		var _panel_y = round(global.config.video.height / 1.75);
 		var _panel_width = (abs(_panel_x) + (16 * 7));
-		var _panel_height = ((global.config.video.res_height - _panel_y) + _panel_outDist);
+		var _panel_height = ((global.config.video.height - _panel_y) + _panel_outDist);
 		lvl[l].panel[1].x = _panel_x;
 		lvl[l].panel[1].y = _panel_y;
 		lvl[l].panel[1].width = _panel_width;
@@ -128,8 +128,8 @@ if (is_array(lvl) == true)
 		var _logo_width = fn_spr_width(_logo_spr);
 		var _logo_height = fn_spr_height(_logo_spr);
 		lvl[l].decor[0].spr = _logo_spr;
-		lvl[l].decor[0].x = round(_panel_x + _panel_width + ((global.config.video.res_width - (_panel_x + _panel_width)) / 2) - (_logo_width / 2));
-		lvl[l].decor[0].y = round((global.config.video.res_height * 0.35) - (_logo_height / 2));
+		lvl[l].decor[0].x = round(_panel_x + _panel_width + ((global.config.video.width - (_panel_x + _panel_width)) / 2) - (_logo_width / 2));
+		lvl[l].decor[0].y = round((global.config.video.height * 0.35) - (_logo_height / 2));
 	}
 }
 

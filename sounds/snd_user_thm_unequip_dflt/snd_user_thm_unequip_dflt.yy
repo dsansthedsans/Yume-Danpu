@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_user_thm_equip_1_dflt",
+  "%Name":"snd_user_thm_unequip_dflt",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.6989796,
   "exportDir":"",
-  "name":"snd_user_thm_equip_1_dflt",
+  "name":"snd_user_thm_unequip_dflt",
   "parent":{
     "name":"Default (0)",
     "path":"folders/User/Themes/Default (0).yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_user_thm_equip_1_dflt.mp3",
+  "soundFile":"snd_user_thm_unequip_dflt.mp3",
   "volume":1.0,
 }

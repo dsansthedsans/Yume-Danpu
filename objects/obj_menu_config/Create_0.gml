@@ -16,34 +16,21 @@ for (var o = 0; o < 4; o++) // Options
 fn_menu_lvl_option_value_add(l, 0); // Language option's value
 
 // Graphics, Music & Sounds and Accessibility level
-LVL_VID = 2;
+LVL_VIDEO = 2;
 LVL_AUD = 3;
 LVL_ACCESS = 4;
-for (var l = LVL_VID; l <= LVL_ACCESS; l++)
+for (var l = LVL_VIDEO; l <= LVL_ACCESS; l++)
 {
 	fn_menu_lvl_add(l);
-	fn_menu_lvl_panel_add(l, 0); // Panel
-	fn_menu_lvl_panel_title_add(l, 0); // Panel's title
-
+		// Panel
+	fn_menu_lvl_panel_add(l, 0);
+			// Panel's title
+	fn_menu_lvl_panel_title_add(l, 0);
 		// Options
-	var _opt_len;
-	switch (l)
-	{
-		// Graphics
-		case LVL_VID:
-			_opt_len = 6;
-			break;
-		
-		// Music & Sounds
-		case LVL_AUD:
-			_opt_len = 7;
-			break;
-		
-		// Accessibility
-		case LVL_ACCESS:
-			_opt_len = 1;
-			break;
-	}
+	if (l == LVL_VIDEO) || (l == LVL_AUD)
+		var _opt_len = 7;
+	else if (l == LVL_ACCESS)
+		var _opt_len = 1;
 	for (var o = 0; o < _opt_len; o++)
 	{
 		fn_menu_lvl_option_add(l, o);

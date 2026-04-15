@@ -1,8 +1,8 @@
 /// @descr Option's value cycle result
-// Refer to {lvl[lvl_curr].option_curr} as {_opt_curr}
-// Refer to the sign of the option's value cycle as {_cycle_sign}
 
-if (lvl_curr == LVL_MAIN && _opt_curr == 0)
+var l = lvl_curr;
+var o = lvl[l].option_curr;
+if (l == LVL_MAIN && o == 0)
 {
 	var _lang_curr = (global.config.lang_curr + _cycle_sign);
 	if (_lang_curr < 0)
@@ -11,40 +11,39 @@ if (lvl_curr == LVL_MAIN && _opt_curr == 0)
 		_lang_curr = 0;
 	fn_config_lang_mod(_lang_curr);
 }
-else if (lvl_curr == LVL_VID)
+else if (l == LVL_VIDEO)
 {
-	switch (_opt_curr)
+	if (o == 0)
 	{
-		case 0:
-			global.config.video.fscr.act = !global.config.video.fscr.act;
-			break;
-		case 1:
-			global.config.video.vsync.act = !global.config.video.vsync.act;
-			break;
-		case 2:
-			global.config.video.hideCsr.act = !global.config.video.hideCsr.act;
-			break;
-		case 3:
-			global.config.video.showVer.act = !global.config.video.showVer.act;
-			break;
-		case 4:
-			global.config.video.showBdr.act = !global.config.video.showBdr.act;
-			break;
-		case 5:
-			global.config.video.showFps.act = !global.config.video.showFps.act;
-			break;
+		global.config.video.scale_curr += _cycle_sign;
+		if (global.config.video.scale_curr < 0)
+			global.config.video.scale_curr = (array_length(global.config.video.scale) - 1);
+		if (global.config.video.scale_curr >= array_length(global.config.video.scale))
+			global.config.video.scale_curr = 0;
+		fn_config_video_scale_mod(global.config.video.scale_curr);
 	}
-
+	else if (o == 1)
+		global.config.video.fscr.act = !global.config.video.fscr.act;
+	else if (o == 2)
+		global.config.video.vsync.act = !global.config.video.vsync.act;
+	else if (o == 3)
+		global.config.video.hideCsr.act = !global.config.video.hideCsr.act;
+	else if (o == 4)
+		global.config.video.showVer.act = !global.config.video.showVer.act;
+	else if (o == 5)
+		global.config.video.showBdr.act = !global.config.video.showBdr.act;
+	else if (o == 6)
+		global.config.video.showFps.act = !global.config.video.showFps.act;
 	fn_config_file_save();
 }
-else if (lvl_curr == LVL_AUD)
+else if (l == LVL_AUD)
 {
-	global.config.aud.emtr[_opt_curr].vol = clamp((global.config.aud.emtr[_opt_curr].vol + (0.1 * _cycle_sign)), 0, 1);
+	global.config.aud.emtr[o].vol = clamp((global.config.aud.emtr[o].vol + (0.1 * _cycle_sign)), 0, 1);
 	fn_config_file_save();
 }
-else if (lvl_curr == LVL_ACCESS)
+else if (l == LVL_ACCESS)
 {
-	if (_opt_curr == 0)
+	if (o == 0)
 	{
 		global.config.access.rdcdMot.act = !global.config.access.rdcdMot.act;
 		fn_config_file_save();

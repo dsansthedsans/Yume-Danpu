@@ -83,16 +83,16 @@ if (is_array(lvl) == true)
 			l = lvl_curr;
 		else if (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
 			l = lvl_fader.next.lvl;
-		var _user_item = (l == LVL_USER_EFF ? global.user.eff : (l == LVL_USER_FCN ? global.user.fcn : global.user.thm));
+		var _item = lvl[l].data[0];
 		
 		// Panel
 		var _panel = lvl[l].panel[0];
 		var _panel_xMarg = 32;
 		var _panel_yMarg = 32;
-		_panel.width = round(global.config.video.res_width - (_panel_xMarg * 2));
-		_panel.height = round(global.config.video.res_height - (_panel_yMarg * 2));
-		_panel.x = round((global.config.video.res_width / 2) - (_panel.width / 2));
-		_panel.y = round((global.config.video.res_height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
+		_panel.width = round(global.config.video.width - (_panel_xMarg * 2));
+		_panel.height = round(global.config.video.height - (_panel_yMarg * 2));
+		_panel.x = round((global.config.video.width / 2) - (_panel.width / 2));
+		_panel.y = round((global.config.video.height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
 		_panel.title.label.text = $"menu_user_main_option_{(l - 2)}";
 		
 		// Options
@@ -101,8 +101,8 @@ if (is_array(lvl) == true)
 		for (var o = 0; o < array_length(lvl[l].option); o++)
 		{
 			_opt[o].text = "----------";
-			if (is_array(_user_item) == true && o < array_length(_user_item) && array_get(_user_item, o).unlocked == true)
-				_opt[o].text = array_get(_user_item, o).name;
+			if (is_array(_item) == true && o < array_length(_item) && array_get(_item, o).unlocked == true)
+				_opt[o].text = array_get(_item, o).name;
 			_opt[o].x = round(_panel.x + (_panel.width / 2) - (fn_menu_lvl_option_getWidthMax(l) / 2) - ((_panel.width / 4) * (o % 2 == 0 ? 1 : -1)));
 			_opt[o].y = round(_panel.y + 16 + (16 * floor(o / 2)));
 		}
@@ -110,8 +110,8 @@ if (is_array(lvl) == true)
 		// Label
 		var _label = lvl[l].label[0];
 		_label.text = "";
-		if (is_array(_user_item) == true && _opt_curr < array_length(_user_item) && array_get(_user_item, _opt_curr).unlocked == true)
-			_label.text = array_get(_user_item, _opt_curr).desc;
+		if (is_array(_item) == true && _opt_curr < array_length(_item) && array_get(_item, _opt_curr).unlocked == true)
+			_label.text = array_get(_item, _opt_curr).desc;
 		_label.yAlign = fa_bottom;
 		_label.x = (_panel.x + 16);
 		_label.y = (_panel.y + _panel.height - 16);

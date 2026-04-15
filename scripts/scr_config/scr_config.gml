@@ -17,63 +17,64 @@ function fn_config_setup()
 		lang_data : -1,
 		lang_curr : 0,
 		lang_hasChosen : false,
-		
 		// Keybinds
 		key : [-1],
-		
-		// Video
+		// Graphics
 		video :
 		{
-			res_width : 320,
-			res_height : 240,
-			res_mult : 2,
+			width : 320,
+			height : 240,
 			
-			fscr : // Fullscreen
+			// Resolution
+			scale : [1, 2, 3, 4],
+			scale_curr : 1,
+			scale_name : "config_video_scale_name",
+			// Fullscreen
+			fscr :
 			{
 				act : false,
 				name : "config_video_fscr_name"
 			},
-			
-			vsync : // Vsync
+			// Vsync
+			vsync :
 			{
 				act : false,
 				name : "config_video_vsync_name"
 			},
-			
-			showVer : // Show Version
+			// Show Version
+			showVer :
 			{
 				act : true,
 				name : "config_video_showVer_name"
 			},
-			
-			hideCsr : // Show Cursor
+			// Show Cursor
+			hideCsr :
 			{
 				act : true,
 				name : "config_video_hideCsr_name"
 			},
-			
-			showFps : // Show FPS
+			// Show FPS
+			showFps :
 			{
 				act : false,
 				name : "config_video_showFps_name"
 			},
-			
-			showBdr : // Show Border
+			// Show Border
+			showBdr :
 			{
 				act : true,
 				name : "config_video_showBdr_name"
 			},
 		},
-		
 		// Music & Sounds
 		aud :
 		{
 			emtr : [-1]
 		},
-		
 		// Accessibility
 		access :
 		{
+			// Reduced Motion
 			rdcdMot :
 			{
 				act : false,
@@ -81,8 +82,7 @@ function fn_config_setup()
 			}
 		},	
 	}
-	
-		// File [#0] (Creates the file directory if needed; Loads the previously selected language if there's already a file)
+		// File (Creates the file directory if needed; Loads the previously selected language if there's already a file)
 	global.config.file_name = string(global.config.ver) + "/config.ini";
 	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?", "Is the game really that boring...?", "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/);
 	if (directory_exists(global.config.ver) == false)
@@ -95,7 +95,6 @@ function fn_config_setup()
 		global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 		ini_close();
 	}
-	
 		// Languages
 	global.config.lang_data = load_csv("config_lang_data.csv");
 	enum CONFIG_LANG
@@ -105,7 +104,6 @@ function fn_config_setup()
 	}
 	fn_config_lang_add(CONFIG_LANG.enUS, "enUS");
 	fn_config_lang_add(CONFIG_LANG.ptBR, "ptBR");
-	
 		// Keybinds
 	enum CONFIG_KEY
 	{
@@ -132,7 +130,6 @@ function fn_config_setup()
 	fn_config_key_add(CONFIG_KEY.FSCR,			"fscr",			vk_f4, vk_f11);
 	fn_config_key_add(CONFIG_KEY.MENU_USER,		"menu_user",	ord("C"), vk_control);
 	fn_config_key_add(CONFIG_KEY.MENU_PAUSE,	"menu_pause",	vk_escape);
-	
 		// Music & Sounds
 	enum CONFIG_AUD_EMTR
 	{
@@ -153,14 +150,16 @@ function fn_config_setup()
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.USER,	"user");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.PROP,	"prop");
 	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.ACTOR,	"actor");
-	
-		// File [#1]
+		// File
 	if (file_exists(global.config.file_name) == false)
 		fn_config_file_save();
 	else
 		fn_config_file_load();
+		// Graphics
+	window_set_caption(global.config.name);
+	window_set_color(c_black);
+	fn_config_video_scale_mod(global.config.video.scale_curr);
 }
-
 	// File
 function fn_config_file_save()
 {
@@ -168,6 +167,7 @@ function fn_config_file_save()
 	ini_write_string("about", "msg", global.config.file_msg);
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
+	ini_write_real("video", "scale_curr", global.config.video.scale_curr);
 	ini_write_real("video", "fscr_act", global.config.video.fscr.act);
 	ini_write_real("video", "vsync_act", global.config.video.vsync.act);
 	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
@@ -182,35 +182,24 @@ function fn_config_file_save()
 function fn_config_file_load()
 {
 	ini_open(global.config.file_name);
-	
-	
-	// Languages
 	global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 	global.config.lang_hasChosen = ini_read_real("lang", "hasChosen", false);
-	
-	// Graphics
+	global.config.video.scale_curr = ini_read_real("video", "scale_curr", 1);
 	global.config.video.fscr.act = ini_read_real("video", "fscr_act", false);
 	global.config.video.vsync.act = ini_read_real("video", "vsync_act", false);
-	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
 	global.config.video.hideCsr.act = ini_read_real("video", "hideCsr_act", true);
+	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
 	global.config.video.showFps.act = ini_read_real("video", "showFps_act", false);
 	global.config.video.showBdr.act = ini_read_real("video", "showBdr_act", true);
-		
-	// Music & Sounds
 	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
 		global.config.aud.emtr[e].vol = ini_read_real("aud", $"emtr_{e}_vol", 1);
-	
-	// Accessibility
 	global.config.access.rdcdMot.act = ini_read_real("access", "rdcdMot_act", false);
-	
-	
 	ini_close();
 }
 function fn_config_file_erase()
 {
 	file_delete(global.config.file_name)
 }
-
 	// Languages
 function fn_config_lang_add(_idx, _code)
 {
@@ -250,7 +239,6 @@ function textdata(_key)
 	
 	return _text;
 }
-
 	// Keybinds
 function fn_config_key_add(_idx, _code, _main, _alt = -1)
 {
@@ -279,7 +267,12 @@ function fn_config_key_lazy()
 		pressed[k] = fn_config_key_pressed(k);
 	}
 }
-
+	// Video
+function fn_config_video_scale_mod(_new)
+{
+	window_set_size((global.config.video.width * global.config.video.scale[global.config.video.scale_curr]), (global.config.video.height * global.config.video.scale[global.config.video.scale_curr]));
+	window_center();
+}
 	// Music & Sounds
 function fn_config_aud_emtr_add(_idx, _code, _vol = 1, _pitch = 1)
 {

@@ -161,8 +161,8 @@ function fn_aud_volData(_asset, _vol)
 		case snd_user_thm_unlock_2_dflt:
 			_vol *= 0.45;
 			break;
-		case snd_user_thm_equip_0_dflt:
-		case snd_user_thm_equip_1_dflt:
+		case snd_user_thm_equip_dflt:
+		case snd_user_thm_unequip_dflt:
 			_vol *= 0.65;
 			break;
 				// Madotsuki theme

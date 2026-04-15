@@ -11,7 +11,7 @@ fn_menu_lvl_add(LVL_USER_EFF);
 fn_menu_lvl_add(LVL_USER_FCN);
 fn_menu_lvl_add(LVL_USER_THM);
 for (var l = 0; l < array_length(lvl); l++)
-	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.res_width, global.config.video.res_height, , (l == LVL_MAIN ? 0.5 : 0.75));
+	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.width, global.config.video.height, , (l == LVL_MAIN ? 0.5 : 0.75));
 
 // Main level
 var l = LVL_MAIN;
@@ -33,6 +33,7 @@ fn_menu_lvl_label_icon_add(l, 1);
 // User levels
 for (var l = LVL_USER_EFF; l <= LVL_USER_THM; l++)
 {
+	lvl[l].data[0] = (l == LVL_USER_EFF ? global.user.eff : (l == LVL_USER_FCN ? global.user.fcn : global.user.thm));
 	fn_menu_lvl_panel_add(l, 0);
 	fn_menu_lvl_panel_title_add(l, 0);
 	for (var o = 0; o < 10; o++)
