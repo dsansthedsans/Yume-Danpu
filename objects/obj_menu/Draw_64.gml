@@ -26,7 +26,6 @@ if (is_array(lvl) == true)
 						fn_draw_rect(_rect.x, _rect.y, _rect.weight, _rect.height, _rect.color, _rect.color, _rect.color, _rect.color, (_rect.alpha * lvl[l].alpha));
 				}
 			}
-			
 			// Triangle trains
 			if (is_array(lvl[l].train) == true)
 			{
@@ -48,7 +47,6 @@ if (is_array(lvl) == true)
 					}
 				}
 			}
-			
 			// Panels
 			if (is_array(lvl[l].panel) == true)
 			{
@@ -60,15 +58,13 @@ if (is_array(lvl) == true)
 						var _panel_x = round(_panel.x);
 						var _panel_y = round(_panel.y);
 						var _panel_img = 0;
-						
 							// Title
 						if (is_struct(_panel.title) == true && _panel.title.spr != undefined)
 						{
 							_panel_img = 1;
 							var _title = _panel.title;
 							var _title_y = round(_panel_y - _title.height);
-							fn_draw_spr_stretch(_title.spr, 0, _panel_x, _title_y, _panel.width, _title.height, , (_panel.alpha * lvl[l].alpha));
-							
+							fn_draw_spr_stretch(_title.spr, 0, _panel_x, _title_y, _panel.width, _title.height, , (_panel.alpha * lvl[l].alpha));	
 								// Label
 							if (_title.label.text != undefined)
 							{
@@ -78,13 +74,11 @@ if (is_array(lvl) == true)
 								fn_draw_text(textdata(_title.label.text), _label_x, _label_y, _label.color[0], _label.color[1], (_label.alpha * _panel.alpha * lvl[l].alpha), , , , , , _label.shadow_alpha);
 							}
 						}
-						
 						// Panel
 						fn_draw_spr_stretch(_panel.spr, _panel_img, round(_panel.x), round(_panel.y), _panel.width, _panel.height, , (_panel.alpha * lvl[l].alpha));
 					}
 				}
 			}
-			
 			// Cards
 			if (is_array(lvl[l].card) == true)
 			{
@@ -95,7 +89,6 @@ if (is_array(lvl) == true)
 						fn_draw_spr_stretch(_card.spr, _card.img, round(_card.x), round(_card.y), _card.width, _card.height, , lvl[l].alpha);
 				}
 			}
-			
 			// Labels
 			if (is_array(lvl[l].label) == true)
 			{
@@ -106,7 +99,6 @@ if (is_array(lvl) == true)
 					{
 						var _label_x = round(_label.x);
 						var _label_y = round(_label.y);
-						
 							// Icon
 						if (is_struct(_label.icon) == true && _label.icon.spr != undefined)
 						{
@@ -116,13 +108,11 @@ if (is_array(lvl) == true)
 							var _icon_y = round((_icon.y != undefined) ? _icon.y : (_label_y + round(fn_textdata_height(_label.text) / 2) - round(fn_spr_height(_icon.spr) / 2) + 1));
 							fn_draw_spr(_icon.spr, _icon.img, _icon_x, _icon_y, _icon.color, (_icon.alpha * lvl[l].alpha), , , , true);
 						}
-						
 						// Label
 						fn_draw_text(textdata(_label.text), _label_x, _label_y, _label.color[0], _label.color[1], lvl[l].alpha, , , _label.xAlign, _label.yAlign);
 					}
 				}
 			}
-			
 			// Decorations
 			if (is_array(lvl[l].decor) == true)
 			{
@@ -133,7 +123,6 @@ if (is_array(lvl) == true)
 						fn_draw_spr(_decor.spr, _decor.img, round(_decor.x), round(_decor.y), _decor.color, (_decor.alpha * lvl[l].alpha));
 				}
 			}
-			
 			// Options
 			if (is_array(lvl[l].option) == true)
 			{
@@ -145,7 +134,7 @@ if (is_array(lvl) == true)
 						var _opt_x = round(_opt.x);
 						var _opt_y = round(_opt.y);
 						var _opt_shadow_col = ((o == lvl[l].option_curr) ? global.user.thm[global.user.thm_curr].color.blackLight : global.user.thm[global.user.thm_curr].color.blackDark);
-						
+							
 							// Button
 						if (is_struct(_opt.button) == true)
 						{
@@ -156,7 +145,6 @@ if (is_array(lvl) == true)
 							var _button_height = round((_button.height != 0) ? _button.height : ((_button.yPad * 2) + fn_textdata_height(_opt.text) + 2));
 							fn_draw_spr_stretch(_button.spr, ((o != lvl[l].option_curr) ? _button.img_inact : _button.img_act), _button_x, _button_y, _button_width, _button_height, , lvl[l].alpha);
 						}
-						
 							// Selection indicator
 						if (_opt.select.act == true)
 						{
@@ -177,7 +165,6 @@ if (is_array(lvl) == true)
 								fn_draw_spr_stretch(_select.spr, _select.img, _select_x, _select_y, _select_width, _select_height, , (_select.alpha * lvl[l].alpha));
 							}
 						}
-						
 							// Icon
 						if (is_struct(_opt.icon) == true && _opt.icon.spr != undefined)
 						{
@@ -187,7 +174,6 @@ if (is_array(lvl) == true)
 							var _icon_y = round((_icon.y != 0) ? _icon.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_icon.spr) / 2) + 1));
 							fn_draw_spr(_icon.spr, _icon.img, _icon_x, _icon_y, _icon.color[(o == lvl[l].option_curr)], (_icon.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , true, _opt_shadow_col);
 						}
-						
 							// Checkbox
 						if (is_struct(_opt.check) == true && _opt.check.spr != undefined)
 						{
@@ -195,8 +181,7 @@ if (is_array(lvl) == true)
 							var _check_x = round((_check.x != 0) ? _check.x : (_opt_x - _check.xPad - fn_spr_width(_check.spr)));
 							var _check_y = round((_check.y != 0) ? _check.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_check.spr) / 2) + 1));
 							fn_draw_spr(_opt.check.spr, 0, _check_x, _check_y, _check.color, (_check.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha));
-							
-							// Mark
+								// Mark
 							if (_opt.check.mark.act == true)
 							{
 								var _mark = _opt.check.mark;
@@ -208,7 +193,7 @@ if (is_array(lvl) == true)
 						
 						// Option
 						fn_draw_text(textdata(_opt.text), _opt_x, _opt_y, _opt.color[(o == lvl[l].option_curr), 0], _opt.color[(o == lvl[l].option_curr), 1], lvl[l].alpha, , , _opt.xAlign, _opt.yAlign, _opt_shadow_col);
-						
+							
 							// Value (the text beside the options in the settings menu, like "Yes", "No" and "100%")
 						if (is_struct(_opt.value) == true && _opt.value.text != "")
 						{

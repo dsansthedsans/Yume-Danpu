@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Default (0)",
-    "path":"folders/User/Themes/Default (0).yy",
+    "name":"Default",
+    "path":"folders/User/Themes/Default.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

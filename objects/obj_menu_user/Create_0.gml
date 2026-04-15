@@ -11,7 +11,7 @@ fn_menu_lvl_add(LVL_USER_EFF);
 fn_menu_lvl_add(LVL_USER_FCN);
 fn_menu_lvl_add(LVL_USER_THM);
 for (var l = 0; l < array_length(lvl); l++)
-	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.width, global.config.video.height, , (l == LVL_MAIN ? 0.5 : 0.75));
+	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.res[0].width, global.config.video.res[0].height, , (l == LVL_MAIN ? 0.5 : 0.75));
 
 // Main level
 var l = LVL_MAIN;

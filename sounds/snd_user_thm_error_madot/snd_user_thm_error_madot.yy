@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_user_thm_error_madot",
   "parent":{
-    "name":"Madotsuki (2)",
-    "path":"folders/User/Themes/Madotsuki (2).yy",
+    "name":"Diary",
+    "path":"folders/User/Themes/Diary.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

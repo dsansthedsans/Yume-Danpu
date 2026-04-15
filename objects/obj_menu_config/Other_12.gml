@@ -15,12 +15,11 @@ else if (l == LVL_VIDEO)
 {
 	if (o == 0)
 	{
-		global.config.video.scale_curr += _cycle_sign;
-		if (global.config.video.scale_curr < 0)
-			global.config.video.scale_curr = (array_length(global.config.video.scale) - 1);
-		if (global.config.video.scale_curr >= array_length(global.config.video.scale))
-			global.config.video.scale_curr = 0;
-		fn_config_video_scale_mod(global.config.video.scale_curr);
+		global.config.video.res_curr += _cycle_sign;
+		if (global.config.video.res_curr < 0)
+			global.config.video.res_curr = (array_length(global.config.video.res) - 1);
+		if (global.config.video.res_curr >= array_length(global.config.video.res))
+			global.config.video.res_curr = 0;
 	}
 	else if (o == 1)
 		global.config.video.fscr.act = !global.config.video.fscr.act;

@@ -22,13 +22,10 @@ function fn_config_setup()
 		// Graphics
 		video :
 		{
-			width : 320,
-			height : 240,
-			
 			// Resolution
-			scale : [1, 2, 3, 4],
-			scale_curr : 1,
-			scale_name : "config_video_scale_name",
+			res :  [-1],
+			res_curr : 1,
+			res_name : "config_video_res_name",
 			// Fullscreen
 			fscr :
 			{
@@ -82,9 +79,10 @@ function fn_config_setup()
 			}
 		},	
 	}
+	
 		// File (Creates the file directory if needed; Loads the previously selected language if there's already a file)
 	global.config.file_name = string(global.config.ver) + "/config.ini";
-	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?", "Is the game really that boring...?", "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/);
+	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?" /*Reference to Minecraft*/, "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/);
 	if (directory_exists(global.config.ver) == false)
 		directory_create(global.config.ver);
 	else if (file_exists(global.config.file_name) == true)
@@ -130,6 +128,14 @@ function fn_config_setup()
 	fn_config_key_add(CONFIG_KEY.FSCR,			"fscr",			vk_f4, vk_f11);
 	fn_config_key_add(CONFIG_KEY.MENU_USER,		"menu_user",	ord("C"), vk_control);
 	fn_config_key_add(CONFIG_KEY.MENU_PAUSE,	"menu_pause",	vk_escape);
+		// Graphics
+	window_set_caption(global.config.name);
+	window_set_color(c_black);
+	var i = 0;
+	fn_config_video_res_add(i++, 320, 240);
+	fn_config_video_res_add(i++, 640, 480);
+	fn_config_video_res_add(i++, 960, 720);
+	fn_config_video_res_add(i++, 1280, 960);
 		// Music & Sounds
 	enum CONFIG_AUD_EMTR
 	{
@@ -155,10 +161,6 @@ function fn_config_setup()
 		fn_config_file_save();
 	else
 		fn_config_file_load();
-		// Graphics
-	window_set_caption(global.config.name);
-	window_set_color(c_black);
-	fn_config_video_scale_mod(global.config.video.scale_curr);
 }
 	// File
 function fn_config_file_save()
@@ -167,11 +169,11 @@ function fn_config_file_save()
 	ini_write_string("about", "msg", global.config.file_msg);
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
-	ini_write_real("video", "scale_curr", global.config.video.scale_curr);
+	ini_write_real("video", "res_curr", global.config.video.res_curr);
 	ini_write_real("video", "fscr_act", global.config.video.fscr.act);
 	ini_write_real("video", "vsync_act", global.config.video.vsync.act);
-	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
 	ini_write_real("video", "hideCsr_act", global.config.video.hideCsr.act);
+	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
 	ini_write_real("video", "showFps_act", global.config.video.showFps.act);
 	ini_write_real("video", "showBdr_act", global.config.video.showBdr.act);
 	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
@@ -184,7 +186,7 @@ function fn_config_file_load()
 	ini_open(global.config.file_name);
 	global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 	global.config.lang_hasChosen = ini_read_real("lang", "hasChosen", false);
-	global.config.video.scale_curr = ini_read_real("video", "scale_curr", 1);
+	global.config.video.res_curr = ini_read_real("video", "res_curr", 1);
 	global.config.video.fscr.act = ini_read_real("video", "fscr_act", false);
 	global.config.video.vsync.act = ini_read_real("video", "vsync_act", false);
 	global.config.video.hideCsr.act = ini_read_real("video", "hideCsr_act", true);
@@ -267,11 +269,14 @@ function fn_config_key_lazy()
 		pressed[k] = fn_config_key_pressed(k);
 	}
 }
-	// Video
-function fn_config_video_scale_mod(_new)
+	// Graphics
+function fn_config_video_res_add(_idx, _width, _height)
 {
-	window_set_size((global.config.video.width * global.config.video.scale[global.config.video.scale_curr]), (global.config.video.height * global.config.video.scale[global.config.video.scale_curr]));
-	window_center();
+	global.config.video.res[_idx] =
+	{
+		width : _width,
+		height : _height,
+	}
 }
 	// Music & Sounds
 function fn_config_aud_emtr_add(_idx, _code, _vol = 1, _pitch = 1)

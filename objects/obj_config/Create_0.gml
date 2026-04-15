@@ -2,15 +2,19 @@
 fn_obj_img( , , , , 0);
 fn_obj_depth( , -15000);
 
-// Video/Graphics
+// Graphics
+	// Resolution
+res_curr = undefined;
+res_waitMax = 15;
+res_wait = 0;
 	// Fullscreen
-fscr_act = -1;
+fscr_act = undefined;
 fscr_waitMax = 15;
-fscr_wait = fscr_waitMax;
+fscr_wait = 0;
 	// Vsync
-vsync_act = -1;
+vsync_act = undefined;
 	// Hide Cursor
-hideCsr_act = -1;
+hideCsr_act = undefined;
 
 
 

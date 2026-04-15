@@ -1,6 +1,9 @@
 
 if (is_array(lvl) == true)
 {
+	var _res_width = global.config.video.res[0].width;
+	var _res_height = global.config.video.res[0].height;
+	
 	// Main level
 	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
 	{	
@@ -89,10 +92,10 @@ if (is_array(lvl) == true)
 		var _panel = lvl[l].panel[0];
 		var _panel_xMarg = 32;
 		var _panel_yMarg = 32;
-		_panel.width = round(global.config.video.width - (_panel_xMarg * 2));
-		_panel.height = round(global.config.video.height - (_panel_yMarg * 2));
-		_panel.x = round((global.config.video.width / 2) - (_panel.width / 2));
-		_panel.y = round((global.config.video.height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
+		_panel.width = round(_res_width - (_panel_xMarg * 2));
+		_panel.height = round(_res_height - (_panel_yMarg * 2));
+		_panel.x = round((_res_width / 2) - (_panel.width / 2));
+		_panel.y = round((_res_height / 2) - (_panel.height / 2) + (_panel.title.height / 2));
 		_panel.title.label.text = $"menu_user_main_option_{(l - 2)}";
 		
 		// Options

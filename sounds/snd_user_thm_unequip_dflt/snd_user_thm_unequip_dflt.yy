@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"snd_user_thm_unequip_dflt",
   "parent":{
-    "name":"Default (0)",
-    "path":"folders/User/Themes/Default (0).yy",
+    "name":"Default",
+    "path":"folders/User/Themes/Default.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

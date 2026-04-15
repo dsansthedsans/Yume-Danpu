@@ -33,32 +33,27 @@ function fn_user_setup(_file_curr = undefined)
 	{
 		
 	}
-	
 		// Functions
 	enum USER_FCN
 	{
 		KART
 	}
 	fn_user_fcn_add(USER_FCN.KART, "kart", true);
-	
 		// Themes
 	enum USER_THM
 	{
 		DFLT,	// Default theme
-		//SIMPLE, // Simple theme
 		MADOT,	// Madotsuki theme
 	}
 	fn_user_thm_add(USER_THM.DFLT, "dflt", true, #FFFFFF, #FFFFFF, #595959, #595959, c_black, c_black, 0); // Default theme
-	//fn_user_thm_add(USER_THM.SIMPLE, "simple", true, c_white, c_ltgray, c_gray, c_dkgray, -1, c_black, 0); // Simple theme
 	fn_user_thm_add(USER_THM.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, c_black, , 1, 1); // Madotsuki theme
-	
 		// Save files
 	for (var f = 0; f < global.user.file_lenMax; f++)
 	{
 		global.user.file[f] =
 		{
 			name : $"{global.config.ver}/user_{f}.ini",
-			msg : choose("I wonder why someone would come here. It wouldn't be to cheat, would it?" /*Reference to Telltale's The Walking Dead (2012)*/, "Got bored of walking?", "Simon says turn all the zeros into ones.", "As long as you're having fun, right?", "At least you'll be playing the game.", "Viva la revolución!", "Just do what you gotta do.", "So many numbers... It's like a number world..." /*Reference to Yume Nikki*/, "Don't forget to save changes."),
+			msg : choose("I wonder why someone would come here. It wouldn't be to cheat, would it?" /*Reference to Telltale's The Walking Dead (2012)*/, "Got bored of walking?", "Simon says turn all the zeros into ones.", "As long as you're having fun, right?", "At least you'll be playing the game.", "Viva la revolución!", "Just do what you gotta do.", "So many numbers... It's like a number world..." /*Reference to Yume Nikki*/, "Don't forget to save changes.", "Is the game really that boring...?"),
 		}
 	}
 	if (global.user.file_curr != undefined)
@@ -69,7 +64,6 @@ function fn_user_setup(_file_curr = undefined)
 			fn_user_file_load();
 	}
 }
-
 	// Effects
 function fn_user_eff_add(_idx, _code, _unlocked = false)
 {
@@ -83,7 +77,6 @@ function fn_user_eff_add(_idx, _code, _unlocked = false)
 		icon_img : 0
 	}
 }
-
 	// Functions
 function fn_user_fcn_add(_idx, _code, _unlocked = false)
 {
@@ -104,7 +97,6 @@ function fn_user_fcn_unlock(_idx)
 		
 	//fn_menu_obj_create("unlock", 1, global.user.fcn[_idx].name);
 }
-
 	// Themes
 function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark, _alpha_shadow = 1, _alpha_blurLight = 0.5, _alpha_blurHeavy = 0.75)
 {
@@ -166,13 +158,11 @@ function fn_user_thm_asset(_asset_name_noCode, _code)
 		_asset = asset_get_index($"{_asset_name_noCode}{global.user.thm[0].code}");
 	return _asset;
 }
-
 	// Save files
 function fn_user_file_save()
 {
 	var _file = global.user.file[global.user.file_curr];	
 	ini_open(_file.name);
-	ini_write_string("about", "ver", global.config.ver);
 	ini_write_string("about", "msg", _file.msg);
 	ini_write_string("main", "name", global.user.name);
 	for (var m = 0; m < array_length(global.user.money); m++)
@@ -190,19 +180,16 @@ function fn_user_file_load()
 {
 	var _idx = global.user.file_curr;
 	ini_open(global.user.file[_idx].name);
-	if (ini_read_real("about", "ver", undefined) == global.user.file[_idx].ver)
-	{
-		global.user.name = ini_read_string("main", "name", "Salenis");
-		for (var m = 0; m < 2; m++)
-			global.user.money[m].amt = real(ini_read_string("money", $"amt_{m}", "0"));
-		for (var e = 0; e < array_length(global.user.eff); e++)
-			global.user.eff[e].unlocked = real(ini_read_string("eff", $"unlocked_{e}", "0"));
-		for (var e = 0; e < array_length(global.user.fcn); e++)
-			global.user.fcn[e].unlocked = real(ini_read_string("fcn", $"unlocked_{e}", "0"));
-		for (var e = 0; e < array_length(global.user.thm); e++)
-			global.user.thm[e].unlocked = real(ini_read_string("thm", $"unlocked_{e}", "0"));
-		global.user.thm_curr = real(ini_read_string("thm", "curr", "0"));
-	}
+	global.user.name = ini_read_string("main", "name", "Salenis");
+	for (var m = 0; m < 2; m++)
+		global.user.money[m].amt = real(ini_read_string("money", $"amt_{m}", "0"));
+	for (var e = 0; e < array_length(global.user.eff); e++)
+		global.user.eff[e].unlocked = real(ini_read_string("eff", $"unlocked_{e}", "0"));
+	for (var e = 0; e < array_length(global.user.fcn); e++)
+		global.user.fcn[e].unlocked = real(ini_read_string("fcn", $"unlocked_{e}", "0"));
+	for (var e = 0; e < array_length(global.user.thm); e++)
+		global.user.thm[e].unlocked = real(ini_read_string("thm", $"unlocked_{e}", "0"));
+	global.user.thm_curr = real(ini_read_string("thm", "curr", "0"));
 	ini_close();
 }
 function fn_user_file_erase(_idx)

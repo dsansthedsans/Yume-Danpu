@@ -11,7 +11,7 @@ config_key_autowalk,Autowalk,Autowalk
 config_key_fscr,Fullscreen,Tela Cheia
 config_key_menu_user,Inventory,Inventário
 config_key_menu_pause,Pause,Pausar
-config_video_scale_name,Resolution,Resolução
+config_video_res_name,Resolution,Resolução
 config_video_fscr_name,Fullscreen,Tela Cheia
 config_video_vsync_name,Vsync,Vsync
 config_video_hideCsr_name,Hide Cursor,Esconder Cursor
@@ -35,10 +35,8 @@ user_eff_desc_sal2,Salenis is a political symbol.\nIts texture is horrifying.,O 
 user_fcn_name_kart,Kart,Kart
 user_fcn_desc_kart,The fastest in the West.,O mais rápido do Oeste.
 user_thm_name_dflt,Default,Padrão
-user_thm_name_simple,Simple,Simples
 user_thm_name_madot,Diary,Diário
-user_thm_desc_dflt,The default theme.,O tema padrão.
-user_thm_desc_simple,"A simple, yet elegant, theme.","Um tema simples, mas elegante."
+user_thm_desc_dflt,"The default theme. Simple, yet elegant.","O tema padrão. Simples, mas elegante."
 user_thm_desc_madot,A familiar theme.,Um tema familiar.
 menu_home_main_option_0,Start,Jogar
 menu_home_main_option_1,Settings,Opções

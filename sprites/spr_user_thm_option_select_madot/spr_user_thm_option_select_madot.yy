@@ -45,8 +45,8 @@
   },
   "origin":0,
   "parent":{
-    "name":"Madotsuki (2)",
-    "path":"folders/User/Themes/Madotsuki (2).yy",
+    "name":"Diary",
+    "path":"folders/User/Themes/Diary.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
