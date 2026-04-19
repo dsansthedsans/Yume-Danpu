@@ -79,10 +79,12 @@ if (is_array(lvl) == true)
 		_panel.alpha = 0.75;
 		
 		// Triangle train
-		lvl[l].train[0].x = 0;
-		lvl[l].train[0].y = (_panel_y - fn_spr_height(lvl[l].train[0].spr));
-		lvl[l].train[0].xSpd = -0.25;
-		lvl[l].train[0].alpha = 0.75;
+		var _train = lvl[l].train[0];
+		_train.spr = global.user.thm[global.user.thm_curr].spr.train;
+		_train.x = 0;
+		_train.y = (_panel_y - fn_spr_height(_train.spr));
+		_train.xSpd = -0.25;
+		_train.alpha = 0.75;
 		
 		// Panel (start menu)
 		var _panel_outDist = 8;

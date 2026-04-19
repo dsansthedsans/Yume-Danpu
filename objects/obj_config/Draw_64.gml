@@ -22,13 +22,9 @@ if (global.config.video.showVer.act == true) // Draws Version
 }
 if (global.config.video.showFps.act == true) // Draws FPS
 {
-	var _showFps_text = $"{fps} FPS";
-	var _showFps_width = fn_text_width(_showFps_text);
-	var _showFps_x = (320 - 4 - _showFps_width);
-	var _showFps_y = 2;
-	var _showFps_color = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark];
-	var _showFps_alpha = 0.5;
-	fn_draw_text(_showFps_text, _showFps_x, _showFps_y, _showFps_color[0], _showFps_color[1], _showFps_alpha);
+	var _showFps_txt = $"{fps} FPS";
+	var _showFps_cols = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark];
+	fn_draw_text(_showFps_txt, (320 - 4 - fn_text_width(_showFps_txt)), 2, _showFps_cols, 0.5);
 }
 if (global.config.video.showBdr.act == true) // Draws Border
 {

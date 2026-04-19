@@ -29,7 +29,7 @@ function fn_menu_lvl_add(_idx)
 		option_move :
 		{
 			act : true,
-			snd : global.user.thm[global.user.thm_curr].snd.move,
+			snd : undefined,
 			list : // List type
 			{
 				act : true,
@@ -45,14 +45,14 @@ function fn_menu_lvl_add(_idx)
 		{
 			act : true,
 			key : CONFIG_KEY.CONFIRM,
-			snd : global.user.thm[global.user.thm_curr].snd.confirm
+			snd : undefined,
 		},
 			// Cancellation
 		option_cancel :
 		{
 			act : true,
 			key : [CONFIG_KEY.CANCEL, undefined],
-			snd : global.user.thm[global.user.thm_curr].snd.cancel
+			snd : undefined,
 		}
 	}
 }
@@ -98,23 +98,23 @@ function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _weigh
 }
 
 	// Triangle trains
-function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd = 0, _ySpd = 0, _angle = 0, _alpha = 1)
+function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd = 0, _ySpd = 0, _alpha = 1, _angle = 0)
 {
 	var l = _lvl;
 	var t = _idx;
 	
 	lvl[l].train[t] =
 	{
-		spr : spr_menu_lvl_train,
+		spr : undefined,
 		x : _x,
 		y : _y,
 		xSpd : _xSpd,
 		ySpd : _ySpd,
 		xOfs : 0,
 		yOfs : 0,
-		color : global.user.thm[global.user.thm_curr].color.grayDark,
+		color : undefined,
 		alpha : _alpha,
-		angle : _angle
+		angle : _angle,
 	}
 }
 
@@ -126,7 +126,7 @@ function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _widt
 	
 	lvl[l].panel[p] =
 	{
-		spr : global.user.thm[global.user.thm_curr].spr.panel,
+		spr : undefined,
 		img : 0,
 		x : _x,
 		y : _y,
@@ -143,15 +143,14 @@ function fn_menu_lvl_panel_title_add(_lvl, _idx, _title_label_text = undefined)
 	var p = _idx;
 	lvl[l].panel[p].title =
 	{
-		spr : global.user.thm[global.user.thm_curr].spr.panel_title,
+		spr : undefined,
 		height : (fn_text_height("Salenis") + 4),
 		label :
 		{
 			text : _title_label_text,
 			xMarg : 7,
-			color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark],
-			alpha : 0.5,
-			shadow_alpha : 0,
+			color : undefined,
+			alpha : undefined,
 		}
 	}
 }
@@ -164,9 +163,8 @@ function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 	
 	lvl[l].card[c] =
 	{
-		spr :  global.user.thm[global.user.thm_curr].spr.card,
+		spr : undefined,
 		img : 0,
-		
 		x : _x,
 		y : _y,
 		width : _width,
@@ -175,7 +173,7 @@ function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 }
 
 	// Labels
-function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _color = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight], _xAlign = fa_left, _yAlign = fa_top)
+function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _colors = undefined, _xAlign = fa_left, _yAlign = fa_top)
 {
 	var l = _lvl;
 	var a = _idx;
@@ -185,7 +183,7 @@ function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y
 		text : _text,
 		x : _x,
 		y : _y,
-		color : _color,
+		colors : _colors,
 		xAlign : _xAlign,
 		yAlign : _yAlign,
 		// Icon
@@ -203,7 +201,7 @@ function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 		x : undefined,
 		y : undefined,
 		xGap : undefined,
-		color : c_white,
+		color : undefined,
 		alpha : 1,
 	}
 }
@@ -217,15 +215,12 @@ function fn_menu_lvl_decor_add(_lvl, _idx, _spr = undefined, _img = 0, _x = unde
 {
 	var l = _lvl;
 	var d = _idx;
-	
 	lvl[l].decor[d] =
 	{
 		spr : _spr,
 		img : _img,
-		
 		x : _x,
 		y : _y,
-		
 		color : _color,
 		alpha : _alpha
 	}
@@ -241,18 +236,14 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		text : _text,
 		x : _x,
 		y : _y,
-		color :
-		[
-			[global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark], // Inactive (Unselected)
-			[global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark] // Active (Selected)
-		],
+		colors : undefined,
 		xAlign : fa_left,
 		yAlign : fa_top,
 		// Selection indicator
 		select :
 		{
 			act : _select_act,
-			spr : global.user.thm[global.user.thm_curr].spr.option_select,
+			spr : undefined,
 			img : 0,
 			x : 0,
 			y : 0,
@@ -282,7 +273,6 @@ function fn_menu_lvl_option_getWidthMax(_lvl)
 		_widthMax = max(_widthMax, fn_text_width(textdata(lvl[l].option[o].text)));
 	return _widthMax;
 }
-
 		// Value (the text beside the options in the settings menu, like "Yes", "No" and "100%")
 function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 {
@@ -294,20 +284,19 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 		x : 0,
 		y : 0,
 		xGap : _xGap,
-		color : [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark],
+		colors : undefined,
 		colorVal : 0,
-		colorValTgt : [0 /* Inactive (Not cycling) */, 150 /* Active (Cycling) */],
+		colorValTgts : [0 /* Inactive (Not cycling) */, 150 /* Active (Cycling) */],
 		colorValSpd : 0.2,
-		alpha : [0.5 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
+		alphas : [0.5 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
 		scale : 1,
-		scaleTgt : [1 /* Inactive (Not cycling) */, 1.2 /* Active (Cycling) */],
+		scaleTgts : [1 /* Inactive (Not cycling) */, 1.2 /* Active (Cycling) */],
 		scaleSpd : 0.2,
 		xAlign : fa_center,
 		yAlign : fa_middle,
-		
-		arrow : -1, // Arrows
-	}
 		// Arrows
+		arrow : -1,
+	}
 	for (var a = 0; a < 2; a++)
 	{
 		lvl[l].option[o].value.arrow[a] =
@@ -317,21 +306,20 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			text : ((a == 0) ? "<" : ">"),
 			xGap : 10,
 			xSign : ((a == 0) ? -1 : 1),
-			color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight],
+			colors : undefined,
 			alpha : 0.5,
-			alphaTgt : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
+			alphaTgts : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
 			alphaSpd : 0.1,
 			scale : 1,
-			scaleTgt : [1 /* Inactive (Not cycling) */, 2 /* Active (Cycling) */],
+			scaleTgts : [1 /* Inactive (Not cycling) */, 2 /* Active (Cycling) */],
 			scaleSpd : 0.2,
-			
 			// Movement
 			move :
 			{
 				act : true,
 				xSpd : 1,
 				xOfs : 0,
-				xOfsMAX : 2,
+				xOfsMax : 2,
 				wait : 0,
 				waitMax : 12
 			}
@@ -353,7 +341,6 @@ function fn_menu_lvl_option_value_getWidthMax(_lvl)
 	}
 	return _widthMax;
 }
-
 		// Icon
 function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 {
@@ -366,15 +353,14 @@ function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 		x : 0,
 		y : 0,
 		xGap : 0,
-		color : [c_gray /* Inactive (Unselected) */, c_white /* Active (Selected) */],
-		alpha : [1 /* Inactive (Unselected) */, 1 /* Active (Selected) */]
+		colors : undefined,
+		alphas : [1 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
 	}
 }
 function fn_menu_lvl_option_icon_xGap_getDflt(_lvl, _idx)
 {
 	return (fn_spr_width(lvl[_lvl].option[_idx].icon.spr) + 5)
 }
-
 		// Checkbox
 function fn_menu_lvl_option_check_add(_lvl, _idx)
 {
@@ -405,7 +391,6 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		}
 	}
 }
-
 		// Button
 function fn_menu_lvl_option_button_add(_lvl, _idx)
 {

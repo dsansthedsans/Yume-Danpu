@@ -51,16 +51,17 @@ if (is_array(lvl) == true)
 			
 				if (_option_currOld != lvl[l].option_curr)
 				{
-					_move_snd = lvl[l].option_move.snd;
+					_move_snd = ((lvl[l].option_move.snd != undefined) ? lvl[l].option_move.snd : global.user.thm[global.user.thm_curr].snd.move);
 					event_user(4);
-					fn_aud_play(_move_snd, CONFIG_AUD_EMTR.MENU);
+					if (_move_snd != undefined)
+						fn_aud_play(_move_snd, CONFIG_AUD_EMTR.MENU);
 				}
 			}
 			var o = lvl[l].option_curr;
 			// Confirmation
 			if (lvl[l].option_confirm.act == true && fn_config_key_pressed(lvl[l].option_confirm.key) == true)
 			{
-				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? lvl[l].option_confirm.snd : undefined);
+				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? ((lvl[l].option_confirm.snd != undefined) ? lvl[l].option_confirm.snd : global.user.thm[global.user.thm_curr].snd.confirm) : undefined);
 				event_user(0);
 				if (_confirm_snd != undefined)
 					fn_aud_play(_confirm_snd, CONFIG_AUD_EMTR.MENU);
@@ -71,7 +72,7 @@ if (is_array(lvl) == true)
 			// Cancellation
 			else if (lvl[l].option_cancel.act == true && (fn_config_key_pressed(lvl[l].option_cancel.key[0]) == true || (lvl[l].option_cancel.key[1] != undefined && fn_config_key_pressed(lvl[l].option_cancel.key[1]) == true)))
 			{
-				_cancel_snd = lvl[l].option_cancel.snd;
+				_cancel_snd = ((lvl[l].option_cancel.snd != undefined) ? lvl[l].option_cancel.snd : global.user.thm[global.user.thm_curr].snd.cancel);
 				event_user(1);
 				if (_cancel_snd != undefined)
 					fn_aud_play(_cancel_snd, CONFIG_AUD_EMTR.MENU);
@@ -87,10 +88,10 @@ if (is_array(lvl) == true)
 						event_user(2);
 						if (global.config.access.rdcdMot.act == false)
 						{
-							lvl[l].option[o].value.scale = lvl[l].option[o].value.scaleTgt[true];
-							lvl[l].option[o].value.colorVal = lvl[l].option[o].value.colorValTgt[true];
-							lvl[l].option[o].value.arrow[a].alpha = lvl[l].option[o].value.arrow[a].alphaTgt[true];
-							lvl[l].option[o].value.arrow[a].scale = lvl[l].option[o].value.arrow[a].scaleTgt[true];
+							lvl[l].option[o].value.scale = lvl[l].option[o].value.scaleTgts[true];
+							lvl[l].option[o].value.colorVal = lvl[l].option[o].value.colorValTgts[true];
+							lvl[l].option[o].value.arrow[a].alpha = lvl[l].option[o].value.arrow[a].alphaTgts[true];
+							lvl[l].option[o].value.arrow[a].scale = lvl[l].option[o].value.arrow[a].scaleTgts[true];
 						}
 						fn_aud_play(global.user.thm[global.user.thm_curr].snd.move, CONFIG_AUD_EMTR.MENU, , , 1.5);
 						break;

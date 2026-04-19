@@ -36,8 +36,8 @@ user_fcn_name_kart,Kart,Kart
 user_fcn_desc_kart,The fastest in the West.,O mais rápido do Oeste.
 user_thm_name_dflt,Default,Padrão
 user_thm_name_madot,Diary,Diário
-user_thm_desc_dflt,"The default theme. Simple, yet elegant.","O tema padrão. Simples, mas elegante."
-user_thm_desc_madot,A familiar theme.,Um tema familiar.
+user_thm_desc_dflt,"Simple, yet elegant.","Simples, mas elegante."
+user_thm_desc_madot,,
 menu_home_main_option_0,Start,Jogar
 menu_home_main_option_1,Settings,Opções
 menu_home_main_option_2,Shut down,Desligar

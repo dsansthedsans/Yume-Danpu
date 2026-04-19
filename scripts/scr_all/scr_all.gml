@@ -46,7 +46,7 @@ function fn_obj_depth(_asset = id, _val = -_asset.y)
 
 // Drawing
 	// Text
-function fn_draw_text(_text, _x, _y, _color_0, _color_1, _alpha = 1, _xScale = 1, _yScale = 1, _xAlign = fa_left, _yAlign = fa_top, _shadow_color = global.user.thm[global.user.thm_curr].color.blackDark, _shadow_alpha = 1)
+function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _xScale = 1, _yScale = 1, _xAlign = fa_left, _yAlign = fa_top, _shadow_colors = undefined, _shadow_alpha = 1)
 {
 	var _fnt = global.config.lang[global.config.lang_curr].fnt;
 	if (font_exists(_fnt) == true)
@@ -54,11 +54,9 @@ function fn_draw_text(_text, _x, _y, _color_0, _color_1, _alpha = 1, _xScale = 1
 		draw_set_font(_fnt);
 		draw_set_halign(_xAlign);
 		draw_set_valign(_yAlign);
-		
-		_shadow_alpha = (_alpha * _shadow_alpha * global.user.thm[global.user.thm_curr].alpha.shadow);
-		draw_text_ext_transformed_color((_x + 1), (_y + 1), _text, -1, 640, _xScale, _yScale, 0, _shadow_color, _shadow_color, _shadow_color, _shadow_color, _shadow_alpha);
-		
-		draw_text_ext_transformed_color(_x, _y, _text, -1, 640, _xScale, _yScale, 0, _color_0, _color_0, _color_1, _color_1, _alpha);
+		if (_shadow_colors != undefined && _shadow_alpha > 0)
+			draw_text_ext_transformed_color((_x + 1), (_y + 1), _text, -1, 640, _xScale, _yScale, 0, _shadow_colors[0], _shadow_colors[0], _shadow_colors[1], _shadow_colors[1], (_shadow_alpha * _alpha));
+		draw_text_ext_transformed_color(_x, _y, _text, -1, 640, _xScale, _yScale, 0, _colors[0], _colors[0], _colors[1], _colors[1], _alpha);
 	}
 }
 	// Rectangles
@@ -73,15 +71,12 @@ function fn_draw_circle(_x, _y, _radius, _precision)
 	draw_circle(_x, _y, _radius, false);
 }
 	// Sprites
-function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _xScale = 1, _yScale = _xScale, _angle = 0, _shadow_act = false, _shadow_color = global.user.thm[global.user.thm_curr].color.blackDark)
+function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _xScale = 1, _yScale = _xScale, _angle = 0, _shadow_color = undefined, _shadow_alpha = 0)
 {
 	if (_spr != -1)
 	{
-		if (_shadow_act == true)
-		{
-			var _shadow_alpha = (global.user.thm[global.user.thm_curr].alpha.shadow * _alpha);
-			draw_sprite_ext(_spr, _img, (_x + 1), (_y + 1), _xScale, _yScale, _angle, _shadow_color, _shadow_alpha);
-		}
+		if (_shadow_color != undefined && _shadow_alpha > 0)
+			draw_sprite_ext(_spr, _img, (_x + 1), (_y + 1), _xScale, _yScale, _angle, _shadow_color, (_shadow_alpha * _alpha));
 		draw_sprite_ext(_spr, _img, _x, _y, _xScale, _yScale, _angle, _color, _alpha);
 	}
 	else

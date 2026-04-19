@@ -11,16 +11,13 @@ global.config_dbg =
 	cmd :
 	{
 		key : vk_alt, // Modifier key
-		
 		// Zoom, changes the size of the user's camera
 		zoom_key : [ord("O"), ord("I")],
 		zoom_xDist : 8,
 		zoom_yDist : 6,
-		
 		// Fader, starts a room transition to the specified room
 		fader_key : ord("F"),
 		fader_rm : [rm_menu_dbg, temp_rm_menu_home, rm_nexus],
-		
 		// Reset, restarts the game
 		reset_key : [ord("R"), vk_shift, vk_control]
 	},
@@ -29,4 +26,4 @@ global.config_dbg =
 	logOverdose : false, // Determines if log messages will show excessively and unnecesarily (affects performance)
 }
 if (global.config_dbg.act == true)
-	global.user.file_curr = 0;
+	fn_user_setup(0);

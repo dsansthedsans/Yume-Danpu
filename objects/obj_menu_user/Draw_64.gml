@@ -8,6 +8,7 @@ if (is_array(lvl) == true)
 	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
 	{	
 		var l = LVL_MAIN;
+		lvl[l].rect[0].alpha = global.user.thm[global.user.thm_curr].alpha.blurLight;
 		
 		// Label panel
 		var _panel_x = 16;
@@ -18,7 +19,6 @@ if (is_array(lvl) == true)
 		lvl[l].panel[0].y = _panel_y;
 		lvl[l].panel[0].width = _panel_width;
 		lvl[l].panel[0].height = _panel_height;
-		
 			// User's picture frame decor
 		var _picFrame_spr = global.user.thm[global.user.thm_curr].spr.picFrame;
 		var _picFrame_width = fn_spr_width(_picFrame_spr);
@@ -28,32 +28,27 @@ if (is_array(lvl) == true)
 		lvl[l].decor[0].spr = _picFrame_spr;
 		lvl[l].decor[0].x = _picFrame_x;
 		lvl[l].decor[0].y = _picFrame_y;
-		
 			// User's picture
 		var _pic_spr = lvl[l].decor[1].spr;
 		lvl[l].decor[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_spr_width(_pic_spr) / 2));
 		lvl[l].decor[1].y = (_picFrame_y + round(_picFrame_height / 2) + round(fn_spr_height(_pic_spr) / 2));
-		
 			// User's name
-		var _name_text = global.user.name;
-		var _name_x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_name_text) / 2));
-		var _name_y = (_picFrame_y + _picFrame_height + 2);
-		lvl[l].label[0].text = _name_text;
-		lvl[l].label[0].x = _name_x;
-		lvl[l].label[0].y = _name_y;
-		lvl[l].label[0].color = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark];
-		
+		var _name = lvl[l].label[0];
+		_name.text = global.user.name;
+		_name.x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_name.text) / 2));
+		_name.y = (_picFrame_y + _picFrame_height + 2);
 			// User's money
-		var _money_ccy_text = global.user.money.ccy[global.user.asleep];
-		var _money_amt_text = global.user.money.amt[global.user.asleep];
-		lvl[l].label[1].text = _money_ccy_text;
-		lvl[l].label[2].text = _money_amt_text;
-		lvl[l].label[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_money_amt_text) / 2));
-		lvl[l].label[1].y = (_name_y + fn_text_height(_name_text) + round(((_panel_y + _panel_height - 16 - 4) - (_name_y + fn_text_height(_name_text))) / 2));
-		lvl[l].label[1].color = [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark];
-		lvl[l].label[2].x = (lvl[l].label[1].x + fn_text_width(_money_ccy_text));
-		lvl[l].label[2].y = lvl[l].label[1].y;
-		lvl[l].label[1].icon.spr = spr_menu_user_main_label_icon;
+		var _money_ccy = lvl[l].label[1];
+		var _money_amt = lvl[l].label[2];
+		_money_ccy.text = global.user.money.ccy[global.user.asleep];
+		_money_amt.text = global.user.money.amt[global.user.asleep];
+		_money_ccy.x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_money_amt.text) / 2));
+		_money_ccy.y = (_name.y + fn_text_height(_name.text) + round(((_panel_y + _panel_height - 16 - 4) - (_name.y + fn_text_height(_name.text))) / 2));
+		_money_ccy.colors = [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark];
+		_money_ccy.icon.spr = spr_menu_user_main_label_icon;
+		_money_ccy.icon.color = global.user.thm[global.user.thm_curr].color.whiteLight;
+		_money_amt.x = (_money_ccy.x + fn_text_width(_money_ccy.text));
+		_money_amt.y = _money_ccy.y;
 		
 		// Option panel
 		var _panel_x = lvl[l].panel[0].x;
@@ -87,6 +82,7 @@ if (is_array(lvl) == true)
 		else if (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
 			l = lvl_fader.next.lvl;
 		var _item = lvl[l].data[0];
+			lvl[l].rect[0].alpha = global.user.thm[global.user.thm_curr].alpha.blurHeavy;
 		
 		// Panel
 		var _panel = lvl[l].panel[0];
@@ -118,7 +114,7 @@ if (is_array(lvl) == true)
 		_label.yAlign = fa_bottom;
 		_label.x = (_panel.x + 16);
 		_label.y = (_panel.y + _panel.height - 16);
-		_label.color = [merge_color(global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.grayLight, 0.65), merge_color(global.user.thm[global.user.thm_curr].color.whiteDark, global.user.thm[global.user.thm_curr].color.grayDark, 0.65)];
+		_label.colors = [merge_color(global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.grayLight, 0.65), merge_color(global.user.thm[global.user.thm_curr].color.whiteDark, global.user.thm[global.user.thm_curr].color.grayDark, 0.65)];
 	}
 }
 event_inherited();

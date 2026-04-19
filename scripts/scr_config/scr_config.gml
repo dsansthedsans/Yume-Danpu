@@ -216,7 +216,6 @@ function fn_config_lang_mod(_new)
 {
 	global.config.lang_curr = _new;
 	fn_config_file_save();
-	fn_user_setup();
 }
 function textdata(_key)
 {
@@ -285,7 +284,6 @@ function fn_config_aud_emtr_add(_idx, _code, _vol = 1, _pitch = 1)
 	{
 		name : $"config_aud_emtr_{_code}",
 		code : _code,
-		
 		id : audio_emitter_create(),
 		bus : audio_bus_create(),
 		vol : _vol,

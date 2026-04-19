@@ -45,9 +45,12 @@ function fn_user_setup(_file_curr = undefined)
 		DFLT,	// Default theme
 		MADOT,	// Madotsuki theme
 	}
-	fn_user_thm_add(USER_THM.DFLT, "dflt", true, #FFFFFF, #FFFFFF, #595959, #595959, c_black, c_black, 0); // Default theme
-	fn_user_thm_add(USER_THM.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, c_black, , 1, 1); // Madotsuki theme
-		// Save files
+	fn_user_thm_add(USER_THM.DFLT, "dflt", true, #FFFFFF, #FFFFFF, #595959, #595959, c_black, c_black); // Default theme
+	global.user.thm[USER_THM.DFLT].alpha.shadow = 0;
+	global.user.thm[USER_THM.DFLT].alpha.panel_title_label = 0.5;
+	fn_user_thm_add(USER_THM.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, #290831); // Madotsuki theme
+	
+	// Save files
 	for (var f = 0; f < global.user.file_lenMax; f++)
 	{
 		global.user.file[f] =
@@ -98,7 +101,7 @@ function fn_user_fcn_unlock(_idx)
 	//fn_menu_obj_create("unlock", 1, global.user.fcn[_idx].name);
 }
 	// Themes
-function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark, _alpha_shadow = 1, _alpha_blurLight = 0.5, _alpha_blurHeavy = 0.75)
+function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark)
 {
 	global.user.thm[_idx] =
 	{
@@ -121,13 +124,15 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 		// Alpha
 		alpha :
 		{
-			shadow: _alpha_shadow,
-			blurLight : _alpha_blurLight, // Alpha for lightly dimmed background
-			blurHeavy : _alpha_blurHeavy // Alpha for heavily dimmed background
+			shadow: 1,
+			blurLight : 0.5, // Alpha for lightly dimmed background
+			blurHeavy : 0.75, // Alpha for heavily dimmed background
+			panel_title_label : 1,
 		},
 		// Sprites
 		spr :
 		{
+			train : fn_user_thm_asset("spr_user_thm_train_", _code),
 			panel : fn_user_thm_asset("spr_user_thm_panel_", _code),
 			panel_title : fn_user_thm_asset("spr_user_thm_panel_title_", _code),
 			card : fn_user_thm_asset("spr_user_thm_card_", _code),
@@ -153,7 +158,9 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 }
 function fn_user_thm_asset(_asset_name_noCode, _code)
 {
-	var _asset = asset_get_index($"{_asset_name_noCode}{_code}");
+	var _asset_name = $"{_asset_name_noCode}{_code}";
+	fn_log(_asset_name);
+	var _asset = asset_get_index(_asset_name);
 	if (_asset == -1)
 		_asset = asset_get_index($"{_asset_name_noCode}{global.user.thm[0].code}");
 	return _asset;
@@ -165,15 +172,15 @@ function fn_user_file_save()
 	ini_open(_file.name);
 	ini_write_string("about", "msg", _file.msg);
 	ini_write_string("main", "name", global.user.name);
-	for (var m = 0; m < array_length(global.user.money); m++)
-		ini_write_string("money", $"amt_{m}", global.user.money[m].amt);
+	for (var m = 0; m < array_length(global.user.money.amt); m++)
+		ini_write_string("money", $"amt_{m}", global.user.money.amt[m]);
 	for (var e = 0; e < array_length(global.user.eff); e++)
 		ini_write_string("eff", $"unlocked_{e}", global.user.eff[e].unlocked);
-	for (var e = 0; e < array_length(global.user.fcn); e++)
-		ini_write_string("fcn", $"unlocked_{e}", global.user.fcn[e].unlocked);
+	for (var f = 0; f < array_length(global.user.fcn); f++)
+		ini_write_string("fcn", $"unlocked_{e}", global.user.fcn[f].unlocked);
+	for (var t = 0; t < array_length(global.user.thm); t++)
+		ini_write_string("thm", $"unlocked_{t}", global.user.thm[t].unlocked);
 	ini_write_string("thm", "curr", global.user.thm_curr);
-	for (var e = 0; e < array_length(global.user.thm); e++)
-		ini_write_string("thm", $"unlocked_{e}", global.user.thm[e].unlocked);
 	ini_close();
 }
 function fn_user_file_load()
@@ -181,8 +188,8 @@ function fn_user_file_load()
 	var _idx = global.user.file_curr;
 	ini_open(global.user.file[_idx].name);
 	global.user.name = ini_read_string("main", "name", "Salenis");
-	for (var m = 0; m < 2; m++)
-		global.user.money[m].amt = real(ini_read_string("money", $"amt_{m}", "0"));
+	for (var m = 0; m < array_length(global.user.money.amt); m++)
+		global.user.money.amt[m] = real(ini_read_string("money", $"amt_{m}", "0"));
 	for (var e = 0; e < array_length(global.user.eff); e++)
 		global.user.eff[e].unlocked = real(ini_read_string("eff", $"unlocked_{e}", "0"));
 	for (var e = 0; e < array_length(global.user.fcn); e++)
