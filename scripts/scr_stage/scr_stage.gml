@@ -3,33 +3,35 @@
 
 function fn_stage_evCreate()
 {
-	if (room == rm_condo_apt) // Eleanor's Apartment
-	{
+	/* Not asleep */
+	// Eleanor's Apartment
+	if (room == rm_condo_apt)
 		global.user.asleep = false;
-	}
-	else if (room == rm_nexus) // Nexus
+	
+	/* Asleep */
+	// Nexus
+	else if (room == rm_nexus)
 	{
 		global.user.asleep = true;
-		
 		cam.lock.x = 0;
 		cam.lock.y = 0;
-		fn_stage_bg_sky_add(0, temp_spr_stage_bg_sky_nexus, make_color_hsv(color_get_hue(#07070E), color_get_saturation(#07070E), 50), , 30);
+		fn_stage_bg_sky_add(0, temp_spr_stage_bg_sky_nexus, , make_color_hsv(color_get_hue(#07070E), color_get_saturation(#07070E), 50), , 30);
 		loop.xAct = true;
 		loop.yAct = true;
 	}
-	else if (room == rm_macaco) // Macacolandia
+	// Macacolandia
+	else if (room == rm_macaco)
 	{
 		global.user.asleep = true;
-		
-		fn_stage_bg_sky_add(0, temp_spr_rmCtrl_bg_sky_macaco, , 0.25, 270, 270);
-		fn_stage_bg_clouds_add(1, temp_spr_rmCtrl_bg_clouds_macaco, 0.65, 0.75, 0.35, , , 90, 90); 
+		fn_stage_bg_sky_add(0, temp_spr_rmCtrl_bg_sky_macaco, , , 0.25, 270, 270);
+		fn_stage_bg_clouds_add(1, temp_spr_rmCtrl_bg_clouds_macaco, , 0.65, 0.75, 0.35, , , 90, 90); 
 		loop.xAct = true;
 		loop.yAct = true;
 	}
-	else if (room == rm_dbgwrld) // Debug World
+	// Debug World
+	else if (room == rm_dbgwrld)
 	{
 		global.user.asleep = true;
-		
 		var _sky_spr = -1;
 		var _clouds_spr = -1;
 		for (var s = 0; s < 99; s++)
@@ -45,170 +47,174 @@ function fn_stage_evCreate()
 				break;
 			}
 		}
-		fn_stage_bg_sky_add(0, _sky_spr, , 0.25);
-		bg[0].sky.img = (sprite_get_number(bg[0].sky.spr) - 1);
-		fn_stage_bg_clouds_add(1, _clouds_spr, , , 0.5, 160, 120);
-		bg[1].clouds.img = (sprite_get_number(bg[1].clouds.spr) - 1);
+		fn_stage_bg_sky_add(0, _sky_spr, (sprite_get_number(bg[0].sky.sprite) - 1), , 0.25);
+		fn_stage_bg_clouds_add(1, _clouds_spr, (sprite_get_number(bg[1].clouds.sprite) - 1), , , 0.5, 160, 120);
 		loop.xAct = true;
 		loop.yAct = true;
 	}
 }
 function fn_stage_evStep()
 {
-	if (room == temp_rm_menu_home) // Main Menu
+	/* Menus */
+	// Main Menu
+	if (room == temp_rm_menu_home)
 	{
 		if (global.config.lang_hasChosen == true && fn_obj_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
-			fn_stage_mus_add(0, mus_menu_home, , 1);
+			fn_stage_music_add(0, mus_menu_home);
 	}
-	else if (room == rm_nexus) // Nexus
-	{
-		fn_stage_mus_add(0, mus_nexus);
-	}
-	else if (room == rm_macaco) // Macacolandia
-	{
-		fn_stage_mus_add(0, mus_macaco);
-	}
-	else if (room == rm_dbgwrld) // Debug World
-	{
-		fn_stage_mus_add(0, mus_dbgwrld);
-	}
+	
+	/* Asleep */
+	// Nexus
+	else if (room == rm_nexus)
+		fn_stage_music_add(0, mus_nexus);
+	// Macacolandia
+	else if (room == rm_macaco)
+		fn_stage_music_add(0, mus_macaco);
+	// Debug World
+	else if (room == rm_dbgwrld)
+		fn_stage_music_add(0, mus_dbgwrld);
 	
 	// Resets all music if the transition is active
 	if (fn_obj_exists(obj_fader) == true)
 	{
-		for (var i = 0; i < mus_lenMax; i++)
-			fn_stage_mus_add(i, -1);
+		for (var i = 0; i < music_lengthMax; i++)
+			fn_stage_music_add(i, undefined);
 	}
 }
 
-	// Music
-function fn_stage_mus_add(_idx, _asset, _emtr = CONFIG_AUD_EMTR.MUS, _pch = 1)
+/* Music */
+function fn_stage_music_add(_index, _asset, _emitter = CONFIG_AUD_EMITTER.MUS, _pitch = 1)
 {
-	var m = _idx;
-	
-	mus[m].asset = _asset;
-	mus[m].emtr = _emtr;
-	mus[m].pch = _pch;
+	music[_index].asset = _asset;
+	music[_index].emitter = _emitter;
+	music[_index].pitch = _pitch;
 }
 
-	// Background
-function fn_stage_bg_clouds_add(_idx, _spr, _xSc = 1, _ySc = 1, _alp = 1, _loop_xDist = 640, _loop_yDist = 480, _move_xDurInSeconds = 60, _move_yDurInSeconds = _move_xDurInSeconds)
+/* Background */
+// Clouds
+function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _xScale = 1, _yScale = 1, _alpha = 1, _loop_xDist = 640, _loop_yDist = 480, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
 {
-	bg[_idx] = fn_obj_create(obj_stage_bg_clouds);
-	with (bg[_idx])
+	bg[_index] = fn_obj_create(obj_stage_bg_clouds);
+	with (bg[_index])
 	{
 		fn_obj_img( , , , , 0)
-		fn_obj_depth( , (layer_get_depth("Background") - 1 - _idx));
+		fn_obj_depth( , (layer_get_depth("Background") - 1 - _index));
 		
-		
-		// Cloud background
 		clouds =
 		{
-			spr : _spr,
-			imgSpd : 0,
-			img : 0,
-			
+			sprite : _sprite,
+			image : _image,
+			imageSpeed : 0,
 			x : 0,
 			y : 0,
-			xOfs : 0,
-			yOfs : 0,
-			xSc : _xSc,
-			ySc : _ySc,
+			xOffset : 0,
+			yOffset : 0,
+			xScale : _xScale,
+			yScale : _yScale,
+			color : c_white,
+			alpha : _alpha,
+			angle : 0,
 			
-			col : c_white,
-			alp : _alp,
-			ang : 0,
-			
-			
-			// Loop
+			/* Looping */
 			loop :
 			{
+				// Horizontal looping
 				xDist : _loop_xDist,
-				xLenOUT : 0, // (outside the room's limits)
-				xLen : 0,
-				
+				xLength : undefined,
+				xLength_outsideRoom : undefined,
+				// Vertical looping
 				yDist : _loop_yDist,
-				yLenOUT : 0, // (outside the room's limits)
-				yLen : 0,
+				yLength : undefined,
+				yLength_outsideRoom : undefined,
 				
-				
-				// Movement
+				/* Movement */
 				move :
 				{
+					// Horizontal movement
 					xSign : choose(-1, 1),
-					xDur : (_move_xDurInSeconds * 60),
-					
+					xTime : (_move_xTime_inSeconds * 60),
+					// Vertical movement
 					ySign : choose(-1, 1),
-					yDur : (_move_yDurInSeconds * 60)
-				}
+					yTime : (_move_yTime_inSeconds * 60),
+				},
 			},
 		}
 		
-			// Loop
-		clouds.loop.xLenOUT = (ceil(320 / clouds.loop.xDist) * 2);
-		clouds.loop.xLen = (clouds.loop.xLenOUT + ceil(room_width / clouds.loop.xDist) + clouds.loop.xLenOUT);
-		
-		clouds.loop.yLenOUT = (ceil(320 / clouds.loop.yDist) * 2);
-		clouds.loop.yLen = (clouds.loop.yLenOUT + ceil(room_width / clouds.loop.yDist) + clouds.loop.yLenOUT);
+		/* Looping */
+		// Horizontal looping
+		clouds.loop.xLength_outsideRoom = (ceil(320 / clouds.loop.xDist) * 2);
+		clouds.loop.xLength = (clouds.loop.xLength_outsideRoom + ceil(room_width / clouds.loop.xDist) + clouds.loop.xLength_outsideRoom);
+		// Vertical looping
+		clouds.loop.yLength_outsideRoom = (ceil(320 / clouds.loop.yDist) * 2);
+		clouds.loop.yLength = (clouds.loop.yLength_outsideRoom + ceil(room_width / clouds.loop.yDist) + clouds.loop.yLength_outsideRoom);
 	}
 }
-function fn_stage_bg_sky_add(_idx, _spr, _col = c_white, _alp = 1, _move_xDurInSeconds = 60, _move_yDurInSeconds = _move_xDurInSeconds)
+// Sky
+function fn_stage_bg_sky_add(_index, _sprite, _image = 0, _color = c_white, _alpha = 1, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
 {
-	bg[_idx] = fn_obj_create(obj_stage_bg_sky);
-	with (bg[_idx])
+	bg[_index] = fn_obj_create(obj_stage_bg_sky);
+	with (bg[_index])
 	{
 		fn_obj_img( , , , , 0)
-		fn_obj_depth( , (layer_get_depth("Background") - 1 - _idx));
+		fn_obj_depth( , (layer_get_depth("Background") - 1 - _index));
 		
-		var _sprOrig = _spr;
-		var _wOrig = fn_spr_width(_sprOrig);
-		var _hOrig = fn_spr_height(_sprOrig);
-		_spr = sprite_duplicate(_spr);
+		var _spriteOrig = _sprite;
+		var _widthOrig = fn_spr_width(_spriteOrig);
+		var _heightOrig = fn_spr_height(_spriteOrig);
+		_sprite = sprite_duplicate(_sprite);
 		var _slice = sprite_nineslice_create();
 		_slice.enabled = true;
 		_slice.tilemode[nineslice_centre] = nineslice_repeat;
-		sprite_set_nineslice(_spr, _slice);
+		sprite_set_nineslice(_sprite, _slice);
 		
 		sky =
 		{
-			spr : _spr,
-			imgSpd : 0,
-			img : 0,
+			sprite : _sprite,
+			image : _image,
+			imageSpeed : 0,
 			x : 0,
 			y : 0,
-			xOfs : 0,
-			yOfs : 0,
-			w : (_wOrig * ceil(room_width / _wOrig)),
-			h : (_hOrig * ceil(room_height / _hOrig)),
-			col : _col,
-			alp : _alp,
-			ang : 0,
+			xOffset : 0,
+			yOffset : 0,
+			width : (_widthOrig * ceil(room_width / _widthOrig)),
+			height : (_heightOrig * ceil(room_height / _heightOrig)),
+			color : _color,
+			alpha : _alpha,
+			angle : 0,
 			
-			// Loop
+			/* Looping */
 			loop :
 			{
-				xLenOUT : 0, // (outside the room's limits)
-				xLen : 0,
-				yLenOUT : 0, // (outside the room's limits)
-				yLen : 0,
+				// Horizontal looping
+				xDist : undefined,
+				xLength : undefined,
+				xLength_outsideRoom : undefined,
+				// Vertical looping
+				xDist : undefined,
+				yLength : undefined,
+				yLength_outsideRoom : undefined,
 				
-				// Movement
+				/* Movement */
 				move :
 				{
+					// Horizontal movement
 					xSign : choose(-1, 1),
-					xDur : (_move_xDurInSeconds * 60),
+					xTime : (_move_xTime_inSeconds * 60),
+					// Vertical movement
 					ySign : choose(-1, 1),
-					yDur : (_move_yDurInSeconds * 60)
+					yTime : (_move_yTime_inSeconds * 60)
 				}
 			}
 		}
 		
-			// Loop
-		sky.loop.xDist = sky.w;
-		sky.loop.xLenOUT = (ceil(320 / sky.loop.xDist) * 2);
-		sky.loop.xLen = (sky.loop.xLenOUT + ceil(room_width / sky.loop.xDist) + sky.loop.xLenOUT);
-		sky.loop.yDist = sky.h;
-		sky.loop.yLenOUT = (ceil(320 / sky.loop.yDist) * 2);
-		sky.loop.yLen = (sky.loop.yLenOUT + ceil(room_width / sky.loop.yDist) + sky.loop.yLenOUT);
+		/* Looping */
+		// Horizontal looping
+		sky.loop.xDist = sky.width;
+		sky.loop.xLength_outsideRoom = (ceil(320 / sky.loop.xDist) * 2);
+		sky.loop.xLength = (sky.loop.xLength_outsideRoom + ceil(room_width / sky.loop.xDist) + sky.loop.xLength_outsideRoom);
+		// Vertical looping
+		sky.loop.yDist = sky.height;
+		sky.loop.yLength_outsideRoom = (ceil(320 / sky.loop.yDist) * 2);
+		sky.loop.yLength = (sky.loop.yLength_outsideRoom + ceil(room_width / sky.loop.yDist) + sky.loop.yLength_outsideRoom);
 	}
 }

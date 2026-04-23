@@ -81,13 +81,13 @@ if (is_array(lvl) == true)
 			}
 			else if (l == LVL_AUD)
 			{
-				for (var o = 0; o < array_length(global.config.aud.emtr); o++)
+				for (var o = 0; o < array_length(global.config.aud.emitter); o++)
 				{
-					var _emtr_vol = global.config.aud.emtr[o].vol;
-					_opt[o].text = global.config.aud.emtr[o].name;
-					_opt[o].value.text = $"{round(_emtr_vol * 100)}%";
-					_opt[o].value.arrow[0].act = ((_emtr_vol > 0) ? true : false);
-					_opt[o].value.arrow[1].act = ((_emtr_vol < 1) ? true : false);
+					var _emitter_vol = global.config.aud.emitter[o].vol;
+					_opt[o].text = global.config.aud.emitter[o].name;
+					_opt[o].value.text = $"{round(_emitter_vol * 100)}%";
+					_opt[o].value.arrow[0].act = ((_emitter_vol > 0) ? true : false);
+					_opt[o].value.arrow[1].act = ((_emitter_vol < 1) ? true : false);
 				}
 			}
 			else if (l == LVL_ACCESS)

@@ -19,9 +19,9 @@ function fn_prop_evCreate()
 			talk.act = true;
 			talk.type.door.act = true;
 			talk.type.door.open.snd_asset = snd_prop_talk_door_open;
-			talk.type.door.open.snd_emtr = CONFIG_AUD_EMTR.PROP;
+			talk.type.door.open.snd_emitter = CONFIG_AUD_EMITTER.PROP;
 			talk.type.door.close.snd_asset = snd_prop_talk_door_close;
-			talk.type.door.close.snd_emtr = CONFIG_AUD_EMTR.PROP;
+			talk.type.door.close.snd_emitter = CONFIG_AUD_EMITTER.PROP;
 		break;
 		
 		

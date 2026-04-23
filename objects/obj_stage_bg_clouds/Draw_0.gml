@@ -3,24 +3,22 @@ var _loop = clouds.loop;
 var _move = clouds.loop.move;
 
 // Movement
-if (_move.xDur > 0 && _move.yDur > 0 && global.config.access.rdcdMot.act == false)
+if (_move.xTime > 0 && _move.yTime > 0)
 {
-	clouds.xOfs += ((_loop.xDist * _move.xSign) / _move.xDur);
-	if (abs(clouds.x + clouds.xOfs) >= _loop.xDist)
-		clouds.xOfs -= (_loop.xDist * _move.xSign);
-	
-	clouds.yOfs += ((_loop.yDist * _move.ySign) / _move.yDur);
-	if (abs(clouds.y + clouds.yOfs) >= _loop.yDist)
-		clouds.yOfs -= (_loop.yDist * _move.ySign);
+	clouds.xOffset += ((_loop.xDist * _move.xSign) / _move.xTime);
+	if (abs(clouds.x + clouds.xOffset) >= _loop.xDist)
+		clouds.xOffset -= (_loop.xDist * _move.xSign);
+	clouds.yOffset += ((_loop.yDist * _move.ySign) / _move.yTime);
+	if (abs(clouds.y + clouds.yOffset) >= _loop.yDist)
+		clouds.yOffset -= (_loop.yDist * _move.ySign);
 }
-
-// Draws the cloud background
-for (var w = 0; w < _loop.xLen; w++)
+// Drawings
+for (var w = 0; w < _loop.xLength; w++)
 {
-	for (var h = 0; h < _loop.yLen; h++)
+	for (var h = 0; h < _loop.yLength; h++)
 	{
-		var _loop_xAdd = (_loop.xDist * (w - _loop.xLenOUT));
-		var _loop_yAdd = (_loop.yDist * (h - _loop.yLenOUT));
-		fn_draw_spr(clouds.spr, clouds.img, (clouds.x + clouds.xOfs + _loop_xAdd), (clouds.y + clouds.yOfs + _loop_yAdd), clouds.col, clouds.alp, clouds.xSc, clouds.ySc, clouds.ang, false);
+		var _loop_xAdd = (_loop.xDist * (w - _loop.xLength_outsideRoom));
+		var _loop_yAdd = (_loop.yDist * (h - _loop.yLength_outsideRoom));
+		fn_draw_spr(clouds.sprite, clouds.image, (clouds.x + (clouds.xOffset * (global.config.access.rdcdMot.act == false)) + _loop_xAdd), (clouds.y + (clouds.yOffset * (global.config.access.rdcdMot.act == false)) + _loop_yAdd), clouds.color, clouds.alpha, clouds.xScale, clouds.yScale, clouds.angle);
 	}
 }

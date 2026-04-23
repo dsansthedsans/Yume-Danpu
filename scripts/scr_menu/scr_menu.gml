@@ -84,15 +84,15 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 }
 
 	// Rectangles
-function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _weight = undefined, _height = undefined, _color = c_black, _alpha = 1)
+function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined, _colors = [c_black, c_black, c_black, c_black], _alpha = 1)
 {
 	lvl[_lvl].rect[_idx] =
 	{
 		x : _x,
 		y : _y,
-		weight : _weight,
+		width : _width,
 		height : _height,
-		color : _color,
+		colors : _colors,
 		alpha : _alpha,
 	}
 }
@@ -110,8 +110,8 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd
 		y : _y,
 		xSpd : _xSpd,
 		ySpd : _ySpd,
-		xOfs : 0,
-		yOfs : 0,
+		xOffset : 0,
+		yOffset : 0,
 		color : undefined,
 		alpha : _alpha,
 		angle : _angle,
@@ -318,8 +318,8 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			{
 				act : true,
 				xSpd : 1,
-				xOfs : 0,
-				xOfsMax : 2,
+				xOffset : 0,
+				xOffsetMax : 2,
 				wait : 0,
 				waitMax : 12
 			}

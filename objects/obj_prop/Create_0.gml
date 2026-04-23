@@ -10,8 +10,8 @@ myself =
 	imgSpd : 0,
 	x : x,
 	y : y,
-	xOfs : 0,
-	yOfs : 0,
+	xOffset : 0,
+	yOffset : 0,
 	xSc : image_xscale,
 	ySc : image_yscale,
 	ang : image_angle,
@@ -44,7 +44,7 @@ talk =
 			dur_curr : 0,
 			
 			aud_asset : [-1],
-			aud_emtr : CONFIG_AUD_EMTR.PROP,
+			aud_emitter : CONFIG_AUD_EMITTER.PROP,
 			aud_idx : -1
 		},
 		// Door type (starts a room transition)
@@ -56,12 +56,12 @@ talk =
 				imgSpd : 0.5,
 				
 				snd_asset : -1,
-				snd_emtr : -1
+				snd_emitter : -1
 			},	
 			close :
 			{
 				snd_asset : -1,
-				snd_emtr : -1
+				snd_emitter : -1
 			}
 		},
 		// Gift type (unlocks an effect, item or a theme)
@@ -101,7 +101,7 @@ noise =
 	aud :
 	{
 		asset : -1,
-		emtr : -1,
+		emitter : -1,
 		loops : true,
 		vol : 0,
 		id : -1,

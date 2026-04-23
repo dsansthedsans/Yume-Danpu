@@ -4,66 +4,72 @@
 
 function fn_fader_evCreate()
 {
-	type.fade.iris.x = (src.obj.x + (src.obj_id.sprite_width / 2));
-	type.fade.iris.y = (src.obj.y - (src.obj_id.sprite_height / 4));
-	type.fade.iris.snd_asset = snd_fader_portal;
-	type.fade.iris.snd_emtr = CONFIG_AUD_EMTR.PROP;
-	
-	switch (src.obj)
+	switch (source.obj)
 	{
-		// Menus
+		/* Config */
+		// Debug
+		case obj_config_dbg:
+			type.fade.act = true;
+			break;
+		/* Menus */
 		case obj_menu_home:
-			tgt.rm = rm_condo_apt;
+			target.rm = rm_condo_apt;
 			type.fade.act = true;
-		break;
-		
-		// Props
-		case obj_prop_condo_apt_bed: // Bed in Eleanor's Apartment
-			tgt.rm = rm_nexus;
+			break;
+		/* Props */
+		// Bed in Eleanor's Apartment
+		case obj_prop_condo_apt_bed:
+			target.rm = rm_nexus;
 			type.fade.act = true;
-		break;
-		case obj_prop_macaco_door: // Door of Macacolandia
+			break;
+		// Door of Macacolandia
+		case obj_prop_macaco_door:
 			type.fade.act = true;
-			if (src.rm == rm_nexus)
+			if (source.rm == rm_nexus)
 			{
-				tgt.rm = rm_macaco;
+				target.rm = rm_macaco;
 				type.fade.iris.act = true;
 			}
-			else if (src.rm == rm_macaco)
+			else if (source.rm == rm_macaco)
 			{
-				tgt.rm = rm_nexus;
-				tgt.user.x = 160;
-				tgt.user.y = 112;
+				target.rm = rm_nexus;
+				target.user.x = 160;
+				target.user.y = 112;
 			}
-		break;
-		case obj_prop_dbgwrld_door: // Door of Debug World
+			break;
+		// Door of Debug World
+		case obj_prop_dbgwrld_door:
 			type.fade.act = true;
-			if (src.rm == rm_nexus)
+			if (source.rm == rm_nexus)
 			{
-				tgt.rm = rm_dbgwrld;
+				target.rm = rm_dbgwrld;
 				type.fade.iris.act = true;
 			}
-			else if (src.rm == rm_dbgwrld)
+			else if (source.rm == rm_dbgwrld)
 			{
-				tgt.rm = rm_nexus;
-				tgt.user.x = 272;
-				tgt.user.y = 224;
+				target.rm = rm_nexus;
+				target.user.x = 272;
+				target.user.y = 224;
 			}
-		break;
+			break;
 	}
 }
 
-function fn_fader_obj_create(_tgt_rm = -1)
+function fn_fader_obj_create(_target_rm = undefined)
 {
-	fader = fn_obj_create(obj_fader);
-	fader.src.rm = room;
-	fader.src.obj = object_index;
-	fader.src.obj_id = id;
-	if (_tgt_rm != -1)
-	{
-		fader.type.fade.act = true;
-		fader.tgt.rm = _tgt_rm;
-	}
-	with (fader)
-		fn_fader_evCreate();
+	fader_obj = fn_obj_create(obj_fader, , , {source : {rm : room, obj : object_index, objId : id}});
+	if (_target_rm != undefined)
+		fader_obj.target.rm = _target_rm;
+	
+	//fader = fn_obj_create(obj_fader);
+	//fader.source.rm = room;
+	//fader.source.obj = object_index;
+	//fader.source.obj_id = id;
+	//if (_tgt_rm != -1)
+	//{
+	//	fader.type.fade.act = true;
+	//	fader.target.rm = _tgt_rm;
+	//}
+	//with (fader)
+	//	fn_fader_evCreate();
 }

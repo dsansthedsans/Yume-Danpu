@@ -7,6 +7,7 @@ function fn_user_setup(_file_curr = undefined)
 	{
 		name : "Eleanor",
 		asleep : false,
+		
 		// Money
 		money :
 		{
@@ -25,7 +26,7 @@ function fn_user_setup(_file_curr = undefined)
 		// Save files
 		file : undefined,
 		file_curr : _file_curr, // Determines which save file is currently active (undefined == none)
-		file_lenMax : 3,
+		file_lengthMax : 3,
 	}
 	
 		// Effects
@@ -51,12 +52,12 @@ function fn_user_setup(_file_curr = undefined)
 	fn_user_thm_add(USER_THM.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, #290831); // Madotsuki theme
 	
 	// Save files
-	for (var f = 0; f < global.user.file_lenMax; f++)
+	for (var f = 0; f < global.user.file_lengthMax; f++)
 	{
 		global.user.file[f] =
 		{
 			name : $"{global.config.ver}/user_{f}.ini",
-			msg : choose("I wonder why someone would come here. It wouldn't be to cheat, would it?" /*Reference to Telltale's The Walking Dead (2012)*/, "Got bored of walking?", "Simon says turn all the zeros into ones.", "As long as you're having fun, right?", "At least you'll be playing the game.", "Viva la revolución!", "Just do what you gotta do.", "So many numbers... It's like a number world..." /*Reference to Yume Nikki*/, "Don't forget to save changes.", "Is the game really that boring...?"),
+			msg : choose("I wonder why someone would come here. It wouldn't be to cheat, would it?" /*Reference to Telltale's The Walking Dead (2012)*/, "Got bored of walking?", "Simon says turn all the zeros into ones.", "As long as you're having fun, right?", "At least you'll be playing the game.", "Viva la revolución!", "Just do what you gotta do.", "So many numbers... It's like a number world..." /*Reference to Yume Nikki*/, "Don't forget to save changes.", "Was it really that boring...?"),
 		}
 	}
 	if (global.user.file_curr != undefined)
@@ -119,7 +120,7 @@ function fn_user_thm_add(_idx, _code, _unlocked = false, _color_whiteLight, _col
 			grayLight : _color_grayLight,
 			grayDark : _color_grayDark,
 			blackLight : _color_blackLight,
-			blackDark : _color_blackDark
+			blackDark : _color_blackDark,
 		},
 		// Alpha
 		alpha :

@@ -1,2 +1,2 @@
 
-sprite_delete(sky.spr);
+sprite_delete(sky.sprite);

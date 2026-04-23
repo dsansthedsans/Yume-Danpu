@@ -1,43 +1,40 @@
 
-// Music (#0)
-for (var m = 0; m < mus_lenMax; m++) 
+for (var m = 0; m < music_lengthMax; m++) 
 {
-	musOld[m] =
+	musicOld[m] =
 	{
-		asset : mus[m].asset,
-		
-		id : mus[m].id
+		asset : music[m].asset,
+		id : music[m].id,
 	}
 }
 
 fn_stage_evStep();
 
-// Music (#1)
-for (var m = 0; m < mus_lenMax; m++)
+for (var m = 0; m < music_lengthMax; m++)
 {
-	if (mus[m].asset != musOld[m].asset && mus[m].id == musOld[m].id)
+	if (music[m].asset != musicOld[m].asset && music[m].id == musicOld[m].id)
 	{
 		// Stops playing the music
-		if (mus[m].id != -1)
+		if (music[m].id != undefined)
 		{
-			fn_aud_stop(mus[m].id);
-			mus[m].id = -1;
-			fn_log($"Stopped playing music [{audio_get_name(musOld[m].asset)}]");
+			fn_log($"Stopped playing music [{audio_get_name(musicOld[m].id)}]");
+			fn_audio_stop(music[m].id);
+			music[m].id = undefined;
 		}
 		// Starts playing the music
-		if (mus[m].asset != -1 && mus[m].id == -1)
+		if (music[m].asset != undefined && music[m].id == undefined)
 		{
-			mus[m].id = fn_aud_play(mus[m].asset, mus[m].emtr, , , mus[m].pch, true);
-			fn_log($"Started playing the music [{audio_get_name(mus[m].id)}]");
+			music[m].id = fn_audio_play(music[m].asset, music[m].emitter, , music[m].pitch, , true);
+			fn_log($"Started playing the music [{audio_get_name(music[m].id)}]");
 		}
 	}
 	else
 	{
 		// Updates the currently playing music
-		if (mus[m].id != -1)
+		if (music[m].id != undefined)
 		{
-			fn_aud_vol(mus[m].asset, mus[m].id, mus[m].emtr, );
-			fn_aud_pch(mus[m].asset, mus[m].id, mus[m].pch);
+			fn_audio_vol(music[m].asset, music[m].id, music[m].emitter);
+			fn_audio_pitch(music[m].asset, music[m].id, music[m].pitch);
 		}
 	}
 }

@@ -42,7 +42,7 @@ function fn_menu_unlock_evCreate_1()
 	var _unlock_snd = choose(global.user.thm[global.user.thm_curr].unlock_snd[0], global.user.thm[global.user.thm_curr].unlock_snd[1], global.user.thm[global.user.thm_curr].unlock_snd[2]);
 	if (irandom_range(1, 100) <= 5)
 		_unlock_snd = snd_;
-	fn_aud_play(_unlock_snd, CONFIG_AUD_EMTR.MENU);
+	fn_audio_play(_unlock_snd, CONFIG_AUD_EMITTER.MENU);
 }
 function fn_menu_unlock_evStep()
 {

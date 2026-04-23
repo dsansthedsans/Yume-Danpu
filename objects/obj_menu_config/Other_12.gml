@@ -37,7 +37,7 @@ else if (l == LVL_VIDEO)
 }
 else if (l == LVL_AUD)
 {
-	global.config.aud.emtr[o].vol = clamp((global.config.aud.emtr[o].vol + (0.1 * _cycle_sign)), 0, 1);
+	global.config.aud.emitter[o].vol = clamp((global.config.aud.emitter[o].vol + (0.1 * _cycle_sign)), 0, 1);
 	fn_config_file_save();
 }
 else if (l == LVL_ACCESS)

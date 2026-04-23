@@ -25,8 +25,8 @@ if (is_array(lvl) == true)
 				for (var r = 0; r < array_length(lvl[l].rect); r++)
 				{
 					var _rect = lvl[l].rect[r];
-					if (_rect.x != undefined && _rect.y != undefined && _rect.weight != undefined && _rect.height != undefined)
-						fn_draw_rect(_rect.x, _rect.y, _rect.weight, _rect.height, _rect.color, _rect.color, _rect.color, _rect.color, (_rect.alpha * lvl[l].alpha));
+					if (_rect.x != undefined && _rect.y != undefined && _rect.width != undefined && _rect.height != undefined)
+						fn_draw_rect(_rect.x, _rect.y, _rect.width, _rect.height, _rect.colors, (_rect.alpha * lvl[l].alpha));
 				}
 			}
 			// Triangle trains
@@ -40,15 +40,15 @@ if (is_array(lvl) == true)
 						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.thm[global.user.thm_curr].spr.train)
 						var _train_xGap = lengthdir_x(fn_spr_width(_train_spr), _train.angle);
 						var _train_yGap = lengthdir_y(fn_spr_height(_train_spr), _train.angle);
-						_train.xOfs += _train.xSpd;
-						_train.yOfs += _train.ySpd;
-						if (abs(_train.xOfs) >= abs(_train_xGap)) || (global.config.access.rdcdMot.act == true)
-							_train.xOfs = 0;
-						if (abs(_train.yOfs) >= abs(_train_yGap)) || (global.config.access.rdcdMot.act == true)
-							_train.yOfs = 0;
+						_train.xOffset += _train.xSpd;
+						_train.yOffset += _train.ySpd;
+						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.rdcdMot.act == true)
+							_train.xOffset = 0;
+						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.rdcdMot.act == true)
+							_train.yOffset = 0;
 						var _train_color = ((_train.color != undefined) ? _train.color : global.user.thm[global.user.thm_curr].color.grayDark);
 						for (var c = 0; c < 21; c++)
-							fn_draw_spr(_train_spr, 0, (_train.x + _train.xOfs + (_train_xGap * c)), (_train.y + _train.yOfs + (_train_yGap * c)), _train_color, (_train.alpha * lvl[l].alpha), , , _train.angle);
+							fn_draw_spr(_train_spr, 0, (_train.x + _train.xOffset + (_train_xGap * c)), (_train.y + _train.yOffset + (_train_yGap * c)), _train_color, (_train.alpha * lvl[l].alpha), , , _train.angle);
 					}
 				}
 			}
@@ -238,20 +238,20 @@ if (is_array(lvl) == true)
 									{
 										if (_arrow[a].move.wait >= _arrow[a].move.waitMax)
 										{
-											if (_arrow[a].move.xOfs < _arrow[a].move.xOfsMax)
-												_arrow[a].move.xOfs += _arrow[a].move.xSpd;
+											if (_arrow[a].move.xOffset < _arrow[a].move.xOffsetMax)
+												_arrow[a].move.xOffset += _arrow[a].move.xSpd;
 											else
-												_arrow[a].move.xOfs = 0;
+												_arrow[a].move.xOffset = 0;
 											_arrow[a].move.wait = 0;
 										}
 										else
 											lvl[l].option[o].value.arrow[a].move.wait += 1;
 									}
 									else
-										_arrow[a].move.xOfs = 0;
+										_arrow[a].move.xOffset = 0;
 									if (_arrow[a].act == true)
 									{
-										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOfs * _arrow[a].move.act)) * _arrow[a].xSign));
+										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOffset * _arrow[a].move.act)) * _arrow[a].xSign));
 										var _arrow_y = _val_y;
 										var _arrow_cols = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight];
 										fn_draw_text(_arrow[a].text, _arrow_x, _arrow_y, _arrow_cols, (_arrow[a].alpha * lvl[l].alpha), _arrow[a].scale, _arrow[a].scale, fa_center, fa_middle, _shdw_cols, _shdw_alp);

@@ -13,7 +13,7 @@ function fn_menu_inv_evCreate_0()
 	
 	
 	// All levels
-	for (var l = 0; l < lvl_lenMax; l++)
+	for (var l = 0; l < lvl_lengthMax; l++)
 	{
 		// Dark translucent background
 		var _rect_alp = 0.5;
@@ -178,7 +178,7 @@ function fn_menu_inv_evCreate_0()
 			other_arr = global.user.thm;
 		}
 		
-		other_lenMax = 14;
+		other_lengthMax = 14;
 		
 		
 		// Title
@@ -197,7 +197,7 @@ function fn_menu_inv_evCreate_0()
 		// Options
 		var _opt_xMul = 0;
 		var _opt_yMul = 0;
-		for (var o = 0; o < other_lenMax; o++)
+		for (var o = 0; o < other_lengthMax; o++)
 		{
 			// Options
 			var _opt_text = "----------";
@@ -237,7 +237,7 @@ function fn_menu_inv_evCreate_1()
 {
 	// Main level
 	lvl = LVL_MAIN;
-	fn_aud_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
+	fn_audio_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMITTER.MENU);
 }
 function fn_menu_inv_evDrawGUI_2(l)
 {
@@ -264,8 +264,8 @@ function fn_menu_inv_evDrawGUI_2(l)
 				main_pic_ySc -= (main_pic_scLen * random_range(_pic_scLen_mulMin, _pic_scLen_mulMax));
 				
 				var _ptr_snd_pitch = random_range(0.75, 2.25);
-				var _ptr_snd = fn_aud_play(main_pic_snd, CONFIG_AUD_EMTR.USER);
-				fn_aud_pch(_ptr_snd, _ptr_snd_pitch);
+				var _ptr_snd = fn_audio_play(main_pic_snd, CONFIG_AUD_EMITTER.USER);
+				fn_audio_pitch(_ptr_snd, _ptr_snd_pitch);
 			}
 		}
 		

@@ -1,7 +1,5 @@
 
-// Fade type
+// Transition of type Fade
 if (type.fade.act == true)
-{
-	var _fade = type.fade;
-	fn_draw_rect(0, 0, 320, 240, _fade.col, _fade.col, _fade.col, _fade.col, _fade.alp);
-}
+	// Draws fade
+	fn_draw_rect(0, 0, global.config.video.res[0].width, global.config.video.res[0].height, type.fade.colors, type.fade.alpha);

@@ -4,9 +4,9 @@ var _res_width = global.config.video.res[0].width;
 var _res_height = global.config.video.res[0].height;
 if (global.config.video.fscr.act == true) // Draws black rectangles to cover drawings that go off-screen
 {
-	var _fscrRect_color = c_black;
-	fn_draw_rect(0, -_res_height, -(_res_width * 2), (_res_height * 3), _fscrRect_color, _fscrRect_color, _fscrRect_color, _fscrRect_color, 1);
-	fn_draw_rect(_res_width, -_res_height, (_res_width * 2), (_res_height * 3), _fscrRect_color, _fscrRect_color, _fscrRect_color, _fscrRect_color, 1);
+	var _fscrRect_cols = [c_black, c_black, c_black, c_black];
+	fn_draw_rect(0, -_res_height, -(_res_width * 2), (_res_height * 3), _fscrRect_cols, 1);
+	fn_draw_rect(_res_width, -_res_height, (_res_width * 2), (_res_height * 3), _fscrRect_cols, 1);
 }
 if (global.config.video.showVer.act == true) // Draws Version
 {

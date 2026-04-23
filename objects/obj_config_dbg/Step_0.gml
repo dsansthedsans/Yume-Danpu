@@ -5,7 +5,6 @@ if (string_ends_with(keyboard_string, global.config_dbg.pwd) == true)
 	global.config_dbg.act = !global.config_dbg.act;
 	keyboard_string = "";
 }
-
 // Debug Mode commands
 if (global.config_dbg.act == true && keyboard_check(global.config_dbg.cmd.key) == true)
 {
@@ -17,17 +16,18 @@ if (global.config_dbg.act == true && keyboard_check(global.config_dbg.cmd.key) =
 		obj_stage.cam.w += (_cmd.zoom_xDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
 		obj_stage.cam.h += (_cmd.zoom_yDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
 	}
-	
 	// Fader, starts a room transition to the specified room
 	if (keyboard_check(_cmd.fader_key) == true && is_array(_cmd.fader_rm) == true)
 	{
 		for (var r = 0; r < array_length(_cmd.fader_rm); r++)
 		{
 			if (keyboard_check_pressed(ord(r)) == true)
+			{
 				fn_fader_obj_create(_cmd.fader_rm[r]);
+				break;
+			}
 		}
 	}
-	
 	// Reset, restarts the game
 	if (keyboard_check_pressed(_cmd.reset_key[0]) == true)
 	{

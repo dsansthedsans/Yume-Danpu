@@ -54,7 +54,7 @@ if (is_array(lvl) == true)
 					_move_snd = ((lvl[l].option_move.snd != undefined) ? lvl[l].option_move.snd : global.user.thm[global.user.thm_curr].snd.move);
 					event_user(4);
 					if (_move_snd != undefined)
-						fn_aud_play(_move_snd, CONFIG_AUD_EMTR.MENU);
+						fn_audio_play(_move_snd, CONFIG_AUD_EMITTER.MENU);
 				}
 			}
 			var o = lvl[l].option_curr;
@@ -64,7 +64,7 @@ if (is_array(lvl) == true)
 				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? ((lvl[l].option_confirm.snd != undefined) ? lvl[l].option_confirm.snd : global.user.thm[global.user.thm_curr].snd.confirm) : undefined);
 				event_user(0);
 				if (_confirm_snd != undefined)
-					fn_aud_play(_confirm_snd, CONFIG_AUD_EMTR.MENU);
+					fn_audio_play(_confirm_snd, CONFIG_AUD_EMITTER.MENU);
 				// Option's checkbox
 				if (is_struct(lvl[l].option[o].check) == true)
 					lvl[l].option[o].check.mark.act = !lvl[l].option[o].check.mark.act;
@@ -75,7 +75,7 @@ if (is_array(lvl) == true)
 				_cancel_snd = ((lvl[l].option_cancel.snd != undefined) ? lvl[l].option_cancel.snd : global.user.thm[global.user.thm_curr].snd.cancel);
 				event_user(1);
 				if (_cancel_snd != undefined)
-					fn_aud_play(_cancel_snd, CONFIG_AUD_EMTR.MENU);
+					fn_audio_play(_cancel_snd, CONFIG_AUD_EMITTER.MENU);
 			}
 			// Value cycling
 			else if (lvl[l].option[o].value != undefined)
@@ -93,7 +93,7 @@ if (is_array(lvl) == true)
 							lvl[l].option[o].value.arrow[a].alpha = lvl[l].option[o].value.arrow[a].alphaTgts[true];
 							lvl[l].option[o].value.arrow[a].scale = lvl[l].option[o].value.arrow[a].scaleTgts[true];
 						}
-						fn_aud_play(global.user.thm[global.user.thm_curr].snd.move, CONFIG_AUD_EMTR.MENU, , , 1.5);
+						fn_audio_play(global.user.thm[global.user.thm_curr].snd.move, CONFIG_AUD_EMITTER.MENU, , 1.5);
 						break;
 					}
 				}
@@ -106,7 +106,7 @@ if (is_array(lvl) == true)
 	{
 		lvl[lvl_curr].alpha = fn_lerp(lvl[lvl_curr].alpha, 0, lvl_fader.alpSpd);
 		if (lvl_fader.prev.snd != undefined)
-			fn_aud_play(lvl_fader.prev.snd, CONFIG_AUD_EMTR.MENU);
+			fn_audio_play(lvl_fader.prev.snd, CONFIG_AUD_EMITTER.MENU);
 		lvl_fader.prev.snd = undefined;
 		if (lvl_fader.next.wait_dur <= 0)
 		{
@@ -118,7 +118,7 @@ if (is_array(lvl) == true)
 				lvl_curr = lvl_fader.next.lvl;
 				lvl_fader.stg = -1;
 				if (lvl_fader.next.snd != undefined)
-					fn_aud_play(lvl_fader.next.snd, CONFIG_AUD_EMTR.MENU);
+					fn_audio_play(lvl_fader.next.snd, CONFIG_AUD_EMITTER.MENU);
 				lvl_fader.next.snd = undefined;
 				if (lvl_fader.next.destroy == true)
 				{

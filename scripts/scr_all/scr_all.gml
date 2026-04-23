@@ -60,15 +60,16 @@ function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _xScale = 1, _yScale =
 	}
 }
 	// Rectangles
-function fn_draw_rect(_x, _y, _weight, _height, _color_0, _color_1, _color_2, _color_3, _alpha)
+function fn_draw_rect(_x, _y, _width, _height, _colors, _alpha)
 {
-	draw_sprite_general(spr_px, 0, 0, 0, 1, 1, _x, _y, _weight, _height, 0, _color_0, _color_1, _color_2, _color_3, _alpha);
+	draw_sprite_general(spr_px, 0, 0, 0, 1, 1, _x, _y, _width, _height, 0, _colors[0], _colors[1], _colors[2], _colors[3], _alpha);
 }
 	// Circles
-function fn_draw_circle(_x, _y, _radius, _precision)
+function fn_draw_circle(_x, _y, _radius, _precision, _colors = [c_white, c_white], _alpha = 1)
 {
+	draw_set_alpha(_alpha);
 	draw_set_circle_precision(_precision);
-	draw_circle(_x, _y, _radius, false);
+	draw_circle_color(_x, _y, _radius, _colors[0], _colors[1], false);
 }
 	// Sprites
 function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _xScale = 1, _yScale = _xScale, _angle = 0, _shadow_color = undefined, _shadow_alpha = 0)
@@ -106,30 +107,30 @@ function fn_draw_line(_x1, _y1, _x2, _y2, _color = c_white, _alpha = 1, _thickne
 	draw_line_width(_x1, _y1, _x2, _y2, _thickness);
 }
 
-// Audio
-function fn_aud_play(_asset, _emtr, _vol = 1, _ofs = 0, _pch = 1, _loops = false) // Plays the specified audio
+
+/* Audio */
+function fn_audio_play(_asset, _emitter, _vol = 1, _pitch = 1, _offset = 0, _loops = false)
 {
 	var _id = audio_play_sound(_asset, 0, false);
-	fn_aud_vol(_asset, _id, _emtr, _vol);
-	fn_aud_ofs(_asset, _id, _ofs);
-	fn_aud_pch(_asset, _id, _pch);
+	fn_audio_vol(_asset, _id, _emitter, _vol);
+	fn_audio_pitch(_asset, _id, _pitch);
+	fn_audio_offset(_asset, _id, _offset);
 	audio_sound_loop(_id, _loops);
-	
 	return _id;
 }
-function fn_aud_stop(_id) // Stops the audio with the specified ID (or asset)
+function fn_audio_stop(_id)
 {
 	audio_stop_sound(_id);
 }
-	// Volume
-function fn_aud_vol(_asset, _id, _emtr, _vol = 1)
+// Volume
+function fn_audio_vol(_asset, _id, _emitter, _vol = 1)
 {
-	_vol = fn_aud_volData(_asset, _vol);
-	_vol *= global.config.aud.emtr[_emtr].vol;
-	_vol *= global.config.aud.emtr[CONFIG_AUD_EMTR.MASTER].vol;
+	_vol = fn_audio_volData(_asset, _vol);
+	_vol *= global.config.aud.emitter[_emitter].vol;
+	_vol *= global.config.aud.emitter[CONFIG_AUD_EMITTER.MASTER].vol;
 	audio_sound_gain(_id, _vol, 0);
 }
-function fn_aud_volData(_asset, _vol)
+function fn_audio_volData(_asset, _vol)
 {
 	// _vol MUST ONLY BE MULTIPLIED, NOT ADDED or SUBTRACTED
 	
@@ -246,13 +247,31 @@ function fn_aud_volData(_asset, _vol)
 	return _vol;
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE.  Jesus       !!!!!
 }
-	// Offset
-function fn_aud_ofs(_asset, _id, _ofs = 0)
+// Pitch
+function fn_audio_pitch(_asset, _id, _pitch = 1)
 {
-	_ofs = fn_aud_ofsData(_asset, _ofs);
-	audio_sound_set_track_position(_id, _ofs);
+	_pitch = fn_audio_pitchData(_asset, _pitch);
+	audio_sound_pitch(_id, _pitch);
 }
-function fn_aud_ofsData(_asset, _ofs)
+function fn_audio_pitchData(_asset, _pitch)
+{
+	// _pitch MUST ONLY BE ADDED or SUBTRACTED, NOT MULTIPLIED
+	
+	//switch (_asset)
+	//{
+		
+	//}
+	
+	return _pitch;
+	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part III: The Final Chapter.  Jesus       !!!!!
+}
+// Offset
+function fn_audio_offset(_asset, _id, _offset = 0)
+{
+	_ofs = fn_audio_offsetData(_asset, _offset);
+	audio_sound_set_track_position(_id, _offset);
+}
+function fn_audio_offsetData(_asset, _ofs)
 {
 	// _ofs MUST ONLY BE ADDED, NOT SUBTRACTED or MULTIPLIED
 	
@@ -284,24 +303,7 @@ function fn_aud_ofsData(_asset, _ofs)
 	return _ofs;
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part II: The Hype Never Dies.  Jesus       !!!!!
 }
-	// Pitch
-function fn_aud_pch(_asset, _id, _pch = 1)
-{
-	_pch = fn_aud_pchData(_asset, _pch);
-	audio_sound_pitch(_id, _pch);
-}
-function fn_aud_pchData(_asset, _pch)
-{
-	// _pch MUST ONLY BE ADDED or SUBTRACTED, NOT MULTIPLIED
-	
-	//switch (_asset)
-	//{
-		
-	//}
-	
-	return _pch;
-	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part III: The Final Chapter.  Jesus       !!!!!
-}
+
 
 // Functions related to sprites
 function fn_spr_width(_asset) // Returns the width of the specified sprite

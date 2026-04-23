@@ -43,7 +43,7 @@ function fn_menu_pse_evCreate_0()
 	
 	
 	// All levels
-	for (var l = 0; l < lvl_lenMax; l++)
+	for (var l = 0; l < lvl_lengthMax; l++)
 	{
 		// Dark translucent background
 		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, 0.75);
@@ -78,7 +78,7 @@ function fn_menu_pse_evCreate_1()
 	instance_activate_object(obj_stage);
 	instance_activate_object(obj_dbg);
 	audio_pause_all();
-	fn_aud_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMTR.MENU);
+	fn_audio_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMITTER.MENU);
 }
 function fn_menu_pse_evDrawGUI_0(l)
 {

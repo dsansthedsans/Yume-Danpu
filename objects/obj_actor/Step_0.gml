@@ -10,20 +10,20 @@ if (move.act == true)
 	// May God have mercy on my soul.
 	// i'll try to make this better. eventually. eventually. eventually.
 	
-	if (move.type.roll.act == true && move.type.roll.snd_asset != -1 && move.type.roll.snd_emtr != -1)
+	if (move.type.roll.act == true && move.type.roll.snd_asset != -1 && move.type.roll.snd_emitter != -1)
 	{
 		if (move.type.roll.snd_id == -1)
-			move.type.roll.snd_id = fn_aud_play(move.type.roll.snd_asset, move.type.roll.snd_emtr, , , , true);
+			move.type.roll.snd_id = fn_audio_play(move.type.roll.snd_asset, move.type.roll.snd_emitter, , , , true);
 		
 		var _distMax = move.type.roll.distMax;
-		var _aud_pchDiff = (move.type.roll.snd_pchMax - move.type.roll.snd_pchMin);
-		var _aud_pch = (move.type.roll.snd_pchMin + (_aud_pchDiff * (( _distMax * (move.type.roll.dist / _distMax)) / _distMax)));
-		fn_aud_pch(move.type.roll.snd_asset, move.type.roll.snd_id, _aud_pch);
-		fn_aud_vol(move.type.roll.snd_asset, move.type.roll.snd_id, move.type.roll.snd_emtr);
+		var _aud_pitchDiff = (move.type.roll.snd_pitchMax - move.type.roll.snd_pitchMin);
+		var _aud_pitch = (move.type.roll.snd_pitchMin + (_aud_pitchDiff * (( _distMax * (move.type.roll.dist / _distMax)) / _distMax)));
+		fn_audio_pitch(move.type.roll.snd_asset, move.type.roll.snd_id, _aud_pitch);
+		fn_audio_vol(move.type.roll.snd_asset, move.type.roll.snd_id, move.type.roll.snd_emitter);
 	}
 	else if (move.type.roll.snd_id != -1)
 	{
-		fn_aud_stop(move.type.roll.snd_id);
+		fn_audio_stop(move.type.roll.snd_id);
 		move.type.roll.snd_id = -1;
 	}
 	
@@ -110,8 +110,8 @@ if (move.act == true)
 				
 				if (dir_curr != _dir_old)
 				{
-					if (move.type.roll.turn.snd_asset != -1 && move.type.roll.turn.snd_emtr != -1)
-						fn_aud_play(move.type.roll.turn.snd_asset, move.type.roll.turn.snd_emtr);
+					if (move.type.roll.turn.snd_asset != -1 && move.type.roll.turn.snd_emitter != -1)
+						fn_audio_play(move.type.roll.turn.snd_asset, move.type.roll.turn.snd_emitter);
 						
 					if (move.type.roll.turn.shake_act == true && myself.shake.act == true)
 					{
@@ -154,7 +154,7 @@ if (move.act == true)
 						_chase_tgt.myself.x = _chase_tgt.x;
 						_chase_tgt.myself.y = _chase_tgt.y;
 						fn_obj_depth(_chase_tgt);
-						fn_aud_play(snd_actor_macaco_monkey_0, CONFIG_AUD_EMTR.ACTOR, , , 0.5);
+						fn_audio_play(snd_actor_macaco_monkey_0, CONFIG_AUD_EMITTER.ACTOR, , 0.5);
 					}
 					
 					
@@ -174,8 +174,8 @@ if (move.act == true)
 						{
 							if (move.type.roll.act == true && move.amt > 0) // Roll type
 							{
-								if (move.type.roll.hit.snd_asset != -1 && move.type.roll.hit.snd_emtr != -1)
-									fn_aud_play(move.type.roll.hit.snd_asset, move.type.roll.hit.snd_emtr);
+								if (move.type.roll.hit.snd_asset != -1 && move.type.roll.hit.snd_emitter != -1)
+									fn_audio_play(move.type.roll.hit.snd_asset, move.type.roll.hit.snd_emitter);
 									
 								if (move.type.roll.hit.shake_act == true)
 								{
@@ -215,8 +215,8 @@ if (move.act == true)
 					if (move.type.walk.fstep.wait_durCurr <= 0)
 					{
 						image_index += 1;
-						if (image_index % 2 == 1 && move.type.walk.fstep.snd_asset != -1 && move.type.walk.fstep.snd_emtr != -1)
-							fn_aud_play(move.type.walk.fstep.snd_asset, move.type.walk.fstep.snd_emtr);
+						if (image_index % 2 == 1 && move.type.walk.fstep.snd_asset != -1 && move.type.walk.fstep.snd_emitter != -1)
+							fn_audio_play(move.type.walk.fstep.snd_asset, move.type.walk.fstep.snd_emitter);
 						move.type.walk.fstep.amtCurr += 1;
 						move.type.walk.fstep.wait_durCurr = floor(move.type.walk.dur / _fstep_amt);
 					}

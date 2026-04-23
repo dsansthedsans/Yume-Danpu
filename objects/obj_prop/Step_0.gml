@@ -12,7 +12,7 @@ if (talk.act == true && talk.stg > -1)
 		{
 			if (_bell.aud_idx == -1)
 				_bell.aud_idx = irandom_range(0, (array_length(_bell.aud_asset) - 1));
-			fn_aud_play(_bell.aud_asset[_bell.aud_idx], _bell.aud_emtr);
+			fn_audio_play(_bell.aud_asset[_bell.aud_idx], _bell.aud_emitter);
 			_bell.aud_idx = -1;
 			
 			talk.stg = 1;
@@ -38,8 +38,8 @@ if (talk.act == true && talk.stg > -1)
 		var _door = talk.type.door;
 		if (talk.stg == 0)
 		{			
-			if (_door.open.snd_asset != -1 && _door.open.snd_emtr != -1)
-				fn_aud_play(_door.open.snd_asset, _door.open.snd_emtr);
+			if (_door.open.snd_asset != -1 && _door.open.snd_emitter != -1)
+				fn_audio_play(_door.open.snd_asset, _door.open.snd_emitter);
 			fn_fader_obj_create();
 			talk.stg = 1;
 		}
@@ -93,14 +93,14 @@ if (talkTrig.act == true && fn_config_key_pressed(talkTrig.key) == true && talk.
 }
 
 // Noise (audio that can only be heard if the user is near the object)
-if (noise.act == true && noise.aud.asset == -1 && noise.aud.emtr == -1)
+if (noise.act == true && noise.aud.asset == -1 && noise.aud.emitter == -1)
 {
 	if (noise.stg == -1 && ((noise.wait.act == false) || (noise.wait.act == true && noise.wait.dur_curr <= 0)))
 	{
 		if (noise.wait.act == true)
 			noise.wait.dur_curr = irandom_range(noise.wait.dur_min, noise.wait.dur_max);
 		
-		noise.aud.id = fn_aud_play(noise.aud.asset, noise.aud.emtr, 0, , , noise.aud.loops);
+		noise.aud.id = fn_audio_play(noise.aud.asset, noise.aud.emitter, 0, , , noise.aud.loops);
 	}
 	else if (noise.stg == -1 && noise.wait.act == true && noise.wait.dur_curr >= 0)
 		noise.wait.dur_curr -= 1;
@@ -109,7 +109,7 @@ if (noise.act == true && noise.aud.asset == -1 && noise.aud.emtr == -1)
 		if (audio_is_playing(noise.aud.id) == true)
 		{
 			noise.aud.vol = lerp(noise.aud.vol, (1 - (clamp(distance_to_object(obj_actor_user), 0, noise.distMin) / noise.distMin)), 0.05);
-			fn_aud_vol(noise.aud.asset, noise.aud.id, noise.aud.emtr, noise.aud.vol);
+			fn_audio_vol(noise.aud.asset, noise.aud.id, noise.aud.emitter, noise.aud.vol);
 		}
 		else
 		{

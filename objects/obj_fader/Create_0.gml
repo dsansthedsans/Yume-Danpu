@@ -2,29 +2,20 @@
 fn_obj_img( , , , , 0);
 fn_obj_depth( , -11000);
 
-stg = -1; // ID number of the current stage of the transition
-
-// Source, data about the transition's origin
-src =
-{
-	rm : -1,
-	obj : -1,
-	obj_id : -1
-}
+stage = -1; // ID number of the current stage of the transition
 
 // Target, data about the transition's target)
-tgt =
+target =
 {
-	rm : -1,
-	
+	rm : undefined,
 	user :
 	{
-		x : 0,
-		y : 0,
-		dir : -1
+		ready : false,
+		x : undefined,
+		y : undefined,
+		dir : undefined,
 	}
 }
-
 // Types
 type =
 {
@@ -32,46 +23,43 @@ type =
 	fade :
 	{
 		act : false,
+		colors : [c_black, c_black, c_black, c_black],
+		alpha : 0,
+		alphaSpd : 0.15, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
+		alphaJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
 		
-		col : c_black,
-		alp : 0,
-		alpSpd : 0.15, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
-		alpJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
-		
+		// Iris
 		iris :
 		{
 			act : false,
-			
-			x : (320 / 2),
-			y : (240 / 2),
-			xOfs : 0,
-			yOfs : 0,
-			sineVal : 0,
-			
-			col : c_black,
-			alp : 0,
-			alpSpd : 0.025,
-			alpJump : 0.05,
-			
-			rad : 180,
-			radTgt : 48,
-			radSpd : 0.02,
-			prec : 32,
-			surf : -1,
-			
-			snd_asset : -1,
-			snd_emtr : -1,
-			snd_id : -1
+			surface : -1,
+			x : (source.objId.x + (source.objId.sprite_width / 2)),
+			y : (source.objId.y - (source.objId.sprite_height / 4)),
+			xOffset : 0,
+			yOffset : 0,
+			siner : 0,
+			radius : 180,
+			radiusTgt : 48,
+			radiusSpd : 0.015,
+			precision : 32,
+			color : c_gray,
+			alpha : 0,
+			alphaSpd : 0.025,
+			alphaJump : 0.05,
+			snd_asset : snd_fader_portal,
+			snd_emitter : CONFIG_AUD_EMITTER.PROP,
+			snd_id : undefined,
 		},
-		
+		// Wait (Delay)
 		wait :
 		{
 			dur : 0,
-			durTgt : 30
+			durTgt : 30,
 		}
 	}
 }
 
+fn_fader_evCreate();
 
 
 

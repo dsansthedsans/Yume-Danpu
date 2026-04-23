@@ -1,4 +1,4 @@
 
 // Myself
-myself.xOfs = 0;
-myself.yOfs = 0;
+myself.xOffset = 0;
+myself.yOffset = 0;

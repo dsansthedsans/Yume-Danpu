@@ -3,19 +3,19 @@ fn_obj_img( , , , , 0);
 fn_obj_depth( , -9000);
 
 // Music
-mus_lenMax = 3;
-for (var m = 0; m < mus_lenMax; m++)
+music_lengthMax = 3;
+for (var m = 0; m < music_lengthMax; m++)
 {
-	mus[m] =
+	music[m] =
 	{
-		asset : -1,
-		emtr : -1,
-		pch : 0,
-		id : -1
+		asset : undefined,
+		emitter : undefined,
+		pitch : 0,
+		id : undefined,
 	}
 }
 
 // Background
-bg_lenMax = 5;
-for (var b = 0; b < bg_lenMax; b++)
+bg_lengthMax = 5;
+for (var b = 0; b < bg_lengthMax; b++)
 	bg[b] = -1;

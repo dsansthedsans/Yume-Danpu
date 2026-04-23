@@ -9,8 +9,8 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 	{
 		// Good/Peaceful entities
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
-			talk.type.bell.aud_emtr = CONFIG_AUD_EMTR.ACTOR;
-			noise.aud.emtr = CONFIG_AUD_EMTR.ACTOR;
+			talk.type.bell.aud_emitter = CONFIG_AUD_EMITTER.ACTOR;
+			noise.aud.emitter = CONFIG_AUD_EMITTER.ACTOR;
 			move.wait.act = true;
 			move.mode.auto.act = true;
 			move.type.walk.act = true;
@@ -21,7 +21,7 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		
 		// Evil/Hostile entities
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey
-			noise.aud.emtr = CONFIG_AUD_EMTR.ACTOR;
+			noise.aud.emitter = CONFIG_AUD_EMITTER.ACTOR;
 			noise.aud.asset = snd_prop_noise_weird;
 			move.mode.auto.act = true;
 			move.mode.auto.chase_act = true;
@@ -47,7 +47,7 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 			move.type.walk.act = true;
 			move.type.walk.fstep.act = true;
 			move.type.walk.fstep.snd_asset = snd_user_fstep;
-			move.type.walk.fstep.snd_emtr = CONFIG_AUD_EMTR.USER;
+			move.type.walk.fstep.snd_emitter = CONFIG_AUD_EMITTER.USER;
 			move.type.roll.act = false;
 			
 			if (global.user.eff_curr == -1 && global.user.fcn_curr == -1)
@@ -68,13 +68,13 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 				move.type.walk.act = false;
 				move.type.roll.act = true;
 				move.type.roll.snd_asset = snd_user_fcn_kart;
-				move.type.roll.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.snd_emitter = CONFIG_AUD_EMITTER.USER;
 				move.type.roll.start.snd_asset = snd_user_fcn_kart_start;
-				move.type.roll.start.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.start.snd_emitter = CONFIG_AUD_EMITTER.USER;
 				move.type.roll.turn.snd_asset = snd_user_fcn_kart_turn;
-				move.type.roll.turn.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.turn.snd_emitter = CONFIG_AUD_EMITTER.USER;
 				move.type.roll.hit.snd_asset = snd_user_fcn_kart_hit;
-				move.type.roll.hit.snd_emtr = CONFIG_AUD_EMTR.USER;
+				move.type.roll.hit.snd_emitter = CONFIG_AUD_EMITTER.USER;
 			}
 		break;
 		

@@ -66,7 +66,7 @@ function fn_config_setup()
 		// Music & Sounds
 		aud :
 		{
-			emtr : [-1]
+			emitter : [-1]
 		},
 		// Accessibility
 		access :
@@ -82,7 +82,7 @@ function fn_config_setup()
 	
 		// File (Creates the file directory if needed; Loads the previously selected language if there's already a file)
 	global.config.file_name = string(global.config.ver) + "/config.ini";
-	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?" /*Reference to Minecraft*/, "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/);
+	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?" /*Reference to Minecraft*/, "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/, "Look how cool you are, changing your settings directly in the file.", "How about exploring in-game?");
 	if (directory_exists(global.config.ver) == false)
 		directory_create(global.config.ver);
 	else if (file_exists(global.config.file_name) == true)
@@ -137,7 +137,7 @@ function fn_config_setup()
 	fn_config_video_res_add(i++, 960, 720);
 	fn_config_video_res_add(i++, 1280, 960);
 		// Music & Sounds
-	enum CONFIG_AUD_EMTR
+	enum CONFIG_AUD_EMITTER
 	{
 		MASTER, // Master
 		
@@ -149,13 +149,13 @@ function fn_config_setup()
 		PROP, // Props
 		ACTOR, // Entities
 	}
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.MASTER,	"master");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.MUS,		"mus");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.AMB,		"amb");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.MENU,	"menu");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.USER,	"user");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.PROP,	"prop");
-	fn_config_aud_emtr_add(CONFIG_AUD_EMTR.ACTOR,	"actor");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MASTER,	"master");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MUS,		"mus");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.AMB,		"amb");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MENU,	"menu");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.USER,	"user");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.PROP,	"prop");
+	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.ACTOR,	"actor");
 		// File
 	if (file_exists(global.config.file_name) == false)
 		fn_config_file_save();
@@ -176,8 +176,8 @@ function fn_config_file_save()
 	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
 	ini_write_real("video", "showFps_act", global.config.video.showFps.act);
 	ini_write_real("video", "showBdr_act", global.config.video.showBdr.act);
-	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
-		ini_write_real("aud", $"emtr_{e}_vol", global.config.aud.emtr[e].vol);
+	for (var e = 0; e < array_length(global.config.aud.emitter); e++)
+		ini_write_real("aud", $"emitter_{e}_vol", global.config.aud.emitter[e].vol);
 	ini_write_real("access", "rdcdMot_act", global.config.access.rdcdMot.act);
 	ini_close();
 }
@@ -193,8 +193,8 @@ function fn_config_file_load()
 	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
 	global.config.video.showFps.act = ini_read_real("video", "showFps_act", false);
 	global.config.video.showBdr.act = ini_read_real("video", "showBdr_act", true);
-	for (var e = 0; e < array_length(global.config.aud.emtr); e++)
-		global.config.aud.emtr[e].vol = ini_read_real("aud", $"emtr_{e}_vol", 1);
+	for (var e = 0; e < array_length(global.config.aud.emitter); e++)
+		global.config.aud.emitter[e].vol = ini_read_real("aud", $"emitter_{e}_vol", 1);
 	global.config.access.rdcdMot.act = ini_read_real("access", "rdcdMot_act", false);
 	ini_close();
 }
@@ -278,16 +278,16 @@ function fn_config_video_res_add(_idx, _width, _height)
 	}
 }
 	// Music & Sounds
-function fn_config_aud_emtr_add(_idx, _code, _vol = 1, _pitch = 1)
+function fn_config_aud_emitter_add(_idx, _code, _vol = 1, _pitch = 1)
 {
-	global.config.aud.emtr[_idx] =
+	global.config.aud.emitter[_idx] =
 	{
-		name : $"config_aud_emtr_{_code}",
+		name : $"config_aud_emitter_{_code}",
 		code : _code,
 		id : audio_emitter_create(),
 		bus : audio_bus_create(),
 		vol : _vol,
 		pitch : _pitch
 	}
-	audio_emitter_bus(global.config.aud.emtr[_idx].id, global.config.aud.emtr[_idx].bus);
+	audio_emitter_bus(global.config.aud.emitter[_idx].id, global.config.aud.emitter[_idx].bus);
 }

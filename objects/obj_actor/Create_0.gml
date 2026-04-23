@@ -102,7 +102,7 @@ move =
 				amtCurr : 0,
 				wait_durCurr : 0,
 				snd_asset : -1,
-				snd_emtr : -1,
+				snd_emitter : -1,
 			}
 		},
 		
@@ -119,15 +119,15 @@ move =
 			precise : true, // Whether movement checks for collisions in distances smaller than {move.type.roll.dist}
 			
 			snd_asset : -1,
-			snd_emtr : -1,
-			snd_pchMin : 0.5,
-			snd_pchMax : 1.5,
+			snd_emitter : -1,
+			snd_pitchMin : 0.5,
+			snd_pitchMax : 1.5,
 			snd_id : -1,
 			
 			start :
 			{
 				snd_asset : -1,
-				snd_emtr : -1
+				snd_emitter : -1
 			},
 			
 			turn :
@@ -137,9 +137,9 @@ move =
 				shake_dur : 8,
 				
 				snd_asset : -1,
-				snd_emtr : -1,
-				snd_pchMin : 0.25,
-				snd_pchMax : 0.45,
+				snd_emitter : -1,
+				snd_pitchMin : 0.25,
+				snd_pitchMax : 0.45,
 			},
 			
 			hit :
@@ -149,7 +149,7 @@ move =
 				shake_dur : 6,
 				
 				snd_asset : -1,
-				snd_emtr : -1
+				snd_emitter : -1
 			}
 		}
 	},
