@@ -7,5 +7,5 @@ if (global.user.file_curr == -1)
 else
 {
 	fn_user_setup(-1);
-	room_goto(temp_rm_menu_home);
+	room_goto(rm_menu_home);
 }

@@ -19,7 +19,7 @@ function fn_menu_inv_evCreate_0()
 		var _rect_alp = 0.5;
 		if (l != LVL_MAIN)
 			_rect_alp = 0.75;
-		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, _rect_alp);
+		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.theme[global.user.theme_curr].col.blur, _rect_alp);
 	}
 	
 	
@@ -37,7 +37,7 @@ function fn_menu_inv_evCreate_0()
 	fn_menu_box_add(l, 0, _box_x, _box_y, _box_w, _box_h);
 	
 			// Player's picture frame
-	main_picFrm_spr = global.user.thm[global.user.thm_curr].inv_picFrm_spr;
+	main_picFrm_spr = global.user.theme[global.user.theme_curr].inv_picFrm_spr;
 	main_picFrm_w = fn_spr_width(main_picFrm_spr);
 	main_picFrm_h = fn_spr_height(main_picFrm_spr);
 	main_picFrm_x = (box_x[l, 0] + round(box_w[l, 0] / 2) - round(main_picFrm_w / 2));
@@ -92,13 +92,13 @@ function fn_menu_inv_evCreate_0()
 	main_mnyIco_x = (main_picFrm_x + round(main_picFrm_w / 2) - round(_mnyIco_wAll / 2) - 1);
 	var _mnyIco_yNameGap = (draw_dist / 2);
 	main_mnyIco_y = (_name_y + _name_h + _mnyIco_yNameGap);
-	main_mnyIco_col = global.user.thm[global.user.thm_curr].col.whiteLight;
+	main_mnyIco_col = global.user.theme[global.user.theme_curr].col.whiteLight;
 	
 			// Player's currency [#1]
 	var _ccy_x = (main_mnyIco_x + main_mnyIco_w + _mnyIco_xTextGap);
 	var _ccy_y = (main_mnyIco_y + round(main_mnyIco_h / 2) - round(_ccy_h / 2) - 1);
-	var _ccy_col_0 = global.user.thm[global.user.thm_curr].col.grayLight;
-	var _ccy_col_1 = global.user.thm[global.user.thm_curr].col.grayDark;
+	var _ccy_col_0 = global.user.theme[global.user.theme_curr].col.grayLight;
+	var _ccy_col_1 = global.user.theme[global.user.theme_curr].col.grayDark;
 	info_x[l, 1] = _ccy_x;
 	info_y[l, 1] = _ccy_y;
 	info_col[l][1][0] = _ccy_col_0;
@@ -107,8 +107,8 @@ function fn_menu_inv_evCreate_0()
 			// Player's money [#1]
 	var _mny_x = (_ccy_x + _ccy_w);
 	var _mny_y = _ccy_y;
-	var _mny_col_0 = global.user.thm[global.user.thm_curr].col.whiteLight;
-	var _mny_col_1 = global.user.thm[global.user.thm_curr].col.whiteDark;
+	var _mny_col_0 = global.user.theme[global.user.theme_curr].col.whiteLight;
+	var _mny_col_1 = global.user.theme[global.user.theme_curr].col.whiteDark;
 	info_x[l, 2] = _mny_x;
 	info_y[l, 2] = _mny_y;
 	info_col[l][2][0] = _mny_col_0;
@@ -156,26 +156,26 @@ function fn_menu_inv_evCreate_0()
 	
 	
 	// Other levels (Effects, Items and Themes)
-	LVL_OTHER_EFF = 1;
-	LVL_OTHER_FCN = 2;
-	LVL_OTHER_THM = 3;
+	LVL_OTHER_EFFECT = 1;
+	LVL_OTHER_FUNC = 2;
+	LVL_OTHER_THEME = 3;
 	
-	for (var l = LVL_OTHER_EFF; l <= LVL_OTHER_THM; l++)
+	for (var l = LVL_OTHER_EFFECT; l <= LVL_OTHER_THM; l++)
 	{
 		// Get data of the current level
-		other_textData_key = "eff";
-		other_arr = global.user.eff;
+		other_textData_key = "effect";
+		other_arr = global.user.effect;
 		
-		if (l == LVL_OTHER_FCN)
+		if (l == LVL_OTHER_FUNC)
 		{
-			other_textData_key = "fcn";
-			other_arr = global.user.fcn;
+			other_textData_key = "func";
+			other_arr = global.user.func;
 		}
 		
-		else if (l == LVL_OTHER_THM)
+		else if (l == LVL_OTHER_THEME)
 		{
-			other_textData_key = "thm";
-			other_arr = global.user.thm;
+			other_textData_key = "theme";
+			other_arr = global.user.theme;
 		}
 		
 		other_lengthMax = 14;
@@ -201,7 +201,7 @@ function fn_menu_inv_evCreate_0()
 		{
 			// Options
 			var _opt_text = "----------";
-			var _opt_slct_snd = global.user.thm[global.user.thm_curr].opt_error_snd;
+			var _opt_slct_snd = global.user.theme[global.user.theme_curr].opt_error_snd;
 			if (o < array_length(other_arr) && array_get(other_arr, o).unlocked == true)
 				_opt_text = array_get(other_arr, o).name;
 			
@@ -237,7 +237,7 @@ function fn_menu_inv_evCreate_1()
 {
 	// Main level
 	lvl = LVL_MAIN;
-	fn_audio_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMITTER.MENU);
+	fn_audio_play(global.user.theme[global.user.theme_curr].opt_slct_snd, CONFIG_AUDIO_EMITTER.MENU);
 }
 function fn_menu_inv_evDrawGUI_2(l)
 {
@@ -249,7 +249,7 @@ function fn_menu_inv_evDrawGUI_2(l)
 		fn_draw_spr(main_picFrm_spr, 0, main_picFrm_x, main_picFrm_y, , (lvl_alp[l] * draw_alp));
 		
 			// Draws the user's picture
-		if (global.config_hideCsr == false && mouse_check_button_pressed(mb_any) == true)
+		if (global.config_hideCursor == false && mouse_check_button_pressed(mb_any) == true)
 		{
 			var _ptr_x = (window_mouse_get_x() / 2);
 			var _ptr_y = (window_mouse_get_y() / 2);
@@ -264,7 +264,7 @@ function fn_menu_inv_evDrawGUI_2(l)
 				main_pic_ySc -= (main_pic_scLen * random_range(_pic_scLen_mulMin, _pic_scLen_mulMax));
 				
 				var _ptr_snd_pitch = random_range(0.75, 2.25);
-				var _ptr_snd = fn_audio_play(main_pic_snd, CONFIG_AUD_EMITTER.USER);
+				var _ptr_snd = fn_audio_play(main_pic_snd, CONFIG_AUDIO_EMITTER.USER);
 				fn_audio_pitch(_ptr_snd, _ptr_snd_pitch);
 			}
 		}
@@ -296,34 +296,34 @@ function fn_menu_inv_opt_slct()
 		fn_menu_lvlNew((o + 1));
 	
 	// Other levels (effects, items and themes)
-	else if (l == LVL_OTHER_FCN)
+	else if (l == LVL_OTHER_FUNC)
 	{
-		if (o < array_length(global.user.fcn) && global.user.fcn[o].unlocked == true)
+		if (o < array_length(global.user.func) && global.user.func[o].unlocked == true)
 		{
-			if (global.user.fcn_curr != o)
+			if (global.user.func_curr != o)
 			{
-				fn_user_fcn_equip(o);
-				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[0];
+				fn_user_func_equip(o);
+				opt_slct_snd[l, o] = global.user.theme[global.user.theme_curr].equip_snd[0];
 			}
 			else
 			{
-				global.user.fcn_curr = -1;
-				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[1];
+				global.user.func_curr = -1;
+				opt_slct_snd[l, o] = global.user.theme[global.user.theme_curr].equip_snd[1];
 			}
 		}
 	}
-	else if (l == LVL_OTHER_THM)
+	else if (l == LVL_OTHER_THEME)
 	{
-		if (o < array_length(global.user.thm) && global.user.thm[o].unlocked == true)
+		if (o < array_length(global.user.theme) && global.user.theme[o].unlocked == true)
 		{
-			if (global.user.thm_curr != o)
+			if (global.user.theme_curr != o)
 			{
-				fn_user_thm_equip(o);
-				opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].equip_snd[0];
+				fn_user_theme_equip(o);
+				opt_slct_snd[l, o] = global.user.theme[global.user.theme_curr].equip_snd[0];
 			}
 		}
 		else
-			opt_slct_snd[l, o] = global.user.thm[global.user.thm_curr].opt_error_snd;
+			opt_slct_snd[l, o] = global.user.theme[global.user.theme_curr].opt_error_snd;
 	}
 }
 function fn_menu_inv_opt_cncl()
@@ -335,6 +335,6 @@ function fn_menu_inv_opt_cncl()
 		fn_menu_lvlNew(LVL_EMPTY, , true);
 	
 	// Other levels (Effects, Items and Themes)
-	else if (l >= LVL_OTHER_EFF && l <= LVL_OTHER_THM)
+	else if (l >= LVL_OTHER_EFFECT && l <= LVL_OTHER_THEME)
 		fn_menu_lvlNew(LVL_MAIN);
 }

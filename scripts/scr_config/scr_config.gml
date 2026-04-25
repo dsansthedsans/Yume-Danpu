@@ -6,7 +6,7 @@ function fn_config_setup()
 	global.config =
 	{
 		name : "Yume Danpu",
-		ver : 0.05,
+		version : 0.05,
 		
 		// Languages
 		lang : [-1],
@@ -23,14 +23,14 @@ function fn_config_setup()
 		video :
 		{
 			// Resolution
-			res :  [-1],
-			res_curr : 1,
-			res_name : "config_video_res_name",
+			resolution :  [-1],
+			resolution_curr : 1,
+			resolution_name : "config_video_resolution_name",
 			// Fullscreen
-			fscr :
+			fullscreen :
 			{
 				act : false,
-				name : "config_video_fscr_name"
+				name : "config_video_fullscreen_name"
 			},
 			// Vsync
 			vsync :
@@ -45,10 +45,10 @@ function fn_config_setup()
 				name : "config_video_showVer_name"
 			},
 			// Show Cursor
-			hideCsr :
+			hideCursor :
 			{
 				act : true,
-				name : "config_video_hideCsr_name"
+				name : "config_video_hideCursor_name"
 			},
 			// Show FPS
 			showFps :
@@ -64,7 +64,7 @@ function fn_config_setup()
 			},
 		},
 		// Music & Sounds
-		aud :
+		audio :
 		{
 			emitter : [-1]
 		},
@@ -72,19 +72,19 @@ function fn_config_setup()
 		access :
 		{
 			// Reduced Motion
-			rdcdMot :
+			reduceMotion :
 			{
 				act : false,
-				name : "config_access_rdcdMot_name"
+				name : "config_access_reduceMotion_name"
 			}
 		},	
 	}
 	
 		// File (Creates the file directory if needed; Loads the previously selected language if there's already a file)
-	global.config.file_name = string(global.config.ver) + "/config.ini";
+	global.config.file_name = string(global.config.version) + "/config.ini";
 	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?" /*Reference to Minecraft*/, "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/, "Look how cool you are, changing your settings directly in the file.", "How about exploring in-game?");
-	if (directory_exists(global.config.ver) == false)
-		directory_create(global.config.ver);
+	if (directory_exists(global.config.version) == false)
+		directory_create(global.config.version);
 	else if (file_exists(global.config.file_name) == true)
 	{
 		if (irandom_range(1, 100) <= 5)
@@ -113,7 +113,7 @@ function fn_config_setup()
 		CANCEL,		// Cancel
 		USE,		// Effect/Item
 		AUTOWALK,	// Autowalk
-		FSCR,		// Fullscreen
+		FULLSCREEN,		// Fullscreen
 		MENU_USER,	// Inventory and hotbar menus
 		MENU_PAUSE,	// Pause menu
 	}
@@ -125,37 +125,35 @@ function fn_config_setup()
 	fn_config_key_add(CONFIG_KEY.CANCEL,		"cancel",		ord("X"), vk_shift);
 	fn_config_key_add(CONFIG_KEY.USE,			"use",			ord("F"));
 	fn_config_key_add(CONFIG_KEY.AUTOWALK,		"autowalk",		ord("R"));
-	fn_config_key_add(CONFIG_KEY.FSCR,			"fscr",			vk_f4, vk_f11);
+	fn_config_key_add(CONFIG_KEY.FULLSCREEN,	"fullscreen",	vk_f4, vk_f11);
 	fn_config_key_add(CONFIG_KEY.MENU_USER,		"menu_user",	ord("C"), vk_control);
 	fn_config_key_add(CONFIG_KEY.MENU_PAUSE,	"menu_pause",	vk_escape);
 		// Graphics
 	window_set_caption(global.config.name);
 	window_set_color(c_black);
 	var i = 0;
-	fn_config_video_res_add(i++, 320, 240);
-	fn_config_video_res_add(i++, 640, 480);
-	fn_config_video_res_add(i++, 960, 720);
-	fn_config_video_res_add(i++, 1280, 960);
+	fn_config_video_resolution_add(i++, 320, 240);
+	fn_config_video_resolution_add(i++, 640, 480);
+	fn_config_video_resolution_add(i++, 960, 720);
+	fn_config_video_resolution_add(i++, 1280, 960);
 		// Music & Sounds
-	enum CONFIG_AUD_EMITTER
+	enum CONFIG_AUDIO_EMITTER
 	{
 		MASTER, // Master
-		
 		MUS, // Music
 		AMB, // Ambience
-		
 		MENU, // Menu
 		USER, // Player
 		PROP, // Props
 		ACTOR, // Entities
 	}
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MASTER,	"master");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MUS,		"mus");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.AMB,		"amb");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.MENU,	"menu");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.USER,	"user");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.PROP,	"prop");
-	fn_config_aud_emitter_add(CONFIG_AUD_EMITTER.ACTOR,	"actor");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MASTER,	"master");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MUS,		"mus");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.AMB,		"amb");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MENU,	"menu");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.USER,	"user");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.PROP,	"prop");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.ACTOR,	"actor");
 		// File
 	if (file_exists(global.config.file_name) == false)
 		fn_config_file_save();
@@ -169,16 +167,16 @@ function fn_config_file_save()
 	ini_write_string("about", "msg", global.config.file_msg);
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
-	ini_write_real("video", "res_curr", global.config.video.res_curr);
-	ini_write_real("video", "fscr_act", global.config.video.fscr.act);
+	ini_write_real("video", "resolution_curr", global.config.video.resolution_curr);
+	ini_write_real("video", "fullscreen_act", global.config.video.fullscreen.act);
 	ini_write_real("video", "vsync_act", global.config.video.vsync.act);
-	ini_write_real("video", "hideCsr_act", global.config.video.hideCsr.act);
+	ini_write_real("video", "hideCursor_act", global.config.video.hideCursor.act);
 	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
 	ini_write_real("video", "showFps_act", global.config.video.showFps.act);
 	ini_write_real("video", "showBdr_act", global.config.video.showBdr.act);
-	for (var e = 0; e < array_length(global.config.aud.emitter); e++)
-		ini_write_real("aud", $"emitter_{e}_vol", global.config.aud.emitter[e].vol);
-	ini_write_real("access", "rdcdMot_act", global.config.access.rdcdMot.act);
+	for (var e = 0; e < array_length(global.config.audio.emitter); e++)
+		ini_write_real("aud", $"emitter_{e}_vol", global.config.audio.emitter[e].vol);
+	ini_write_real("access", "reduceMotion_act", global.config.access.reduceMotion.act);
 	ini_close();
 }
 function fn_config_file_load()
@@ -186,16 +184,16 @@ function fn_config_file_load()
 	ini_open(global.config.file_name);
 	global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 	global.config.lang_hasChosen = ini_read_real("lang", "hasChosen", false);
-	global.config.video.res_curr = ini_read_real("video", "res_curr", 1);
-	global.config.video.fscr.act = ini_read_real("video", "fscr_act", false);
+	global.config.video.resolution_curr = ini_read_real("video", "resolution_curr", 1);
+	global.config.video.fullscreen.act = ini_read_real("video", "fullscreen_act", false);
 	global.config.video.vsync.act = ini_read_real("video", "vsync_act", false);
-	global.config.video.hideCsr.act = ini_read_real("video", "hideCsr_act", true);
+	global.config.video.hideCursor.act = ini_read_real("video", "hideCursor_act", true);
 	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
 	global.config.video.showFps.act = ini_read_real("video", "showFps_act", false);
 	global.config.video.showBdr.act = ini_read_real("video", "showBdr_act", true);
-	for (var e = 0; e < array_length(global.config.aud.emitter); e++)
-		global.config.aud.emitter[e].vol = ini_read_real("aud", $"emitter_{e}_vol", 1);
-	global.config.access.rdcdMot.act = ini_read_real("access", "rdcdMot_act", false);
+	for (var e = 0; e < array_length(global.config.audio.emitter); e++)
+		global.config.audio.emitter[e].vol = ini_read_real("aud", $"emitter_{e}_vol", 1);
+	global.config.access.reduceMotion.act = ini_read_real("access", "reduceMotion_act", false);
 	ini_close();
 }
 function fn_config_file_erase()
@@ -269,25 +267,25 @@ function fn_config_key_lazy()
 	}
 }
 	// Graphics
-function fn_config_video_res_add(_idx, _width, _height)
+function fn_config_video_resolution_add(_idx, _width, _height)
 {
-	global.config.video.res[_idx] =
+	global.config.video.resolution[_idx] =
 	{
 		width : _width,
 		height : _height,
 	}
 }
 	// Music & Sounds
-function fn_config_aud_emitter_add(_idx, _code, _vol = 1, _pitch = 1)
+function fn_config_audio_emitter_add(_idx, _code, _vol = 1, _pitch = 1)
 {
-	global.config.aud.emitter[_idx] =
+	global.config.audio.emitter[_idx] =
 	{
-		name : $"config_aud_emitter_{_code}",
+		name : $"config_audio_emitter_{_code}",
 		code : _code,
 		id : audio_emitter_create(),
 		bus : audio_bus_create(),
 		vol : _vol,
 		pitch : _pitch
 	}
-	audio_emitter_bus(global.config.aud.emitter[_idx].id, global.config.aud.emitter[_idx].bus);
+	audio_emitter_bus(global.config.audio.emitter[_idx].id, global.config.audio.emitter[_idx].bus);
 }

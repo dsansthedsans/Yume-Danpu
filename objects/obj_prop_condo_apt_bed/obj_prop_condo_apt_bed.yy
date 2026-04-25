@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"temp_spr_prop_condo_apt_bed",
-    "path":"sprites/temp_spr_prop_condo_apt_bed/temp_spr_prop_condo_apt_bed.yy",
+    "name":"spr_prop_condo_apt_bed",
+    "path":"sprites/spr_prop_condo_apt_bed/spr_prop_condo_apt_bed.yy",
   },
   "spriteMaskId":null,
   "visible":true,

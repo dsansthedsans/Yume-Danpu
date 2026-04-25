@@ -1,14 +1,14 @@
 
 if (is_array(lvl) == true)
 {
-	var _res_width = global.config.video.res[0].width;
-	var _res_height = global.config.video.res[0].height;
+	var _res_width = global.config.video.resolution[0].width;
+	var _res_height = global.config.video.resolution[0].height;
 	
 	// Main level
 	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
 	{	
 		var l = LVL_MAIN;
-		lvl[l].rect[0].alpha = global.user.thm[global.user.thm_curr].alpha.blurLight;
+		lvl[l].rect[0].alpha = global.user.theme[global.user.theme_curr].alpha.blurLight;
 		
 		// Label panel
 		var _panel_x = 16;
@@ -20,7 +20,7 @@ if (is_array(lvl) == true)
 		lvl[l].panel[0].width = _panel_width;
 		lvl[l].panel[0].height = _panel_height;
 			// User's picture frame decor
-		var _picFrame_spr = global.user.thm[global.user.thm_curr].spr.picFrame;
+		var _picFrame_spr = global.user.theme[global.user.theme_curr].spr.picFrame;
 		var _picFrame_width = fn_spr_width(_picFrame_spr);
 		var _picFrame_height = fn_spr_height(_picFrame_spr);
 		var _picFrame_x = (_panel_x + round(_panel_width / 2) - round(_picFrame_width / 2));
@@ -44,9 +44,9 @@ if (is_array(lvl) == true)
 		_money_amt.text = global.user.money.amt[global.user.asleep];
 		_money_ccy.x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_text_width(_money_amt.text) / 2));
 		_money_ccy.y = (_name.y + fn_text_height(_name.text) + round(((_panel_y + _panel_height - 16 - 4) - (_name.y + fn_text_height(_name.text))) / 2));
-		_money_ccy.colors = [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark];
+		_money_ccy.colors = [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.grayDark];
 		_money_ccy.icon.spr = spr_menu_user_main_label_icon;
-		_money_ccy.icon.color = global.user.thm[global.user.thm_curr].color.whiteLight;
+		_money_ccy.icon.color = global.user.theme[global.user.theme_curr].color.whiteLight;
 		_money_amt.x = (_money_ccy.x + fn_text_width(_money_ccy.text));
 		_money_amt.y = _money_ccy.y;
 		
@@ -74,15 +74,15 @@ if (is_array(lvl) == true)
 		}
 	}
 	// User levels
-	if (lvl_curr >= LVL_USER_EFF && lvl_curr <= LVL_USER_THM) || (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
+	if (lvl_curr >= LVL_USER_EFFECT && lvl_curr <= LVL_USER_THEME) || (lvl_fader.next.lvl >= LVL_USER_EFFECT && lvl_fader.next.lvl <= LVL_USER_THEME)
 	{
 		var l;
-		if (lvl_curr >= LVL_USER_EFF && lvl_curr <= LVL_USER_THM)
+		if (lvl_curr >= LVL_USER_EFFECT && lvl_curr <= LVL_USER_THEME)
 			l = lvl_curr;
-		else if (lvl_fader.next.lvl >= LVL_USER_EFF && lvl_fader.next.lvl <= LVL_USER_THM)
+		else if (lvl_fader.next.lvl >= LVL_USER_EFFECT && lvl_fader.next.lvl <= LVL_USER_THEME)
 			l = lvl_fader.next.lvl;
 		var _item = lvl[l].data[0];
-			lvl[l].rect[0].alpha = global.user.thm[global.user.thm_curr].alpha.blurHeavy;
+			lvl[l].rect[0].alpha = global.user.theme[global.user.theme_curr].alpha.blurHeavy;
 		
 		// Panel
 		var _panel = lvl[l].panel[0];
@@ -114,7 +114,7 @@ if (is_array(lvl) == true)
 		_label.yAlign = fa_bottom;
 		_label.x = (_panel.x + 16);
 		_label.y = (_panel.y + _panel.height - 16);
-		_label.colors = [merge_color(global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.grayLight, 0.65), merge_color(global.user.thm[global.user.thm_curr].color.whiteDark, global.user.thm[global.user.thm_curr].color.grayDark, 0.65)];
+		_label.colors = [merge_color(global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.grayLight, 0.65), merge_color(global.user.theme[global.user.theme_curr].color.whiteDark, global.user.theme[global.user.theme_curr].color.grayDark, 0.65)];
 	}
 }
 event_inherited();

@@ -126,8 +126,8 @@ function fn_audio_stop(_id)
 function fn_audio_vol(_asset, _id, _emitter, _vol = 1)
 {
 	_vol = fn_audio_volData(_asset, _vol);
-	_vol *= global.config.aud.emitter[_emitter].vol;
-	_vol *= global.config.aud.emitter[CONFIG_AUD_EMITTER.MASTER].vol;
+	_vol *= global.config.audio.emitter[_emitter].vol;
+	_vol *= global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].vol;
 	audio_sound_gain(_id, _vol, 0);
 }
 function fn_audio_volData(_asset, _vol)
@@ -143,46 +143,46 @@ function fn_audio_volData(_asset, _vol)
 		
 			// Themes
 				// Default theme
-		case snd_user_thm_move_dflt: // The sound that should be used as reference for all others
+		case snd_user_theme_move_dflt: // The sound that should be used as reference for all others
 			_vol = 1;
 			break;
-		case snd_user_thm_confirm_dflt:
+		case snd_user_theme_confirm_dflt:
 			_vol *= 1.35;
 			break;
-		case snd_user_thm_cancel_dflt:
+		case snd_user_theme_cancel_dflt:
 			_vol *= 0.9;
 			break;
-		case snd_user_thm_unlock_0_dflt:
-		case snd_user_thm_unlock_1_dflt:
-		case snd_user_thm_unlock_2_dflt:
+		case snd_user_theme_unlock_0_dflt:
+		case snd_user_theme_unlock_1_dflt:
+		case snd_user_theme_unlock_2_dflt:
 			_vol *= 0.45;
 			break;
-		case snd_user_thm_equip_dflt:
-		case snd_user_thm_unequip_dflt:
+		case snd_user_theme_equip_dflt:
+		case snd_user_theme_unequip_dflt:
 			_vol *= 0.65;
 			break;
 				// Madotsuki theme
-		case snd_user_thm_move_madot:
+		case snd_user_theme_move_madot:
 			_vol *= 0.4;
 			break;
-		case snd_user_thm_confirm_madot:
+		case snd_user_theme_confirm_madot:
 			_vol *= 0.2;
 			break;
-		case snd_user_thm_cancel_madot:
+		case snd_user_theme_cancel_madot:
 			_vol *= 0.2;
 			break;
-		case snd_user_thm_error_madot:
+		case snd_user_theme_error_madot:
 			_vol *= 0.4;
 			break;
 		
 			// Items
-		case snd_user_fcn_kart:
+		case snd_user_func_kart:
 			_vol *= 0.5;
 			break;
-		case snd_user_fcn_kart_turn:
+		case snd_user_func_kart_turn:
 			_vol *= 0.35;
 			break;
-		case snd_user_fcn_kart_hit:
+		case snd_user_func_kart_hit:
 			_vol *= 0.65;
 			break;
 		
@@ -280,7 +280,7 @@ function fn_audio_offsetData(_asset, _ofs)
 		// Player
 			// Themes
 				// Default theme
-		case snd_user_thm_start_dflt:
+		case snd_user_theme_start_dflt:
 			_ofs += 0.15;
 			break;
 		

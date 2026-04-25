@@ -9,5 +9,5 @@ if (talk.act == true && talk.type.door.act == true && talk.stg == 1)
 
 
 // Noise (audio that can only be heard if the user is near the object)
-if (audio_is_playing(noise.aud.id) == true)
-	fn_audio_stop(noise.aud.id);
+if (audio_is_playing(noise.audio.id) == true)
+	fn_audio_stop(noise.audio.id);

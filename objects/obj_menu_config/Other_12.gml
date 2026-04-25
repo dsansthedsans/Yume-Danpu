@@ -15,18 +15,18 @@ else if (l == LVL_VIDEO)
 {
 	if (o == 0)
 	{
-		global.config.video.res_curr += _cycle_sign;
-		if (global.config.video.res_curr < 0)
-			global.config.video.res_curr = (array_length(global.config.video.res) - 1);
-		if (global.config.video.res_curr >= array_length(global.config.video.res))
-			global.config.video.res_curr = 0;
+		global.config.video.resolution_curr += _cycle_sign;
+		if (global.config.video.resolution_curr < 0)
+			global.config.video.resolution_curr = (array_length(global.config.video.resolution) - 1);
+		if (global.config.video.resolution_curr >= array_length(global.config.video.resolution))
+			global.config.video.resolution_curr = 0;
 	}
 	else if (o == 1)
-		global.config.video.fscr.act = !global.config.video.fscr.act;
+		global.config.video.fullscreen.act = !global.config.video.fullscreen.act;
 	else if (o == 2)
 		global.config.video.vsync.act = !global.config.video.vsync.act;
 	else if (o == 3)
-		global.config.video.hideCsr.act = !global.config.video.hideCsr.act;
+		global.config.video.hideCursor.act = !global.config.video.hideCursor.act;
 	else if (o == 4)
 		global.config.video.showVer.act = !global.config.video.showVer.act;
 	else if (o == 5)
@@ -35,16 +35,16 @@ else if (l == LVL_VIDEO)
 		global.config.video.showFps.act = !global.config.video.showFps.act;
 	fn_config_file_save();
 }
-else if (l == LVL_AUD)
+else if (l == LVL_AUDIO)
 {
-	global.config.aud.emitter[o].vol = clamp((global.config.aud.emitter[o].vol + (0.1 * _cycle_sign)), 0, 1);
+	global.config.audio.emitter[o].vol = clamp((global.config.audio.emitter[o].vol + (0.1 * _cycle_sign)), 0, 1);
 	fn_config_file_save();
 }
 else if (l == LVL_ACCESS)
 {
 	if (o == 0)
 	{
-		global.config.access.rdcdMot.act = !global.config.access.rdcdMot.act;
+		global.config.access.reduceMotion.act = !global.config.access.reduceMotion.act;
 		fn_config_file_save();
 	}
 }

@@ -226,7 +226,7 @@ function fn_menu_lvl_decor_add(_lvl, _idx, _spr = undefined, _img = 0, _x = unde
 	}
 }
 
-	// Options
+/* Options */
 function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _select_act = true)
 {	
 	var l = _lvl;
@@ -257,7 +257,7 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		},
 		// Checkbox
 		check : undefined,
-		// Value label (the text beside the options in the settings menu, like "Yes", "No" and "100%")
+		// Value label
 		value : undefined,
 		// Icon
 		icon : undefined,
@@ -273,7 +273,27 @@ function fn_menu_lvl_option_getWidthMax(_lvl)
 		_widthMax = max(_widthMax, fn_text_width(textdata(lvl[l].option[o].text)));
 	return _widthMax;
 }
-		// Value (the text beside the options in the settings menu, like "Yes", "No" and "100%")
+// Icon
+function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
+{
+	var l = _lvl;
+	var o = _idx;
+	lvl[l].option[o].icon =
+	{
+		spr : _spr,
+		img : _img,
+		x : 0,
+		y : 0,
+		xGap : 0,
+		colors : undefined,
+		alphas : [1 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
+	}
+}
+function fn_menu_lvl_option_icon_xGap_getDflt(_lvl, _idx)
+{
+	return (fn_spr_width(lvl[_lvl].option[_idx].icon.spr) + 5)
+}
+// Value
 function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 {
 	var l = _lvl;
@@ -341,27 +361,7 @@ function fn_menu_lvl_option_value_getWidthMax(_lvl)
 	}
 	return _widthMax;
 }
-		// Icon
-function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
-{
-	var l = _lvl;
-	var o = _idx;
-	lvl[l].option[o].icon =
-	{
-		spr : _spr,
-		img : _img,
-		x : 0,
-		y : 0,
-		xGap : 0,
-		colors : undefined,
-		alphas : [1 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
-	}
-}
-function fn_menu_lvl_option_icon_xGap_getDflt(_lvl, _idx)
-{
-	return (fn_spr_width(lvl[_lvl].option[_idx].icon.spr) + 5)
-}
-		// Checkbox
+// Checkbox
 function fn_menu_lvl_option_check_add(_lvl, _idx)
 {
 	var l = _lvl;
@@ -369,7 +369,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 	
 	lvl[l].option[o].check =
 	{
-		spr : global.user.thm[global.user.thm_curr].spr.option_check,
+		spr : global.user.theme[global.user.theme_curr].spr.option_check,
 			
 		x : 0,
 		y : 0,
@@ -382,7 +382,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		mark :
 		{
 			act : false,
-			spr : global.user.thm[global.user.thm_curr].spr.option_check_mark,
+			spr : global.user.theme[global.user.theme_curr].spr.option_check_mark,
 			
 			x : 0,
 			y : 0,
@@ -391,14 +391,14 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		}
 	}
 }
-		// Button
+// Button
 function fn_menu_lvl_option_button_add(_lvl, _idx)
 {
 	var l = _lvl;
 	var o = _idx;
 	lvl[l].option[o].button =
 	{
-		spr : global.user.thm[global.user.thm_curr].spr.option_button,
+		spr : global.user.theme[global.user.theme_curr].spr.option_button,
 		img_inact : 0, // image_index while inactive (unselected)
 		img_act : 1, // image_index while active (selected)
 		x : 0,

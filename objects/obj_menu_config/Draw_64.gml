@@ -1,8 +1,8 @@
 
 if (is_array(lvl) == true)
 {
-	var _res_width = global.config.video.res[0].width;
-	var _res_height = global.config.video.res[0].height;
+	var _res_width = global.config.video.resolution[0].width;
+	var _res_height = global.config.video.resolution[0].height;
 	
 	// Main level
 	if (lvl_curr == LVL_MAIN) || (lvl_fader.next.lvl == LVL_MAIN)
@@ -64,14 +64,14 @@ if (is_array(lvl) == true)
 			var _opt = lvl[l].option;
 			if (l == LVL_VIDEO)
 			{
-				_opt[0].text = global.config.video.res_name;
-				_opt[0].value.text = $"{round(global.config.video.res[global.config.video.res_curr].width)}x{round(global.config.video.res[global.config.video.res_curr].height)}";
-				_opt[1].text = global.config.video.fscr.name;
-				_opt[1].value.text = $"menu_config_all_option_value_{global.config.video.fscr.act}";
+				_opt[0].text = global.config.video.resolution_name;
+				_opt[0].value.text = $"{round(global.config.video.resolution[global.config.video.resolution_curr].width)}x{round(global.config.video.resolution[global.config.video.resolution_curr].height)}";
+				_opt[1].text = global.config.video.fullscreen.name;
+				_opt[1].value.text = $"menu_config_all_option_value_{global.config.video.fullscreen.act}";
 				_opt[2].text = global.config.video.vsync.name;
 				_opt[2].value.text = $"menu_config_all_option_value_{global.config.video.vsync.act}";
-				_opt[3].text = global.config.video.hideCsr.name;
-				_opt[3].value.text = $"menu_config_all_option_value_{global.config.video.hideCsr.act}";
+				_opt[3].text = global.config.video.hideCursor.name;
+				_opt[3].value.text = $"menu_config_all_option_value_{global.config.video.hideCursor.act}";
 				_opt[4].text = global.config.video.showVer.name;
 				_opt[4].value.text = $"menu_config_all_option_value_{global.config.video.showVer.act}";
 				_opt[5].text = global.config.video.showBdr.name;
@@ -79,12 +79,12 @@ if (is_array(lvl) == true)
 				_opt[6].text = global.config.video.showFps.name;
 				_opt[6].value.text = $"menu_config_all_option_value_{global.config.video.showFps.act}";
 			}
-			else if (l == LVL_AUD)
+			else if (l == LVL_AUDIO)
 			{
-				for (var o = 0; o < array_length(global.config.aud.emitter); o++)
+				for (var o = 0; o < array_length(global.config.audio.emitter); o++)
 				{
-					var _emitter_vol = global.config.aud.emitter[o].vol;
-					_opt[o].text = global.config.aud.emitter[o].name;
+					var _emitter_vol = global.config.audio.emitter[o].vol;
+					_opt[o].text = global.config.audio.emitter[o].name;
 					_opt[o].value.text = $"{round(_emitter_vol * 100)}%";
 					_opt[o].value.arrow[0].act = ((_emitter_vol > 0) ? true : false);
 					_opt[o].value.arrow[1].act = ((_emitter_vol < 1) ? true : false);
@@ -92,8 +92,8 @@ if (is_array(lvl) == true)
 			}
 			else if (l == LVL_ACCESS)
 			{
-				_opt[0].text = global.config.access.rdcdMot.name;
-				_opt[0].value.text = $"menu_config_all_option_value_{global.config.access.rdcdMot.act}";
+				_opt[0].text = global.config.access.reduceMotion.name;
+				_opt[0].value.text = $"menu_config_all_option_value_{global.config.access.reduceMotion.act}";
 			}
 			var _opt_yGap = 16;
 			var _opt_value_xGap = (32 + 32);
@@ -103,8 +103,8 @@ if (is_array(lvl) == true)
 			{
 				_opt[o].x = round(_panel.x + (_panel.width / 2) - (_opt_widthAll / 2));
 				_opt[o].y = round(_panel.y + (_panel.height / 2) - (_opt_heightAll / 2) + (_opt_yGap * o));
-				_opt[o].value.x = round(_opt[o].x + fn_menu_lvl_option_getWidthMax(l) + _opt_value_xGap);
-				//_opt[o].value.x = round(_opt[o].x + fn_menu_lvl_option_getWidthMax(l) + (((_panel.x + _panel.width) - (_opt[o].x + fn_menu_lvl_option_getWidthMax(l))) / 2));
+				if (_opt[o].value != undefined)
+					_opt[o].value.x = round(_opt[o].x + fn_menu_lvl_option_getWidthMax(l) + _opt_value_xGap);
 			}
 		}
 	}

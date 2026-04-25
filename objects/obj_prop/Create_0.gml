@@ -44,7 +44,7 @@ talk =
 			dur_curr : 0,
 			
 			aud_asset : [-1],
-			aud_emitter : CONFIG_AUD_EMITTER.PROP,
+			audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
 			aud_idx : -1
 		},
 		// Door type (starts a room transition)
@@ -98,7 +98,7 @@ noise =
 		dur_curr : 0
 	},
 	
-	aud :
+	audio :
 	{
 		asset : -1,
 		emitter : -1,

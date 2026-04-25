@@ -19,6 +19,6 @@ for (var w = 0; w < _loop.xLength; w++)
 	{
 		var _loop_xAdd = (_loop.xDist * (w - _loop.xLength_outsideRoom));
 		var _loop_yAdd = (_loop.yDist * (h - _loop.yLength_outsideRoom));
-		fn_draw_spr(clouds.sprite, clouds.image, (clouds.x + (clouds.xOffset * (global.config.access.rdcdMot.act == false)) + _loop_xAdd), (clouds.y + (clouds.yOffset * (global.config.access.rdcdMot.act == false)) + _loop_yAdd), clouds.color, clouds.alpha, clouds.xScale, clouds.yScale, clouds.angle);
+		fn_draw_spr(clouds.sprite, clouds.image, (clouds.x + (clouds.xOffset * (global.config.access.reduceMotion.act == false)) + _loop_xAdd), (clouds.y + (clouds.yOffset * (global.config.access.reduceMotion.act == false)) + _loop_yAdd), clouds.color, clouds.alpha, clouds.xScale, clouds.yScale, clouds.angle);
 	}
 }

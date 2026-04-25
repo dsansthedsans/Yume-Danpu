@@ -14,7 +14,7 @@ function fn_menu_pse_evCreate_0()
 	
 		// Options [#0]
 	fn_menu_opt_add_ext(l, "menu_pse_main_opt_");
-	opt_slct_snd[l, 2] = global.user.thm[global.user.thm_curr].opt_error_snd;
+	opt_slct_snd[l, 2] = global.user.theme[global.user.theme_curr].opt_error_snd;
 	opt_cncl_key[l, 1] = CONFIG_KEY.MENU_PAUSE;
 	var _opt_yDist = draw_dist;
 	var _opt_hAll = (_opt_yDist * (opt_len[l] - 1) + fn_);
@@ -46,7 +46,7 @@ function fn_menu_pse_evCreate_0()
 	for (var l = 0; l < lvl_lengthMax; l++)
 	{
 		// Dark translucent background
-		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.thm[global.user.thm_curr].col.blur, 0.75);
+		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.theme[global.user.theme_curr].col.blur, 0.75);
 	}
 }
 function fn_menu_pse_evCreate_1()
@@ -78,7 +78,7 @@ function fn_menu_pse_evCreate_1()
 	instance_activate_object(obj_stage);
 	instance_activate_object(obj_dbg);
 	audio_pause_all();
-	fn_audio_play(global.user.thm[global.user.thm_curr].opt_slct_snd, CONFIG_AUD_EMITTER.MENU);
+	fn_audio_play(global.user.theme[global.user.theme_curr].opt_slct_snd, CONFIG_AUDIO_EMITTER.MENU);
 }
 function fn_menu_pse_evDrawGUI_0(l)
 {

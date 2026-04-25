@@ -16,8 +16,8 @@ if (is_array(lvl) == true)
 	{
 		if (is_struct(lvl[l]) == true && lvl[l].alpha > 0)
 		{
-			var _shdw_cols = [global.user.thm[global.user.thm_curr].color.blackLight, global.user.thm[global.user.thm_curr].color.blackDark];
-			var _shdw_alp = global.user.thm[global.user.thm_curr].alpha.shadow;
+			var _shdw_cols = [global.user.theme[global.user.theme_curr].color.blackLight, global.user.theme[global.user.theme_curr].color.blackDark];
+			var _shdw_alp = global.user.theme[global.user.theme_curr].alpha.shadow;
 			
 			// Rectangles
 			if (is_array(lvl[l].rect) == true)
@@ -37,16 +37,16 @@ if (is_array(lvl) == true)
 					var _train = lvl[l].train[t];
 					if (_train.x != undefined && _train.x != undefined)
 					{
-						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.thm[global.user.thm_curr].spr.train)
+						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.theme[global.user.theme_curr].spr.train)
 						var _train_xGap = lengthdir_x(fn_spr_width(_train_spr), _train.angle);
 						var _train_yGap = lengthdir_y(fn_spr_height(_train_spr), _train.angle);
 						_train.xOffset += _train.xSpd;
 						_train.yOffset += _train.ySpd;
-						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.rdcdMot.act == true)
+						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.reduceMotion.act == true)
 							_train.xOffset = 0;
-						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.rdcdMot.act == true)
+						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.reduceMotion.act == true)
 							_train.yOffset = 0;
-						var _train_color = ((_train.color != undefined) ? _train.color : global.user.thm[global.user.thm_curr].color.grayDark);
+						var _train_color = ((_train.color != undefined) ? _train.color : global.user.theme[global.user.theme_curr].color.grayDark);
 						for (var c = 0; c < 21; c++)
 							fn_draw_spr(_train_spr, 0, (_train.x + _train.xOffset + (_train_xGap * c)), (_train.y + _train.yOffset + (_train_yGap * c)), _train_color, (_train.alpha * lvl[l].alpha), , , _train.angle);
 					}
@@ -60,7 +60,7 @@ if (is_array(lvl) == true)
 					var _panel = lvl[l].panel[p];
 					if (_panel.x != undefined && _panel.y != undefined && _panel.width != undefined && _panel.height != undefined)
 					{
-						var _panel_spr = ((_panel.spr != undefined) ? _panel.spr : global.user.thm[global.user.thm_curr].spr.panel);
+						var _panel_spr = ((_panel.spr != undefined) ? _panel.spr : global.user.theme[global.user.theme_curr].spr.panel);
 						var _panel_x = round(_panel.x);
 						var _panel_y = round(_panel.y);
 						var _panel_img = 0;
@@ -69,7 +69,7 @@ if (is_array(lvl) == true)
 						{
 							_panel_img = 1;
 							var _title = _panel.title;
-							var _title_spr = ((_title.spr != undefined) ? _title.spr : global.user.thm[global.user.thm_curr].spr.panel_title);
+							var _title_spr = ((_title.spr != undefined) ? _title.spr : global.user.theme[global.user.theme_curr].spr.panel_title);
 							var _title_y = round(_panel_y - _title.height);
 							fn_draw_spr_stretch(_title_spr, 0, _panel_x, _title_y, _panel.width, _title.height, , (_panel.alpha * lvl[l].alpha));	
 								// Label
@@ -78,8 +78,8 @@ if (is_array(lvl) == true)
 								var _lbl = _title.label;
 								var _lbl_x = round(_panel_x + _title.label.xMarg);
 								var _lbl_y = round(_panel_y - (_panel.title.height / 2) - (fn_text_height("Salenis") / 2) + 1);
-								var _lbl_cols = ((_lbl.color != undefined) ? _lbl.color : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark]);
-								var _lbl_alp = ((_lbl.alpha != undefined) ? _lbl.alpha : global.user.thm[global.user.thm_curr].alpha.panel_title_label);
+								var _lbl_cols = ((_lbl.color != undefined) ? _lbl.color : [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteDark]);
+								var _lbl_alp = ((_lbl.alpha != undefined) ? _lbl.alpha : global.user.theme[global.user.theme_curr].alpha.panel_title_label);
 								fn_draw_text(textdata(_title.label.text), _lbl_x, _lbl_y, _lbl_cols, (_lbl_alp * _panel.alpha * lvl[l].alpha), , , , , _shdw_cols, _shdw_alp);
 							}
 						}
@@ -96,7 +96,7 @@ if (is_array(lvl) == true)
 					var _card = lvl[l].card[c];
 					if (_card.x != undefined && _card.y != undefined && _card.width != undefined && _card.height != undefined)
 					{
-						var _card_spr = ((_card.spr != undefined) ? _card.spr : global.user.thm[global.user.thm_curr].spr.card);
+						var _card_spr = ((_card.spr != undefined) ? _card.spr : global.user.theme[global.user.theme_curr].spr.card);
 						fn_draw_spr_stretch(_card_spr, _card.img, round(_card.x), round(_card.y), _card.width, _card.height, , lvl[l].alpha);
 					}
 				}
@@ -111,7 +111,7 @@ if (is_array(lvl) == true)
 					{
 						var _lbl_x = round(_lbl.x);
 						var _lbl_y = round(_lbl.y);
-						var _lbl_cols = ((_lbl.colors != undefined) ? _lbl.colors : [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark]);
+						var _lbl_cols = ((_lbl.colors != undefined) ? _lbl.colors : [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteDark]);
 						// Icon
 						if (is_struct(_lbl.icon) == true && _lbl.icon.spr != undefined)
 						{
@@ -135,7 +135,7 @@ if (is_array(lvl) == true)
 					var _decor = lvl[l].decor[d];
 					if (_decor.x != undefined && _decor.y != undefined)
 					{
-						var _decor_spr = ((_decor.spr != undefined) ? _decor.spr : global.user.thm[global.user.thm_curr].spr.decor);
+						var _decor_spr = ((_decor.spr != undefined) ? _decor.spr : global.user.theme[global.user.theme_curr].spr.decor);
 						fn_draw_spr(_decor_spr, _decor.img, round(_decor.x), round(_decor.y), _decor.color, (_decor.alpha * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 					}
 				}
@@ -150,7 +150,7 @@ if (is_array(lvl) == true)
 					{
 						var _opt_x = round(_opt.x);
 						var _opt_y = round(_opt.y);
-						var _opt_colors = ((_opt.colors != undefined) ? _opt.colors : [[global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark], [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteDark]]);
+						var _opt_colors = ((_opt.colors != undefined) ? _opt.colors : [[global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.grayDark], [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteDark]]);
 						
 							// Button
 						if (is_struct(_opt.button) == true)
@@ -166,10 +166,10 @@ if (is_array(lvl) == true)
 						if (_opt.select.act == true)
 						{
 							var _slct = _opt.select;
-							_slct.alpha = fn_lerp(_slct.alpha, _slct.alphaTgt[(o == lvl[l].option_curr)], ((global.config.access.rdcdMot.act == false) ? _slct.alphaSpd : 1));
+							_slct.alpha = fn_lerp(_slct.alpha, _slct.alphaTgt[(o == lvl[l].option_curr)], ((global.config.access.reduceMotion.act == false) ? _slct.alphaSpd : 1));
 							if (_slct.alpha > 0)
 							{
-								var _slct_spr = ((_slct.spr != undefined) ? _slct.spr : global.user.thm[global.user.thm_curr].spr.option_select);
+								var _slct_spr = ((_slct.spr != undefined) ? _slct.spr : global.user.theme[global.user.theme_curr].spr.option_select);
 								var _slct_x = round((_slct.x != 0) ? _slct.x : (_opt_x - _slct.xDist));
 								var _slct_y = round((_slct.y != 0) ? _slct.y : (_opt_y - _slct.yDist + 1));
 								var _slct_width = round((_slct.width != 0) ? _slct.width : ((_slct.xDist * 2) + fn_textdata_width(_opt.text)));
@@ -190,7 +190,7 @@ if (is_array(lvl) == true)
 							var _ico_xGap = round((_ico.xGap != 0) ? _ico.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
 							var _ico_x = round((_ico.x != 0) ? _ico.x : (_opt_x - _ico_xGap));
 							var _ico_y = round((_ico.y != 0) ? _ico.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_ico.spr) / 2) + 1));
-							var _ico_cols = ((_ico.colors != undefined) ? _ico.colors : [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.whiteLight]);
+							var _ico_cols = ((_ico.colors != undefined) ? _ico.colors : [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.whiteLight]);
 							fn_draw_spr(_ico.spr, _ico.img, _ico_x, _ico_y, _ico_cols[(o == lvl[l].option_curr)], (_ico.alphas[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 						}
 							// Checkbox
@@ -219,7 +219,7 @@ if (is_array(lvl) == true)
 							var _val = _opt.value;
 							var _val_x = round((_val.x != 0) ? _val.x : (_opt_x + fn_textdata_width(_opt.text) + _opt.value.xGap + (fn_textdata_width(_val.text) / 2)));
 							var _val_y = round((_val.y != 0) ? _val.y : (_opt_y + ceil(fn_textdata_height("Salenis") / 2)));
-							var _val_cols = ((_val.colors != undefined) ? _val.colors : [global.user.thm[global.user.thm_curr].color.grayLight, global.user.thm[global.user.thm_curr].color.grayDark]);
+							var _val_cols = ((_val.colors != undefined) ? _val.colors : [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.grayDark]);
 							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTgts[false], _val.colorValSpd);
 							for (var c = 0; c < 2; c++)
 								_val_cols[c] = make_colour_hsv(colour_get_hue(_val_cols[c]), colour_get_saturation(_val_cols[c]), (colour_get_value(_val_cols[c]) + _val.colorVal));
@@ -234,7 +234,7 @@ if (is_array(lvl) == true)
 								{
 									_arrow[a].alpha = fn_lerp(_arrow[a].alpha, _arrow[a].alphaTgts[false], _arrow[a].alphaSpd);
 									_arrow[a].scale = fn_lerp(_arrow[a].scale, _arrow[a].scaleTgts[false], _arrow[a].scaleSpd);
-									if (_arrow[a].move.act == true && global.config.access.rdcdMot.act == false)
+									if (_arrow[a].move.act == true && global.config.access.reduceMotion.act == false)
 									{
 										if (_arrow[a].move.wait >= _arrow[a].move.waitMax)
 										{
@@ -253,7 +253,7 @@ if (is_array(lvl) == true)
 									{
 										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOffset * _arrow[a].move.act)) * _arrow[a].xSign));
 										var _arrow_y = _val_y;
-										var _arrow_cols = [global.user.thm[global.user.thm_curr].color.whiteLight, global.user.thm[global.user.thm_curr].color.whiteLight];
+										var _arrow_cols = [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteLight];
 										fn_draw_text(_arrow[a].text, _arrow_x, _arrow_y, _arrow_cols, (_arrow[a].alpha * lvl[l].alpha), _arrow[a].scale, _arrow[a].scale, fa_center, fa_middle, _shdw_cols, _shdw_alp);
 									}
 								}

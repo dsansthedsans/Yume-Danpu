@@ -1,8 +1,8 @@
 
 if (is_array(lvl) == true)
 {
-	var _res_width = global.config.video.res[0].width;
-	var _res_height = global.config.video.res[0].height;
+	var _res_width = global.config.video.resolution[0].width;
+	var _res_height = global.config.video.resolution[0].height;
 	
 	// Language level
 	if (lvl_curr == LVL_LANG) || (lvl_fader.next.lvl == LVL_LANG)
@@ -56,7 +56,7 @@ if (is_array(lvl) == true)
 			lvl[l].decor[o].spr = spr_menu_home_flag_select
 			lvl[l].decor[o].x = (__flag_x + round(_flag_width / 2));
 			lvl[l].decor[o].y = (__flag_y + _flag_height + 5);
-			lvl[l].decor[o].color = global.user.thm[global.user.thm_curr].color.whiteLight;
+			lvl[l].decor[o].color = global.user.theme[global.user.theme_curr].color.whiteLight;
 			lvl[l].decor[o].alpha = (o == lvl[l].option_curr);
 		}
 	}
@@ -80,7 +80,7 @@ if (is_array(lvl) == true)
 		
 		// Triangle train
 		var _train = lvl[l].train[0];
-		_train.spr = global.user.thm[global.user.thm_curr].spr.train;
+		_train.spr = global.user.theme[global.user.theme_curr].spr.train;
 		_train.x = 0;
 		_train.y = (_panel_y - fn_spr_height(_train.spr));
 		_train.xSpd = -0.25;

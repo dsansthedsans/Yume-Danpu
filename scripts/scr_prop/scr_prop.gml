@@ -19,9 +19,9 @@ function fn_prop_evCreate()
 			talk.act = true;
 			talk.type.door.act = true;
 			talk.type.door.open.snd_asset = snd_prop_talk_door_open;
-			talk.type.door.open.snd_emitter = CONFIG_AUD_EMITTER.PROP;
+			talk.type.door.open.snd_emitter = CONFIG_AUDIO_EMITTER.PROP;
 			talk.type.door.close.snd_asset = snd_prop_talk_door_close;
-			talk.type.door.close.snd_emitter = CONFIG_AUD_EMITTER.PROP;
+			talk.type.door.close.snd_emitter = CONFIG_AUDIO_EMITTER.PROP;
 		break;
 		
 		
@@ -53,7 +53,7 @@ function fn_prop_evCreate()
 		// Gifts
 		case obj_prop_gift:
 			if (room == rm_nexus)
-				talk.type.gift.content[0] = global.user.fcn[USER_FCN.KART];
+				talk.type.gift.content[0] = global.user.func[USER_FUNC.KART];
 		break;
 		
 		

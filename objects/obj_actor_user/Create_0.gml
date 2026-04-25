@@ -1,6 +1,6 @@
 
-fcn_old = global.user.fcn_curr;
-eff_old = global.user.eff_curr;
+func_old = global.user.func_curr;
+effect_old = global.user.effect_curr;
 event_inherited();
 
 

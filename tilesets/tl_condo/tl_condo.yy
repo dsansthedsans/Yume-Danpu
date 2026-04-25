@@ -18,8 +18,8 @@
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",
   "spriteId":{
-    "name":"temp_spr_tl_condo",
-    "path":"sprites/temp_spr_tl_condo/temp_spr_tl_condo.yy",
+    "name":"spr_tl_condo",
+    "path":"sprites/spr_tl_condo/spr_tl_condo.yy",
   },
   "spriteNoExport":false,
   "textureGroupId":{

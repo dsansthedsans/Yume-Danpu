@@ -15,7 +15,7 @@ function fn_stage_evCreate()
 		global.user.asleep = true;
 		cam.lock.x = 0;
 		cam.lock.y = 0;
-		fn_stage_bg_sky_add(0, temp_spr_stage_bg_sky_nexus, , make_color_hsv(color_get_hue(#07070E), color_get_saturation(#07070E), 50), , 30);
+		fn_stage_bg_sky_add(0, spr_stage_bg_sky_nexus, , make_color_hsv(color_get_hue(#07070E), color_get_saturation(#07070E), 50), , 30);
 		loop.xAct = true;
 		loop.yAct = true;
 	}
@@ -23,8 +23,8 @@ function fn_stage_evCreate()
 	else if (room == rm_macaco)
 	{
 		global.user.asleep = true;
-		fn_stage_bg_sky_add(0, temp_spr_rmCtrl_bg_sky_macaco, , , 0.25, 270, 270);
-		fn_stage_bg_clouds_add(1, temp_spr_rmCtrl_bg_clouds_macaco, , 0.65, 0.75, 0.35, , , 90, 90); 
+		fn_stage_bg_sky_add(0, spr_rmCtrl_bg_sky_macaco, , , 0.25, 270, 270);
+		fn_stage_bg_clouds_add(1, spr_rmCtrl_bg_clouds_macaco, , 0.65, 0.75, 0.35, , , 90, 90); 
 		loop.xAct = true;
 		loop.yAct = true;
 	}
@@ -57,7 +57,7 @@ function fn_stage_evStep()
 {
 	/* Menus */
 	// Main Menu
-	if (room == temp_rm_menu_home)
+	if (room == rm_menu_home)
 	{
 		if (global.config.lang_hasChosen == true && fn_obj_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
 			fn_stage_music_add(0, mus_menu_home);
@@ -83,7 +83,7 @@ function fn_stage_evStep()
 }
 
 /* Music */
-function fn_stage_music_add(_index, _asset, _emitter = CONFIG_AUD_EMITTER.MUS, _pitch = 1)
+function fn_stage_music_add(_index, _asset, _emitter = CONFIG_AUDIO_EMITTER.MUS, _pitch = 1)
 {
 	music[_index].asset = _asset;
 	music[_index].emitter = _emitter;

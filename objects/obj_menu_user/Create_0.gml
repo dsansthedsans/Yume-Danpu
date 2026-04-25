@@ -3,20 +3,20 @@ event_inherited();
 
 // All levels
 LVL_MAIN = 1;
-LVL_USER_EFF = 2;
-LVL_USER_FCN = 3;
-LVL_USER_THM = 4;
+LVL_USER_EFFECT = 2;
+LVL_USER_FUNC = 3;
+LVL_USER_THEME = 4;
 fn_menu_lvl_add(LVL_MAIN);
-fn_menu_lvl_add(LVL_USER_EFF);
-fn_menu_lvl_add(LVL_USER_FCN);
-fn_menu_lvl_add(LVL_USER_THM);
+fn_menu_lvl_add(LVL_USER_EFFECT);
+fn_menu_lvl_add(LVL_USER_FUNC);
+fn_menu_lvl_add(LVL_USER_THEME);
 for (var l = 0; l < array_length(lvl); l++)
-	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.res[0].width, global.config.video.res[0].height);
+	fn_menu_lvl_rect_add(l, 0, 0, 0, global.config.video.resolution[0].width, global.config.video.resolution[0].height);
 
 // Main level
 var l = LVL_MAIN;
 lvl[l].option_cancel.key[1] = CONFIG_KEY.MENU_USER;
-fn_menu_lvl_fader_start(l, , , , , global.user.thm[global.user.thm_curr].snd.confirm);
+fn_menu_lvl_fader_start(l, , , , , global.user.theme[global.user.theme_curr].snd.confirm);
 for (var o = 0; o < 3; o++)
 {
 	fn_menu_lvl_option_add(l, o);
@@ -31,9 +31,9 @@ for (var a = 0; a < 3; a++)
 fn_menu_lvl_label_icon_add(l, 1);
 
 // User levels
-for (var l = LVL_USER_EFF; l <= LVL_USER_THM; l++)
+for (var l = LVL_USER_EFFECT; l <= LVL_USER_THEME; l++)
 {
-	lvl[l].data[0] = (l == LVL_USER_EFF ? global.user.eff : (l == LVL_USER_FCN ? global.user.fcn : global.user.thm));
+	lvl[l].data[0] = (l == LVL_USER_EFFECT ? global.user.effect : (l == LVL_USER_FUNC ? global.user.func : global.user.theme));
 	fn_menu_lvl_panel_add(l, 0);
 	fn_menu_lvl_panel_title_add(l, 0);
 	for (var o = 0; o < 10; o++)
