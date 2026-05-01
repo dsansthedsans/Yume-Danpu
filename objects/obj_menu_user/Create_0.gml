@@ -39,6 +39,6 @@ for (var l = LVL_USER_EFFECT; l <= LVL_USER_THEME; l++)
 	for (var o = 0; o < 10; o++)
 		fn_menu_lvl_option_add(l, o);
 	fn_menu_lvl_label_add(l, 0);
-	lvl[l].option_move.list.act = false;
-	lvl[l].option_move.table.act = true;
+	lvl[l].option_move.list.active = false;
+	lvl[l].option_move.table.active = true;
 }

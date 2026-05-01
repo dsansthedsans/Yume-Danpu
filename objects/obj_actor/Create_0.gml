@@ -47,18 +47,18 @@ dir_curr = DIR_DN; // Current direction the actor is facing
 // Movement
 move =
 {
-	act : true,
-	stg : -1, // ID number of the current stage of the movement sequence
+	active : true,
+	stage : -1, // ID number of the current stage of the movement sequence
 	amt : 0, // Amount of consecutive movement sequences in any direction, mode and type
-	xTgt : 0,
-	yTgt : 0,
+	xTarget : 0,
+	yTarget : 0,
 	xStart : 0,
 	yStart : 0,
 	
 	// Wait (delays the start of the movement sequence)
 	wait :
 	{
-		act : false,
+		active : false,
 		durMin : 30,
 		durMax : 240,
 		durCurr : 0
@@ -70,14 +70,14 @@ move =
 		// Manual mode
 		manual :
 		{
-			act : false,
+			active : false,
 			held : false
 		},
 		
 		// Automatic mode
 		auto :
 		{
-			act : false,
+			active : false,
 			chase_act : false,
 			chase_tgt : -1
 		}
@@ -89,7 +89,7 @@ move =
 		// Walk type
 		walk :
 		{
-			act : false,
+			active : false,
 			dur : 16, // Duration in frames of the walking sequence
 			durCurr : 0,
 			dist : 16, // Distance in pixels the actor will walk
@@ -98,7 +98,7 @@ move =
 			// Walking animation
 			fstep :
 			{
-				act : false,
+				active : false,
 				amtCurr : 0,
 				wait_durCurr : 0,
 				snd_asset : -1,
@@ -109,7 +109,7 @@ move =
 		// Roll type
 		roll :
 		{
-			act : false,
+			active : false,
 			
 			dist : 0, // Distance in pixels the actor will walk
 			distMin : 0.5, // Minimum allowed distance for {move.type.roll.dist}
@@ -157,7 +157,7 @@ move =
 	// Chain (stops the actor from moving too far from their original position)
 	chain :
 	{
-		act : false,
+		active : false,
 		dist : 48
 	}
 }

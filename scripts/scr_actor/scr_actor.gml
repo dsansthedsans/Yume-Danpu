@@ -11,11 +11,11 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
 			talk.type.bell.audio_emitter = CONFIG_AUDIO_EMITTER.ACTOR;
 			noise.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
-			move.wait.act = true;
-			move.mode.auto.act = true;
-			move.type.walk.act = true;
+			move.wait.active = true;
+			move.mode.auto.active = true;
+			move.type.walk.active = true;
 			move.type.walk.dur = 32;
-			move.chain.act = true;
+			move.chain.active = true;
 		break;
 		
 		
@@ -23,10 +23,10 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey
 			noise.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
 			noise.aud.asset = snd_prop_noise_weird;
-			move.mode.auto.act = true;
+			move.mode.auto.active = true;
 			move.mode.auto.chase_act = true;
 			move.mode.auto.chase_tgt = obj_actor_user;
-			move.type.walk.act = true;
+			move.type.walk.active = true;
 			move.type.walk.dur = 24;
 		break;
 	}
@@ -36,19 +36,19 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 	{
 		// Player
 		case obj_actor_user:
-			myself.draw.act = true;
-			talkTrig.act = true;
+			myself.draw.active = true;
+			talkTrig.active = true;
 			dir[DIR_LT].spr = spr_user_dir_lt;
 			dir[DIR_RT].spr = spr_user_dir_rt;
 			dir[DIR_UP].spr = spr_user_dir_up;
 			dir[DIR_DN].spr = spr_user_dir_dn;
 			move.precise = false;
-			move.mode.manual.act = true;
-			move.type.walk.act = true;
-			move.type.walk.fstep.act = true;
+			move.mode.manual.active = true;
+			move.type.walk.active = true;
+			move.type.walk.fstep.active = true;
 			move.type.walk.fstep.snd_asset = snd_user_fstep;
 			move.type.walk.fstep.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
-			move.type.roll.act = false;
+			move.type.roll.active = false;
 			
 			if (global.user.effect_curr == -1 && global.user.func_curr == -1)
 			{
@@ -63,10 +63,10 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 			}
 			else if (global.user.func_curr == USER_FUNC.KART)
 			{
-				myself.draw.act = false;
+				myself.draw.active = false;
 				move.precise = false;
-				move.type.walk.act = false;
-				move.type.roll.act = true;
+				move.type.walk.active = false;
+				move.type.roll.active = true;
 				move.type.roll.snd_asset = snd_user_func_kart;
 				move.type.roll.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
 				move.type.roll.start.snd_asset = snd_user_func_kart_start;
@@ -80,22 +80,22 @@ function fn_actor_evCreate() // Create Event determined by the actor's object in
 		
 		// Good/Peaceful entities
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
-			myself.imgSpd = (random_range(0.5, 1.5) / 30);
-			talk.act = true;
-			talk.type.bell.act = true;
+			myself.imgSpeed = (random_range(0.5, 1.5) / 30);
+			talk.active = true;
+			talk.type.bell.active = true;
 			for (var a = 0; a < 7; a++)
 				talk.type.bell.aud_asset[a] = asset_get_index($"snd_actor_macaco_monkey_{a}");
 		break;
 		
 		// Evil/Hostile entities
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey
-			myself.imgSpd = (random_range(0.5, 1.5) / 30);
+			myself.imgSpeed = (random_range(0.5, 1.5) / 30);
 		break;
 	}
 }
 function fn_actor_evStep() // Step Event determined by the actor's object index
 {
-	if (talk.type.bell.act == true && talk.stg == 0)
+	if (talk.type.bell.active == true && talk.stage == 0)
 	{
 		switch (object_index)
 		{

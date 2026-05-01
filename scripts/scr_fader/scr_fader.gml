@@ -9,26 +9,26 @@ function fn_fader_evCreate()
 		/* Config */
 		// Debug
 		case obj_config_dbg:
-			type.fade.act = true;
+			type.fade.active = true;
 			break;
 		/* Menus */
 		case obj_menu_home:
-			target.rm = rm_condo_apt;
-			type.fade.act = true;
+			target.rm = rm_nexus;
+			type.fade.active = true;
 			break;
 		/* Props */
 		// Bed in Eleanor's Apartment
 		case obj_prop_condo_apt_bed:
 			target.rm = rm_nexus;
-			type.fade.act = true;
+			type.fade.active = true;
 			break;
 		// Door of Macacolandia
 		case obj_prop_macaco_door:
-			type.fade.act = true;
+			type.fade.active = true;
 			if (source.rm == rm_nexus)
 			{
 				target.rm = rm_macaco;
-				type.fade.iris.act = true;
+				type.fade.iris.active = true;
 			}
 			else if (source.rm == rm_macaco)
 			{
@@ -39,11 +39,11 @@ function fn_fader_evCreate()
 			break;
 		// Door of Debug World
 		case obj_prop_dbgwrld_door:
-			type.fade.act = true;
+			type.fade.active = true;
 			if (source.rm == rm_nexus)
 			{
 				target.rm = rm_dbgwrld;
-				type.fade.iris.act = true;
+				type.fade.iris.active = true;
 			}
 			else if (source.rm == rm_dbgwrld)
 			{
@@ -67,7 +67,7 @@ function fn_fader_obj_create(_target_rm = undefined)
 	//fader.source.obj_id = id;
 	//if (_tgt_rm != -1)
 	//{
-	//	fader.type.fade.act = true;
+	//	fader.type.fade.active = true;
 	//	fader.target.rm = _tgt_rm;
 	//}
 	//with (fader)

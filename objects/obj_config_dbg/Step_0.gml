@@ -2,11 +2,11 @@
 // Toggle Debug Mode
 if (string_ends_with(keyboard_string, global.config_dbg.pwd) == true)
 {
-	global.config_dbg.act = !global.config_dbg.act;
+	global.config_dbg.active = !global.config_dbg.active;
 	keyboard_string = "";
 }
 // Debug Mode commands
-if (global.config_dbg.act == true && keyboard_check(global.config_dbg.cmd.key) == true)
+if (global.config_dbg.active == true && keyboard_check(global.config_dbg.cmd.key) == true)
 {
 	var _cmd = global.config_dbg.cmd;
 	

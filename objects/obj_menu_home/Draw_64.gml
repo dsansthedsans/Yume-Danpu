@@ -16,7 +16,7 @@ if (is_array(lvl) == true)
 			lvl[l].option[o].text = "";
 			lvl[l].option[o].x = 0;
 			lvl[l].option[o].y = 0;
-			lvl[l].option[o].select.act = false;
+			lvl[l].option[o].select.active = false;
 		}
 	
 		// Panel
@@ -83,7 +83,7 @@ if (is_array(lvl) == true)
 		_train.spr = global.user.theme[global.user.theme_curr].spr.train;
 		_train.x = 0;
 		_train.y = (_panel_y - fn_spr_height(_train.spr));
-		_train.xSpd = -0.25;
+		_train.xSpeed = -0.25;
 		_train.alpha = 0.75;
 		
 		// Panel (start menu)

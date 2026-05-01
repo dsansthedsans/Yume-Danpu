@@ -1,6 +1,6 @@
 
 event_inherited();
-if (myself.draw.act == false)
+if (myself.draw.active == false)
 {
 	if (global.user.func_curr != -1) // An item is equipped
 	{

@@ -1,9 +1,9 @@
 
 // Transition of type Fade
-if (type.fade.act == true)
+if (type.fade.active == true)
 {
 	// Draws iris
-	if (type.fade.iris.act == true && stage < 1)
+	if (type.fade.iris.active == true && stage < 1)
 	{
 		var _iris = type.fade.iris;
 		if (surface_exists(_iris.surface) == false)

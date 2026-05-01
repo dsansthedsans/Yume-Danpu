@@ -22,16 +22,16 @@ type =
 	// Fade type
 	fade :
 	{
-		act : false,
+		active : false,
 		colors : [c_black, c_black, c_black, c_black],
 		alpha : 0,
-		alphaSpd : 0.15, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
-		alphaJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
+		alphaSpeed : 0.15, // (1 == instantaneous)
+		alphaJump : 0.05, // (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
 		
 		// Iris
 		iris :
 		{
-			act : false,
+			active : false,
 			surface : -1,
 			x : (source.objId.x + (source.objId.sprite_width / 2)),
 			y : (source.objId.y - (source.objId.sprite_height / 4)),
@@ -39,12 +39,12 @@ type =
 			yOffset : 0,
 			siner : 0,
 			radius : 180,
-			radiusTgt : 48,
-			radiusSpd : 0.015,
+			radiusTarget : 48,
+			radiusSpeed : 0.015,
 			precision : 32,
 			color : c_black,
 			alpha : 0,
-			alphaSpd : 0.025,
+			alphaSpeed : 0.025,
 			alphaJump : 0.05,
 			snd_asset : snd_fader_portal,
 			snd_emitter : CONFIG_AUDIO_EMITTER.PROP,
@@ -54,8 +54,9 @@ type =
 		wait :
 		{
 			dur : 0,
-			durTgt : 30,
+			durTarget : 30,
 		}
+		
 	}
 }
 

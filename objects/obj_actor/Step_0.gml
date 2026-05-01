@@ -3,14 +3,14 @@ fn_actor_evStep();
 event_inherited();
 
 // Movement
-if (move.act == true)
+if (move.active == true)
 {
 	// WHAT THE FUCK IS GOING ON
 	// This must be one of the most painful pieces of code I have ever written.
 	// May God have mercy on my soul.
 	// i'll try to make this better. eventually. eventually. eventually.
 	
-	if (move.type.roll.act == true && move.type.roll.snd_asset != -1 && move.type.roll.snd_emitter != -1)
+	if (move.type.roll.active == true && move.type.roll.snd_asset != -1 && move.type.roll.snd_emitter != -1)
 	{
 		if (move.type.roll.snd_id == -1)
 			move.type.roll.snd_id = fn_audio_play(move.type.roll.snd_asset, move.type.roll.snd_emitter, , , , true);
@@ -19,7 +19,7 @@ if (move.act == true)
 		var _aud_pitchDiff = (move.type.roll.snd_pitchMax - move.type.roll.snd_pitchMin);
 		var _aud_pitch = (move.type.roll.snd_pitchMin + (_aud_pitchDiff * (( _distMax * (move.type.roll.dist / _distMax)) / _distMax)));
 		fn_audio_pitch(move.type.roll.snd_asset, move.type.roll.snd_id, _aud_pitch);
-		fn_audio_vol(move.type.roll.snd_asset, move.type.roll.snd_id, move.type.roll.snd_emitter);
+		fn_audio_volume(move.type.roll.snd_asset, move.type.roll.snd_id, move.type.roll.snd_emitter);
 	}
 	else if (move.type.roll.snd_id != -1)
 	{
@@ -28,14 +28,14 @@ if (move.act == true)
 	}
 	
 	// Idle (movement sequence is inactive, waiting/preparing for movement)
-	if (move.stg == -1 && ((move.wait.act == false) || (move.wait.act == true && move.wait.durCurr <= 0)))
+	if (move.stage == -1 && ((move.wait.active == false) || (move.wait.active == true && move.wait.durCurr <= 0)))
 	{
 		move.wait.durCurr = irandom_range(move.wait.durMin, move.wait.durMax);
 		var _dir_old = dir_curr;
 		var _dir_new = -1;
 		
 		// Manual mode
-		if (move.mode.manual.act == true)
+		if (move.mode.manual.active == true)
 		{
 			for (var d = 0; d < 4; d++)
 			{
@@ -48,12 +48,12 @@ if (move.act == true)
 				else
 					continue;
 			}
-			if (_dir_new == -1 && move.mode.manual.held == false && move.type.roll.act == true && move.type.roll.dist > move.type.roll.distMin)
+			if (_dir_new == -1 && move.mode.manual.held == false && move.type.roll.active == true && move.type.roll.dist > move.type.roll.distMin)
 				_dir_new = dir_curr;
 		}
 		
 		// Automatic mode
-		else if (move.mode.auto.act == true)
+		else if (move.mode.auto.active == true)
 		{
 			_dir_new = irandom(3);
 			if (move.mode.auto.chase_act == true)
@@ -88,20 +88,20 @@ if (move.act == true)
 			
 			
 			// Walk type
-			if (move.type.walk.act == true)
+			if (move.type.walk.active == true)
 			{
 				_move_dist = move.type.walk.dist;
 				_move_precise = move.type.walk.precise;
 			}
 			
 			// Roll type
-			else if (move.type.roll.act == true)
+			else if (move.type.roll.active == true)
 			{
 				if (move.type.roll.dist == 0) || (_dir_new != _dir_old) || (move.amt <= 0)
 				{
-					if (move.mode.manual.act == true)
+					if (move.mode.manual.active == true)
 						move.type.roll.dist = move.type.roll.distMin;
-					else if (move.mode.auto.act == true)
+					else if (move.mode.auto.active == true)
 						move.type.roll.dist = move.type.roll.distMax;
 				}
 				_move_dist = move.type.roll.dist;
@@ -113,7 +113,7 @@ if (move.act == true)
 					if (move.type.roll.turn.snd_asset != -1 && move.type.roll.turn.snd_emitter != -1)
 						fn_audio_play(move.type.roll.turn.snd_asset, move.type.roll.turn.snd_emitter);
 						
-					if (move.type.roll.turn.shake_act == true && myself.shake.act == true)
+					if (move.type.roll.turn.shake_act == true && myself.shake.active == true)
 					{
 						myself.shake.durCurr = move.type.roll.turn.shake_dur;
 						myself.shake.dist = move.type.roll.turn.shake_dist;
@@ -124,29 +124,29 @@ if (move.act == true)
 			
 			while (_move_dist > 0)
 			{
-				var _move_xTgt = fn_actor_xAhead(id, x, dir_curr, _move_dist);
-				var _move_yTgt = fn_actor_yAhead(id, y, dir_curr, _move_dist);
-				var _move_tgtObj = instance_place(_move_xTgt, _move_yTgt, obj_prop);
+				var _move_xTarget = fn_actor_xAhead(id, x, dir_curr, _move_dist);
+				var _move_yTarget = fn_actor_yAhead(id, y, dir_curr, _move_dist);
+				var _move_tgtObj = instance_place(_move_xTarget, _move_yTarget, obj_prop);
 				
-				if ((_move_tgtObj == noone) || (_move_tgtObj != noone && _move_tgtObj.solid == false)) && ((move.chain.act == false) || (move.chain.act == true && abs(xstart - _move_xTgt) < move.chain.dist && abs(ystart - _move_yTgt) < move.chain.dist))
+				if ((_move_tgtObj == noone) || (_move_tgtObj != noone && _move_tgtObj.solid == false)) && ((move.chain.active == false) || (move.chain.active == true && abs(xstart - _move_xTarget) < move.chain.dist && abs(ystart - _move_yTarget) < move.chain.dist))
 				{
-					move.stg = 0;
+					move.stage = 0;
 					move.amt = (clamp(move.amt, 0, infinity) + 1);
-					move.xTgt = _move_xTgt;
-					move.yTgt = _move_yTgt;
+					move.xTarget = _move_xTarget;
+					move.yTarget = _move_yTarget;
 					move.xStart = x;
 					move.yStart = y;
 					
-					x = move.xTgt;
-					y = move.yTgt;
+					x = move.xTarget;
+					y = move.yTarget;
 					
-					if (global.config_dbg.act == true && global.config_dbg.logOverdose == true)
+					if (global.config_dbg.active == true && global.config_dbg.logOverdose == true)
 						fn_log($"x = {x} | y = {y} | self_x = {myself.x} | self_y = {myself.y} | depth = {depth}");
 					break;
 				}
 				else
 				{
-					if (move.mode.auto.chase_act == true && distance_to_object(move.mode.auto.chase_tgt) <= 16 && move.mode.auto.chase_tgt.move.stg == -1 && room == rm_dbgwrld)
+					if (move.mode.auto.chase_act == true && distance_to_object(move.mode.auto.chase_tgt) <= 16 && move.mode.auto.chase_tgt.move.stage == -1 && room == rm_dbgwrld)
 					{
 						var _chase_tgt = move.mode.auto.chase_tgt;
 						_chase_tgt.x = 112;
@@ -172,7 +172,7 @@ if (move.act == true)
 						}
 						else
 						{
-							if (move.type.roll.act == true && move.amt > 0) // Roll type
+							if (move.type.roll.active == true && move.amt > 0) // Roll type
 							{
 								if (move.type.roll.hit.snd_asset != -1 && move.type.roll.hit.snd_emitter != -1)
 									fn_audio_play(move.type.roll.hit.snd_asset, move.type.roll.hit.snd_emitter);
@@ -194,20 +194,20 @@ if (move.act == true)
 			}
 		}
 	}
-	else if (move.stg == -1 && move.wait.act == true && move.wait.durCurr > 0)
+	else if (move.stage == -1 && move.wait.active == true && move.wait.durCurr > 0)
 		move.wait.durCurr -= 1;
 	
 	// Moving (movement sequence is active)
-	if (move.stg == 0)
+	if (move.stage == 0)
 	{
 		// Walk type
-		if (move.type.walk.act == true)
+		if (move.type.walk.active == true)
 		{
-			myself.x += ((move.xTgt - move.xStart) / move.type.walk.dur);
-			myself.y += ((move.yTgt - move.yStart) / move.type.walk.dur);
+			myself.x += ((move.xTarget - move.xStart) / move.type.walk.dur);
+			myself.y += ((move.yTarget - move.yStart) / move.type.walk.dur);
 			
 			// Walking animation
-			if (move.type.walk.fstep.act == true)
+			if (move.type.walk.fstep.active == true)
 			{
 				var _fstep_amt = clamp( (round(16 / move.type.walk.dur) + 1), 2, infinity );
 				if (move.type.walk.fstep.amtCurr < _fstep_amt)
@@ -231,12 +231,12 @@ if (move.act == true)
 				myself.x = x;
 				myself.y = y;
 				
-				move.stg = -1;
+				move.stage = -1;
 				move.type.walk.durCurr = 0;
 				
 				
 				// Walking animation
-				if (move.type.walk.fstep.act == true)
+				if (move.type.walk.fstep.active == true)
 				{
 					if (image_index % 2 == 1)
 						image_index += 1;
@@ -247,12 +247,12 @@ if (move.act == true)
 		}
 		
 		// Roll type
-		else if (move.type.roll.act == true)
+		else if (move.type.roll.active == true)
 		{
-			myself.x = move.xTgt;
-			myself.y = move.yTgt;
-			move.stg = -1;
-			if (move.mode.manual.act == true)
+			myself.x = move.xTarget;
+			myself.y = move.yTarget;
+			move.stage = -1;
+			if (move.mode.manual.active == true)
 			{
 				if (move.mode.manual.held == true)
 					move.type.roll.dist += move.type.roll.distAccel;

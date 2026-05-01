@@ -1,119 +1,125 @@
-
 fn_prop_evStep();
 
-// Talk (interaction sequence)
-if (talk.act == true && talk.stg > -1)
+/* Interaction sequence */
+if (talk.active == true)
 {
-	// Bell type (starts playing an audio)
-	if (talk.type.bell.act == true)
+	if (talk.stage >= 0)
 	{
-		var _bell = talk.type.bell;		
-		if (talk.stg == 0)
+		/* Types */
+		// Plays an audio
+		if (talk.bell.active == true)
 		{
-			if (_bell.aud_idx == -1)
-				_bell.aud_idx = irandom_range(0, (array_length(_bell.aud_asset) - 1));
-			fn_audio_play(_bell.aud_asset[_bell.aud_idx], _bell.audio_emitter);
-			_bell.aud_idx = -1;
-			
-			talk.stg = 1;
-			_bell.dur_curr = 0;
-		}
-		if (talk.stg == 1)
-		{
-			_bell.dur_curr += 1;
-			if (_bell.dur_curr >= _bell.dur)
+			var b = talk.bell;
+			if (talk.stage == 0)
 			{
-				talk.stg = -1;
+				if (b.audio_index == undefined)
+					b.audio_index = irandom_range(0, (array_length(b.audio_assets) - 1));
+				fn_audio_play(b.audio_assets[b.audio_index], b.audio_emitter);
+				talk.stage = 1;
+				b.time = 0;
+			}
+			else if (talk.stage == 1)
+			{
+				b.time += 1;
+				if (b.time >= b.timeTarget)
+				{
+					talk.stage = -1;
+					if (myself.type == "actor")
+						move.stage = -1;
+				}
+			}
+		}
+		// Starts a room transition
+		else if (talk.door.active == true)
+		{
+			var d = talk.door;
+			if (talk.stage == 0)
+			{
+				fn_fader_obj_create();
+				talk.stage = 1;
+				if (d.open.audio_asset != -1 && d.open.audio_emitter != -1)
+					fn_audio_play(d.open.audio_asset, d.open.audio_emitter);
+			}
+			else if (talk.stage == 1)
+			{
+				if (d.open.imageSpeed > 0 && (image_index + d.open.imageSpeed) < image_number)
+					image_index += d.open.imageSpeed;
+			}
+		}
+		// Unlocks an Effect, a Function or a Theme
+		else if (talk.gift.active == true)
+		{
+			var g = talk.gift;
+			if (g.contents != undefined && g.contents[g.contents_index].unlocked == false)
+			{
+				g.contents[g.contents_index].unlocked = true;
+				fn_user_file_save();
+			}
+			talk.stage = -1;
+			if (myself.type == "actor")
+				move.stage = -1;
+		}
+	}
+	else if (talk.stage == -1)
+	{
+		/* Types */
+		// Starts another object's interaction sequence
+		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && ((myself.type == "prop") || (myself.type == "actor" && move.stage == -1)))
+		{
+			var _target = instance_place(fn_actor_xAhead(id, x, dir_curr, talk.trigger.distance), fn_actor_yAhead(id, y, dir_curr, talk.trigger.distance), obj_prop);
+			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.myself.type == "prop") || (_target.myself.type == "actor" && _target.move.stage == -1)))
+			{
+				talk.stage = -2;
 				if (myself.type == "actor")
-					move.stg = -1;
-				
-				if (fn_obj_exists(obj_actor_user) == true)
-					obj_actor_user.move.stg = -1;
+					move.stage = -2;
+				talk.trigger.target = _target;
+				talk.trigger.target.talk.stage = 0;
+				if (talk.trigger.target.myself.type == "actor")
+					talk.trigger.target.move.stage = -2;
 			}
 		}
 	}
-	// Door type (starts a room transition)
-	else if (talk.type.door.act == true)
+	else if (talk.stage == -2)
 	{
-		var _door = talk.type.door;
-		if (talk.stg == 0)
-		{			
-			if (_door.open.snd_asset != -1 && _door.open.snd_emitter != -1)
-				fn_audio_play(_door.open.snd_asset, _door.open.snd_emitter);
-			fn_fader_obj_create();
-			talk.stg = 1;
-		}
-		else if (talk.stg == 1)
+		/* Types */
+		// Another object's interaction sequence has ended
+		if (talk.trigger.active == true && talk.trigger.target != undefined && talk.trigger.target.talk.stage == -1)
 		{
-			if (_door.open.imgSpd > 0 && (image_index + _door.open.imgSpd) < image_number)
-				image_index += _door.open.imgSpd;
-		}
-	}
-	// Gift type (unlocks an effect, item or a theme)
-	else if (talk.type.gift.act == true)
-	{
-		talk.stg = -1;
-		var _gift = talk.type.gift;
-		if (_gift.content_idx != -1 && _gift.content[_gift.content_idx] != -1 && _gift.content[_gift.content_idx].unlocked == false)
-		{
-			var _content = _gift.content[_gift.content_idx];
-			if (array_contains(global.user.effect, _content) == true)
-			{
-				
-			}
-			else if (array_contains(global.user.func, _content) == true)
-				fn_user_func_unlock(array_get_index(global.user.func, _content));
-			else if (array_contains(global.user.theme, _content) == true)
-			{
-				
-			}
-			
-			image_index = 1;
-		}
-		else
-			obj_actor_user.move.stg = -1;
-	}
-}
-
-// Talk trigger
-if (talkTrig.act == true && fn_config_key_pressed(talkTrig.key) == true && talk.stg == -1 && move.act == true && move.stg == -1)
-{
-	var _tgt = instance_place(fn_actor_xAhead(id, x, dir_curr, 16), fn_actor_yAhead(id, y, dir_curr, 16), obj_prop);
-	if (_tgt != noone && _tgt.talk.act == true && _tgt.talk.stg == -1)
-	{
-		if (_tgt.myself.type == "prop") || (_tgt.myself.type == "actor" && _tgt.move.stg <= -1)
-		{
-			if (_tgt.talk.freezeTrig == true)
-				move.stg = -2;
-			_tgt.talk.stg = 0;
-			if (_tgt.myself.type == "actor")
-				_tgt.move.stg = -2;
+			talk.stage = -1;
+			if (myself.type == "actor")
+				move.stage = -1;
+			talk.trigger.target = undefined;
 		}
 	}
 }
 
-// Noise (audio that can only be heard if the user is near the object)
-if (noise.act == true && noise.audio.asset == -1 && noise.audio.emitter == -1)
+/* Plays an audio the player can only hear if they're close */
+if (noise.active == true && noise.audio.asset != undefined && noise.audio.emitter != undefined)
 {
-	if (noise.stg == -1 && ((noise.wait.act == false) || (noise.wait.act == true && noise.wait.dur_curr <= 0)))
+	// Delay
+	if (noise.delay.active == true)
 	{
-		if (noise.wait.act == true)
-			noise.wait.dur_curr = irandom_range(noise.wait.dur_min, noise.wait.dur_max);
-		noise.audio.id = fn_audio_play(noise.audio.asset, noise.audio.emitter, 0, , , noise.audio.loops);
+		noise.delay.time -= 1;
+		if (noise.delay.time <= 0)
+		{
+			if (noise.audio.id != undefined)
+			{
+				if (audio_is_playing(noise.audio.id) == true)
+					fn_audio_stop(noise.audio.id);
+				noise.audio.id = undefined;
+			}
+			noise.delay.time = irandom_range(noise.delay.timeMin, noise.delay.timeMax);
+		}
 	}
-	else if (noise.stg == -1 && noise.wait.act == true && noise.wait.dur_curr >= 0)
-		noise.wait.dur_curr -= 1;
-	if (noise.stg == 0)
+	// Audio
+	if (noise.audio.id == undefined)
+		noise.audio.id =  fn_audio_play(noise.audio.asset, noise.audio.emitter, 0, , , noise.audio.loops);	
+	else if (audio_is_playing(noise.audio.id) == true)
 	{
-		if (audio_is_playing(noise.audio.id) == true)
-		{
-			noise.audio.vol = lerp(noise.audio.vol, (1 - (clamp(distance_to_object(obj_actor_user), 0, noise.distMin) / noise.distMin)), 0.05);
-			fn_audio_vol(noise.audio.asset, noise.audio.id, noise.audio.emitter, noise.audio.vol);
-		}
-		else
-		{
-			noise.stg = -1;
-			noise.audio.id = -1;
-		}
+		var _clamp = (clamp(distance_to_object(obj_actor_user), 0, noise.audio.distance) / noise.audio.distance);
+		noise.audio.volume = lerp(noise.audio.volume, (1 - _clamp), noise.audio.volumeSpeed);
+		noise.audio.pitchOffset = lerp(noise.audio.pitchOffset, (noise.audio.pitchOffsetMax * _clamp), noise.audio.pitchSpeed);
+		fn_audio_volume(noise.audio.asset, noise.audio.id, noise.audio.emitter, noise.audio.volume);
+		fn_audio_pitch(noise.audio.asset, noise.audio.id, (noise.audio.pitch - noise.audio.pitchOffset));
 	}
 }

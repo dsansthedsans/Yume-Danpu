@@ -1,6 +1,3 @@
-
-//////// Functions related to the user
-
 function fn_user_setup(_file_curr = undefined)
 {
 	global.user =
@@ -94,17 +91,10 @@ function fn_user_func_add(_idx, _code, _unlocked = false)
 		icon_img : 1
 	}
 }
-function fn_user_func_unlock(_idx)
-{
-	global.user.func[_idx].unlocked = true;
-	fn_user_file_save();
-		
-	//fn_menu_obj_create("unlock", 1, global.user.fcn[_idx].name);
-}
 	// Themes
-function fn_user_theme_add(_idx, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark)
+function fn_user_theme_add(_index, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark)
 {
-	global.user.theme[_idx] =
+	global.user.theme[_index] =
 	{
 		name : $"user_theme_name_{_code}",
 		desc : $"user_theme_desc_{_code}",

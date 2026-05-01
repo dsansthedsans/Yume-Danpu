@@ -19,7 +19,7 @@ for (var w = 0; w < _loop.xLength; w++)
 	{
 		var _loop_xAdd = (_loop.xDist * (w - _loop.xLength_outsideRoom));
 		var _loop_yAdd = (_loop.yDist * (h - _loop.yLength_outsideRoom));
-		fn_draw_spr_stretch(sky.sprite, sky.image, (sky.x + (sky.xOffset * (global.config.access.reduceMotion.act == false)) + _loop_xAdd), (sky.y + (sky.yOffset * (global.config.access.reduceMotion.act == false)) + _loop_yAdd), sky.width, sky.height, sky.color, sky.alpha);
+		fn_draw_spr_stretch(sky.sprite, sky.image, (sky.x + (sky.xOffset * (global.config.access.reduceMotion.active == false)) + _loop_xAdd), (sky.y + (sky.yOffset * (global.config.access.reduceMotion.active == false)) + _loop_yAdd), sky.width, sky.height, sky.color, sky.alpha);
 	}
 }
 

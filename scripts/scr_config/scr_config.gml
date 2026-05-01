@@ -29,37 +29,37 @@ function fn_config_setup()
 			// Fullscreen
 			fullscreen :
 			{
-				act : false,
+				active : false,
 				name : "config_video_fullscreen_name"
 			},
 			// Vsync
 			vsync :
 			{
-				act : false,
+				active : false,
 				name : "config_video_vsync_name"
 			},
 			// Show Version
 			showVer :
 			{
-				act : true,
+				active : true,
 				name : "config_video_showVer_name"
 			},
 			// Show Cursor
 			hideCursor :
 			{
-				act : true,
+				active : true,
 				name : "config_video_hideCursor_name"
 			},
 			// Show FPS
 			showFps :
 			{
-				act : false,
+				active : false,
 				name : "config_video_showFps_name"
 			},
 			// Show Border
 			showBdr :
 			{
-				act : true,
+				active : true,
 				name : "config_video_showBdr_name"
 			},
 		},
@@ -74,7 +74,7 @@ function fn_config_setup()
 			// Reduced Motion
 			reduceMotion :
 			{
-				act : false,
+				active : false,
 				name : "config_access_reduceMotion_name"
 			}
 		},	
@@ -168,15 +168,15 @@ function fn_config_file_save()
 	ini_write_real("lang", "curr", global.config.lang_curr);
 	ini_write_real("lang", "hasChosen", global.config.lang_hasChosen);
 	ini_write_real("video", "resolution_curr", global.config.video.resolution_curr);
-	ini_write_real("video", "fullscreen_act", global.config.video.fullscreen.act);
-	ini_write_real("video", "vsync_act", global.config.video.vsync.act);
-	ini_write_real("video", "hideCursor_act", global.config.video.hideCursor.act);
-	ini_write_real("video", "showVer_act", global.config.video.showVer.act);
-	ini_write_real("video", "showFps_act", global.config.video.showFps.act);
-	ini_write_real("video", "showBdr_act", global.config.video.showBdr.act);
+	ini_write_real("video", "fullscreen_act", global.config.video.fullscreen.active);
+	ini_write_real("video", "vsync_act", global.config.video.vsync.active);
+	ini_write_real("video", "hideCursor_act", global.config.video.hideCursor.active);
+	ini_write_real("video", "showVer_act", global.config.video.showVer.active);
+	ini_write_real("video", "showFps_act", global.config.video.showFps.active);
+	ini_write_real("video", "showBdr_act", global.config.video.showBdr.active);
 	for (var e = 0; e < array_length(global.config.audio.emitter); e++)
-		ini_write_real("aud", $"emitter_{e}_vol", global.config.audio.emitter[e].vol);
-	ini_write_real("access", "reduceMotion_act", global.config.access.reduceMotion.act);
+		ini_write_real("audio", $"emitter_{e}_vol", global.config.audio.emitter[e].vol);
+	ini_write_real("access", "reduceMotion_act", global.config.access.reduceMotion.active);
 	ini_close();
 }
 function fn_config_file_load()
@@ -185,15 +185,15 @@ function fn_config_file_load()
 	global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 	global.config.lang_hasChosen = ini_read_real("lang", "hasChosen", false);
 	global.config.video.resolution_curr = ini_read_real("video", "resolution_curr", 1);
-	global.config.video.fullscreen.act = ini_read_real("video", "fullscreen_act", false);
-	global.config.video.vsync.act = ini_read_real("video", "vsync_act", false);
-	global.config.video.hideCursor.act = ini_read_real("video", "hideCursor_act", true);
-	global.config.video.showVer.act = ini_read_real("video", "showVer_act", true);
-	global.config.video.showFps.act = ini_read_real("video", "showFps_act", false);
-	global.config.video.showBdr.act = ini_read_real("video", "showBdr_act", true);
+	global.config.video.fullscreen.active = ini_read_real("video", "fullscreen_act", false);
+	global.config.video.vsync.active = ini_read_real("video", "vsync_act", false);
+	global.config.video.hideCursor.active = ini_read_real("video", "hideCursor_act", true);
+	global.config.video.showVer.active = ini_read_real("video", "showVer_act", true);
+	global.config.video.showFps.active = ini_read_real("video", "showFps_act", false);
+	global.config.video.showBdr.active = ini_read_real("video", "showBdr_act", true);
 	for (var e = 0; e < array_length(global.config.audio.emitter); e++)
-		global.config.audio.emitter[e].vol = ini_read_real("aud", $"emitter_{e}_vol", 1);
-	global.config.access.reduceMotion.act = ini_read_real("access", "reduceMotion_act", false);
+		global.config.audio.emitter[e].vol = ini_read_real("audio", $"emitter_{e}_vol", 1);
+	global.config.access.reduceMotion.active = ini_read_real("access", "reduceMotion_act", false);
 	ini_close();
 }
 function fn_config_file_erase()

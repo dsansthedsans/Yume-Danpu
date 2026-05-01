@@ -1,13 +1,7 @@
+/* Interaction sequence */
+if (talk.active == true && talk.door.active == true && talk.stage == 1 && talk.door.close.audio_asset != undefined && talk.door.close.audio_emitter != undefined)
+	fn_audio_play(talk.door.close.audio_asset, talk.door.close.audio_emitter);
 
-// Talk (interaction sequence)
-if (talk.act == true && talk.type.door.act == true && talk.stg == 1)
-{
-	var _door = talk.type.door;
-	if (_door.close.snd_asset != -1 && _door.close.snd_emitter != -1)
-		fn_audio_play(_door.close.snd_asset, _door.close.snd_emitter);
-}
-
-
-// Noise (audio that can only be heard if the user is near the object)
-if (audio_is_playing(noise.audio.id) == true)
+/* Stops playing the audio the player can only hear if they're close */
+if (noise.active == true && audio.noise.id != undefined && audio_is_playing(noise.audio.id) == true)
 	fn_audio_stop(noise.audio.id);

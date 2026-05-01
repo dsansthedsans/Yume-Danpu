@@ -82,7 +82,7 @@ if (is_array(lvl) == true)
 		else if (lvl_fader.next.lvl >= LVL_USER_EFFECT && lvl_fader.next.lvl <= LVL_USER_THEME)
 			l = lvl_fader.next.lvl;
 		var _item = lvl[l].data[0];
-			lvl[l].rect[0].alpha = global.user.theme[global.user.theme_curr].alpha.blurHeavy;
+		lvl[l].rect[0].alpha = global.user.theme[global.user.theme_curr].alpha.blurHeavy;
 		
 		// Panel
 		var _panel = lvl[l].panel[0];

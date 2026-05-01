@@ -59,7 +59,7 @@ function fn_menu_inv_evCreate_0()
 	main_pic_xSc = 1;
 	main_pic_ySc = 1;
 	main_pic_scLen = 0.2;
-	main_pic_scSpd = 0.35;
+	main_pic_scSpeed = 0.35;
 	
 			// Player's name
 	var _name_text = global.user.name;
@@ -270,8 +270,8 @@ function fn_menu_inv_evDrawGUI_2(l)
 		}
 		
 		fn_draw_spr(main_pic_spr, 0, main_pic_x - ((main_pic_w / 2) * abs(main_pic_xSc - 1)), main_pic_y, , (lvl_alp[l] * draw_alp), main_pic_xSc, main_pic_ySc);
-		main_pic_xSc = lerp(main_pic_xSc, 1, main_pic_scSpd);
-		main_pic_ySc = lerp(main_pic_ySc, 1, main_pic_scSpd);
+		main_pic_xSc = lerp(main_pic_xSc, 1, main_pic_scSpeed);
+		main_pic_ySc = lerp(main_pic_ySc, 1, main_pic_scSpeed);
 		
 			// Draws the icon of the user's money
 		fn_draw_spr(main_mnyIco_spr, 0, main_mnyIco_x, main_mnyIco_y, main_mnyIco_col, (lvl_alp[l] * draw_alp), , , , true);

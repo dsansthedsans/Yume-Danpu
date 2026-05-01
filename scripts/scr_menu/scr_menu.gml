@@ -28,29 +28,29 @@ function fn_menu_lvl_add(_idx)
 			// Movement
 		option_move :
 		{
-			act : true,
+			active : true,
 			snd : undefined,
 			list : // List type
 			{
-				act : true,
+				active : true,
 				key : [CONFIG_KEY.UP, CONFIG_KEY.DN]
 			},
 			table : // Table type
 			{
-				act : false
+				active : false
 			}
 		},
 			// Confirmation
 		option_confirm :
 		{
-			act : true,
+			active : true,
 			key : CONFIG_KEY.CONFIRM,
 			snd : undefined,
 		},
 			// Cancellation
 		option_cancel :
 		{
-			act : true,
+			active : true,
 			key : [CONFIG_KEY.CANCEL, undefined],
 			snd : undefined,
 		}
@@ -62,9 +62,9 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 {
 	lvl_fader =
 	{
-		stg : 0, // ID number of the current stage of the fade transition
-		alpTgt : 1, // Alpha target (the value that alpha will change to)
-		alpSpd : 0.2, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
+		stage : 0, // ID number of the current stage of the fade transition
+		alpTarget : 1, // Alpha target (the value that alpha will change to)
+		alpSpeed : 0.2, // Alpha speed (speed at which the alpha changes during the fade transition) (1 == instantaneous)
 		alpJump : 0.05, // Alpha jump (if the difference between the current alpha and the target alpha reaches this value, the current alpha will jump to the target alpha)
 		// Previous level
 		prev :
@@ -98,7 +98,7 @@ function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 }
 
 	// Triangle trains
-function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd = 0, _ySpd = 0, _alpha = 1, _angle = 0)
+function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpeed = 0, _ySpeed = 0, _alpha = 1, _angle = 0)
 {
 	var l = _lvl;
 	var t = _idx;
@@ -108,8 +108,8 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpd
 		spr : undefined,
 		x : _x,
 		y : _y,
-		xSpd : _xSpd,
-		ySpd : _ySpd,
+		xSpeed : _xSpeed,
+		ySpeed : _ySpeed,
 		xOffset : 0,
 		yOffset : 0,
 		color : undefined,
@@ -242,7 +242,7 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 		// Selection indicator
 		select :
 		{
-			act : _select_act,
+			active : _select_act,
 			spr : undefined,
 			img : 0,
 			x : 0,
@@ -252,8 +252,8 @@ function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _
 			width : 0,
 			height : 0,
 			alpha : 0,
-			alphaTgt : [0 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
-			alphaSpd : 0.5,
+			alphaTarget : [0 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
+			alphaSpeed : 0.5,
 		},
 		// Checkbox
 		check : undefined,
@@ -306,12 +306,12 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 		xGap : _xGap,
 		colors : undefined,
 		colorVal : 0,
-		colorValTgts : [0 /* Inactive (Not cycling) */, 150 /* Active (Cycling) */],
-		colorValSpd : 0.2,
+		colorValTargets : [0 /* Inactive (Not cycling) */, 150 /* Active (Cycling) */],
+		colorValSpeed : 0.2,
 		alphas : [0.5 /* Inactive (Unselected) */, 1 /* Active (Selected) */],
 		scale : 1,
-		scaleTgts : [1 /* Inactive (Not cycling) */, 1.2 /* Active (Cycling) */],
-		scaleSpd : 0.2,
+		scaleTargets : [1 /* Inactive (Not cycling) */, 1.2 /* Active (Cycling) */],
+		scaleSpeed : 0.2,
 		xAlign : fa_center,
 		yAlign : fa_middle,
 		// Arrows
@@ -321,23 +321,23 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 	{
 		lvl[l].option[o].value.arrow[a] =
 		{
-			act : true,
+			active : true,
 			key : ((a == 0) ? CONFIG_KEY.LT : CONFIG_KEY.RT),
 			text : ((a == 0) ? "<" : ">"),
 			xGap : 10,
 			xSign : ((a == 0) ? -1 : 1),
 			colors : undefined,
 			alpha : 0.5,
-			alphaTgts : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
-			alphaSpd : 0.1,
+			alphaTargets : [0.5 /* Inactive (Not cycling) */, 1.5 /* Active (Cycling) */],
+			alphaSpeed : 0.1,
 			scale : 1,
-			scaleTgts : [1 /* Inactive (Not cycling) */, 2 /* Active (Cycling) */],
-			scaleSpd : 0.2,
+			scaleTargets : [1 /* Inactive (Not cycling) */, 2 /* Active (Cycling) */],
+			scaleSpeed : 0.2,
 			// Movement
 			move :
 			{
-				act : true,
-				xSpd : 1,
+				active : true,
+				xSpeed : 1,
 				xOffset : 0,
 				xOffsetMax : 2,
 				wait : 0,
@@ -381,7 +381,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		// Mark
 		mark :
 		{
-			act : false,
+			active : false,
 			spr : global.user.theme[global.user.theme_curr].spr.option_check_mark,
 			
 			x : 0,

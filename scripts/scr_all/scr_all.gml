@@ -112,7 +112,7 @@ function fn_draw_line(_x1, _y1, _x2, _y2, _color = c_white, _alpha = 1, _thickne
 function fn_audio_play(_asset, _emitter, _vol = 1, _pitch = 1, _offset = 0, _loops = false)
 {
 	var _id = audio_play_sound(_asset, 0, false);
-	fn_audio_vol(_asset, _id, _emitter, _vol);
+	fn_audio_volume(_asset, _id, _emitter, _vol);
 	fn_audio_pitch(_asset, _id, _pitch);
 	fn_audio_offset(_asset, _id, _offset);
 	audio_sound_loop(_id, _loops);
@@ -123,14 +123,14 @@ function fn_audio_stop(_id)
 	audio_stop_sound(_id);
 }
 // Volume
-function fn_audio_vol(_asset, _id, _emitter, _vol = 1)
+function fn_audio_volume(_asset, _id, _emitter, _vol = 1)
 {
-	_vol = fn_audio_volData(_asset, _vol);
+	_vol = fn_audio_volumeData(_asset, _vol);
 	_vol *= global.config.audio.emitter[_emitter].vol;
 	_vol *= global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].vol;
 	audio_sound_gain(_id, _vol, 0);
 }
-function fn_audio_volData(_asset, _vol)
+function fn_audio_volumeData(_asset, _vol)
 {
 	// _vol MUST ONLY BE MULTIPLIED, NOT ADDED or SUBTRACTED
 	
@@ -360,23 +360,23 @@ function fn_textdata_height(_text) // Returns the height of the specified textda
 }
 
 // Functions related to math
-function fn_lerp(_valCur, _valTgt, _spd)
+function fn_lerp(_valCur, _valTarget, _spd)
 {
-	return lerp(_valCur, _valTgt, _spd);
+	return lerp(_valCur, _valTarget, _spd);
 }
-function fn_lerp_col(_colCur, _colTgt, _spd)
+function fn_lerp_col(_colCur, _colTarget, _spd)
 {
 	var _colCur_hue = color_get_hue(_colCur);
 	var _colCur_sat = color_get_saturation(_colCur);
 	var _colCur_vAl = color_get_value(_colCur);
 	
-	var _colTgt_hue = color_get_hue(_colTgt);
-	var _colTgt_sat = color_get_saturation(_colTgt);
-	var _colTgt_vAl = color_get_value(_colTgt);
+	var _colTarget_hue = color_get_hue(_colTarget);
+	var _colTarget_sat = color_get_saturation(_colTarget);
+	var _colTarget_vAl = color_get_value(_colTarget);
 	
-	var _col_hue = fn_lerp(_colCur_hue, _colTgt_hue, _spd);
-	var _col_sat = fn_lerp(_colCur_sat, _colTgt_sat, _spd);
-	var _col_vAl = fn_lerp(_colCur_vAl, _colTgt_vAl, _spd);
+	var _col_hue = fn_lerp(_colCur_hue, _colTarget_hue, _spd);
+	var _col_sat = fn_lerp(_colCur_sat, _colTarget_sat, _spd);
+	var _col_vAl = fn_lerp(_colCur_vAl, _colTarget_vAl, _spd);
 	
 	return make_color_hsv(_col_hue, _col_sat, _col_vAl);
 }

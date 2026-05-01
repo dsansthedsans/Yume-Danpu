@@ -1,110 +1,110 @@
-
 fn_obj_img( , , , , , image_xscale, image_yscale, image_angle);
 fn_obj_depth();
 solid = true;
 
-// Myself
+/* Self-drawing */
 myself =
 {
+	active : true,
 	type : "prop",
-	imgSpd : 0,
+	image : 0,
+	imageSpeed : 0,
 	x : x,
 	y : y,
 	xOffset : 0,
 	yOffset : 0,
-	xSc : image_xscale,
-	ySc : image_yscale,
-	ang : image_angle,
-	draw :
-	{
-		act : true
-	},
+	xScale : image_xscale,
+	yScale : image_yscale,
+	angle : image_angle,
+	// Shaking
 	shake :
 	{
-		act : true,
-		dist : 0,
-		durCurr : 0
+		active : true,
+		time : 0,
+		distance : 0,
+		xOffset : 0,
+		yOffset : 0,
 	}
 }
 
-// Talk (interaction sequence)
+/* Interaction sequence */
 talk =
 {
-	act : false,
-	stg : -1,
-	freezeTrig : true,
-	// Types
-	type :
+	active : false,
+	stage : -1,
+	
+	/* Types */
+	// Starts another object's interaction sequence
+	trigger :
 	{
-		// Bell type (starts playing an audio)
-		bell :
-		{
-			act : false,
-			dur : 30,
-			dur_curr : 0,
-			
-			aud_asset : [-1],
+		active : false,
+		key : CONFIG_KEY.CONFIRM,
+		distance : 16,
+		target : undefined,
+	},
+	// Plays an audio
+	bell :
+	{
+		active : false,
+		time : 0,
+		timeTarget : 30,
+		audio_assets : [snd_hulapoca, snd_penyplocde, snd_ponkawonka],
+		audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
+		audio_index : undefined,
+	},
+	// Starts a room transition
+	door :
+	{
+		active : false,
+		open :
+		{	
+			imageSpeed : 0.5,
+			audio_asset : snd_prop_talk_door_open,
 			audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
-			aud_idx : -1
-		},
-		// Door type (starts a room transition)
-		door :
+		},	
+		close :
 		{
-			act : false,
-			open :
-			{	
-				imgSpd : 0.5,
-				
-				snd_asset : -1,
-				snd_emitter : -1
-			},	
-			close :
-			{
-				snd_asset : -1,
-				snd_emitter : -1
-			}
+			audio_asset : snd_prop_talk_door_close,
+			audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
 		},
-		// Gift type (unlocks an effect, item or a theme)
-		gift :
-		{
-			act : false,
-			
-			content : [-1],
-			content_idx : 0,
-		},
-	}
+	},
+	// Unlocks an Effect, a Function or a Theme
+	gift :
+	{
+		active : false,
+		contents : undefined,
+		contents_index : 0,
+	},
 }
 
-// Talk trigger (starts other objects' interaction sequences)
-talkTrig =
-{
-	act : false,
-	key : CONFIG_KEY.CONFIRM,
-	dist : 16
-}
-
-// Noise (audio that can only be heard if the user is near the object)
+/* Plays an audio the player can only hear if they're close */
 noise =
 {
-	act : false,
-	stg : -1,
-	dist : (160 * 1.25),
+	active : false,
+	stage : -1,
+	distance : (160 * 1.25),
 	
-	wait :
-	{
-		act : false,
-		dur_min : 0,
-		dur_max : 0,
-		dur_curr : 0
-	},
-	
+	// Audio
 	audio :
 	{
-		asset : -1,
-		emitter : -1,
+		asset : undefined,
+		emitter : CONFIG_AUDIO_EMITTER.PROP,
+		volume : 0,
+		volumeSpeed : 0.5,
+		pitch : 1,
+		pitchOffset : 0,
+		pitchOffsetMax : 0.1,
+		pitchSpeed : 0.5,
 		loops : true,
-		vol : 0,
-		id : -1,
+		id : undefined,
+	},
+	// Delay
+	delay :
+	{
+		active : false,
+		time : 0,
+		timeMin : (60 * 5),
+		timeMax : (60 * 10),
 	},
 }
 

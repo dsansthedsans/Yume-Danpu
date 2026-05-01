@@ -83,7 +83,7 @@ function fn_menu_pse_evCreate_1()
 function fn_menu_pse_evDrawGUI_0(l)
 {
 	// Draws the screenshot
-	if (sshot_spr != -1 && lvl_alpTgt_selfDstr[LVL_EMPTY] == false)
+	if (sshot_spr != -1 && lvl_alpTarget_selfDstr[LVL_EMPTY] == false)
 		draw_sprite_ext(sshot_spr, 0, 0, 0, sshot_xSc, sshot_ySc, 0, c_white, 1);
 }
 
@@ -133,9 +133,9 @@ function fn_menu_pse_resume() // Resumes the game
 	instance_activate_all();
 	audio_resume_all();
 	
-	if (fn_obj_exists(obj_actor_user) == true && obj_actor_user.move.stg == -2)
+	if (fn_obj_exists(obj_actor_user) == true && obj_actor_user.move.stage == -2)
 	{
-		obj_actor_user.move.stg = -1;
+		obj_actor_user.move.stage = -1;
 		obj_actor_user.MENUDELAY = 5;
 	}
 }

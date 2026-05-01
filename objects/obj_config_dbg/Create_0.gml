@@ -4,7 +4,7 @@ fn_obj_depth( , -14000);
 
 global.config_dbg =
 {
-	act : true, // Determines if Debug Mode is enabled
+	active : true, // Determines if Debug Mode is enabled
 	pwd : "hunter2", // Password to enter to toggle Debug Mode (type it with your keyboard anywhere at anytime)
 	
 	// Commands
@@ -25,5 +25,5 @@ global.config_dbg =
 	textdataCorruption : false, // Determines if the function "textdata()" will always return with ÂÂÂÂÂÂ
 	logOverdose : false, // Determines if log messages will show excessively and unnecesarily (affects performance)
 }
-if (global.config_dbg.act == true)
+if (global.config_dbg.active == true)
 	fn_user_setup(0);

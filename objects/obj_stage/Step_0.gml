@@ -33,7 +33,7 @@ for (var m = 0; m < music_lengthMax; m++)
 		// Updates the currently playing music
 		if (music[m].id != undefined)
 		{
-			fn_audio_vol(music[m].asset, music[m].id, music[m].emitter);
+			fn_audio_volume(music[m].asset, music[m].id, music[m].emitter);
 			fn_audio_pitch(music[m].asset, music[m].id, music[m].pitch);
 		}
 	}

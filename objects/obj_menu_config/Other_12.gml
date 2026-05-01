@@ -22,17 +22,17 @@ else if (l == LVL_VIDEO)
 			global.config.video.resolution_curr = 0;
 	}
 	else if (o == 1)
-		global.config.video.fullscreen.act = !global.config.video.fullscreen.act;
+		global.config.video.fullscreen.active = !global.config.video.fullscreen.active;
 	else if (o == 2)
-		global.config.video.vsync.act = !global.config.video.vsync.act;
+		global.config.video.vsync.active = !global.config.video.vsync.active;
 	else if (o == 3)
-		global.config.video.hideCursor.act = !global.config.video.hideCursor.act;
+		global.config.video.hideCursor.active = !global.config.video.hideCursor.active;
 	else if (o == 4)
-		global.config.video.showVer.act = !global.config.video.showVer.act;
+		global.config.video.showVer.active = !global.config.video.showVer.active;
 	else if (o == 5)
-		global.config.video.showBdr.act = !global.config.video.showBdr.act;
+		global.config.video.showBdr.active = !global.config.video.showBdr.active;
 	else if (o == 6)
-		global.config.video.showFps.act = !global.config.video.showFps.act;
+		global.config.video.showFps.active = !global.config.video.showFps.active;
 	fn_config_file_save();
 }
 else if (l == LVL_AUDIO)
@@ -44,7 +44,7 @@ else if (l == LVL_ACCESS)
 {
 	if (o == 0)
 	{
-		global.config.access.reduceMotion.act = !global.config.access.reduceMotion.act;
+		global.config.access.reduceMotion.active = !global.config.access.reduceMotion.active;
 		fn_config_file_save();
 	}
 }

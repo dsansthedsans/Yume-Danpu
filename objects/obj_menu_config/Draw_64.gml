@@ -67,17 +67,17 @@ if (is_array(lvl) == true)
 				_opt[0].text = global.config.video.resolution_name;
 				_opt[0].value.text = $"{round(global.config.video.resolution[global.config.video.resolution_curr].width)}x{round(global.config.video.resolution[global.config.video.resolution_curr].height)}";
 				_opt[1].text = global.config.video.fullscreen.name;
-				_opt[1].value.text = $"menu_config_all_option_value_{global.config.video.fullscreen.act}";
+				_opt[1].value.text = $"menu_config_all_option_value_{global.config.video.fullscreen.active}";
 				_opt[2].text = global.config.video.vsync.name;
-				_opt[2].value.text = $"menu_config_all_option_value_{global.config.video.vsync.act}";
+				_opt[2].value.text = $"menu_config_all_option_value_{global.config.video.vsync.active}";
 				_opt[3].text = global.config.video.hideCursor.name;
-				_opt[3].value.text = $"menu_config_all_option_value_{global.config.video.hideCursor.act}";
+				_opt[3].value.text = $"menu_config_all_option_value_{global.config.video.hideCursor.active}";
 				_opt[4].text = global.config.video.showVer.name;
-				_opt[4].value.text = $"menu_config_all_option_value_{global.config.video.showVer.act}";
+				_opt[4].value.text = $"menu_config_all_option_value_{global.config.video.showVer.active}";
 				_opt[5].text = global.config.video.showBdr.name;
-				_opt[5].value.text = $"menu_config_all_option_value_{global.config.video.showBdr.act}";
+				_opt[5].value.text = $"menu_config_all_option_value_{global.config.video.showBdr.active}";
 				_opt[6].text = global.config.video.showFps.name;
-				_opt[6].value.text = $"menu_config_all_option_value_{global.config.video.showFps.act}";
+				_opt[6].value.text = $"menu_config_all_option_value_{global.config.video.showFps.active}";
 			}
 			else if (l == LVL_AUDIO)
 			{
@@ -86,14 +86,14 @@ if (is_array(lvl) == true)
 					var _emitter_vol = global.config.audio.emitter[o].vol;
 					_opt[o].text = global.config.audio.emitter[o].name;
 					_opt[o].value.text = $"{round(_emitter_vol * 100)}%";
-					_opt[o].value.arrow[0].act = ((_emitter_vol > 0) ? true : false);
-					_opt[o].value.arrow[1].act = ((_emitter_vol < 1) ? true : false);
+					_opt[o].value.arrow[0].active = ((_emitter_vol > 0) ? true : false);
+					_opt[o].value.arrow[1].active = ((_emitter_vol < 1) ? true : false);
 				}
 			}
 			else if (l == LVL_ACCESS)
 			{
 				_opt[0].text = global.config.access.reduceMotion.name;
-				_opt[0].value.text = $"menu_config_all_option_value_{global.config.access.reduceMotion.act}";
+				_opt[0].value.text = $"menu_config_all_option_value_{global.config.access.reduceMotion.active}";
 			}
 			var _opt_yGap = 16;
 			var _opt_value_xGap = (32 + 32);

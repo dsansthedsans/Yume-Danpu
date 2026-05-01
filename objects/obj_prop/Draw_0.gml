@@ -1,20 +1,9 @@
-
-// Myself
-if (myself.shake.act == true && myself.shake.durCurr > 0 && global.config.access.reduceMotion.act == false)
+/* Self-drawing */
+if (myself.active == true)
 {
-	myself.xOffset += (irandom(myself.shake.dist) * choose(-1, 1));
-	myself.yOffset += (irandom(myself.shake.dist) * choose(-1, 1));
-	myself.shake.durCurr -= 1;
-}
-
-if (myself.draw.act == true)
-{
-	if (myself.imgSpd > 0)
-	{
-		image_index += myself.imgSpd;
-		if (global.config.access.reduceMotion.act == true)
-			image_index = 0;
-	}
-		
-	fn_draw_spr(sprite_index, image_index, (myself.x + myself.xOffset), (myself.y + myself.yOffset), image_blend, image_alpha, myself.xSc, myself.ySc, myself.ang, false);
+	myself.image = ((myself.imageSpeed > 0 && global.config.access.reduceMotion.active == true) ? (myself.image + myself.imageSpeed) : 0);
+	myself.shake.xOffset = ((myself.shake.active == true && myself.shake.time > 0) ? (irandom(myself.shake.distance) * choose(-1, 1)) : 0);
+	myself.shake.xOffset = ((myself.shake.active == true && myself.shake.time > 0) ? (irandom(myself.shake.distance) * choose(-1, 1)) : 0);
+	myself.shake.time = ((myself.shake.time > 0) ? (myself.shake.time - 1) : 0);
+	fn_draw_spr(sprite_index, myself.image, (myself.x + myself.xOffset + myself.shake.xOffset), (myself.y + myself.yOffset + myself.shake.yOffset), image_blend, image_alpha, myself.xScale, myself.yScale, myself.angle);
 }

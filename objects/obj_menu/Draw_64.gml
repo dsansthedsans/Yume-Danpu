@@ -40,11 +40,11 @@ if (is_array(lvl) == true)
 						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.theme[global.user.theme_curr].spr.train)
 						var _train_xGap = lengthdir_x(fn_spr_width(_train_spr), _train.angle);
 						var _train_yGap = lengthdir_y(fn_spr_height(_train_spr), _train.angle);
-						_train.xOffset += _train.xSpd;
-						_train.yOffset += _train.ySpd;
-						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.reduceMotion.act == true)
+						_train.xOffset += _train.xSpeed;
+						_train.yOffset += _train.ySpeed;
+						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.reduceMotion.active == true)
 							_train.xOffset = 0;
-						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.reduceMotion.act == true)
+						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.reduceMotion.active == true)
 							_train.yOffset = 0;
 						var _train_color = ((_train.color != undefined) ? _train.color : global.user.theme[global.user.theme_curr].color.grayDark);
 						for (var c = 0; c < 21; c++)
@@ -163,10 +163,10 @@ if (is_array(lvl) == true)
 							fn_draw_spr_stretch(_button.spr, ((o != lvl[l].option_curr) ? _button.img_inact : _button.img_act), _button_x, _button_y, _button_width, _button_height, , lvl[l].alpha);
 						}
 							// Selection indicator
-						if (_opt.select.act == true)
+						if (_opt.select.active == true)
 						{
 							var _slct = _opt.select;
-							_slct.alpha = fn_lerp(_slct.alpha, _slct.alphaTgt[(o == lvl[l].option_curr)], ((global.config.access.reduceMotion.act == false) ? _slct.alphaSpd : 1));
+							_slct.alpha = fn_lerp(_slct.alpha, _slct.alphaTarget[(o == lvl[l].option_curr)], ((global.config.access.reduceMotion.active == false) ? _slct.alphaSpeed : 1));
 							if (_slct.alpha > 0)
 							{
 								var _slct_spr = ((_slct.spr != undefined) ? _slct.spr : global.user.theme[global.user.theme_curr].spr.option_select);
@@ -201,7 +201,7 @@ if (is_array(lvl) == true)
 							var _check_y = round((_check.y != 0) ? _check.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_check.spr) / 2) + 1));
 							fn_draw_spr(_opt.check.spr, 0, _check_x, _check_y, _check.color, (_check.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 								// Mark
-							if (_opt.check.mark.act == true)
+							if (_opt.check.mark.active == true)
 							{
 								var _mark = _opt.check.mark;
 								var _mark_x = round((_mark.x != 0) ? _mark.x : _check_x);
@@ -220,26 +220,26 @@ if (is_array(lvl) == true)
 							var _val_x = round((_val.x != 0) ? _val.x : (_opt_x + fn_textdata_width(_opt.text) + _opt.value.xGap + (fn_textdata_width(_val.text) / 2)));
 							var _val_y = round((_val.y != 0) ? _val.y : (_opt_y + ceil(fn_textdata_height("Salenis") / 2)));
 							var _val_cols = ((_val.colors != undefined) ? _val.colors : [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.grayDark]);
-							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTgts[false], _val.colorValSpd);
+							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTargets[false], _val.colorValSpeed);
 							for (var c = 0; c < 2; c++)
 								_val_cols[c] = make_colour_hsv(colour_get_hue(_val_cols[c]), colour_get_saturation(_val_cols[c]), (colour_get_value(_val_cols[c]) + _val.colorVal));
-							_val.scale = fn_lerp(_val.scale, _val.scaleTgts[false], _val.scaleSpd);
+							_val.scale = fn_lerp(_val.scale, _val.scaleTargets[false], _val.scaleSpeed);
 							fn_draw_text(textdata(_val.text), _val_x, _val_y, _val_cols, (_val.alphas[(o == lvl[l].option_curr)] * lvl[l].alpha), _val.scale, _val.scale, _val.xAlign, _val.yAlign, _shdw_cols, _shdw_alp);
 								
 								// Value's arrows
-							if (o == lvl[l].option_curr && (_val.arrow[0].act == true || _val.arrow[1].act == true))
+							if (o == lvl[l].option_curr && (_val.arrow[0].active == true || _val.arrow[1].active == true))
 							{
 								var _arrow = _val.arrow;
 								for (var a = 0; a < 2; a++)
 								{
-									_arrow[a].alpha = fn_lerp(_arrow[a].alpha, _arrow[a].alphaTgts[false], _arrow[a].alphaSpd);
-									_arrow[a].scale = fn_lerp(_arrow[a].scale, _arrow[a].scaleTgts[false], _arrow[a].scaleSpd);
-									if (_arrow[a].move.act == true && global.config.access.reduceMotion.act == false)
+									_arrow[a].alpha = fn_lerp(_arrow[a].alpha, _arrow[a].alphaTargets[false], _arrow[a].alphaSpeed);
+									_arrow[a].scale = fn_lerp(_arrow[a].scale, _arrow[a].scaleTargets[false], _arrow[a].scaleSpeed);
+									if (_arrow[a].move.active == true && global.config.access.reduceMotion.active == false)
 									{
 										if (_arrow[a].move.wait >= _arrow[a].move.waitMax)
 										{
 											if (_arrow[a].move.xOffset < _arrow[a].move.xOffsetMax)
-												_arrow[a].move.xOffset += _arrow[a].move.xSpd;
+												_arrow[a].move.xOffset += _arrow[a].move.xSpeed;
 											else
 												_arrow[a].move.xOffset = 0;
 											_arrow[a].move.wait = 0;
@@ -249,9 +249,9 @@ if (is_array(lvl) == true)
 									}
 									else
 										_arrow[a].move.xOffset = 0;
-									if (_arrow[a].act == true)
+									if (_arrow[a].active == true)
 									{
-										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOffset * _arrow[a].move.act)) * _arrow[a].xSign));
+										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOffset * _arrow[a].move.active)) * _arrow[a].xSign));
 										var _arrow_y = _val_y;
 										var _arrow_cols = [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteLight];
 										fn_draw_text(_arrow[a].text, _arrow_x, _arrow_y, _arrow_cols, (_arrow[a].alpha * lvl[l].alpha), _arrow[a].scale, _arrow[a].scale, fa_center, fa_middle, _shdw_cols, _shdw_alp);
