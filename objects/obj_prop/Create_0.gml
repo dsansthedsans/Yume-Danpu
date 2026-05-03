@@ -3,10 +3,12 @@ fn_obj_depth();
 solid = true;
 
 /* Self-drawing */
+MYSELF_TYPE_PROP = 0;
+MYSELF_TYPE_ACTOR = 1;
 myself =
 {
 	active : true,
-	type : "prop",
+	type : MYSELF_TYPE_PROP,
 	image : 0,
 	imageSpeed : 0,
 	x : x,

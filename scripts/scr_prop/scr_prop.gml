@@ -31,7 +31,7 @@ function fn_prop_evCreate()
 	{
 		// Walls
 		case obj_prop_wall:
-			image_alpha = 0;
+			image_alpha = ((room == rm_dbgwrld) ? 1 : 0);
 			break;
 		// Doors
 		case obj_prop_condo_apt_bed: // Bed in Eleanor's Apartment

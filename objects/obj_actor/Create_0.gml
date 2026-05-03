@@ -1,168 +1,71 @@
-
 event_inherited();
-myself.type = "actor";
+myself.type = MYSELF_TYPE_ACTOR;
 
-// Directions
-DIR_LT = 0;
-DIR_RT = 1;
-DIR_UP = 2;
-DIR_DN = 3;
-DIR_AXIS_HOR = 0;
-DIR_AXIS_VER = 1;
-	// Left
-dir[DIR_LT] =
+/*  */
+FACING_WEST = 0;
+FACING_EAST = 1;
+FACING_NORTH = 2;
+FACING_SOUTH = 3;
+FACING_AXIS_HORIZ = 0;
+FACING_AXIS_VERT = 1;
+facing[FACING_WEST] =
 {
-	spr : -1,
+	sprite : sprite_index,
 	key : CONFIG_KEY.LT,
-	axis : DIR_AXIS_HOR,
-	sign : -1
+	axis : FACING_AXIS_HORIZ,
+	sign : -1,
 }
-	// Right
-dir[DIR_RT] =
+facing[FACING_EAST] =
 {
-	spr : -1,
+	sprite : sprite_index,
 	key : CONFIG_KEY.RT,
-	axis : DIR_AXIS_HOR,
-	sign : 1
+	axis : FACING_AXIS_HORIZ,
+	sign : 1,
 }
-	// Up
-dir[DIR_UP] =
+facing[FACING_NORTH] =
 {
-	spr : -1,
+	sprite : sprite_index,
 	key : CONFIG_KEY.UP,
-	axis : DIR_AXIS_VER,
-	sign : -1
+	axis : FACING_AXIS_VERT,
+	sign : -1,
 }
-	// Down
-dir[DIR_DN] =
+facing[FACING_SOUTH] =
 {
-	spr : -1,
+	sprite : sprite_index,
 	key : CONFIG_KEY.DN,
-	axis : DIR_AXIS_VER,
-	sign : 1
+	axis : FACING_AXIS_VERT,
+	sign : 1,
 }
-fn_actor_dir_spr(id, sprite_index);
-dir_curr = DIR_DN; // Current direction the actor is facing
+facing_curr = FACING_SOUTH;
 
-// Movement
-move =
+/* Movement sequence */
+WALK_MODE_AUTO = 0;
+WALK_MODE_MANUAL = 1;
+walk =
 {
 	active : true,
-	stage : -1, // ID number of the current stage of the movement sequence
-	amt : 0, // Amount of consecutive movement sequences in any direction, mode and type
-	xTarget : 0,
-	yTarget : 0,
-	xStart : 0,
-	yStart : 0,
-	
-	// Wait (delays the start of the movement sequence)
-	wait :
+	stage : -1,
+	mode : WALK_MODE_AUTO,
+	time : 16, // Duration of the movement sequence
+	distance : 16, // Distance the actor will move
+	audio_asset : undefined,
+	audio_emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+	startX : 0,
+	startY : 0,
+	endX : 0,
+	endY : 0,
+	// Delays the movement sequence
+	delay :
 	{
 		active : false,
-		durMin : 30,
-		durMax : 240,
-		durCurr : 0
+		time : 0,
+		timeMin : 30,
+		timeMax : 240,
 	},
-	
-	// Modes
-	mode :
-	{
-		// Manual mode
-		manual :
-		{
-			active : false,
-			held : false
-		},
-		
-		// Automatic mode
-		auto :
-		{
-			active : false,
-			chase_act : false,
-			chase_tgt : -1
-		}
-	},
-	
-	// Types
-	type :
-	{
-		// Walk type
-		walk :
-		{
-			active : false,
-			dur : 16, // Duration in frames of the walking sequence
-			durCurr : 0,
-			dist : 16, // Distance in pixels the actor will walk
-			precise : false, // Whether movement checks for collisions in distances smaller than {move.type.walk.dist}
-			
-			// Walking animation
-			fstep :
-			{
-				active : false,
-				amtCurr : 0,
-				wait_durCurr : 0,
-				snd_asset : -1,
-				snd_emitter : -1,
-			}
-		},
-		
-		// Roll type
-		roll :
-		{
-			active : false,
-			
-			dist : 0, // Distance in pixels the actor will walk
-			distMin : 0.5, // Minimum allowed distance for {move.type.roll.dist}
-			distMax : 3, // Maximum allowed distance for {move.type.roll.dist}
-			distAccel : 0.1,
-			distDecel : 0.1,
-			precise : true, // Whether movement checks for collisions in distances smaller than {move.type.roll.dist}
-			
-			snd_asset : -1,
-			snd_emitter : -1,
-			snd_pitchMin : 0.5,
-			snd_pitchMax : 1.5,
-			snd_id : -1,
-			
-			start :
-			{
-				snd_asset : -1,
-				snd_emitter : -1
-			},
-			
-			turn :
-			{
-				shake_act : true,
-				shake_dist : 1,
-				shake_dur : 8,
-				
-				snd_asset : -1,
-				snd_emitter : -1,
-				snd_pitchMin : 0.25,
-				snd_pitchMax : 0.45,
-			},
-			
-			hit :
-			{
-				shake_act : true,
-				shake_dist : 1,
-				shake_dur : 6,
-				
-				snd_asset : -1,
-				snd_emitter : -1
-			}
-		}
-	},
-	
-	// Chain (stops the actor from moving too far from their original position)
+	// Prevents actor from moving too far from starting position
 	chain :
 	{
 		active : false,
-		dist : 48
-	}
+		distance : 48,
+	},
 }
-
-fn_actor_evCreate();
-
-
-// HUA-LATUCA-PAYA!!!! HO-POPAPO-TUYA!!!!!!! AAAAAAAAAAAAAARRRRRRRGHHHHHHH!!!!!!!!!!!

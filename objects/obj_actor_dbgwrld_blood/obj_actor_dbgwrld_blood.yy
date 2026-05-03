@@ -10,8 +10,8 @@
     "path":"folders/Map/Debug World.yy",
   },
   "parentObjectId":{
-    "name":"obj_actor",
-    "path":"objects/obj_actor/obj_actor.yy",
+    "name":"old_obj_actor",
+    "path":"objects/old_obj_actor/old_obj_actor.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
