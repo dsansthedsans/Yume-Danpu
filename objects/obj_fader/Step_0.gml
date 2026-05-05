@@ -9,8 +9,8 @@ if (type.fade.active == true)
 	{
 		var _iris = type.fade.iris;
 		_iris.siner += 0.1;
-		_iris.xOffset += (cos(_iris.siner) / 2);
-		_iris.yOffset += (sin(_iris.siner) / 2);
+		_iris.offsetX += (cos(_iris.siner) / 2);
+		_iris.offsetY += (sin(_iris.siner) / 2);
 		_iris.radius = fn_lerp(_iris.radius, 0, _iris.radiusSpeed);
 		_iris.alpha = fn_lerp(_iris.alpha, 1, _iris.alphaSpeed);
 		if (_iris.snd_asset != undefined && _iris.snd_emitter != undefined && _iris.snd_id == undefined)

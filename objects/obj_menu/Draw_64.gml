@@ -40,15 +40,15 @@ if (is_array(lvl) == true)
 						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.theme[global.user.theme_curr].spr.train)
 						var _train_xGap = lengthdir_x(fn_spr_width(_train_spr), _train.angle);
 						var _train_yGap = lengthdir_y(fn_spr_height(_train_spr), _train.angle);
-						_train.xOffset += _train.xSpeed;
-						_train.yOffset += _train.ySpeed;
-						if (abs(_train.xOffset) >= abs(_train_xGap)) || (global.config.access.reduceMotion.active == true)
-							_train.xOffset = 0;
-						if (abs(_train.yOffset) >= abs(_train_yGap)) || (global.config.access.reduceMotion.active == true)
-							_train.yOffset = 0;
+						_train.offsetX += _train.xSpeed;
+						_train.offsetY += _train.ySpeed;
+						if (abs(_train.offsetX) >= abs(_train_xGap)) || (global.config.access.reduceMotion.active == true)
+							_train.offsetX = 0;
+						if (abs(_train.offsetY) >= abs(_train_yGap)) || (global.config.access.reduceMotion.active == true)
+							_train.offsetY = 0;
 						var _train_color = ((_train.color != undefined) ? _train.color : global.user.theme[global.user.theme_curr].color.grayDark);
 						for (var c = 0; c < 21; c++)
-							fn_draw_spr(_train_spr, 0, (_train.x + _train.xOffset + (_train_xGap * c)), (_train.y + _train.yOffset + (_train_yGap * c)), _train_color, (_train.alpha * lvl[l].alpha), , , _train.angle);
+							fn_draw_spr(_train_spr, 0, (_train.x + _train.offsetX + (_train_xGap * c)), (_train.y + _train.offsetY + (_train_yGap * c)), _train_color, (_train.alpha * lvl[l].alpha), , , _train.angle);
 					}
 				}
 			}
@@ -238,20 +238,20 @@ if (is_array(lvl) == true)
 									{
 										if (_arrow[a].move.wait >= _arrow[a].move.waitMax)
 										{
-											if (_arrow[a].move.xOffset < _arrow[a].move.xOffsetMax)
-												_arrow[a].move.xOffset += _arrow[a].move.xSpeed;
+											if (_arrow[a].move.offsetX < _arrow[a].move.offsetXMax)
+												_arrow[a].move.offsetX += _arrow[a].move.xSpeed;
 											else
-												_arrow[a].move.xOffset = 0;
+												_arrow[a].move.offsetX = 0;
 											_arrow[a].move.wait = 0;
 										}
 										else
 											lvl[l].option[o].value.arrow[a].move.wait += 1;
 									}
 									else
-										_arrow[a].move.xOffset = 0;
+										_arrow[a].move.offsetX = 0;
 									if (_arrow[a].active == true)
 									{
-										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.xOffset * _arrow[a].move.active)) * _arrow[a].xSign));
+										var _arrow_x = round(_val_x + (((fn_textdata_width(_val.text) / 2) + _arrow[a].xGap + (_arrow[a].move.offsetX * _arrow[a].move.active)) * _arrow[a].xSign));
 										var _arrow_y = _val_y;
 										var _arrow_cols = [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteLight];
 										fn_draw_text(_arrow[a].text, _arrow_x, _arrow_y, _arrow_cols, (_arrow[a].alpha * lvl[l].alpha), _arrow[a].scale, _arrow[a].scale, fa_center, fa_middle, _shdw_cols, _shdw_alp);

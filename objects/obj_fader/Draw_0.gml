@@ -11,7 +11,7 @@ if (type.fade.active == true)
 		surface_set_target(_iris.surface);
 		draw_clear_alpha(_iris.color, _iris.alpha);
 		gpu_set_blendmode(bm_subtract);
-		fn_draw_circle((_iris.x + _iris.xOffset), (_iris.y + _iris.yOffset), round(_iris.radius), _iris.precision);
+		fn_draw_circle((_iris.x + _iris.offsetX), (_iris.y + _iris.offsetY), round(_iris.radius), _iris.precision);
 		gpu_set_blendmode(bm_normal);
 		surface_reset_target();
 		draw_surface_ext(_iris.surface, 0, 0, 1, 1, 0, c_white, 1);

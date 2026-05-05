@@ -9,14 +9,15 @@ myself =
 {
 	active : true,
 	type : MYSELF_TYPE_PROP,
+	sprite : sprite_index,
 	image : 0,
 	imageSpeed : 0,
 	x : x,
 	y : y,
-	xOffset : 0,
-	yOffset : 0,
-	xScale : image_xscale,
-	yScale : image_yscale,
+	offsetX : 0,
+	offsetY : 0,
+	scaleX : image_xscale,
+	scaleY : image_yscale,
 	angle : image_angle,
 	// Shaking
 	shake :
@@ -24,8 +25,8 @@ myself =
 		active : true,
 		time : 0,
 		distance : 0,
-		xOffset : 0,
-		yOffset : 0,
+		offsetX : 0,
+		offsetY : 0,
 	}
 }
 

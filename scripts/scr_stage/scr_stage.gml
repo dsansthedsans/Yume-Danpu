@@ -92,7 +92,7 @@ function fn_stage_music_add(_index, _asset, _emitter = CONFIG_AUDIO_EMITTER.MUS,
 
 /* Background */
 // Clouds
-function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _xScale = 1, _yScale = 1, _alpha = 1, _loop_xDist = 640, _loop_yDist = 480, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
+function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _scaleX = 1, _scaleY = 1, _alpha = 1, _loop_xDist = 640, _loop_yDist = 480, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
 {
 	bg[_index] = fn_obj_create(obj_stage_bg_clouds);
 	with (bg[_index])
@@ -107,10 +107,10 @@ function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _xScale = 1, _yScal
 			imageSpeed : 0,
 			x : 0,
 			y : 0,
-			xOffset : 0,
-			yOffset : 0,
-			xScale : _xScale,
-			yScale : _yScale,
+			offsetX : 0,
+			offsetY : 0,
+			scaleX : _scaleX,
+			scaleY : _scaleY,
 			color : c_white,
 			alpha : _alpha,
 			angle : 0,
@@ -174,8 +174,8 @@ function fn_stage_bg_sky_add(_index, _sprite, _image = 0, _color = c_white, _alp
 			imageSpeed : 0,
 			x : 0,
 			y : 0,
-			xOffset : 0,
-			yOffset : 0,
+			offsetX : 0,
+			offsetY : 0,
 			width : (_widthOrig * ceil(room_width / _widthOrig)),
 			height : (_heightOrig * ceil(room_height / _heightOrig)),
 			color : _color,

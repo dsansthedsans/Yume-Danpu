@@ -46,18 +46,13 @@ walk =
 	active : true,
 	stage : -1,
 	mode : WALK_MODE_AUTO,
-	time : 16, // Duration of the movement sequence
-	distance : 16, // Distance the actor will move
-	audio_asset : undefined,
-	audio_emitter : CONFIG_AUDIO_EMITTER.ACTOR,
-	startX : 0,
-	startY : 0,
-	endX : 0,
-	endY : 0,
+	distance : 16,
+	time : 0,
+	timeMax : 32,
 	// Delays the movement sequence
 	delay :
 	{
-		active : false,
+		active : true,
 		time : 0,
 		timeMin : 30,
 		timeMax : 240,
@@ -68,4 +63,15 @@ walk =
 		active : false,
 		distance : 48,
 	},
+	// Footstep
+	step :
+	{
+		active : false,
+		time : 0,
+		audio_asset : undefined,
+		audio_emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+	},
+	
+	startX : 0,
+	startY : 0,
 }

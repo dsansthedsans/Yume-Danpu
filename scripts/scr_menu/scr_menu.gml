@@ -110,8 +110,8 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpe
 		y : _y,
 		xSpeed : _xSpeed,
 		ySpeed : _ySpeed,
-		xOffset : 0,
-		yOffset : 0,
+		offsetX : 0,
+		offsetY : 0,
 		color : undefined,
 		alpha : _alpha,
 		angle : _angle,
@@ -338,8 +338,8 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			{
 				active : true,
 				xSpeed : 1,
-				xOffset : 0,
-				xOffsetMax : 2,
+				offsetX : 0,
+				offsetXMax : 2,
 				wait : 0,
 				waitMax : 12
 			}

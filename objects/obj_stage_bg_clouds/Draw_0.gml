@@ -5,12 +5,12 @@ var _move = clouds.loop.move;
 // Movement
 if (_move.xTime > 0 && _move.yTime > 0)
 {
-	clouds.xOffset += ((_loop.xDist * _move.xSign) / _move.xTime);
-	if (abs(clouds.x + clouds.xOffset) >= _loop.xDist)
-		clouds.xOffset -= (_loop.xDist * _move.xSign);
-	clouds.yOffset += ((_loop.yDist * _move.ySign) / _move.yTime);
-	if (abs(clouds.y + clouds.yOffset) >= _loop.yDist)
-		clouds.yOffset -= (_loop.yDist * _move.ySign);
+	clouds.offsetX += ((_loop.xDist * _move.xSign) / _move.xTime);
+	if (abs(clouds.x + clouds.offsetX) >= _loop.xDist)
+		clouds.offsetX -= (_loop.xDist * _move.xSign);
+	clouds.offsetY += ((_loop.yDist * _move.ySign) / _move.yTime);
+	if (abs(clouds.y + clouds.offsetY) >= _loop.yDist)
+		clouds.offsetY -= (_loop.yDist * _move.ySign);
 }
 // Drawings
 for (var w = 0; w < _loop.xLength; w++)
@@ -19,6 +19,6 @@ for (var w = 0; w < _loop.xLength; w++)
 	{
 		var _loop_xAdd = (_loop.xDist * (w - _loop.xLength_outsideRoom));
 		var _loop_yAdd = (_loop.yDist * (h - _loop.yLength_outsideRoom));
-		fn_draw_spr(clouds.sprite, clouds.image, (clouds.x + (clouds.xOffset * (global.config.access.reduceMotion.active == false)) + _loop_xAdd), (clouds.y + (clouds.yOffset * (global.config.access.reduceMotion.active == false)) + _loop_yAdd), clouds.color, clouds.alpha, clouds.xScale, clouds.yScale, clouds.angle);
+		fn_draw_spr(clouds.sprite, clouds.image, (clouds.x + (clouds.offsetX * (global.config.access.reduceMotion.active == false)) + _loop_xAdd), (clouds.y + (clouds.offsetY * (global.config.access.reduceMotion.active == false)) + _loop_yAdd), clouds.color, clouds.alpha, clouds.scaleX, clouds.scaleY, clouds.angle);
 	}
 }

@@ -26,7 +26,7 @@ function fn_obj_exists(_asset)
 {
 	return instance_exists(_asset);
 }
-function fn_obj_img(_asset = id, _spd = 0, _idx = 0, _color = c_white, _alpha = 1, _xScale = 1, _yScale = 1, _angle = 0)
+function fn_obj_img(_asset = id, _spd = 0, _idx = 0, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = 1, _angle = 0)
 {
 	with (_asset)
 	{
@@ -34,8 +34,8 @@ function fn_obj_img(_asset = id, _spd = 0, _idx = 0, _color = c_white, _alpha = 
 		image_index = _idx;
 		image_blend = _color;
 		image_alpha = _alpha;
-		image_xscale = _xScale;
-		image_yscale = _yScale;
+		image_xscale = _scaleX;
+		image_yscale = _scaleY;
 		image_angle = _angle;
 	}
 }
@@ -46,7 +46,7 @@ function fn_obj_depth(_asset = id, _val = -_asset.y)
 
 // Drawing
 	// Text
-function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _xScale = 1, _yScale = 1, _xAlign = fa_left, _yAlign = fa_top, _shadow_colors = undefined, _shadow_alpha = 1)
+function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _scaleX = 1, _scaleY = 1, _xAlign = fa_left, _yAlign = fa_top, _shadow_colors = undefined, _shadow_alpha = 1)
 {
 	var _fnt = global.config.lang[global.config.lang_curr].fnt;
 	if (font_exists(_fnt) == true)
@@ -55,8 +55,8 @@ function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _xScale = 1, _yScale =
 		draw_set_halign(_xAlign);
 		draw_set_valign(_yAlign);
 		if (_shadow_colors != undefined && _shadow_alpha > 0)
-			draw_text_ext_transformed_color((_x + 1), (_y + 1), _text, -1, 640, _xScale, _yScale, 0, _shadow_colors[0], _shadow_colors[0], _shadow_colors[1], _shadow_colors[1], (_shadow_alpha * _alpha));
-		draw_text_ext_transformed_color(_x, _y, _text, -1, 640, _xScale, _yScale, 0, _colors[0], _colors[0], _colors[1], _colors[1], _alpha);
+			draw_text_ext_transformed_color((_x + 1), (_y + 1), _text, -1, 640, _scaleX, _scaleY, 0, _shadow_colors[0], _shadow_colors[0], _shadow_colors[1], _shadow_colors[1], (_shadow_alpha * _alpha));
+		draw_text_ext_transformed_color(_x, _y, _text, -1, 640, _scaleX, _scaleY, 0, _colors[0], _colors[0], _colors[1], _colors[1], _alpha);
 	}
 }
 	// Rectangles
@@ -72,13 +72,13 @@ function fn_draw_circle(_x, _y, _radius, _precision, _colors = [c_white, c_white
 	draw_circle_color(_x, _y, _radius, _colors[0], _colors[1], false);
 }
 	// Sprites
-function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _xScale = 1, _yScale = _xScale, _angle = 0, _shadow_color = undefined, _shadow_alpha = 0)
+function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = _scaleX, _angle = 0, _shadow_color = undefined, _shadow_alpha = 0)
 {
 	if (_spr != -1)
 	{
 		if (_shadow_color != undefined && _shadow_alpha > 0)
-			draw_sprite_ext(_spr, _img, (_x + 1), (_y + 1), _xScale, _yScale, _angle, _shadow_color, (_shadow_alpha * _alpha));
-		draw_sprite_ext(_spr, _img, _x, _y, _xScale, _yScale, _angle, _color, _alpha);
+			draw_sprite_ext(_spr, _img, (_x + 1), (_y + 1), _scaleX, _scaleY, _angle, _shadow_color, (_shadow_alpha * _alpha));
+		draw_sprite_ext(_spr, _img, _x, _y, _scaleX, _scaleY, _angle, _color, _alpha);
 	}
 	else
 		fn_log("The function fn_draw_spr() was called with an invalid sprite ID");
@@ -92,10 +92,10 @@ function fn_draw_spr_stretch(_spr, _img, _x, _y, _width, _height, _color = c_whi
 	else
 		fn_log("The function fn_draw_spr_stretch() was called with an invalid sprite ID");
 }
-function fn_draw_spr_part(_spr, _img, _x, _y, _lt, _top, _width, _height, _color = c_white, _alpha = 1, _xScale = 1, _yScale = _xScale)
+function fn_draw_spr_part(_spr, _img, _x, _y, _lt, _top, _width, _height, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = _scaleX)
 {
 	if (_spr != -1)
-		draw_sprite_part_ext(_spr, _img, _lt, _top, _width, _height, _x, _y, _xScale, _yScale, _color, _alpha);
+		draw_sprite_part_ext(_spr, _img, _lt, _top, _width, _height, _x, _y, _scaleX, _scaleY, _color, _alpha);
 	else
 		fn_log("The function fn_draw_spr_part() was called with an invalid sprite ID");
 }
