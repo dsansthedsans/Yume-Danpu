@@ -15,12 +15,12 @@
 <ul>
   <li><strong>Only two worlds to explore...?</strong> (The next version. The next version.)</li>
   <li><strong>Not one, but three types of collectibles you can find while exploring:</strong><ul>
-    <li>Effects, eggs that give you a new body with special abilities.</li>
-    <li>Items, ordinary objects that help you in some way, like the <strong>drivable go-kart</strong>.</li>
+    <li>Effects, eggs that mutate your body and give you special abilities.</li>
+    <li>Items, ordinary objects useful for exploring, like the <strong>drivable go-kart</strong>.</li>
     <li>Themes, visual styles for menus. They are ultimately useless.</li>
   </ul></li>
   <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds...!</li>
-  <li><strong>At least one monkey.</strong> Allegedly.</li>
+  <li><strong>Screaming monkeys!</strong></li>
 </ul>
 <h4 align="center">Think the game is ugly? Yeah, we also do. <br>𝓦𝓸𝓻𝓴 𝓲𝓷 𝓹𝓻𝓸𝓰𝓻𝓮𝓼𝓼</h4>
 
@@ -35,7 +35,7 @@
 <p>Noticed anything that clearly wasn't supposed to happen? Fill out <a href="https://forms.gle/zZaioLfNXEoNXhyE7" target="_blank">this Google Form</a> to help us make the game a little less broken, please!!! You'll win our hearts <3 (or, if you prefer, a place in the Special Thanks.)</p>
 
 <h2><br>Behind the scenes</h2>
-<p>We <b>very occasionally</b> post videos on YouTube showing upcoming updates for Yume Danpu. For those who don't really care about spoilers, if you wanna see what we're doing next, you should check out <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">the playlist by both creators</a>!<br><br>Also, we keep this repository updated as we work on the game, not just when we release a new version. Below is a very cute image.</p>
+<p>We <b>very occasionally</b> post videos on YouTube showing upcoming updates for Yume Danpu. For those who don't really care about spoilers, if you wanna see what we're doing next, you should check out <a href="https://www.youtube.com/playlist?list=PL_pzsGsbaRMXNumNYboPS_WFcR2NDsNUd" target="_blank">the playlist by both creators</a>! Also, we keep this repository updated as we work on the game, not just when we release a new version.<br><br>Below is a very cute image.</p>
 <p align="center">
   <a href="https://www.star-history.com/#dsansthedsans/Yume-Danpu&type=date&legend=top-left" target="_blank">
     <picture>
@@ -48,22 +48,24 @@
 
 <h2><br>Never asked questions</h2>
 <h3>Is Yume Danpu still in development?</h3>
-<blockquote>Yes, as of March 28, 2026. Keep in mind it may slow down from time to time.</blockquote>
-<h3>Is Yume Danpu associated with Yume Nikki?</h3>
+<blockquote>Yes, as of May 16, 2026. Keep in mind it may slow down from time to time due to, for example, school.</blockquote>
+<h3>Is Yume Danpu associated with Yume Nikki or Kikiyama?</h3>
 <blockquote>No, Yume Danpu is purely a fangame.</blockquote>
 <h3>Is Yume Danpu AI-generated?</h3>
 <blockquote>No, nothing related to Yume Danpu is AI-generated, not even this README.</blockquote>
 <h3>Is Yume Danpu a virus?</h3>
-<blockquote>No. If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky and Bitdefender won't flag the file as malicious.</blockquote>
+<blockquote>No. If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky, Bitdefender and ESET won't flag the file as malicious.</blockquote>
 <h3>Why "Yume Danpu"?</h3>
 <blockquote>Yume Danpu is a spiritual successor to the first game I ever made, <a href="https://dsansthedsans.itch.io/dumpgame" target="_blank">Dumpgame</a>.</blockquote>
 <h3>Why open-source?</h3>
 <blockquote>A shark plushie asked me to. I'm not sure why, though.</blockquote>
+<h3>Why Brazilian?</h3>
+<blockquote>I'd also like to know.</blockquote>
 <h3>Why GameMaker instead of RPG Maker 2003?</h3>
-<blockquote>GameMaker gives us a lot more freedom to do whatever we want compared to RPG Maker 2003.</blockquote>
+<blockquote>GameMaker allows us to "go crazy". RPG Maker 2003 loses to Scratch.</blockquote>
 
 <p align="center"><br>
-  <a href="https://youtu.be/eRBOgtp0Hac?si=o2ZIr6UQAJwUYyTt" target="_blank">
+  <a href="https://www.youtube.com/watch?v=QmpXxMto50k" target="_blank">
     <img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" alt="If you're reading this, I messed up somehow.">
   </a>
 </p>
