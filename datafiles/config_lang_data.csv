@@ -1,9 +1,9 @@
 config_lang_enUS,English (US),Inglês (EUA)
 config_lang_ptBR,Portuguese (BR),Português (BR)
-config_key_lt,Left,Esquerda
-config_key_rt,Right,Direita
-config_key_up,Up,Cima
-config_key_dn,Down,Baixo
+config_key_west,Left,Esquerda
+config_key_east,Right,Direita
+config_key_north,Up,Cima
+config_key_south,Down,Baixo
 config_key_confirm,Confirm,Confirmar
 config_key_cancel,Cancel,Cancelar
 config_key_use,Effect/func,Efeito/Função

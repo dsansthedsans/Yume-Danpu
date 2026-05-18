@@ -15,7 +15,7 @@ for (var o = 0; o < array_length(global.config.lang); o++) // Options and decora
 	fn_menu_lvl_option_icon_add(l, o);	
 	fn_menu_lvl_decor_add(l, o);
 }
-lvl[l].option_move.list.key = [CONFIG_KEY.LT, CONFIG_KEY.RT];
+lvl[l].option_move.list.key = [CONFIG_KEY.WEST, CONFIG_KEY.EAST];
 lvl[l].option_cancel.active = false;
 
 // Main level

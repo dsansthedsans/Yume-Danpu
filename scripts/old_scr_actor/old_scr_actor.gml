@@ -2,7 +2,7 @@
 //////// Functions related to actors (characters like entities and the user)
 // I'm Old!
 
-function fn_actor_evCreate() // Create Event determined by the actor's object index
+function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor's object index
 {
 	// Main data (presets)
 	switch (object_index)

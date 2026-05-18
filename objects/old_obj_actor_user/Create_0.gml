@@ -1,4 +1,5 @@
 
+// I'm Old!
 func_old = global.user.func_curr;
 effect_old = global.user.effect_curr;
 event_inherited();

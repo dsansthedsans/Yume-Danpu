@@ -83,7 +83,7 @@ if (is_array(lvl) == true)
 			{
 				for (var o = 0; o < array_length(global.config.audio.emitter); o++)
 				{
-					var _emitter_vol = global.config.audio.emitter[o].vol;
+					var _emitter_vol = global.config.audio.emitter[o].volume;
 					_opt[o].text = global.config.audio.emitter[o].name;
 					_opt[o].value.text = $"{round(_emitter_vol * 100)}%";
 					_opt[o].value.arrow[0].active = ((_emitter_vol > 0) ? true : false);

@@ -150,7 +150,6 @@ function fn_user_theme_add(_index, _code, _unlocked = false, _color_whiteLight, 
 function fn_user_theme_asset(_asset_name_noCode, _code)
 {
 	var _asset_name = $"{_asset_name_noCode}{_code}";
-	fn_log(_asset_name);
 	var _asset = asset_get_index(_asset_name);
 	if (_asset == -1)
 		_asset = asset_get_index($"{_asset_name_noCode}{global.user.theme[0].code}");

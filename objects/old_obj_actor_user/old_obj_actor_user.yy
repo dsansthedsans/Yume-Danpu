@@ -1,17 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_actor_user",
-  "eventList":[],
+  "%Name":"old_obj_actor_user",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_actor_user",
+  "name":"old_obj_actor_user",
   "overriddenProperties":[],
   "parent":{
     "name":"User",
     "path":"folders/User.yy",
   },
   "parentObjectId":{
-    "name":"obj_actor",
-    "path":"objects/obj_actor/obj_actor.yy",
+    "name":"old_obj_actor",
+    "path":"objects/old_obj_actor/old_obj_actor.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

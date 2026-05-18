@@ -14,7 +14,7 @@ DIR_AXIS_VER = 1;
 dir[DIR_LT] =
 {
 	spr : -1,
-	key : CONFIG_KEY.LT,
+	key : CONFIG_KEY.WEST,
 	axis : DIR_AXIS_HOR,
 	sign : -1
 }
@@ -22,7 +22,7 @@ dir[DIR_LT] =
 dir[DIR_RT] =
 {
 	spr : -1,
-	key : CONFIG_KEY.RT,
+	key : CONFIG_KEY.EAST,
 	axis : DIR_AXIS_HOR,
 	sign : 1
 }
@@ -30,7 +30,7 @@ dir[DIR_RT] =
 dir[DIR_UP] =
 {
 	spr : -1,
-	key : CONFIG_KEY.UP,
+	key : CONFIG_KEY.NORTH,
 	axis : DIR_AXIS_VER,
 	sign : -1
 }
@@ -38,7 +38,7 @@ dir[DIR_UP] =
 dir[DIR_DN] =
 {
 	spr : -1,
-	key : CONFIG_KEY.DN,
+	key : CONFIG_KEY.SOUTH,
 	axis : DIR_AXIS_VER,
 	sign : 1
 }

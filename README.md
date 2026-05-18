@@ -16,11 +16,11 @@
   <li><strong>Only two worlds to explore...?</strong> (The next version. The next version.)</li>
   <li><strong>Not one, but three types of collectibles you can find while exploring:</strong><ul>
     <li>Effects, eggs that mutate your body and give you special abilities.</li>
-    <li>Items, ordinary objects useful for exploring, like the <strong>drivable go-kart</strong>.</li>
+    <li>Items, ordinary objects useful for exploring, like a <strong>drivable go-kart</strong>.</li>
     <li>Themes, visual styles for menus. They are ultimately useless.</li>
   </ul></li>
   <li><strong>An original soundtrack by migel8022!</strong> With music longer than five seconds...!</li>
-  <li><strong>Screaming monkeys!</strong></li>
+  <li><strong>Screaming monkeys</strong></li>
 </ul>
 <h4 align="center">Think the game is ugly? Yeah, we also do. <br>𝓦𝓸𝓻𝓴 𝓲𝓷 𝓹𝓻𝓸𝓰𝓻𝓮𝓼𝓼</h4>
 
@@ -54,15 +54,17 @@
 <h3>Is Yume Danpu AI-generated?</h3>
 <blockquote>No, nothing related to Yume Danpu is AI-generated, not even this README.</blockquote>
 <h3>Is Yume Danpu a virus?</h3>
-<blockquote>No. If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky, Bitdefender and ESET won't flag the file as malicious.</blockquote>
+<blockquote>Will you trust me if I say no? If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky, Bitdefender and ESET won't flag the file as malicious.</blockquote>
 <h3>Why "Yume Danpu"?</h3>
 <blockquote>Yume Danpu is a spiritual successor to the first game I ever made, <a href="https://dsansthedsans.itch.io/dumpgame" target="_blank">Dumpgame</a>.</blockquote>
 <h3>Why open-source?</h3>
 <blockquote>A shark plushie asked me to. I'm not sure why, though.</blockquote>
-<h3>Why Brazilian?</h3>
+<h3>Why Brazil?</h3>
 <blockquote>I'd also like to know.</blockquote>
-<h3>Why GameMaker instead of RPG Maker 2003?</h3>
-<blockquote>GameMaker allows us to "go crazy". RPG Maker 2003 loses to Scratch.</blockquote>
+<h3>Why GameMaker?</h3>
+<blockquote>GameMaker lets us "go crazy". Godot is hard. RPG Maker 2003 loses to Scratch.</blockquote>
+<h3>When did development start?</h3>
+<blockquote>Development started on October 21, 2024, but Yume Danpu only became open-source on March 23, 2025.</blockquote>
 
 <p align="center"><br>
   <a href="https://www.youtube.com/watch?v=QmpXxMto50k" target="_blank">

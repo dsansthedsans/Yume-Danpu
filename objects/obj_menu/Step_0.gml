@@ -26,21 +26,21 @@ if (is_array(lvl) == true)
 				// Table type
 				else if (lvl[l].option_move.table.active == true)
 				{
-					if (fn_config_key_pressed(CONFIG_KEY.RT) == true) || (fn_config_key_pressed(CONFIG_KEY.LT) == true)
+					if (fn_config_key_pressed(CONFIG_KEY.EAST) == true) || (fn_config_key_pressed(CONFIG_KEY.WEST) == true)
 					{
 						if (lvl[l].option_curr % 2 == 0)
 							lvl[l].option_curr += 1;
 						else if (lvl[l].option_curr % 2 == 1)
 							lvl[l].option_curr -= 1;
 					}
-					if (fn_config_key_pressed(CONFIG_KEY.DN) == true)
+					if (fn_config_key_pressed(CONFIG_KEY.SOUTH) == true)
 					{
 						if ((lvl[l].option_curr + 2) <= (array_length(lvl[l].option) - 1))
 							lvl[l].option_curr += 2;
 						else
 							lvl[l].option_curr = (0 + (lvl[l].option_curr % 2));
 					}
-					else if (fn_config_key_pressed(CONFIG_KEY.UP) == true)
+					else if (fn_config_key_pressed(CONFIG_KEY.NORTH) == true)
 					{
 						if ((lvl[l].option_curr - 2) >= 0)
 							lvl[l].option_curr -= 2;

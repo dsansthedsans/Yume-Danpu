@@ -126,8 +126,8 @@ function fn_audio_stop(_id)
 function fn_audio_volume(_asset, _id, _emitter, _vol = 1)
 {
 	_vol = fn_audio_volumeData(_asset, _vol);
-	_vol *= global.config.audio.emitter[_emitter].vol;
-	_vol *= global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].vol;
+	_vol *= global.config.audio.emitter[_emitter].volume;
+	_vol *= global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].volume;
 	audio_sound_gain(_id, _vol, 0);
 }
 function fn_audio_volumeData(_asset, _vol)

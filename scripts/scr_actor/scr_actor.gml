@@ -1,3 +1,24 @@
+function fn_actor_evCreate()
+{
+	/* Presets */
+	//switch (object_index)
+	//{
+		
+	//}
+	
+	/* Custom */
+	switch (object_index)
+	{
+		case obj_actor_user:
+			talk.active = true;
+			talk.trigger.active = true;
+			facing[FACING_WEST].sprite = spr_user_facing_west;
+			facing[FACING_EAST].sprite = spr_user_facing_east;
+			facing[FACING_NORTH].sprite = spr_user_facing_north;
+			facing[FACING_SOUTH].sprite = spr_user_facing_south;
+			break;
+	}
+}
 function fn_actor_walk_endX_get(_object, _x, _facing_index, _walk_distance)
 {
 	if (fn_obj_exists(_object) == true)

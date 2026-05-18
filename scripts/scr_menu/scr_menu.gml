@@ -33,7 +33,7 @@ function fn_menu_lvl_add(_idx)
 			list : // List type
 			{
 				active : true,
-				key : [CONFIG_KEY.UP, CONFIG_KEY.DN]
+				key : [CONFIG_KEY.NORTH, CONFIG_KEY.SOUTH]
 			},
 			table : // Table type
 			{
@@ -322,7 +322,7 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 		lvl[l].option[o].value.arrow[a] =
 		{
 			active : true,
-			key : ((a == 0) ? CONFIG_KEY.LT : CONFIG_KEY.RT),
+			key : ((a == 0) ? CONFIG_KEY.WEST : CONFIG_KEY.EAST),
 			text : ((a == 0) ? "<" : ">"),
 			xGap : 10,
 			xSign : ((a == 0) ? -1 : 1),

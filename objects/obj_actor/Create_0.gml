@@ -11,28 +11,28 @@ FACING_AXIS_VERT = 1;
 facing[FACING_WEST] =
 {
 	sprite : sprite_index,
-	key : CONFIG_KEY.LT,
+	key : CONFIG_KEY.WEST,
 	axis : FACING_AXIS_HORIZ,
 	sign : -1,
 }
 facing[FACING_EAST] =
 {
 	sprite : sprite_index,
-	key : CONFIG_KEY.RT,
+	key : CONFIG_KEY.EAST,
 	axis : FACING_AXIS_HORIZ,
 	sign : 1,
 }
 facing[FACING_NORTH] =
 {
 	sprite : sprite_index,
-	key : CONFIG_KEY.UP,
+	key : CONFIG_KEY.NORTH,
 	axis : FACING_AXIS_VERT,
 	sign : -1,
 }
 facing[FACING_SOUTH] =
 {
 	sprite : sprite_index,
-	key : CONFIG_KEY.DN,
+	key : CONFIG_KEY.SOUTH,
 	axis : FACING_AXIS_VERT,
 	sign : 1,
 }
@@ -60,10 +60,10 @@ walk =
 	// Prevents actor from moving too far from starting position
 	chain :
 	{
-		active : false,
+		active : true,
 		distance : 48,
 	},
-	// Footstep
+	// Walking animation and sound
 	step :
 	{
 		active : false,
@@ -75,3 +75,8 @@ walk =
 	startX : 0,
 	startY : 0,
 }
+
+fn_actor_evCreate();
+
+
+// HUA-LATUCA-PAYA!!!! HO-POPAPO-TUYA!!!!!!! AAAAAAAAAAAAAARRRRRRRGHHHHHHH!!!!!!!!!!!
