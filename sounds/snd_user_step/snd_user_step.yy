@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_user_fstep",
+  "%Name":"snd_user_step",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":0.8,
   "exportDir":"",
-  "name":"snd_user_fstep",
+  "name":"snd_user_step",
   "parent":{
     "name":"User",
     "path":"folders/User.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_user_fstep.wav",
+  "soundFile":"snd_user_step.wav",
   "volume":1.0,
 }

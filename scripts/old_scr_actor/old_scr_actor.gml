@@ -46,7 +46,7 @@ function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor
 			move.mode.manual.active = true;
 			move.type.walk.active = true;
 			move.type.walk.fstep.active = true;
-			move.type.walk.fstep.snd_asset = snd_user_fstep;
+			move.type.walk.fstep.snd_asset = snd_user_step;
 			move.type.walk.fstep.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
 			move.type.roll.active = false;
 			

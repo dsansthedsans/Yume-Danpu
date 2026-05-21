@@ -16,6 +16,14 @@ function fn_actor_evCreate()
 			facing[FACING_EAST].sprite = spr_user_facing_east;
 			facing[FACING_NORTH].sprite = spr_user_facing_north;
 			facing[FACING_SOUTH].sprite = spr_user_facing_south;
+			walk.mode = WALK_MODE_MANUAL;
+			walk.timeMax = 16;
+			walk.delay.active = false;
+			walk.chain.active = false;
+			walk.step.active = true;
+			walk.step.audio_asset = snd_user_step;
+			walk.step.audio_emitter = CONFIG_AUDIO_EMITTER.USER;
+			
 			break;
 	}
 }

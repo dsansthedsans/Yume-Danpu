@@ -41,8 +41,8 @@ if (type.fade.active == true)
 			_user.myself.x = _user.x;
 			_user.y = ((target.user.y != undefined) ? target.user.y : _user.y);
 			_user.myself.y = _user.y;
-			_user.dir_curr = ((target.user.dir != undefined) ? target.user.dir : _user.dir_curr);
-			_user.move.stage = -2;
+			_user.facing_curr = ((target.user.facing != undefined) ? target.user.facing : _user.facing_curr);
+			_user.walk.stage = -2;
 			fn_obj_depth(_user);
 			target.user.ready = true;
 		}
@@ -55,7 +55,7 @@ if (type.fade.active == true)
 			{
 				fn_obj_destroy();
 				if (fn_obj_exists(obj_actor_user) == true)
-					obj_actor_user.move.stage = -1;
+					obj_actor_user.walk.stage = -1;
 			}
 		}
 	}

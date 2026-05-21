@@ -45,7 +45,7 @@ function fn_menu_inv_evCreate_0()
 	
 			// Player's picture
 	main_pic_spr = obj_actor_user.dir[obj_actor_user.DIR_DN].spr;
-	main_pic_snd = snd_user_fstep;
+	main_pic_snd = snd_user_step;
 	if (irandom_range(1, 100) == 1)
 	{
 		main_pic_spr = spr_actor_macaco_monkey;

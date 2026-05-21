@@ -6,9 +6,9 @@ if (walk.active == true)
 	// Movement sequence is inactive, waiting/preparing to activate
 	if (walk.stage == -1)
 	{
+		walk.delay.time -= 1;
 		if (walk.delay.active == false) || (walk.delay.active == true && walk.delay.time <= 0)
 		{
-			walk.delay.time = irandom_range(walk.delay.timeMin, walk.delay.timeMax);
 			var _facing_new = undefined;
 			if (walk.mode == WALK_MODE_AUTO)
 			{
@@ -43,29 +43,51 @@ if (walk.active == true)
 						walk.startY = y;
 						x = _endX;
 						y = _endY;
-						if (global.config_dbg.active == true && global.config_dbg.logOverdose == true)
+						if (global.config_dbg.active == true && global.config_dbg.logOverdose == true && object_index == obj_actor_user)
 							fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y}");
 					}
 				}
 			}
+			
+			if (walk.delay.active == true)
+				walk.delay.time = irandom_range(walk.delay.timeMin, walk.delay.timeMax);
 		}
-		else if (walk.delay.active == true && walk.delay.time > 0)
-			walk.delay.time -= 1;
 	}
 	// Movement sequence is active
-	else if (walk.stage == 0)
+	if (walk.stage == 0)
 	{
 		myself.x += ((x - walk.startX) / walk.timeMax);
 		myself.y += ((y - walk.startY) / walk.timeMax);
-		if (walk.time-- <= 0)
+		if (walk.step.active == true)
 		{
+			walk.step.time -= 1;
+			if (walk.step.time <= 0)
+			{
+				myself.image += 1;
+				walk.step.time = floor(walk.timeMax / clamp((round(16 / walk.timeMax) + 1), 2, infinity)); // the clamp() is the amount of images will be added during the movement sequence
+				if (myself.image % 2 == 1 && walk.step.audio_asset != undefined)
+					fn_audio_play(walk.step.audio_asset, walk.step.audio_emitter);
+			}
+		}
+		walk.time -= 1;
+		if (walk.time <= 0)
+		{
+			if (global.config_dbg.active == true && global.config_dbg.logOverdose == true && object_index == obj_actor_user)
+				fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y}");
 			myself.x = x;
 			myself.y = y;
 			walk.stage = -1;
+			if (walk.step.active == true)
+			{
+				if (myself.image % 2 == 1)
+					myself.image += 1;
+				walk.step.time = 0;
+			}
 		}
 		depth = -myself.y;
 	}
 }
+
 
 
 /*

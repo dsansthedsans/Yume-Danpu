@@ -13,7 +13,7 @@ target =
 		ready : false,
 		x : undefined,
 		y : undefined,
-		dir : undefined,
+		facing : undefined,
 	}
 }
 // Types

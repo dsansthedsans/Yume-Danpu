@@ -137,7 +137,7 @@ function fn_audio_volumeData(_asset, _vol)
 	switch (_asset)
 	{
 		// Player
-		case snd_user_fstep:
+		case snd_user_step:
 			_vol *= 0.75;
 			break;
 		

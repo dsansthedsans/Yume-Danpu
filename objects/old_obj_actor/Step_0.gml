@@ -51,7 +51,6 @@ if (move.active == true)
 			if (_dir_new == -1 && move.mode.manual.held == false && move.type.roll.active == true && move.type.roll.dist > move.type.roll.distMin)
 				_dir_new = dir_curr;
 		}
-		
 		// Automatic mode
 		else if (move.mode.auto.active == true)
 		{
@@ -86,14 +85,12 @@ if (move.active == true)
 			var _move_dist = 0;
 			var _move_precise = false;
 			
-			
 			// Walk type
 			if (move.type.walk.active == true)
 			{
 				_move_dist = move.type.walk.dist;
 				_move_precise = move.type.walk.precise;
 			}
-			
 			// Roll type
 			else if (move.type.roll.active == true)
 			{
@@ -121,13 +118,11 @@ if (move.active == true)
 				}
 			}
 			
-			
 			while (_move_dist > 0)
 			{
 				var _move_xTarget = fn_actor_xAhead(id, x, dir_curr, _move_dist);
 				var _move_yTarget = fn_actor_yAhead(id, y, dir_curr, _move_dist);
 				var _move_tgtObj = instance_place(_move_xTarget, _move_yTarget, obj_prop);
-				
 				if ((_move_tgtObj == noone) || (_move_tgtObj != noone && _move_tgtObj.solid == false)) && ((move.chain.active == false) || (move.chain.active == true && abs(xstart - _move_xTarget) < move.chain.dist && abs(ystart - _move_yTarget) < move.chain.dist))
 				{
 					move.stage = 0;

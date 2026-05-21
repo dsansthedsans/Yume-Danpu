@@ -48,13 +48,13 @@
 
 <h2><br>Never asked questions</h2>
 <h3>Is Yume Danpu still in development?</h3>
-<blockquote>Yes, as of May 16, 2026. Keep in mind it may slow down from time to time due to, for example, school.</blockquote>
+<blockquote>Yes, as of May 20, 2026. Keep in mind it may slow down from time to time due to, for example, school.</blockquote>
 <h3>Is Yume Danpu associated with Yume Nikki or Kikiyama?</h3>
 <blockquote>No, Yume Danpu is purely a fangame.</blockquote>
 <h3>Is Yume Danpu AI-generated?</h3>
 <blockquote>No, nothing related to Yume Danpu is AI-generated, not even this README.</blockquote>
 <h3>Is Yume Danpu a virus?</h3>
-<blockquote>Will you trust me if I say no? If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Kaspersky, Bitdefender and ESET won't flag the file as malicious.</blockquote>
+<blockquote>Will you trust me if I say no? If you upload the .zip file to <a href="https://www.virustotal.com/gui/home/upload" target="_blank">VirusTotal</a>, reliable security vendors like Google, Microsoft, Avast, Bitdefender, Malwarebytes, Kaspersky, AVG and ESET won't flag the file as malicious.</blockquote>
 <h3>Why "Yume Danpu"?</h3>
 <blockquote>Yume Danpu is a spiritual successor to the first game I ever made, <a href="https://dsansthedsans.itch.io/dumpgame" target="_blank">Dumpgame</a>.</blockquote>
 <h3>Why open-source?</h3>
@@ -62,7 +62,7 @@
 <h3>Why Brazil?</h3>
 <blockquote>I'd also like to know.</blockquote>
 <h3>Why GameMaker?</h3>
-<blockquote>GameMaker lets us "go crazy". Godot is hard. RPG Maker 2003 loses to Scratch.</blockquote>
+<blockquote>GameMaker lets us "go crazy". Godot is hard. RPG Maker 2003 losses to Scratch.</blockquote>
 <h3>When did development start?</h3>
 <blockquote>Development started on October 21, 2024, but Yume Danpu only became open-source on March 23, 2025.</blockquote>
 
