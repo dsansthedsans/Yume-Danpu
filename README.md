@@ -30,6 +30,7 @@
   <li>In your Downloads folder, right-click the .zip and extract it</li>
   <li>In the extracted folder, open the .exe</li>
 </ol>
+<p>No external files are required.</p>
 
 <h2><br>Report a bug</h2>
 <p>Noticed anything that clearly wasn't supposed to happen? Fill out <a href="https://forms.gle/zZaioLfNXEoNXhyE7" target="_blank">this Google Form</a> to help us make the game a little less broken, please!!! You'll win our hearts <3 (or, if you prefer, a place in the Special Thanks.)</p>
@@ -62,7 +63,7 @@
 <h3>Why Brazil?</h3>
 <blockquote>I'd also like to know.</blockquote>
 <h3>Why GameMaker?</h3>
-<blockquote>GameMaker lets us "go crazy". Godot is hard. RPG Maker 2003 losses to Scratch.</blockquote>
+<blockquote>GameMaker lets us "go crazy". Godot is hard. RPG Maker 2003 loses to Scratch.</blockquote>
 <h3>When did development start?</h3>
 <blockquote>Development started on October 21, 2024, but Yume Danpu only became open-source on March 23, 2025.</blockquote>
 

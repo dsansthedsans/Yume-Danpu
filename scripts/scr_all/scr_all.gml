@@ -197,7 +197,7 @@ function fn_audio_volumeData(_asset, _vol)
 		case snd_ponkawonka:
 			_vol *= 1.25;
 			break;
-		case snd_prop_noise_weird:
+		case snd_prop_call_weird:
 			_vol *= 1.5;
 			break;
 		

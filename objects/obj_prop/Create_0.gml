@@ -52,8 +52,9 @@ talk =
 		time : 0,
 		timeTarget : 30,
 		audio_assets : [snd_hulapoca, snd_penyplocde, snd_ponkawonka],
+		audio_assetsRarity : [1, 1, 1], // must be higher than 0
 		audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
-		audio_index : undefined,
+		audio_index : 0,
 	},
 	// Starts a room transition
 	door :
@@ -81,12 +82,11 @@ talk =
 }
 
 /* Plays an audio the player can only hear if they're close */
-noise =
+call =
 {
 	active : false,
 	stage : -1,
 	distance : (160 * 1.25),
-	
 	// Audio
 	audio :
 	{
@@ -109,6 +109,12 @@ noise =
 		timeMin : (60 * 5),
 		timeMax : (60 * 10),
 	},
+}
+
+/* */
+mount =
+{
+	idonotknow : true,
 }
 
 fn_prop_evCreate();

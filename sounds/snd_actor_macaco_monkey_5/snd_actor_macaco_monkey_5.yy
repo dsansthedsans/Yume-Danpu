@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":5.2506123,
+  "duration":3.2653062,
   "exportDir":"",
   "name":"snd_actor_macaco_monkey_5",
   "parent":{

@@ -75,6 +75,25 @@ walk =
 	startX : 0,
 	startY : 0,
 }
+SLIDE_MODE_MANUAL = 0;
+slide =
+{
+	active : false,
+	mode : SLIDE_MODE_MANUAL,
+	speed : 0,
+	speedMax : 6,
+	acceleration : 0.1,
+	deceleration : 0.05,
+	// 
+	shake :
+	{
+		active : true,
+		timeMin : 6,
+		timeMax : 9,
+		distanceMin : 1,
+		distanceMax : 2,
+	},
+}
 
 fn_actor_evCreate();
 

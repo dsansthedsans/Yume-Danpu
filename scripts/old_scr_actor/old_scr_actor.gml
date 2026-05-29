@@ -10,7 +10,7 @@ function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor
 		// Good/Peaceful entities
 		case obj_actor_macaco_monkey: // Macacolandia monkey citizen
 			talk.type.bell.audio_emitter = CONFIG_AUDIO_EMITTER.ACTOR;
-			noise.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
+			call.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
 			move.wait.active = true;
 			move.mode.auto.active = true;
 			move.type.walk.active = true;
@@ -21,8 +21,8 @@ function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor
 		
 		// Evil/Hostile entities
 		case obj_actor_dbgwrld_blood: // Debug World blood monkey
-			noise.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
-			noise.aud.asset = snd_prop_noise_weird;
+			call.audio.emitter = CONFIG_AUDIO_EMITTER.ACTOR;
+			call.aud.asset = snd_prop_call_weird;
 			move.mode.auto.active = true;
 			move.mode.auto.chase_act = true;
 			move.mode.auto.chase_tgt = obj_actor_user;

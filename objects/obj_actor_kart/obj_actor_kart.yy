@@ -1,13 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_actor_macaco_monkey",
+  "%Name":"obj_actor_kart",
   "eventList":[],
   "managed":true,
-  "name":"obj_actor_macaco_monkey",
+  "name":"obj_actor_kart",
   "overriddenProperties":[],
   "parent":{
-    "name":"Macacolandia",
-    "path":"folders/Map/Macacolandia.yy",
+    "name":"Actors",
+    "path":"folders/Props/Actors.yy",
   },
   "parentObjectId":{
     "name":"obj_actor",
@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_actor_macaco_monkey",
-    "path":"sprites/spr_actor_macaco_monkey/spr_actor_macaco_monkey.yy",
+    "name":"spr_actor_kart",
+    "path":"sprites/spr_actor_kart/spr_actor_kart.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_prop_noise_weird",
+  "%Name":"snd_prop_call_weird",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -12,7 +12,7 @@
   "conversionMode":0,
   "duration":6.8963265,
   "exportDir":"",
-  "name":"snd_prop_noise_weird",
+  "name":"snd_prop_call_weird",
   "parent":{
     "name":"Props",
     "path":"folders/Props.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_prop_noise_weird.mp3",
+  "soundFile":"snd_prop_call_weird.mp3",
   "volume":1.0,
 }
