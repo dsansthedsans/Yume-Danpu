@@ -83,7 +83,7 @@ slide =
 	speed : 0,
 	speedMax : 6,
 	acceleration : 0.1,
-	deceleration : 0.05,
+	deceleration : 0.02,
 	// 
 	shake :
 	{
@@ -93,6 +93,13 @@ slide =
 		distanceMin : 1,
 		distanceMax : 2,
 	},
+}
+
+/* */
+carry =
+{
+	active : false,
+	object : undefined,
 }
 
 fn_actor_evCreate();

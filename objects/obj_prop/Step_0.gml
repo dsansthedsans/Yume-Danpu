@@ -63,6 +63,17 @@ if (talk.active == true)
 			if (myself.type == MYSELF_TYPE_ACTOR)
 				walk.stage = -1;
 		}
+		//
+		else if (talk.fucker.active == true)
+		{
+			if (carry.active == true)
+			{
+				carry.object = obj_actor_user;
+			}
+			talk.stage = -1;
+			if (myself.type == MYSELF_TYPE_ACTOR && walk.active == true)
+				walk.stage = -1;
+		}
 	}
 	else if (talk.stage == -1)
 	{
@@ -79,8 +90,6 @@ if (talk.active == true)
 				_target.talk.stage = 0;
 				if (_target.myself.type == MYSELF_TYPE_ACTOR)
 					_target.walk.stage = -2;
-				
-				fn_log("!!!!!!!!!!!!!!!!!!");
 			}
 		}
 	}

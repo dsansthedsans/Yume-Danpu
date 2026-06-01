@@ -23,7 +23,7 @@ global.config_dbg =
 	},
 	
 	textdataCorruption : false, // Determines if the function "textdata()" will always return with ÂÂÂÂÂÂ
-	logOverdose : true, // Determines if log messages will show excessively and unnecesarily (affects performance)
+	logOverdose : false, // Determines if log messages will show excessively and unnecesarily (affects performance)
 }
 if (global.config_dbg.active == true)
 	fn_user_setup(0);

@@ -79,6 +79,11 @@ talk =
 		contents : undefined,
 		contents_index : 0,
 	},
+	//
+	fucker :
+	{
+		active : false,
+	},
 }
 
 /* Plays an audio the player can only hear if they're close */
@@ -109,12 +114,6 @@ call =
 		timeMin : (60 * 5),
 		timeMax : (60 * 10),
 	},
-}
-
-/* */
-mount =
-{
-	idonotknow : true,
 }
 
 fn_prop_evCreate();

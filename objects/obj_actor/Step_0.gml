@@ -16,7 +16,7 @@ if (walk.active == true)
 			}
 			else if (walk.mode == WALK_MODE_MANUAL)
 			{
-				for (var f = 0; f < 4; f++)
+				for (var f = 0; f < array_length(facing); f++)
 				{
 					if (fn_config_key_held(facing[f].key) == true)
 					{
@@ -89,21 +89,22 @@ if (walk.active == true)
 }
 if (slide.active == true)
 {
-	var _facing_new = undefined;
-	for (var f = 0; f < 4; f++)
+	var _facing = undefined;
+	for (var f = 0; f < array_length(facing); f++)
 	{
 		if (fn_config_key_held(facing[f].key) == true)
 		{
-			_facing_new = f;
+			_facing = f;
 			break;
 		}
 		else
 			continue;
 	}
-	if (_facing_new != undefined) || (_facing_new == undefined && slide.speed > 0)
+	if (_facing != undefined) || (_facing == undefined && slide.speed > 0)
 	{
-		if (_facing_new != undefined && _facing_new != facing_curr)
+		if (_facing != undefined && _facing != facing_curr)
 		{
+			facing_curr = _facing;
 			if (slide.shake.active == true)
 			{
 				myself.shake.time = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.timeMin : slide.shake.timeMax);
@@ -111,33 +112,45 @@ if (slide.active == true)
 			}
 			slide.speed = 0;
 		}
-		facing_curr = ((_facing_new != undefined) ? _facing_new : facing_curr);
-		var _x = fn_actor_x(id, x, facing_curr, slide.speed);
-		var _y = fn_actor_y(id, y, facing_curr, slide.speed);
-		var _prop = instance_place(_x, _y, obj_prop);
-		if (_prop != noone && _prop.solid == true && distance_to_object(_prop) > 0)
-		{
-			_x = fn_actor_x(id, x, facing_curr, distance_to_object(_prop));
-			_y = fn_actor_y(id, y, facing_curr, distance_to_object(_prop));
-			_prop = instance_place(_x, _y, obj_prop);
-		}
+		
+		var _speed = clamp((slide.speed + ((_facing != undefined) ? slide.acceleration : -slide.deceleration)), 0, slide.speedMax);
+		var _x = fn_actor_x(,,,_speed);
+		var _y = fn_actor_y(,,,_speed);
+		var _prop = instance_place(fn_actor_x(,,,max(_speed, 1)), fn_actor_y(,,,max(_speed, 1)), obj_prop);
 		if (_prop == noone) || (_prop != noone && _prop.solid == false)
 		{
-			x = _x;
-			y = _y;
-			myself.x = _x;
-			myself.y = _y;
-			slide.speed = clamp((slide.speed + ((_facing_new != undefined) ? slide.acceleration : -slide.deceleration)), 0, slide.speedMax);
-			fn_obj_depth(, -myself.y);
+			x = fn_actor_x(,,,_speed);
+			y = fn_actor_y(,,,_speed);
+			slide.speed = _speed;
 		}
 		else
 		{
-			if (slide.shake.active == true)
+			_speed = (facing[facing_curr].axis == FACING_AXIS_HORIZ) ? ((facing_curr == FACING_WEST) ? (bbox_left - _prop.bbox_right) : (_prop.bbox_left - bbox_right)) : ((facing_curr == FACING_NORTH) ? (bbox_top - _prop.bbox_bottom) : (_prop.bbox_top - bbox_bottom));
+			x = ((facing[facing_curr].axis == FACING_AXIS_HORIZ) ? round(fn_actor_x(,,,_speed)) : fn_actor_x(,,,_speed));
+			y = ((facing[facing_curr].axis == FACING_AXIS_VERT) ? round(fn_actor_y(,,,_speed)) : fn_actor_y(,,,_speed));
+			if (slide.speed > 0 && slide.shake.active == true)
 			{
 				myself.shake.time = slide.shake.timeMin;
 				myself.shake.distance = slide.shake.distanceMin;
+				fn_audio_play(snd_user_func_kart_hit, CONFIG_AUDIO_EMITTER.USER);
 			}
 			slide.speed = 0;
 		}
+		myself.x = x;
+		myself.y = y;
+		depth = -y;
+		fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y} | slide.speed = {slide.speed}");
 	}
+}
+
+/* */
+if (carry.active == true && carry.object != undefined)
+{
+	slide.active = true;
+	carry.object.solid = false;
+	carry.object.x = -999;
+	carry.object.y = -999;
+	carry.object.myself.x = myself.x;
+	carry.object.myself.y = myself.y;
+	carry.object.walk.active = false;
 }

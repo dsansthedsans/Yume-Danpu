@@ -7,8 +7,11 @@ function fn_actor_evCreate()
 		// Evil/Hostile entities
 		// Vehicles
 		case obj_actor_kart:
+			talk.active = true;
+			talk.fucker.active = true;
 			walk.active = false;
 			slide.active = true;
+			//carry.active = true;
 			break;
 	}
 	
@@ -40,16 +43,17 @@ function fn_actor_evCreate()
 			talk.bell.audio_assetsRarity = [10, 10, 10, 10, 10, 1, 1]
 			break;
 		// Evil/Hostile entities
+		// Vehicles
 	}
 }
-function fn_actor_x(_object, _x, _facing_index, _distance)
+function fn_actor_x(_object = id, _x = x, _facing_index = facing_curr, _distance)
 {
 	if (fn_obj_exists(_object) == true)
 		return (_x + ((_distance * _object.facing[_facing_index].sign) * (_object.facing[_facing_index].axis == _object.FACING_AXIS_HORIZ)));
 	else
 		return 0;
 }
-function fn_actor_y(_object, _y, _facing_index, _distance)
+function fn_actor_y(_object = id, _y = y, _facing_index = facing_curr, _distance)
 {
 	if (fn_obj_exists(_object) == true)
 		return (_y + ((_distance * _object.facing[_facing_index].sign) * (_object.facing[_facing_index].axis == _object.FACING_AXIS_VERT)));
