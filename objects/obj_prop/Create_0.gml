@@ -92,21 +92,21 @@ call =
 	active : false,
 	stage : -1,
 	distance : (160 * 1.25),
-	// Audio
+	//
 	audio :
 	{
+		id : undefined,
 		asset : undefined,
 		emitter : CONFIG_AUDIO_EMITTER.PROP,
 		volume : 0,
 		volumeSpeed : 0.5,
 		pitch : 1,
-		pitchOffset : 0,
-		pitchOffsetMax : 0.1,
+		//spitchOffset : 0,
+		//pitchOffsetMax : 0.1,
 		pitchSpeed : 0.5,
 		loops : true,
-		id : undefined,
 	},
-	// Delay
+	//
 	delay :
 	{
 		active : false,

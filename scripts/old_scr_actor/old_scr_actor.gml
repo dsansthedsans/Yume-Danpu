@@ -93,7 +93,7 @@ function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor
 		break;
 	}
 }
-function fn_actor_evStep() // Step Event determined by the actor's object index
+function fn_actor_qwewqeqwewqewqeqweevStep() // Step Event determined by the actor's object index
 {
 	if (talk.type.bell.active == true && talk.stage == 0)
 	{

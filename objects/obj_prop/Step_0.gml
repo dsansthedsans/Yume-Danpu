@@ -81,7 +81,7 @@ if (talk.active == true)
 		// Starts another object's interaction sequence
 		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && myself.type == MYSELF_TYPE_ACTOR && walk.stage == -1)
 		{
-			var _target = instance_place(fn_actor_x(id, x, facing_curr, talk.trigger.distance), fn_actor_y(id, y, facing_curr, talk.trigger.distance), obj_prop);
+			var _target = instance_place(fn_actor_facing_x(id, x, facing_curr, talk.trigger.distance), fn_actor_facing_y(id, y, facing_curr, talk.trigger.distance), obj_prop);
 			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.myself.type == MYSELF_TYPE_PROP) || (_target.myself.type == MYSELF_TYPE_ACTOR && _target.walk.stage == -1)))
 			{
 				talk.stage = -2;
@@ -110,7 +110,7 @@ if (talk.active == true)
 /* Plays an audio the player can only hear if they're close */
 if (call.active == true && call.audio.asset != undefined && call.audio.emitter != undefined)
 {
-	// Delay
+	//
 	if (call.delay.active == true)
 	{
 		call.delay.time -= 1;
@@ -125,15 +125,14 @@ if (call.active == true && call.audio.asset != undefined && call.audio.emitter !
 			call.delay.time = irandom_range(call.delay.timeMin, call.delay.timeMax);
 		}
 	}
-	// Audio
+	//
 	if (call.audio.id == undefined)
 		call.audio.id =  fn_audio_play(call.audio.asset, call.audio.emitter, 0, , , call.audio.loops);	
-	else if (audio_is_playing(call.audio.id) == true)
+	if (call.audio.id != undefined && audio_is_playing(call.audio.id) == true)
 	{
-		var _clamp = (clamp(distance_to_object(obj_actor_user), 0, call.audio.distance) / call.audio.distance);
-		call.audio.volume = lerp(call.audio.volume, (1 - _clamp), call.audio.volumeSpeed);
-		call.audio.pitchOffset = lerp(call.audio.pitchOffset, (call.audio.pitchOffsetMax * _clamp), call.audio.pitchSpeed);
+		call.audio.volume = lerp(call.audio.volume, (1 - (clamp(distance_to_object(obj_actor_user), 0, call.distance) / call.distance)), call.audio.volumeSpeed);
+		//call.audio.pitchOffset = lerp(call.audio.pitchOffset, (call.audio.pitchOffsetMax * _clamp), call.audio.pitchSpeed);
 		fn_audio_volume(call.audio.asset, call.audio.id, call.audio.emitter, call.audio.volume);
-		fn_audio_pitch(call.audio.asset, call.audio.id, (call.audio.pitch - call.audio.pitchOffset));
+		fn_audio_pitch(call.audio.asset, call.audio.id, (call.audio.pitch /*- call.audio.pitchOffset*/));
 	}
 }

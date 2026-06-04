@@ -90,8 +90,8 @@ slide =
 		active : true,
 		timeMin : 6,
 		timeMax : 9,
-		distanceMin : 1,
-		distanceMax : 2,
+		distanceMin : 2,
+		distanceMax : 3,
 	},
 }
 

@@ -176,9 +176,6 @@ function fn_audio_volumeData(_asset, _vol)
 			break;
 		
 			// Items
-		case snd_user_func_kart:
-			_vol *= 0.5;
-			break;
 		case snd_user_func_kart_turn:
 			_vol *= 0.35;
 			break;

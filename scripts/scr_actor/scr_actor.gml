@@ -1,19 +1,12 @@
 function fn_actor_evCreate()
 {
 	/* Presets */
-	switch (object_index)
+	/*switch (object_index)
 	{
 		// Good/Peaceful entities
 		// Evil/Hostile entities
 		// Vehicles
-		case obj_actor_kart:
-			talk.active = true;
-			talk.fucker.active = true;
-			walk.active = false;
-			slide.active = true;
-			//carry.active = true;
-			break;
-	}
+	}*/
 	
 	/* Custom */
 	switch (object_index)
@@ -44,19 +37,39 @@ function fn_actor_evCreate()
 			break;
 		// Evil/Hostile entities
 		// Vehicles
+		case obj_actor_kart:
+			talk.active = true;
+			talk.fucker.active = true;
+			call.active = true;
+			call.audio.asset = snd_user_func_kart_call_0;
+			call.audio.loops = false;
+			walk.active = false;
+			slide.active = true;
+			//carry.active = true;
+			break;
 	}
 }
-function fn_actor_x(_object = id, _x = x, _facing_index = facing_curr, _distance)
+function fn_actor_evStep()
 {
-	if (fn_obj_exists(_object) == true)
-		return (_x + ((_distance * _object.facing[_facing_index].sign) * (_object.facing[_facing_index].axis == _object.FACING_AXIS_HORIZ)));
-	else
-		return 0;
+	switch (object_index)
+	{
+		// Vehicles
+		case obj_actor_kart:
+			if (call.audio.asset == snd_user_func_kart_call_0 && call.audio.id != undefined && audio_is_playing(call.audio.id) == false)
+			{
+				call.audio.id = undefined;
+				call.audio.asset = snd_user_func_kart_call_1;
+				call.audio.loops = true;
+			}
+			call.audio.pitch = (1 + (0.5 * (slide.speed / slide.speedMax)));
+			break;
+	}
 }
-function fn_actor_y(_object = id, _y = y, _facing_index = facing_curr, _distance)
+function fn_actor_facing_x(_object, _x, _facing, _distance)
 {
-	if (fn_obj_exists(_object) == true)
-		return (_y + ((_distance * _object.facing[_facing_index].sign) * (_object.facing[_facing_index].axis == _object.FACING_AXIS_VERT)));
-	else
-		return 0;
+	return (_x + ((_distance * _object.facing[_facing].sign) * (_object.facing[_facing].axis == _object.FACING_AXIS_HORIZ)));
+}
+function fn_actor_facing_y(_object, _y, _facing, _distance)
+{
+	return (_y + ((_distance * _object.facing[_facing].sign) * (_object.facing[_facing].axis == _object.FACING_AXIS_VERT)));
 }
