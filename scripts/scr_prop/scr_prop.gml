@@ -1,4 +1,4 @@
-function fn_prop_evCreate()
+function fn_prop_event_create()
 {
 	/* Presets */
 	switch (object_index)
@@ -54,7 +54,7 @@ function fn_prop_evCreate()
 			break;
 	}
 }
-function fn_prop_evStep()
+function fn_prop_event_stepBegin()
 {
 	switch (object_index)
 	{

@@ -8,7 +8,7 @@ for (var m = 0; m < music_lengthMax; m++)
 	}
 }
 
-fn_stage_evStep();
+fn_stage_event_stepBegin();
 
 for (var m = 0; m < music_lengthMax; m++)
 {

@@ -134,7 +134,7 @@ function fn_user_theme_add(_index, _code, _unlocked = false, _color_whiteLight, 
 			picFrame : fn_user_theme_asset("spr_user_theme_picFrame_", _code),
 		},
 		// Sounds
-		snd : 
+		audio : 
 		{
 			start : fn_user_theme_asset("snd_user_theme_start_", _code),
 			move : fn_user_theme_asset("snd_user_theme_move_", _code),
@@ -144,7 +144,7 @@ function fn_user_theme_add(_index, _code, _unlocked = false, _color_whiteLight, 
 			unlock : [fn_user_theme_asset($"snd_user_theme_unlock_0_", _code), fn_user_theme_asset($"snd_user_theme_unlock_1_", _code), fn_user_theme_asset("snd_user_theme_unlock_2_", _code)],
 			equip : fn_user_theme_asset("snd_user_theme_equip_", _code),
 			unequip : fn_user_theme_asset("snd_user_theme_unequip_", _code),
-		}
+		},
 	}
 }
 function fn_user_theme_asset(_asset_name_noCode, _code)

@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_user_func_kart_call_0",
+  "%Name":"snd_user_func_kart_steer",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "channelFormat":1,
+  "channelFormat":0,
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.4280045,
+  "duration":1.7187529,
   "exportDir":"",
-  "name":"snd_user_func_kart_call_0",
+  "name":"snd_user_func_kart_steer",
   "parent":{
     "name":"Functions",
     "path":"folders/User/Functions.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_user_func_kart_call_0.wav",
+  "soundFile":"snd_user_func_kart_steer.wav",
   "volume":1.0,
 }

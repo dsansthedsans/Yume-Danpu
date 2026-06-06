@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_user_func_kart_turn",
+  "%Name":"unused_snd_user_func_kart_crash",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.21478458,
+  "duration":1.7142857,
   "exportDir":"",
-  "name":"snd_user_func_kart_turn",
+  "name":"unused_snd_user_func_kart_crash",
   "parent":{
-    "name":"Functions",
-    "path":"folders/User/Functions.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_user_func_kart_turn.mp3",
+  "soundFile":"unused_snd_user_func_kart_crash.wav",
   "volume":1.0,
 }

@@ -60,7 +60,7 @@ type =
 	}
 }
 
-fn_fader_evCreate();
+fn_fader_event_create();
 
 
 

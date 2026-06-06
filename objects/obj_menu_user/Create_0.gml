@@ -16,7 +16,7 @@ for (var l = 0; l < array_length(lvl); l++)
 // Main level
 var l = LVL_MAIN;
 lvl[l].option_cancel.key[1] = CONFIG_KEY.MENU_USER;
-fn_menu_lvl_fader_start(l, , , , , global.user.theme[global.user.theme_curr].snd.confirm);
+fn_menu_lvl_fader_start(l, , , , , global.user.theme[global.user.theme_curr].audio.confirm);
 for (var o = 0; o < 3; o++)
 {
 	fn_menu_lvl_option_add(l, o);

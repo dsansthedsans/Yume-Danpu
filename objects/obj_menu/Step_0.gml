@@ -51,7 +51,7 @@ if (is_array(lvl) == true)
 			
 				if (_option_currOld != lvl[l].option_curr)
 				{
-					_move_snd = ((lvl[l].option_move.snd != undefined) ? lvl[l].option_move.snd : global.user.theme[global.user.theme_curr].snd.move);
+					_move_snd = ((lvl[l].option_move.snd != undefined) ? lvl[l].option_move.snd : global.user.theme[global.user.theme_curr].audio.move);
 					event_user(4);
 					if (_move_snd != undefined)
 						fn_audio_play(_move_snd, CONFIG_AUDIO_EMITTER.MENU);
@@ -65,7 +65,7 @@ if (is_array(lvl) == true)
 				if (is_struct(lvl[l].option[o].check) == true)
 					lvl[l].option[o].check.mark.active = !lvl[l].option[o].check.mark.active;
 				
-				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? ((lvl[l].option_confirm.snd != undefined) ? lvl[l].option_confirm.snd : global.user.theme[global.user.theme_curr].snd.confirm) : undefined);
+				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? ((lvl[l].option_confirm.snd != undefined) ? lvl[l].option_confirm.snd : global.user.theme[global.user.theme_curr].audio.confirm) : undefined);
 				event_user(0);
 				if (_confirm_snd != undefined)
 					fn_audio_play(_confirm_snd, CONFIG_AUDIO_EMITTER.MENU);
@@ -73,7 +73,7 @@ if (is_array(lvl) == true)
 			// Cancellation
 			else if (lvl[l].option_cancel.active == true && (fn_config_key_pressed(lvl[l].option_cancel.key[0]) == true || (lvl[l].option_cancel.key[1] != undefined && fn_config_key_pressed(lvl[l].option_cancel.key[1]) == true)))
 			{
-				_cancel_snd = ((lvl[l].option_cancel.snd != undefined) ? lvl[l].option_cancel.snd : global.user.theme[global.user.theme_curr].snd.cancel);
+				_cancel_snd = ((lvl[l].option_cancel.snd != undefined) ? lvl[l].option_cancel.snd : global.user.theme[global.user.theme_curr].audio.cancel);
 				event_user(1);
 				if (_cancel_snd != undefined)
 					fn_audio_play(_cancel_snd, CONFIG_AUDIO_EMITTER.MENU);
@@ -94,7 +94,7 @@ if (is_array(lvl) == true)
 							lvl[l].option[o].value.arrow[a].alpha = lvl[l].option[o].value.arrow[a].alphaTargets[true];
 							lvl[l].option[o].value.arrow[a].scale = lvl[l].option[o].value.arrow[a].scaleTargets[true];
 						}
-						fn_audio_play(global.user.theme[global.user.theme_curr].snd.move, CONFIG_AUDIO_EMITTER.MENU, , 1.5);
+						fn_audio_play(global.user.theme[global.user.theme_curr].audio.move, CONFIG_AUDIO_EMITTER.MENU, , 1.5);
 						break;
 					}
 				}

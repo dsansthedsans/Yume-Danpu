@@ -163,7 +163,7 @@ move =
 	}
 }
 
-fn_actor_evCreate();
+fn_actor_event_create();
 
 
 // HUA-LATUCA-PAYA!!!! HO-POPAPO-TUYA!!!!!!! AAAAAAAAAAAAAARRRRRRRGHHHHHHH!!!!!!!!!!!

@@ -3,7 +3,7 @@
 
 
 // Functions related to setting up the menu
-function fn_menu_unlock_evCreate_0()
+function fn_menu_unlock_event_create_0()
 {
 	// Main level
 	LVL_MAIN = 0;
@@ -34,7 +34,7 @@ function fn_menu_unlock_evCreate_0()
 	info_x[l, 0] = (main_nameIco_x + main_nameIco_w + _nameIco_xTextGap);
 	info_y[l, 0] = (main_nameIco_y + round(main_nameIco_h / 2) - round(info_h[l, 0] / 2) - 1);
 }
-function fn_menu_unlock_evCreate_1()
+function fn_menu_unlock_event_create_1()
 {
 	// Main level
 	lvl = LVL_MAIN;
@@ -44,7 +44,7 @@ function fn_menu_unlock_evCreate_1()
 		_unlock_snd = snd_;
 	fn_audio_play(_unlock_snd, CONFIG_AUDIO_EMITTER.MENU);
 }
-function fn_menu_unlock_evStep()
+function fn_menu_unlock_event_stepBegin()
 {
 	// Main level
 	if (lvl == LVL_MAIN && lvl_alp[lvl] == 1)

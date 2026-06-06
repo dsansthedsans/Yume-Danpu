@@ -38,4 +38,4 @@ loop =
 	yAct : false // Determines whether the room loops infinitely along the vertical axis
 }
 
-fn_stage_evCreate();
+fn_stage_event_create();

@@ -1,7 +1,7 @@
 
 if (func_old != global.user.func_curr) || (effect_old != global.user.effect_curr)
 {
-	fn_actor_evCreate();
+	fn_actor_event_create();
 	func_old = global.user.func_curr;
 	effect_old = global.user.effect_curr;
 }

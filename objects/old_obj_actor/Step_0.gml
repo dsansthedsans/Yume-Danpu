@@ -1,5 +1,5 @@
 
-fn_actor_evStep();
+fn_actor_event_stepBegin();
 event_inherited();
 
 // Movement

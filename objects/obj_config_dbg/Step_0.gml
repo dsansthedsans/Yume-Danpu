@@ -13,8 +13,8 @@ if (global.config_dbg.active == true && keyboard_check(global.config_dbg.cmd.key
 	// Zoom, changes the size of the user's camera
 	if ((keyboard_check(_cmd.zoom_key[0]) == true || keyboard_check(_cmd.zoom_key[1]) == true) && fn_obj_exists(obj_stage) == true)
 	{
-		obj_stage.cam.w += (_cmd.zoom_xDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
-		obj_stage.cam.h += (_cmd.zoom_yDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
+		obj_stage.cam.width += (_cmd.zoom_xDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
+		obj_stage.cam.height += (_cmd.zoom_yDist * (-1 * keyboard_check(_cmd.zoom_key[1]) == true));
 	}
 	// Fader, starts a room transition to the specified room
 	if (keyboard_check(_cmd.fader_key) == true && is_array(_cmd.fader_rm) == true)

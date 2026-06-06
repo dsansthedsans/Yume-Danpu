@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"snd_user_func_kart_call_0",
+  "%Name":"unused_snd_user_func_kart_rush",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":3.4280045,
+  "duration":14.950885,
   "exportDir":"",
-  "name":"snd_user_func_kart_call_0",
+  "name":"unused_snd_user_func_kart_rush",
   "parent":{
-    "name":"Functions",
-    "path":"folders/User/Functions.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snd_user_func_kart_call_0.wav",
+  "soundFile":"unused_snd_user_func_kart_rush.wav",
   "volume":1.0,
 }

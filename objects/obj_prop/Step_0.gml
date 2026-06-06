@@ -1,10 +1,31 @@
-fn_prop_evStep();
-
 /* Interaction sequence */
 if (talk.active == true)
 {
-	if (talk.stage >= 0)
+	// Interaction sequence is inactive
+	if (talk.stage == -1)
 	{
+		/* Types */
+		// Starts another object's interaction sequence
+		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && myself.type == MYSELF_TYPE_ACTOR && walk.stage == -1)
+		{
+			var _target = instance_place(fn_actor_facing_x(id, x, facing_curr, talk.trigger.distance), fn_actor_facing_y(id, y, facing_curr, talk.trigger.distance), obj_prop);
+			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.myself.type == MYSELF_TYPE_PROP) || (_target.myself.type == MYSELF_TYPE_ACTOR && _target.walk.stage == -1)))
+			{
+				talk.stage = -2;
+				walk.stage = -2;
+				talk.trigger.target = _target;
+				_target.talk.stage = 0;
+				_target.talk.trigger_id = id;
+				if (_target.myself.type == _target.MYSELF_TYPE_ACTOR)
+					_target.walk.stage = -2;
+			}
+		}
+	}
+	// Interaction sequence is active
+	else if (talk.stage >= 0)
+	{
+		var _trigger = talk.trigger_id;
+		
 		/* Types */
 		// Plays an audio
 		if (talk.bell.active == true)
@@ -30,6 +51,11 @@ if (talk.active == true)
 					talk.stage = -1;
 					if (myself.type == MYSELF_TYPE_ACTOR)
 						walk.stage = -1;
+					talk.trigger_id = undefined;
+					_trigger.talk.stage = -1;
+					if (_trigger.myself.type == _trigger.MYSELF_TYPE_ACTOR)
+						_trigger.walk.stage = -1;
+					_trigger.talk.trigger.target = undefined;
 				}
 			}
 		}
@@ -63,39 +89,33 @@ if (talk.active == true)
 			if (myself.type == MYSELF_TYPE_ACTOR)
 				walk.stage = -1;
 		}
-		//
-		else if (talk.fucker.active == true)
+		// CARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRY
+		else if (talk.ride.active == true)
 		{
-			if (carry.active == true)
+			if (talk.ride.mode == TALK_RIDE_MODE_PASSENGER)
 			{
-				carry.object = obj_actor_user;
+				
+			}
+			else if (talk.ride.mode == TALK_RIDE_MODE_DRIVER)
+			{
+				for (var p = 0; p < passengers_lengthMax; p++)
+				{
+					if (passengers[p].id == undefined)
+					{
+						passengers[p].id = talk.trigger_id;
+						break;
+					}
+				}
 			}
 			talk.stage = -1;
 			if (myself.type == MYSELF_TYPE_ACTOR && walk.active == true)
 				walk.stage = -1;
 		}
 	}
-	else if (talk.stage == -1)
-	{
-		/* Types */
-		// Starts another object's interaction sequence
-		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && myself.type == MYSELF_TYPE_ACTOR && walk.stage == -1)
-		{
-			var _target = instance_place(fn_actor_facing_x(id, x, facing_curr, talk.trigger.distance), fn_actor_facing_y(id, y, facing_curr, talk.trigger.distance), obj_prop);
-			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.myself.type == MYSELF_TYPE_PROP) || (_target.myself.type == MYSELF_TYPE_ACTOR && _target.walk.stage == -1)))
-			{
-				talk.stage = -2;
-				walk.stage = -2;
-				talk.trigger.target = _target;
-				_target.talk.stage = 0;
-				if (_target.myself.type == MYSELF_TYPE_ACTOR)
-					_target.walk.stage = -2;
-			}
-		}
-	}
+	/*
 	else if (talk.stage == -2)
 	{
-		/* Types */
+		/ Types /
 		// Another object's interaction sequence has ended
 		if (talk.trigger.active == true && talk.trigger.target != undefined && talk.trigger.target.talk.stage == -1)
 		{
@@ -105,34 +125,44 @@ if (talk.active == true)
 			talk.trigger.target = undefined;
 		}
 	}
+	*/
 }
 
 /* Plays an audio the player can only hear if they're close */
-if (call.active == true && call.audio.asset != undefined && call.audio.emitter != undefined)
+if (call.active == true && call.audio != undefined)
 {
-	//
-	if (call.delay.active == true)
+	var _curr = call.audio_curr;
+	if (is_real(_curr) >= 0 && call.audio[_curr].asset != undefined && call.audio[_curr].emitter != undefined)
 	{
-		call.delay.time -= 1;
-		if (call.delay.time <= 0)
+		// Starts playing audio
+		if (call.audio[_curr].id == undefined)
 		{
-			if (call.audio.id != undefined)
+			if (call.audio[_curr].delay_active == false) || (call.audio[_curr].delay_time <= 0)
 			{
-				if (audio_is_playing(call.audio.id) == true)
-					fn_audio_stop(call.audio.id);
-				call.audio.id = undefined;
+				if (call.audio_currOld != undefined)
+					call.audio[_curr].id = undefined;
+				call.audio_currOld = call.audio_curr;
+				call.audio[_curr].id = fn_audio_play(call.audio[_curr].asset, call.audio[_curr].emitter, 0, call.audio[_curr].pitch, , call.audio[_curr].loops);
 			}
-			call.delay.time = irandom_range(call.delay.timeMin, call.delay.timeMax);
+			else
+				call.audio[_curr].delay_time += 1;
 		}
-	}
-	//
-	if (call.audio.id == undefined)
-		call.audio.id =  fn_audio_play(call.audio.asset, call.audio.emitter, 0, , , call.audio.loops);	
-	if (call.audio.id != undefined && audio_is_playing(call.audio.id) == true)
-	{
-		call.audio.volume = lerp(call.audio.volume, (1 - (clamp(distance_to_object(obj_actor_user), 0, call.distance) / call.distance)), call.audio.volumeSpeed);
-		//call.audio.pitchOffset = lerp(call.audio.pitchOffset, (call.audio.pitchOffsetMax * _clamp), call.audio.pitchSpeed);
-		fn_audio_volume(call.audio.asset, call.audio.id, call.audio.emitter, call.audio.volume);
-		fn_audio_pitch(call.audio.asset, call.audio.id, (call.audio.pitch /*- call.audio.pitchOffset*/));
+		// Updates playing audio's volume and pitch
+		if (call.audio[_curr].id != undefined && audio_is_playing(call.audio[_curr].id) == true)
+		{
+			call.audio[_curr].volume = (1 - (clamp(distance_to_object(obj_actor_user), 0, call.distance) / call.distance));
+			fn_audio_volume(call.audio[_curr].asset, call.audio[_curr].id, call.audio[_curr].emitter, call.audio[_curr].volume);
+			fn_audio_pitch(call.audio[_curr].asset, call.audio[_curr].id, call.audio[_curr].pitch);
+		}
+		// 
+		else if (call.audio[_curr].id != undefined && audio_is_playing(call.audio[_curr].id) == false)
+		{
+			if (call.audio_autoplay == true)
+			{
+				call.audio_curr += 1;
+				if (call.audio_curr >= array_length(call.audio))
+					call.audio_curr = 0;
+			}
+		}
 	}
 }

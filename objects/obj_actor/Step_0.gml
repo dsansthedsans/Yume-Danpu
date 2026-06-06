@@ -1,7 +1,7 @@
 event_inherited();
-fn_actor_evStep();
 
-/* Movement sequence */
+/* Movement sequences */
+// Walking movement sequence
 if (walk.active == true)
 {
 	// Movement sequence is inactive, waiting/preparing to activate
@@ -85,9 +85,11 @@ if (walk.active == true)
 				walk.step.time = 0;
 			}
 		}
+		fn_actor_stage_loop();
 		fn_obj_depth(, -myself.y);
 	}
 }
+// Sliding movement sequence
 if (slide.active == true)
 {
 	var _facing = undefined;
@@ -109,94 +111,59 @@ if (slide.active == true)
 		if (_facing != undefined && _facing != facing_curr)
 		{
 			facing_curr = _facing;
+			if (slide.audio.steer_asset != undefined && slide.audio.emitter != undefined)
+			{
+				var _volume = ((slide.speed <= (slide.speedMax / 2)) ? slide.audio.steer_weakVolume : slide.audio.steer_strongVolume);
+				var _pitch = ((slide.speed <= (slide.speedMax / 2)) ? slide.audio.steer_weakPitch : slide.audio.steer_strongPitch);
+				fn_audio_play(slide.audio.steer_asset, slide.audio.emitter, (_volume * (call.audio[call.audio_curr].volume * call.active)), _pitch);
+			}
 			if (slide.shake.active == true)
 			{
-				myself.shake.time = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.timeMin : slide.shake.timeMax);
-				myself.shake.distance = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.distanceMin : slide.shake.distanceMax);
+				myself.shake.time = ((slide.speed <= (slide.speedMax / 2)) ? slide.shake.weakTime : slide.shake.strongTime);
+				myself.shake.distance = ((slide.speed <= (slide.speedMax / 2)) ? slide.shake.weakDistance : slide.shake.strongDistance);
 			}
 			slide.speed = 0;
 		}
 		var _speed = clamp((slide.speed + ((_facing != undefined) ? slide.acceleration : -slide.deceleration)), 0, slide.speedMax);
-		var _prop = instance_place(fn_actor_facing_x(id, x, facing_curr, max(_speed, 1)), fn_actor_facing_y(id, y, facing_curr, max(_speed, 1)), obj_prop);
-		if (_prop == noone) || (_prop != noone && _prop.solid == false)
+		var _prop = noone;
+		var _propList = ds_list_create();
+		var _propLength = instance_place_list(fn_actor_facing_x(id, x, facing_curr, max(_speed, 1)), fn_actor_facing_y(id, y, facing_curr, max(_speed, 1)), obj_prop, _propList, true);
+		for (var p = 0; p < _propLength; p++)
+		{
+			if (_propList[| p] != noone && _propList[| p].solid == true)
+				_prop = _propList[| p];
+		}
+		if (_prop == noone)
 		{
 			x = fn_actor_facing_x(id, x, facing_curr, _speed);
 			y = fn_actor_facing_y(id, y, facing_curr, _speed);
 			slide.speed = _speed;
 		}
-		else if (_prop != noone && _prop.solid == true)
+		else if (_prop != noone)
 		{
-			switch (facing[facing_curr].axis)
+			x = round(fn_actor_facing_x(id, x, facing_curr, ((facing_curr == FACING_WEST) ? (bbox_left - _prop.bbox_right) : (_prop.bbox_left - bbox_right)) ));
+			y = round(fn_actor_facing_y(id, y, facing_curr, ((facing_curr == FACING_NORTH) ? (bbox_top - _prop.bbox_bottom) : (_prop.bbox_top - bbox_bottom)) ));
+			if (slide.speed > 0)
 			{
-				case FACING_AXIS_HORIZ:
-					x = round(fn_actor_facing_x(id, x, facing_curr, ((facing_curr == FACING_WEST) ? (bbox_left - _prop.bbox_right) : (_prop.bbox_left - bbox_right)) ));
-					break;
-				case FACING_AXIS_VERT:
-					y = round(fn_actor_facing_y(id, y, facing_curr, ((facing_curr == FACING_NORTH) ? (bbox_top - _prop.bbox_bottom) : (_prop.bbox_top - bbox_bottom)) ));
-					break;
+				if (slide.audio.crash_asset != undefined && slide.audio.emitter != undefined)
+				{
+					var _volume = ((slide.speed <= (slide.speedMax / 2)) ? slide.audio.crash_weakVolume : slide.audio.crash_strongVolume);
+					var _pitch = ((slide.speed <= (slide.speedMax / 2)) ? slide.audio.crash_weakPitch : slide.audio.crash_strongPitch);
+					fn_audio_play(slide.audio.crash_asset, slide.audio.emitter, _volume, _pitch);
+				}
+				if (slide.shake.active == true)
+				{
+					myself.shake.time = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.weakTime : slide.shake.strongTime);
+					myself.shake.distance = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.weakDistance : slide.shake.strongDistance);
+				}
+				slide.speed = 0;
 			}
-			if (slide.speed > 0 && slide.shake.active == true)
-			{
-				myself.shake.time = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.timeMin : slide.shake.timeMax);
-				myself.shake.distance = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.distanceMin : slide.shake.distanceMax);
-			}
-			slide.speed = 0;
 		}
 		myself.x = x;
 		myself.y = y;
-		depth = -y;
-		fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y} | slide.speed = {slide.speed}");
-		
-		/*
-		if (_facing != undefined && _facing != facing_curr)
-		{
-			facing_curr = _facing;
-			if (slide.shake.active == true)
-			{
-				myself.shake.time = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.timeMin : slide.shake.timeMax);
-				myself.shake.distance = ((slide.speed < (slide.speedMax / 2)) ? slide.shake.distanceMin : slide.shake.distanceMax);
-			}
-			slide.speed = 0;
-		}
-		var _speed = clamp((slide.speed + ((_facing != undefined) ? slide.acceleration : -slide.deceleration)), 0, slide.speedMax);
-		var _x = fn_actor_x(,,,_speed);
-		var _y = fn_actor_y(,,,_speed);
-		var _prop = instance_place(fn_actor_x(,,,max(_speed, 1)), fn_actor_y(,,,max(_speed, 1)), obj_prop);
-		if (_prop == noone) || (_prop != noone && _prop.solid == false)
-		{
-			x = fn_actor_x(,,,_speed);
-			y = fn_actor_y(,,,_speed);
-			slide.speed = _speed;
-		}
-		else
-		{
-			_speed = (facing[facing_curr].axis == FACING_AXIS_HORIZ) ? ((facing_curr == FACING_WEST) ? (bbox_left - _prop.bbox_right) : (_prop.bbox_left - bbox_right)) : ((facing_curr == FACING_NORTH) ? (bbox_top - _prop.bbox_bottom) : (_prop.bbox_top - bbox_bottom));
-			x = ((facing[facing_curr].axis == FACING_AXIS_HORIZ) ? round(fn_actor_x(,,,_speed)) : fn_actor_x(,,,_speed));
-			y = ((facing[facing_curr].axis == FACING_AXIS_VERT) ? round(fn_actor_y(,,,_speed)) : fn_actor_y(,,,_speed));
-			if (slide.speed > 0 && slide.shake.active == true)
-			{
-				myself.shake.time = slide.shake.timeMin;
-				myself.shake.distance = slide.shake.distanceMin;
-				fn_audio_play(snd_user_func_kart_hit, CONFIG_AUDIO_EMITTER.USER);
-			}
-			slide.speed = 0;
-		}
-		myself.x = x;
-		myself.y = y;
-		depth = -y;
-		fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y} | slide.speed = {slide.speed}");
-		*/
+		fn_actor_stage_loop();
+		depth = -myself.y;
+		if (global.config_dbg.active == true && global.config_dbg.logOverdose == true)
+			fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y} | slide.speed = {slide.speed}");
 	}
-}
-
-/* */
-if (carry.active == true && carry.object != undefined)
-{
-	slide.active = true;
-	carry.object.solid = false;
-	carry.object.x = -999;
-	carry.object.y = -999;
-	carry.object.myself.x = myself.x;
-	carry.object.myself.y = myself.y;
-	carry.object.walk.active = false;
 }

@@ -19,6 +19,7 @@ myself =
 	scaleX : image_xscale,
 	scaleY : image_yscale,
 	angle : image_angle,
+	alpha : 1,
 	// Shaking
 	shake :
 	{
@@ -31,10 +32,13 @@ myself =
 }
 
 /* Interaction sequence */
+TALK_RIDE_MODE_PASSENGER = 0; // This object will be the another object's passenger
+TALK_RIDE_MODE_DRIVER = 1; // The other object will be this object's passenger
 talk =
 {
 	active : false,
 	stage : -1,
+	trigger_id : undefined, // ID of the object that started this object's interaction sequence
 	
 	/* Types */
 	// Starts another object's interaction sequence
@@ -79,10 +83,11 @@ talk =
 		contents : undefined,
 		contents_index : 0,
 	},
-	//
-	fucker :
+	// CARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRY
+	ride :
 	{
 		active : false,
+		mode : TALK_RIDE_MODE_PASSENGER,
 	},
 }
 
@@ -91,29 +96,39 @@ call =
 {
 	active : false,
 	stage : -1,
-	distance : (160 * 1.25),
-	//
-	audio :
+	distance : 320, // Distance the actor needs to be near the player for current audio's volume be higher than 0
+	// Audio playlist
+	audio : undefined,
+	audio_autoplay : true,
+	audio_curr : 0,
+	audio_currOld : undefined,
+	audio_lengthMax : 2,
+}
+for (var a = 0; a < call.audio_lengthMax; a++)
+{
+	call.audio[a] =
 	{
 		id : undefined,
 		asset : undefined,
 		emitter : CONFIG_AUDIO_EMITTER.PROP,
 		volume : 0,
-		volumeSpeed : 0.5,
 		pitch : 1,
-		//spitchOffset : 0,
-		//pitchOffsetMax : 0.1,
-		pitchSpeed : 0.5,
 		loops : true,
-	},
-	//
-	delay :
-	{
-		active : false,
-		time : 0,
-		timeMin : (60 * 5),
-		timeMax : (60 * 10),
-	},
+		delay_active : false,
+		delay_time : 0,
+	}
 }
 
-fn_prop_evCreate();
+/* CARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRY */
+passengers_lengthMax = 4;
+for (var p = 0; p < passengers_lengthMax; p++)
+{
+	passengers[p] =
+	{
+		id : undefined,
+		exit_active : true,
+		exit_key : CONFIG_KEY.CANCEL,
+	}
+}
+
+fn_prop_event_create();

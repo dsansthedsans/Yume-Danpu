@@ -8,5 +8,5 @@ if (myself.active == true)
 	myself.shake.offsetX = ((myself.shake.active == true && myself.shake.time > 0) ? (irandom(myself.shake.distance) * choose(-1, 1)) : 0);
 	myself.shake.offsetY = ((myself.shake.active == true && myself.shake.time > 0) ? (irandom(myself.shake.distance) * choose(-1, 1)) : 0);
 	myself.shake.time = ((myself.shake.time > 0) ? (myself.shake.time - 1) : 0);
-	fn_draw_spr(myself.sprite, myself.image, (myself.x + myself.offsetX + myself.shake.offsetX), (myself.y + myself.offsetY + myself.shake.offsetY), image_blend, image_alpha, myself.scaleX, myself.scaleY, myself.angle);
+	fn_draw_spr(myself.sprite, myself.image, (myself.x + myself.offsetX + myself.shake.offsetX), (myself.y + myself.offsetY + myself.shake.offsetY), image_blend, myself.alpha, myself.scaleX, myself.scaleY, myself.angle);
 }

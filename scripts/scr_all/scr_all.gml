@@ -127,7 +127,7 @@ function fn_audio_volume(_asset, _id, _emitter, _vol = 1)
 {
 	_vol = fn_audio_volumeData(_asset, _vol);
 	_vol *= global.config.audio.emitter[_emitter].volume;
-	_vol *= global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].volume;
+	_vol *= (global.config.audio.emitter[CONFIG_AUDIO_EMITTER.MASTER].volume * 2);
 	audio_sound_gain(_id, _vol, 0);
 }
 function fn_audio_volumeData(_asset, _vol)
@@ -141,8 +141,8 @@ function fn_audio_volumeData(_asset, _vol)
 			_vol *= 0.75;
 			break;
 		
-			// Themes
-				// Default theme
+		/* Themes */
+		// Default theme
 		case snd_user_theme_move_dflt: // The sound that should be used as reference for all others
 			_vol = 1;
 			break;
@@ -161,7 +161,7 @@ function fn_audio_volumeData(_asset, _vol)
 		case snd_user_theme_unequip_dflt:
 			_vol *= 0.65;
 			break;
-				// Madotsuki theme
+		// Madotsuki theme
 		case snd_user_theme_move_madot:
 			_vol *= 0.4;
 			break;
@@ -175,16 +175,26 @@ function fn_audio_volumeData(_asset, _vol)
 			_vol *= 0.4;
 			break;
 		
-			// Items
-		case snd_user_func_kart_turn:
+		/* Functions */
+		// Kart
+		case snd_user_func_kart_call_0:
+		case snd_user_func_kart_call_1:
+			_vol *= 0.5;
+			break;
+		case snd_user_func_kart_steer:
+			_vol *= 0.5;
+			break;
+		case snd_user_func_kart_crash:
+			_vol *= 0.75;
+			break;
+		case unused_snd_user_func_kart_steer:
 			_vol *= 0.35;
 			break;
-		case snd_user_func_kart_hit:
+		case unused_snd_user_func_kart_crash:
 			_vol *= 0.65;
 			break;
 		
-		
-		// Props
+		/* Props */
 		case snd_hulapoca:
 			_vol *= 1.25;
 			break;
@@ -198,19 +208,17 @@ function fn_audio_volumeData(_asset, _vol)
 			_vol *= 1.5;
 			break;
 		
-		
+		/* Menus */
 		// Main menu
 		case mus_menu_home:
 			_vol *= 0.45;
 			break;
 		
-		
+		/* Map */
 		// Nexus
 		case mus_nexus:
 			_vol *= 0.35;
 			break;
-		
-		
 		// Macacolandia
 		case mus_macaco:
 			_vol *= 0.25;
@@ -233,8 +241,6 @@ function fn_audio_volumeData(_asset, _vol)
 		case snd_actor_macaco_monkey_6:
 			_vol *= 0.35;
 			break;
-		
-		
 		// Debug World
 		case mus_dbgwrld:
 			_vol *= 0.75;
@@ -274,13 +280,13 @@ function fn_audio_offsetData(_asset, _ofs)
 	
 	switch (_asset)
 	{
-		// Player
-			// Themes
-				// Default theme
+		/* Functions */
+		
+		/* Themes */
+		// Default theme
 		case snd_user_theme_start_dflt:
 			_ofs += 0.15;
 			break;
-		
 		
 		// Macacolandia citizens
 		case snd_actor_macaco_monkey_0:

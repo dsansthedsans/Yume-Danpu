@@ -1,7 +1,7 @@
 
 //////// Functions related to setting up the stage in the room
 
-function fn_stage_evCreate()
+function fn_stage_event_create()
 {
 	/* Not asleep */
 	// Eleanor's Apartment
@@ -53,7 +53,7 @@ function fn_stage_evCreate()
 		loop.yAct = true;
 	}
 }
-function fn_stage_evStep()
+function fn_stage_event_stepBegin()
 {
 	/* Menus */
 	// Main Menu

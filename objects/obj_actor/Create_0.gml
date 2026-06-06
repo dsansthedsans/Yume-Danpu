@@ -38,7 +38,8 @@ facing[FACING_SOUTH] =
 }
 facing_curr = FACING_SOUTH;
 
-/* Movement sequence */
+/* Movement sequences */
+// Walking movement sequence
 WALK_MODE_AUTO = 0;
 WALK_MODE_MANUAL = 1;
 walk =
@@ -75,6 +76,7 @@ walk =
 	startX : 0,
 	startY : 0,
 }
+// Sliding movement sequence
 SLIDE_MODE_MANUAL = 0;
 slide =
 {
@@ -84,25 +86,33 @@ slide =
 	speedMax : 6,
 	acceleration : 0.1,
 	deceleration : 0.02,
-	// 
+	// Audio played after steering or crashing
+	audio :
+	{
+		steer_asset : undefined,
+		steer_weakVolume : 0.5,
+		steer_weakPitch : 2,
+		steer_strongVolume : 1,
+		steer_strongPitch : 1,
+		crash_asset : undefined,
+		crash_weakVolume : 0.5,
+		crash_weakPitch : 2,
+		crash_strongVolume : 1,
+		crash_strongPitch : 1,
+		emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+	},
+	// Shaking animation for steering or crashing
 	shake :
 	{
 		active : true,
-		timeMin : 6,
-		timeMax : 9,
-		distanceMin : 2,
-		distanceMax : 3,
+		weakTime : 6,
+		weakDistance : 2,
+		strongTime : 9,
+		strongDistance : 3,
 	},
 }
 
-/* */
-carry =
-{
-	active : false,
-	object : undefined,
-}
-
-fn_actor_evCreate();
+fn_actor_event_create();
 
 
 // HUA-LATUCA-PAYA!!!! HO-POPAPO-TUYA!!!!!!! AAAAAAAAAAAAAARRRRRRRGHHHHHHH!!!!!!!!!!!

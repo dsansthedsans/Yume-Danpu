@@ -2,7 +2,7 @@
 //////// Functions related to actors (characters like entities and the user)
 // I'm Old!
 
-function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor's object index
+function fn_actor_event_createAAAAAAAAAAAA() // Create Event determined by the actor's object index
 {
 	// Main data (presets)
 	switch (object_index)
@@ -93,7 +93,7 @@ function fn_actor_evCreateAAAAAAAAAAAA() // Create Event determined by the actor
 		break;
 	}
 }
-function fn_actor_qwewqeqwewqewqeqweevStep() // Step Event determined by the actor's object index
+function fn_actor_qwewqeqwewqewqeqweevent_stepBegin() // Step Event determined by the actor's object index
 {
 	if (talk.type.bell.active == true && talk.stage == 0)
 	{
@@ -156,57 +156,4 @@ function fn_actor_yAhead(_obj, _y, _dir, _dist)
 }
 
 
-function fn_actor_stage_loop()
-{
-	var _xDist = 0;
-	var _yDist = 0;
-	
-	var _stg = obj_stage;
-	if (fn_obj_exists(_stg) == true)
-	{
-		if (_stg.loop.xAct == true)
-		{
-			if (_stg.cam.lock.x == undefined)
-			{
-				if (x < 0)
-					_xDist = room_width;
-				if (x >= room_width)
-					_xDist = -room_width;
-			}
-			else
-			{
-				if (x < -16)
-					_xDist = (room_width + 16);
-				if (x > room_width)
-					_xDist = -(room_width + 16);
-			}
-		}
-		if (_stg.loop.yAct == true)
-		{
-			if (_stg.cam.lock.y == undefined)
-			{
-				if (y <= 0)
-					_yDist = room_height;
-				if (y > room_height)
-					_yDist = -room_height;
-			}
-			else
-			{
-				if (y < 0)
-					_yDist = (room_height + 32);
-				if (y > (room_height + 32))
-					_yDist = -(room_height + 32);
-			}
-		}
-	}
-	
-	x += _xDist;
-	y += _yDist;
-	myself.x += _xDist;
-	myself.y += _yDist;
-}
 
-
-
-
-// I am not insane. I am not in pain. I am not Shane. Have you seen the walls? Have you seen the balls? Have you seen the dolls? The dog is barking for food. The dog is barking for good. The dog is barking for wood. There is no one here. There is no one near. There is no fun fear.

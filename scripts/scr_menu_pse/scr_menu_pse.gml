@@ -3,7 +3,7 @@
 
 
 // Functions related to setting up the menu
-function fn_menu_pse_evCreate_0()
+function fn_menu_pse_event_create_0()
 {
 	// Main level
 	LVL_MAIN = 0;
@@ -49,7 +49,7 @@ function fn_menu_pse_evCreate_0()
 		fn_menu_rect_add(l, 0, 0, 0, 320, 240, global.user.theme[global.user.theme_curr].col.blur, 0.75);
 	}
 }
-function fn_menu_pse_evCreate_1()
+function fn_menu_pse_event_create_1()
 {
 	fn_obj_depth( , (depth + 1));
 	

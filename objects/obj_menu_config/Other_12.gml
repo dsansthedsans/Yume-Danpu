@@ -37,7 +37,7 @@ else if (l == LVL_VIDEO)
 }
 else if (l == LVL_AUDIO)
 {
-	global.config.audio.emitter[o].volume = clamp((global.config.audio.emitter[o].volume + (0.1 * _cycle_sign)), 0, 1);
+	global.config.audio.emitter[o].volume = clamp((round((global.config.audio.emitter[o].volume + (0.1 * _cycle_sign)) * 100) / 100), 0, 1);
 	fn_config_file_save();
 }
 else if (l == LVL_ACCESS)

@@ -2,7 +2,7 @@
 //////// Functions related to the room transition sequence
 
 
-function fn_fader_evCreate()
+function fn_fader_event_create()
 {
 	switch (source.obj)
 	{
@@ -71,5 +71,5 @@ function fn_fader_obj_create(_target_rm = undefined)
 	//	fader.target.rm = _tgt_rm;
 	//}
 	//with (fader)
-	//	fn_fader_evCreate();
+	//	fn_fader_event_create();
 }

@@ -148,7 +148,7 @@ function fn_config_setup()
 		PROP, // Props
 		ACTOR, // Entities
 	}
-	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MASTER,	"master");
+	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MASTER,	"master", 0.5);
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MUS,		"mus");
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.AMB,		"amb");
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.MENU,		"menu");
@@ -209,7 +209,7 @@ function fn_config_file_load()
 	if (is_array(_emitter_vol) == true && _emitter_vol != [""])
 	{
 		for (var e = 0; e < array_length(global.config.audio.emitter); e++)
-			global.config.audio.emitter[e].volume = real(string_digits(_emitter_vol[e]));
+			global.config.audio.emitter[e].volume = real(_emitter_vol[e]);
 	}
 	global.config.access.reduceMotion.active = ini_read_real("access", "reduceMotion_act", false);
 	ini_close();

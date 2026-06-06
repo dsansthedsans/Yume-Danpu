@@ -3,7 +3,7 @@
 
 
 // Functions related to setting up the menu
-function fn_menu_inv_evCreate_0()
+function fn_menu_inv_event_create_0()
 {
 	// Main level [#0]
 	LVL_MAIN = 0;
@@ -233,7 +233,7 @@ function fn_menu_inv_evCreate_0()
 		opt_move_type[l] = OPT_MOVE_TYPE_invOther;
 	}
 }
-function fn_menu_inv_evCreate_1()
+function fn_menu_inv_event_create_1()
 {
 	// Main level
 	lvl = LVL_MAIN;
