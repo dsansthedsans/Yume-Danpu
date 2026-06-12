@@ -44,10 +44,13 @@ function fn_actor_event_create()
 			call.audio[0].asset = snd_user_func_kart_call_0;
 			call.audio[0].loops = false;
 			call.audio[1].asset = snd_user_func_kart_call_1;
+			for (var a = 0; a < call.audio_lengthMax; a++)
+				call.audio[a].emitter = CONFIG_AUDIO_EMITTER.USER;	
 			walk.active = false;
-			slide.audio.steer_asset = snd_user_func_kart_steer;
-			slide.audio.crash_asset = snd_user_func_kart_crash;
-			slide.audio.emitter = CONFIG_AUDIO_EMITTER.USER;
+			slide.steer.audio.asset = snd_user_func_kart_steer;
+			slide.steer.audio.emitter = CONFIG_AUDIO_EMITTER.USER;
+			slide.crash.audio.asset = snd_user_func_kart_crash;
+			slide.crash.audio.emitter = CONFIG_AUDIO_EMITTER.USER;
 			break;
 	}
 }
@@ -78,7 +81,7 @@ function fn_actor_event_stepEnd()
 			else
 			{
 				call.active = true;
-				call.audio[call.audio_curr].pitch = (1 + (1.75 * (slide.speed / slide.speedMax)));
+				call.audio[call.audio_curr].pitch = (1 + (1.75 * (slide.speed / slide.speedLimit)));
 				slide.active = true;
 			}
 			break;

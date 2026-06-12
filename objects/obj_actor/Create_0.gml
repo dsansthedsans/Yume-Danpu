@@ -83,33 +83,53 @@ slide =
 	active : false,
 	mode : SLIDE_MODE_MANUAL,
 	speed : 0,
-	speedMax : 6,
-	acceleration : 0.1,
-	deceleration : 0.02,
-	// Audio played after steering or crashing
-	audio :
+	speedLimit : 5,
+	speedIncrease : 0.1, // Acceleration
+	speedDecrease : 0.02, // Deceleration
+	// Steering, facing another direction
+	steer :
 	{
-		steer_asset : undefined,
-		steer_weakVolume : 0.5,
-		steer_weakPitch : 2,
-		steer_strongVolume : 1,
-		steer_strongPitch : 1,
-		crash_asset : undefined,
-		crash_weakVolume : 0.5,
-		crash_weakPitch : 2,
-		crash_strongVolume : 1,
-		crash_strongPitch : 1,
-		emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+		audio :
+		{
+			asset : undefined,
+			emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+			volumeMin : 0.1,
+			volumeMax : 1,
+			pitchMin : 2,
+			pitchMax : 1,
+		},
+		// Shake animation
+		shake :
+		{
+			active : false,
+			timeMin : 6,
+			timeMax : 9,
+			distanceMin : 2,
+			distanceMax : 3,
+		},
 	},
-	// Shaking animation for steering or crashing
-	shake :
+	// Crashing, colliding against another object
+	crash :
 	{
-		active : true,
-		weakTime : 6,
-		weakDistance : 2,
-		strongTime : 9,
-		strongDistance : 3,
-	},
+		audio :
+		{
+			asset : undefined,
+			emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+			volumeMin : 0.1,
+			volumeMax : 1,
+			pitchMin : 2,
+			pitchMax : 1,
+		},
+		// Shake animation
+		shake :
+		{
+			active : false,
+			timeMin : 6,
+			timeMax : 9,
+			distanceMin : 2,
+			distanceMax : 3,
+		},
+	}
 }
 
 fn_actor_event_create();

@@ -65,7 +65,7 @@ function fn_prop_event_stepBegin()
 		// Doors
 		case obj_prop_dbgwrld_door: // Door to Debug World
 			if (room == rm_nexus)
-				image_alpha = fn_lerp(image_alpha, (1 - clamp((abs(distance_to_object(obj_actor_user)) / 32), 0, 1)), 0.05);
+				image_alpha = lerp(image_alpha, (1 - clamp((abs(distance_to_object(obj_actor_user)) / 32), 0, 1)), 0.05);
 			break;
 	}
 }

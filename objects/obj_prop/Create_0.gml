@@ -20,7 +20,7 @@ myself =
 	scaleY : image_yscale,
 	angle : image_angle,
 	alpha : 1,
-	// Shaking
+	// Shake animation
 	shake :
 	{
 		active : true,

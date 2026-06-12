@@ -26,4 +26,7 @@ global.config_dbg =
 	logOverdose : false, // Determines if log messages will show excessively and unnecesarily (affects performance)
 }
 if (global.config_dbg.active == true)
+{
 	fn_user_setup(0);
+	fn_fader_obj_create(rm_macaco);
+}
