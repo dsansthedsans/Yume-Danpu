@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_user_facing_south",
-    "path":"sprites/spr_user_facing_south/spr_user_facing_south.yy",
+    "name":"spr_actor_user_facing_south",
+    "path":"sprites/spr_actor_user_facing_south/spr_actor_user_facing_south.yy",
   },
   "spriteMaskId":null,
   "visible":true,

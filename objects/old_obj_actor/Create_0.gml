@@ -1,7 +1,7 @@
 
 // I'm Old!
 event_inherited();
-myself.type = "actor";
+type = "actor";
 
 // Directions
 DIR_LT = 0;

@@ -1,5 +1,4 @@
 event_inherited();
-myself.type = MYSELF_TYPE_ACTOR;
 
 /*  */
 FACING_WEST = 0;
@@ -47,9 +46,9 @@ walk =
 	active : true,
 	stage : -1,
 	mode : WALK_MODE_AUTO,
-	distance : 16,
 	time : 0,
-	timeMax : 32,
+	timeLimit : 32,
+	distance : 16,
 	// Delays the movement sequence
 	delay :
 	{
@@ -86,14 +85,14 @@ slide =
 	speedLimit : 5,
 	speedIncrease : 0.1, // Acceleration
 	speedDecrease : 0.02, // Deceleration
-	// Steering, facing another direction
+	// Steering, to face another direction
 	steer :
 	{
 		audio :
 		{
 			asset : undefined,
 			emitter : CONFIG_AUDIO_EMITTER.ACTOR,
-			volumeMin : 0.1,
+			volumeMin : 0.25,
 			volumeMax : 1,
 			pitchMin : 2,
 			pitchMax : 1,
@@ -132,7 +131,23 @@ slide =
 	}
 }
 
-fn_actor_event_create();
+/* Death animation sequence */
+death =
+{
+	active : true, // If false, the actor is immortal
+	stage : -1,
+	time : irandom_range(60, 120),
+	audio_asset : unused_snd_actor_death,
+	audio_emitter : CONFIG_AUDIO_EMITTER.ACTOR,
+	audio_pitchMin : 0.75,
+	audio_pitchMax : 1.25,
+	audio_id : undefined,
+	// Shake animation
+	shake_time : 15,
+	shake_distance : 4,
+}
+
+event_user(0);
 
 
 // HUA-LATUCA-PAYA!!!! HO-POPAPO-TUYA!!!!!!! AAAAAAAAAAAAAARRRRRRRGHHHHHHH!!!!!!!!!!!

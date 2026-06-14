@@ -39,7 +39,7 @@ if (walk.active == true)
 					if (walk.chain.active == false) || (walk.chain.active == true && abs(xstart - _x) < walk.chain.distance && abs(ystart - _y) < walk.chain.distance)
 					{
 						walk.stage = 0;
-						walk.time = walk.timeMax;
+						walk.time = walk.timeLimit;
 						walk.startX = x;
 						walk.startY = y;
 						x = _x;
@@ -57,15 +57,15 @@ if (walk.active == true)
 	// Movement sequence is active
 	if (walk.stage == 0)
 	{
-		myself.x += ((x - walk.startX) / walk.timeMax);
-		myself.y += ((y - walk.startY) / walk.timeMax);
+		myself.x += ((x - walk.startX) / walk.timeLimit);
+		myself.y += ((y - walk.startY) / walk.timeLimit);
 		if (walk.step.active == true)
 		{
 			walk.step.time -= 1;
 			if (walk.step.time <= 0)
 			{
 				myself.image += 1;
-				walk.step.time = floor(walk.timeMax / clamp((round(16 / walk.timeMax) + 1), 2, infinity)); // the clamp() is the amount of images will be added during the movement sequence
+				walk.step.time = floor(walk.timeLimit / clamp((round(16 / walk.timeLimit) + 1), 2, infinity)); // the clamp() is the amount of images will be added during the movement sequence
 				if (myself.image % 2 == 1 && walk.step.audio_asset != undefined)
 					fn_audio_play(walk.step.audio_asset, walk.step.audio_emitter);
 			}
@@ -148,6 +148,8 @@ if (slide.active == true)
 					}
 					myself.shake.time = (slide.crash.shake.timeMin + ((slide.crash.shake.timeMax - slide.crash.shake.timeMin) * (slide.speed / slide.speedLimit)));
 					myself.shake.distance = (slide.crash.shake.distanceMin + ((slide.crash.shake.distanceMax - slide.crash.shake.distanceMin) * (slide.speed / slide.speedLimit)));
+					if (slide.speed >= (slide.speedLimit / 2) && _prop.type == _prop.TYPE_ACTOR && _prop.death.active == true && _prop.death.stage == -1)
+						_prop.death.stage = 0;
 					slide.speed = 0;
 				}
 				break;
@@ -155,9 +157,35 @@ if (slide.active == true)
 		}
 		myself.x = x;
 		myself.y = y;
+		myself.image += (slide.speedIncrease * slide.speed);
 		fn_actor_stage_loop();
 		depth = -myself.y;
 		if (global.config_dbg.active == true && global.config_dbg.logOverdose == true)
 			fn_log($"x = {x} | y = {y} | myself.x = {myself.x} | myself.y = {myself.y} | slide.speed = {slide.speed}");
+	}
+}
+
+/* Death animation sequence */
+if (death.active == true && death.stage >= 0)
+{
+	if (death.stage == 0)
+	{
+		solid = false;
+		myself.imageSpeed = 0;
+		if (walk.active == true && walk.stage == -1)
+			walk.active = false;
+		death.audio_id = fn_audio_play(death.audio_asset, death.audio_emitter, , random_range(death.audio_pitchMin, death.audio_pitchMax));
+		myself.shake.time = death.shake_time;
+		myself.shake.distance = death.shake_distance;
+		death.stage = 1;
+	}
+	if (death.stage == 1)
+	{
+		myself.alpha -= (1 / death.time);
+		if (myself.alpha <= 0)
+		{
+			fn_audio_stop(death.audio_id);
+			fn_obj_destroy();
+		}
 	}
 }

@@ -2,13 +2,17 @@ fn_obj_img( , , , , , image_xscale, image_yscale, image_angle);
 fn_obj_depth();
 solid = true;
 
+TYPE_PROP = 0;
+TYPE_ACTOR = 1;
+type = ((object_get_parent(object_index) == obj_prop) ? TYPE_PROP : TYPE_ACTOR);
+
 /* Self-drawing */
-MYSELF_TYPE_PROP = 0;
-MYSELF_TYPE_ACTOR = 1;
+MYSELF_TYPE_DEFAULT = 0;
+MYSELF_TYPE_CUSTOM = 1;
 myself =
 {
 	active : true,
-	type : MYSELF_TYPE_PROP,
+	type : MYSELF_TYPE_DEFAULT,
 	sprite : sprite_index,
 	image : 0,
 	imageSpeed : 0,
@@ -16,10 +20,11 @@ myself =
 	y : y,
 	offsetX : 0,
 	offsetY : 0,
+	color : image_blend,
+	alpha : image_alpha,
 	scaleX : image_xscale,
 	scaleY : image_yscale,
 	angle : image_angle,
-	alpha : 1,
 	// Shake animation
 	shake :
 	{
@@ -54,7 +59,7 @@ talk =
 	{
 		active : false,
 		time : 0,
-		timeTarget : 30,
+		timeLimit : 30,
 		audio_assets : [snd_hulapoca, snd_penyplocde, snd_ponkawonka],
 		audio_assetsRarity : [1, 1, 1], // must be higher than 0
 		audio_emitter : CONFIG_AUDIO_EMITTER.PROP,
@@ -96,7 +101,7 @@ call =
 {
 	active : false,
 	stage : -1,
-	distance : 320, // Distance the actor needs to be near the player for current audio's volume be higher than 0
+	distance : 320, // Distance the actor needs to be near the player for the current audio volume be higher than 0
 	// Audio playlist
 	audio : undefined,
 	audio_autoplay : true,
@@ -131,4 +136,5 @@ for (var p = 0; p < passengers_lengthMax; p++)
 	}
 }
 
-fn_prop_event_create();
+if (type == TYPE_PROP)
+	event_user(0);

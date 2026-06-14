@@ -6,17 +6,18 @@ if (talk.active == true)
 	{
 		/* Types */
 		// Starts another object's interaction sequence
-		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && myself.type == MYSELF_TYPE_ACTOR && walk.stage == -1)
+		if (talk.trigger.active == true && fn_config_key_pressed(talk.trigger.key) == true && type == TYPE_ACTOR && walk.stage == -1)
 		{
 			var _target = instance_place(fn_actor_facing_x(id, x, facing_curr, talk.trigger.distance), fn_actor_facing_y(id, y, facing_curr, talk.trigger.distance), obj_prop);
-			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.myself.type == MYSELF_TYPE_PROP) || (_target.myself.type == MYSELF_TYPE_ACTOR && _target.walk.stage == -1)))
+			if (_target != noone && _target.talk.active == true && _target.talk.stage == -1 && ((_target.type == TYPE_PROP) || (_target.type == TYPE_ACTOR && _target.walk.stage == -1)))
 			{
 				talk.stage = -2;
-				walk.stage = -2;
+				if (walk.active == true)
+					walk.stage = -2;
 				talk.trigger.target = _target;
 				_target.talk.stage = 0;
 				_target.talk.trigger_id = id;
-				if (_target.myself.type == _target.MYSELF_TYPE_ACTOR)
+				if (_target.type == _target.TYPE_ACTOR && _target.walk.active == true)
 					_target.walk.stage = -2;
 			}
 		}
@@ -30,30 +31,29 @@ if (talk.active == true)
 		// Plays an audio
 		if (talk.bell.active == true)
 		{
-			var b = talk.bell;
 			if (talk.stage == 0)
 			{
 				var _roulette = array_create(0);
-				for (var a = 0; a < array_length(b.audio_assetsRarity); a++)
+				for (var a = 0; a < array_length(talk.bell.audio_assetsRarity); a++)
 				{
-					for (var r = 0; r < b.audio_assetsRarity[a]; r++)
+					for (var r = 0; r < talk.bell.audio_assetsRarity[a]; r++)
 						array_push(_roulette, a);
 				}
-				fn_audio_play(b.audio_assets[_roulette[irandom_range(0, (array_length(_roulette) - 1))]], b.audio_emitter);
+				fn_audio_play(talk.bell.audio_assets[_roulette[irandom_range(0, (array_length(_roulette) - 1))]], talk.bell.audio_emitter);
 				talk.stage = 1;
-				b.time = 0;
+				talk.bell.time = 0;
 			}
 			else if (talk.stage == 1)
 			{
-				b.time += 1;
-				if (b.time >= b.timeTarget)
+				talk.bell.time += 1;
+				if (talk.bell.time >= talk.bell.timeLimit)
 				{
 					talk.stage = -1;
-					if (myself.type == MYSELF_TYPE_ACTOR)
+					if (type == TYPE_ACTOR && walk.active == true)
 						walk.stage = -1;
 					talk.trigger_id = undefined;
 					_trigger.talk.stage = -1;
-					if (_trigger.myself.type == _trigger.MYSELF_TYPE_ACTOR)
+					if (_trigger.type == _trigger.TYPE_ACTOR && _trigger.walk.active == true)
 						_trigger.walk.stage = -1;
 					_trigger.talk.trigger.target = undefined;
 				}
@@ -72,8 +72,8 @@ if (talk.active == true)
 			}
 			else if (talk.stage == 1)
 			{
-				if (d.open.imageSpeed > 0 && (image_index + d.open.imageSpeed) < image_number)
-					image_index += d.open.imageSpeed;
+				if (d.open.imageSpeed > 0 && (myself.image + d.open.imageSpeed) < sprite_get_number(myself.sprite))
+					myself.image += d.open.imageSpeed;
 			}
 		}
 		// Unlocks an Effect, a Function or a Theme
@@ -86,7 +86,7 @@ if (talk.active == true)
 				fn_user_file_save();
 			}
 			talk.stage = -1;
-			if (myself.type == MYSELF_TYPE_ACTOR)
+			if (type == TYPE_ACTOR)
 				walk.stage = -1;
 		}
 		// CARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRYCARRY
@@ -108,24 +108,10 @@ if (talk.active == true)
 				}
 			}
 			talk.stage = -1;
-			if (myself.type == MYSELF_TYPE_ACTOR && walk.active == true)
+			if (type == TYPE_ACTOR && walk.active == true)
 				walk.stage = -1;
 		}
 	}
-	/*
-	else if (talk.stage == -2)
-	{
-		/ Types /
-		// Another object's interaction sequence has ended
-		if (talk.trigger.active == true && talk.trigger.target != undefined && talk.trigger.target.talk.stage == -1)
-		{
-			talk.stage = -1;
-			if (myself.type == MYSELF_TYPE_ACTOR)
-				walk.stage = -1;
-			talk.trigger.target = undefined;
-		}
-	}
-	*/
 }
 
 /* Plays an audio the player can only hear if they're close */

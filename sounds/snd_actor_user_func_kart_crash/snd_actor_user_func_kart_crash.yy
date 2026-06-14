@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"snd_actor_user_func_kart_crash",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":2.3258958,
+  "exportDir":"",
+  "name":"snd_actor_user_func_kart_crash",
+  "parent":{
+    "name":"Functions",
+    "path":"folders/User/Functions.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snd_actor_user_func_kart_crash.wav",
+  "volume":1.0,
+}

@@ -137,7 +137,7 @@ function fn_audio_volumeData(_asset, _vol)
 	switch (_asset)
 	{
 		// Player
-		case snd_user_step:
+		case snd_actor_user_walk_step:
 			_vol *= 0.75;
 			break;
 		
@@ -177,20 +177,20 @@ function fn_audio_volumeData(_asset, _vol)
 		
 		/* Functions */
 		// Kart
-		case snd_user_func_kart_call_0:
-		case snd_user_func_kart_call_1:
+		case snd_actor_user_func_kart_call_0:
+		case snd_actor_user_func_kart_call_1:
 			_vol *= 0.5;
 			break;
-		case snd_user_func_kart_steer:
+		case snd_actor_user_func_kart_steer:
 			_vol *= 0.5;
 			break;
-		case snd_user_func_kart_crash:
+		case snd_actor_user_func_kart_crash:
 			_vol *= 0.75;
 			break;
-		case unused_snd_user_func_kart_steer:
+		case unused_snd_actor_user_func_kart_steer:
 			_vol *= 0.35;
 			break;
-		case unused_snd_user_func_kart_crash:
+		case unused_snd_actor_user_func_kart_crash:
 			_vol *= 0.65;
 			break;
 		
@@ -206,6 +206,11 @@ function fn_audio_volumeData(_asset, _vol)
 			break;
 		case snd_prop_call_weird:
 			_vol *= 1.5;
+			break;
+		
+		/* Actors */
+		case unused_snd_actor_death:
+			_vol *= 0.25;
 			break;
 		
 		/* Menus */

@@ -46,7 +46,7 @@ function fn_actor_event_createAAAAAAAAAAAA() // Create Event determined by the a
 			move.mode.manual.active = true;
 			move.type.walk.active = true;
 			move.type.walk.fstep.active = true;
-			move.type.walk.fstep.snd_asset = snd_user_step;
+			move.type.walk.fstep.snd_asset = snd_actor_user_walk_step;
 			move.type.walk.fstep.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
 			move.type.roll.active = false;
 			
@@ -69,11 +69,11 @@ function fn_actor_event_createAAAAAAAAAAAA() // Create Event determined by the a
 				move.type.roll.active = true;
 				move.type.roll.snd_asset = snd_user_func_kart;
 				move.type.roll.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
-				move.type.roll.start.snd_asset = snd_user_func_kart_start;
+				move.type.roll.start.snd_asset = snd_actor_user_func_kart_start;
 				move.type.roll.start.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
-				move.type.roll.turn.snd_asset = snd_user_func_kart_turn;
+				move.type.roll.turn.snd_asset = snd_actor_user_func_kart_turn;
 				move.type.roll.turn.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
-				move.type.roll.hit.snd_asset = snd_user_func_kart_hit;
+				move.type.roll.hit.snd_asset = snd_actor_user_func_kart_hit;
 				move.type.roll.hit.snd_emitter = CONFIG_AUDIO_EMITTER.USER;
 			}
 		break;
