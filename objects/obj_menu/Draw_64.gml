@@ -1,24 +1,12 @@
-
-/* Template for child objects:
 if (is_array(lvl) == true)
 {
-	// ??? level
-	if (lvl_curr == 0) || (lvl_fader.next.lvl == 0)
-	{	
-		var l = 0;
-	}
-}
-*/
-
-if (is_array(lvl) == true)
-{
+	event_user(3);
 	for (var l = 1; l < array_length(lvl); l++)
 	{
 		if (is_struct(lvl[l]) == true && lvl[l].alpha > 0)
 		{
 			var _shdw_cols = [global.user.theme[global.user.theme_curr].color.blackLight, global.user.theme[global.user.theme_curr].color.blackDark];
 			var _shdw_alp = global.user.theme[global.user.theme_curr].alpha.shadow;
-			
 			// Rectangles
 			if (is_array(lvl[l].rect) == true)
 			{
@@ -264,4 +252,5 @@ if (is_array(lvl) == true)
 			}
 		}
 	}
+	event_user(4);
 }

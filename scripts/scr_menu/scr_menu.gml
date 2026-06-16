@@ -335,9 +335,6 @@ function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 			}
 		}
 	}
-	
-	
-	event_user(3);
 }
 function fn_menu_lvl_option_value_getWidthMax(_lvl)
 {

@@ -1,3 +1,4 @@
+
 /* Interaction sequence */
 if (talk.active == true)
 {
