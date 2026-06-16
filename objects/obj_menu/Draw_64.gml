@@ -38,8 +38,8 @@ if (is_array(lvl) == true)
 					if (_train.x != undefined && _train.x != undefined)
 					{
 						var _train_spr = ((_train.spr != undefined) ? _train.spr : global.user.theme[global.user.theme_curr].spr.train)
-						var _train_xGap = lengthdir_x(fn_spr_width(_train_spr), _train.angle);
-						var _train_yGap = lengthdir_y(fn_spr_height(_train_spr), _train.angle);
+						var _train_xGap = lengthdir_x(fn_sprite_width(_train_spr), _train.angle);
+						var _train_yGap = lengthdir_y(fn_sprite_height(_train_spr), _train.angle);
 						_train.offsetX += _train.xSpeed;
 						_train.offsetY += _train.ySpeed;
 						if (abs(_train.offsetX) >= abs(_train_xGap)) || (global.config.access.reduceMotion.active == true)
@@ -80,7 +80,7 @@ if (is_array(lvl) == true)
 								var _lbl_y = round(_panel_y - (_panel.title.height / 2) - (fn_text_height("Salenis") / 2) + 1);
 								var _lbl_cols = ((_lbl.color != undefined) ? _lbl.color : [global.user.theme[global.user.theme_curr].color.whiteLight, global.user.theme[global.user.theme_curr].color.whiteDark]);
 								var _lbl_alp = ((_lbl.alpha != undefined) ? _lbl.alpha : global.user.theme[global.user.theme_curr].alpha.panel_title_label);
-								fn_draw_text(textdata(_title.label.text), _lbl_x, _lbl_y, _lbl_cols, (_lbl_alp * _panel.alpha * lvl[l].alpha), , , , , _shdw_cols, _shdw_alp);
+								fn_draw_text(fn_config_lang_data(_title.label.text), _lbl_x, _lbl_y, _lbl_cols, (_lbl_alp * _panel.alpha * lvl[l].alpha), , , , , _shdw_cols, _shdw_alp);
 							}
 						}
 						// Panel
@@ -118,12 +118,12 @@ if (is_array(lvl) == true)
 							var _ico = _lbl.icon;
 							var _ico_xGap = ((_ico.xGap != undefined) ? _ico.xGap : fn_menu_lvl_label_icon_xGap_getDflt(l, a));
 							var _ico_x = round((_ico.x != undefined) ? _ico.x : (_lbl_x - _ico_xGap));
-							var _ico_y = round((_ico.y != undefined) ? _ico.y : (_lbl_y + round(fn_textdata_height(_lbl.text) / 2) - round(fn_spr_height(_ico.spr) / 2) + 1));
+							var _ico_y = round((_ico.y != undefined) ? _ico.y : (_lbl_y + round(fn_textdata_height(_lbl.text) / 2) - round(fn_sprite_height(_ico.spr) / 2) + 1));
 							var _ico_col = ((_ico.color != undefined) ? _ico.color : _lbl_cols[0]);
 							fn_draw_spr(_ico.spr, _ico.img, _ico_x, _ico_y, _ico_col, (_ico.alpha * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 						}
 						// Label
-						fn_draw_text(textdata(_lbl.text), _lbl_x, _lbl_y, _lbl_cols, lvl[l].alpha, , , _lbl.xAlign, _lbl.yAlign, _shdw_cols, _shdw_alp);
+						fn_draw_text(fn_config_lang_data(_lbl.text), _lbl_x, _lbl_y, _lbl_cols, lvl[l].alpha, , , _lbl.xAlign, _lbl.yAlign, _shdw_cols, _shdw_alp);
 					}
 				}
 			}
@@ -166,7 +166,7 @@ if (is_array(lvl) == true)
 						if (_opt.select.active == true)
 						{
 							var _slct = _opt.select;
-							_slct.alpha = fn_lerp(_slct.alpha, _slct.alphaTarget[(o == lvl[l].option_curr)], ((global.config.access.reduceMotion.active == false) ? _slct.alphaSpeed : 1));
+							_slct.alpha = lerp(_slct.alpha, _slct.alphaTarget[(o == lvl[l].option_curr)], ((global.config.access.reduceMotion.active == false) ? _slct.alphaSpeed : 1));
 							if (_slct.alpha > 0)
 							{
 								var _slct_spr = ((_slct.spr != undefined) ? _slct.spr : global.user.theme[global.user.theme_curr].spr.option_select);
@@ -189,7 +189,7 @@ if (is_array(lvl) == true)
 							var _ico = _opt.icon;
 							var _ico_xGap = round((_ico.xGap != 0) ? _ico.xGap : fn_menu_lvl_option_icon_xGap_getDflt(l, o));
 							var _ico_x = round((_ico.x != 0) ? _ico.x : (_opt_x - _ico_xGap));
-							var _ico_y = round((_ico.y != 0) ? _ico.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_ico.spr) / 2) + 1));
+							var _ico_y = round((_ico.y != 0) ? _ico.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_sprite_height(_ico.spr) / 2) + 1));
 							var _ico_cols = ((_ico.colors != undefined) ? _ico.colors : [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.whiteLight]);
 							fn_draw_spr(_ico.spr, _ico.img, _ico_x, _ico_y, _ico_cols[(o == lvl[l].option_curr)], (_ico.alphas[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 						}
@@ -197,8 +197,8 @@ if (is_array(lvl) == true)
 						if (is_struct(_opt.check) == true && _opt.check.spr != undefined)
 						{
 							var _check = _opt.check;
-							var _check_x = round((_check.x != 0) ? _check.x : (_opt_x - _check.xPad - fn_spr_width(_check.spr)));
-							var _check_y = round((_check.y != 0) ? _check.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_spr_height(_check.spr) / 2) + 1));
+							var _check_x = round((_check.x != 0) ? _check.x : (_opt_x - _check.xPad - fn_sprite_width(_check.spr)));
+							var _check_y = round((_check.y != 0) ? _check.y : (_opt_y + round(fn_textdata_height(_opt.text) / 2) - round(fn_sprite_height(_check.spr) / 2) + 1));
 							fn_draw_spr(_opt.check.spr, 0, _check_x, _check_y, _check.color, (_check.alpha[(o == lvl[l].option_curr)] * lvl[l].alpha), , , , _shdw_cols[0], _shdw_alp);
 								// Mark
 							if (_opt.check.mark.active == true)
@@ -211,7 +211,7 @@ if (is_array(lvl) == true)
 						}
 						
 						// Option
-						fn_draw_text(textdata(_opt.text), _opt_x, _opt_y, _opt_colors[(o == lvl[l].option_curr)], lvl[l].alpha, , , _opt.xAlign, _opt.yAlign, _shdw_cols, _shdw_alp);
+						fn_draw_text(fn_config_lang_data(_opt.text), _opt_x, _opt_y, _opt_colors[(o == lvl[l].option_curr)], lvl[l].alpha, , , _opt.xAlign, _opt.yAlign, _shdw_cols, _shdw_alp);
 							
 							// Value (the text beside the options in the settings menu, like "Yes", "No" and "100%")
 						if (is_struct(_opt.value) == true && _opt.value.text != "")
@@ -220,11 +220,11 @@ if (is_array(lvl) == true)
 							var _val_x = round((_val.x != 0) ? _val.x : (_opt_x + fn_textdata_width(_opt.text) + _opt.value.xGap + (fn_textdata_width(_val.text) / 2)));
 							var _val_y = round((_val.y != 0) ? _val.y : (_opt_y + ceil(fn_textdata_height("Salenis") / 2)));
 							var _val_cols = ((_val.colors != undefined) ? _val.colors : [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.grayDark]);
-							_val.colorVal = fn_lerp(_val.colorVal, _val.colorValTargets[false], _val.colorValSpeed);
+							_val.colorVal = lerp(_val.colorVal, _val.colorValTargets[false], _val.colorValSpeed);
 							for (var c = 0; c < 2; c++)
 								_val_cols[c] = make_colour_hsv(colour_get_hue(_val_cols[c]), colour_get_saturation(_val_cols[c]), (colour_get_value(_val_cols[c]) + _val.colorVal));
-							_val.scale = fn_lerp(_val.scale, _val.scaleTargets[false], _val.scaleSpeed);
-							fn_draw_text(textdata(_val.text), _val_x, _val_y, _val_cols, (_val.alphas[(o == lvl[l].option_curr)] * lvl[l].alpha), _val.scale, _val.scale, _val.xAlign, _val.yAlign, _shdw_cols, _shdw_alp);
+							_val.scale = lerp(_val.scale, _val.scaleTargets[false], _val.scaleSpeed);
+							fn_draw_text(fn_config_lang_data(_val.text), _val_x, _val_y, _val_cols, (_val.alphas[(o == lvl[l].option_curr)] * lvl[l].alpha), _val.scale, _val.scale, _val.xAlign, _val.yAlign, _shdw_cols, _shdw_alp);
 								
 								// Value's arrows
 							if (o == lvl[l].option_curr && (_val.arrow[0].active == true || _val.arrow[1].active == true))
@@ -232,8 +232,8 @@ if (is_array(lvl) == true)
 								var _arrow = _val.arrow;
 								for (var a = 0; a < 2; a++)
 								{
-									_arrow[a].alpha = fn_lerp(_arrow[a].alpha, _arrow[a].alphaTargets[false], _arrow[a].alphaSpeed);
-									_arrow[a].scale = fn_lerp(_arrow[a].scale, _arrow[a].scaleTargets[false], _arrow[a].scaleSpeed);
+									_arrow[a].alpha = lerp(_arrow[a].alpha, _arrow[a].alphaTargets[false], _arrow[a].alphaSpeed);
+									_arrow[a].scale = lerp(_arrow[a].scale, _arrow[a].scaleTargets[false], _arrow[a].scaleSpeed);
 									if (_arrow[a].move.active == true && global.config.access.reduceMotion.active == false)
 									{
 										if (_arrow[a].move.wait >= _arrow[a].move.waitMax)

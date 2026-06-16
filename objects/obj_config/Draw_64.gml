@@ -11,8 +11,8 @@ if (global.config.video.fullscreen.active == true) // Draws black rectangles to 
 if (global.config.video.showVer.active == true) // Draws Version
 {
 	var _showVer_spr = spr_config_video_showVer;
-	var _showVer_width = fn_spr_width(_showVer_spr);
-	var _showVer_height = fn_spr_height(_showVer_spr);
+	var _showVer_width = fn_sprite_width(_showVer_spr);
+	var _showVer_height = fn_sprite_height(_showVer_spr);
 	var _showVer_x = (_res_width - 4 - _showVer_width);
 	var _showVer_y = (_res_height - 4 - _showVer_height);
 	var _showVer_color = [global.user.theme[global.user.theme_curr].color.grayLight, global.user.theme[global.user.theme_curr].color.whiteLight];

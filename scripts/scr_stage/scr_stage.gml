@@ -59,7 +59,7 @@ function fn_stage_event_stepBegin()
 	// Main Menu
 	if (room == rm_menu_home)
 	{
-		if (global.config.lang_hasChosen == true && fn_obj_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
+		if (global.config.lang_hasChosen == true && fn_object_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
 			fn_stage_music_add(0, mus_menu_home);
 	}
 	
@@ -75,7 +75,7 @@ function fn_stage_event_stepBegin()
 		fn_stage_music_add(0, mus_dbgwrld);
 	
 	// Resets all music if the transition is active
-	if (fn_obj_exists(obj_fader) == true)
+	if (fn_object_exists(obj_fader) == true)
 	{
 		for (var i = 0; i < music_lengthMax; i++)
 			fn_stage_music_add(i, undefined);
@@ -94,11 +94,11 @@ function fn_stage_music_add(_index, _asset, _emitter = CONFIG_AUDIO_EMITTER.MUS,
 // Clouds
 function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _scaleX = 1, _scaleY = 1, _alpha = 1, _loop_xDist = 640, _loop_yDist = 480, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
 {
-	bg[_index] = fn_obj_create(obj_stage_bg_clouds);
+	bg[_index] = fn_object_create(obj_stage_bg_clouds);
 	with (bg[_index])
 	{
-		fn_obj_img( , , , , 0)
-		fn_obj_depth( , (layer_get_depth("Background") - 1 - _index));
+		fn_object_imageSetup( , , , , 0)
+		fn_object_depth( , (layer_get_depth("Background") - 1 - _index));
 		
 		clouds =
 		{
@@ -152,15 +152,15 @@ function fn_stage_bg_clouds_add(_index, _sprite, _image = 0, _scaleX = 1, _scale
 // Sky
 function fn_stage_bg_sky_add(_index, _sprite, _image = 0, _color = c_white, _alpha = 1, _move_xTime_inSeconds = 60, _move_yTime_inSeconds = _move_xTime_inSeconds)
 {
-	bg[_index] = fn_obj_create(obj_stage_bg_sky);
+	bg[_index] = fn_object_create(obj_stage_bg_sky);
 	with (bg[_index])
 	{
-		fn_obj_img( , , , , 0)
-		fn_obj_depth( , (layer_get_depth("Background") - 1 - _index));
+		fn_object_imageSetup( , , , , 0)
+		fn_object_depth( , (layer_get_depth("Background") - 1 - _index));
 		
 		var _spriteOrig = _sprite;
-		var _widthOrig = fn_spr_width(_spriteOrig);
-		var _heightOrig = fn_spr_height(_spriteOrig);
+		var _widthOrig = fn_sprite_width(_spriteOrig);
+		var _heightOrig = fn_sprite_height(_spriteOrig);
 		_sprite = sprite_duplicate(_sprite);
 		var _slice = sprite_nineslice_create();
 		_slice.enabled = true;

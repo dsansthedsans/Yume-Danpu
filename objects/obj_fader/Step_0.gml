@@ -11,8 +11,8 @@ if (type.fade.active == true)
 		_iris.siner += 0.1;
 		_iris.offsetX += (cos(_iris.siner) / 2);
 		_iris.offsetY += (sin(_iris.siner) / 2);
-		_iris.radius = fn_lerp(_iris.radius, 0, _iris.radiusSpeed);
-		_iris.alpha = fn_lerp(_iris.alpha, 1, _iris.alphaSpeed);
+		_iris.radius = lerp(_iris.radius, 0, _iris.radiusSpeed);
+		_iris.alpha = lerp(_iris.alpha, 1, _iris.alphaSpeed);
 		if (_iris.snd_asset != undefined && _iris.snd_emitter != undefined && _iris.snd_id == undefined)
 			_iris.snd_id = fn_audio_play(_iris.snd_asset, _iris.snd_emitter);
 		if (stage == -1 && _iris.radius <= _iris.radiusTarget && _iris.snd_id != undefined)
@@ -21,7 +21,7 @@ if (type.fade.active == true)
 	// Fades out of the source room
 	if (stage == 0)
 	{
-		type.fade.alpha = fn_lerp(type.fade.alpha, 1, type.fade.alphaSpeed);
+		type.fade.alpha = lerp(type.fade.alpha, 1, type.fade.alphaSpeed);
 		if (type.fade.alpha >= (1 - type.fade.alphaJump))
 		{
 			stage = 1;
@@ -34,7 +34,7 @@ if (type.fade.active == true)
 	// Fades in to the target room
 	else if (stage == 1)
 	{
-		if (target.user.ready == false && fn_obj_exists(obj_actor_user) == true)
+		if (target.user.ready == false && fn_object_exists(obj_actor_user) == true)
 		{
 			var _user = obj_actor_user;
 			_user.x = ((target.user.x != undefined) ? target.user.x : _user.x);
@@ -43,18 +43,18 @@ if (type.fade.active == true)
 			_user.myself.y = _user.y;
 			_user.facing_curr = ((target.user.facing != undefined) ? target.user.facing : _user.facing_curr);
 			_user.walk.stage = -2;
-			fn_obj_depth(_user);
+			fn_object_depth(_user);
 			target.user.ready = true;
 		}
 		if (type.fade.wait.dur > 0)
 			type.fade.wait.dur -= 1;
 		else
 		{
-			type.fade.alpha = fn_lerp(type.fade.alpha, 0, type.fade.alphaSpeed);
+			type.fade.alpha = lerp(type.fade.alpha, 0, type.fade.alphaSpeed);
 			if (type.fade.alpha <= type.fade.alphaJump)
 			{
-				fn_obj_destroy();
-				if (fn_obj_exists(obj_actor_user) == true)
+				fn_object_destroy();
+				if (fn_object_exists(obj_actor_user) == true)
 					obj_actor_user.walk.stage = -1;
 			}
 		}

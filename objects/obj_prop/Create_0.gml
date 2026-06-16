@@ -1,5 +1,5 @@
-fn_obj_img( , , , , , image_xscale, image_yscale, image_angle);
-fn_obj_depth();
+fn_object_imageSetup( , , , , , image_xscale, image_yscale, image_angle);
+fn_object_depth();
 solid = true;
 
 TYPE_PROP = 0;

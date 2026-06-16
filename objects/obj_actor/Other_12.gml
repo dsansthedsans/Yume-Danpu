@@ -11,7 +11,6 @@ switch (object_index)
 		}
 		else
 		{
-			fn_log($"{talk.trigger.active} | {fn_config_key_pressed(talk.trigger.key)} | {type} | {walk.stage}");
 			talk.trigger.active = true;
 			call.active = true;
 			call.audio[call.audio_curr].pitch = (1 + (2 * (slide.speed / slide.speedLimit)) + random(0.5));

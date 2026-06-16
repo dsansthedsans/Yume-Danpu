@@ -7,9 +7,9 @@ if (func_old != global.user.func_curr) || (effect_old != global.user.effect_curr
 }
 event_inherited();
 
-if (fn_config_key_pressed(CONFIG_KEY.MENU_USER) == true && fn_obj_exists(obj_menu_user) == false && move.active == true && move.stage == -1)
+if (fn_config_key_pressed(CONFIG_KEY.MENU_USER) == true && fn_object_exists(obj_menu_user) == false && move.active == true && move.stage == -1)
 {
-	fn_obj_create(obj_menu_user);
+	fn_object_create(obj_menu_user);
 	move.active = false;
 }
 

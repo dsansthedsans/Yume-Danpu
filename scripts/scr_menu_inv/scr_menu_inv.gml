@@ -38,8 +38,8 @@ function fn_menu_inv_event_create_0()
 	
 			// Player's picture frame
 	main_picFrm_spr = global.user.theme[global.user.theme_curr].inv_picFrm_spr;
-	main_picFrm_w = fn_spr_width(main_picFrm_spr);
-	main_picFrm_h = fn_spr_height(main_picFrm_spr);
+	main_picFrm_w = fn_sprite_width(main_picFrm_spr);
+	main_picFrm_h = fn_sprite_height(main_picFrm_spr);
 	main_picFrm_x = (box_x[l, 0] + round(box_w[l, 0] / 2) - round(main_picFrm_w / 2));
 	main_picFrm_y = (box_y[l, 0] + draw_dist);
 	
@@ -52,8 +52,8 @@ function fn_menu_inv_event_create_0()
 		main_pic_snd = snd_actor_macaco_monkey_1;
 	}
 	
-	main_pic_w = fn_spr_width(main_pic_spr);
-	main_pic_h = fn_spr_height(main_pic_spr);
+	main_pic_w = fn_sprite_width(main_pic_spr);
+	main_pic_h = fn_sprite_height(main_pic_spr);
 	main_pic_x = (main_picFrm_x + round(main_picFrm_w / 2) - round(main_pic_w / 2));
 	main_pic_y = (main_picFrm_y + round(main_picFrm_h / 2) + round(main_pic_h / 2) - 1);
 	main_pic_xSc = 1;
@@ -85,8 +85,8 @@ function fn_menu_inv_event_create_0()
 	
 			// Icon of the user's money
 	main_mnyIco_spr = spr_menu_inv_mnyIco;
-	main_mnyIco_w = fn_spr_width(main_mnyIco_spr);
-	main_mnyIco_h = fn_spr_height(main_mnyIco_spr);
+	main_mnyIco_w = fn_sprite_width(main_mnyIco_spr);
+	main_mnyIco_h = fn_sprite_height(main_mnyIco_spr);
 	var _mnyIco_xTextGap = round(draw_dist / 4);
 	var _mnyIco_wAll = (main_mnyIco_w + _mnyIco_xTextGap + _ccy_w + _mny_w);
 	main_mnyIco_x = (main_picFrm_x + round(main_picFrm_w / 2) - round(_mnyIco_wAll / 2) - 1);
@@ -128,8 +128,8 @@ function fn_menu_inv_event_create_0()
 	
 			// Icon of the options [#0]
 	main_optIco_spr = spr_menu_inv_optIco;
-	main_optIco_w = fn_spr_width(main_optIco_spr);
-	main_optIco_h = fn_spr_height(main_optIco_spr);
+	main_optIco_w = fn_sprite_width(main_optIco_spr);
+	main_optIco_h = fn_sprite_height(main_optIco_spr);
 	var _optIco_xTextGap = _mnyIco_xTextGap;
 	var _optIco_wAll = (main_optIco_w + _optIco_xTextGap + opt_wMax[l]);
 	main_optIco_x = (box_x[l, 1] + round(box_w[l, 1] / 2) - round(_optIco_wAll / 2) - 1);

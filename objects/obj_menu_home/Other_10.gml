@@ -18,7 +18,7 @@ else if (l == LVL_MAIN)
 	else if (o == 1)
 	{
 		fn_menu_lvl_fader_start(LVL_EMPTY);
-		fn_obj_create(obj_menu_config);
+		fn_object_create(obj_menu_config);
 	}
 	else if (o == 2)
 		fn_menu_lvl_fader_start(LVL_EMPTY, , , true, 90, snd_fader_portal);

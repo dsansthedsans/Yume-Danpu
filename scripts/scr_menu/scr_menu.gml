@@ -1,8 +1,5 @@
 
-//////// Functions related to the menu system
-
-
-// Levels
+/* Levels */
 function fn_menu_lvl_add(_idx)
 {
 	lvl[_idx] =
@@ -56,8 +53,7 @@ function fn_menu_lvl_add(_idx)
 		}
 	}
 }
-
-	// Fade transition
+// Fade transition
 function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy = false, _next_endgame = false, _next_wait_dur = 0, _prev_snd = undefined)
 {
 	lvl_fader =
@@ -82,8 +78,7 @@ function fn_menu_lvl_fader_start(_next_lvl, _next_snd = undefined, _next_destroy
 		}
 	}
 }
-
-	// Rectangles
+// Rectangles
 function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined, _colors = [c_black, c_black, c_black, c_black], _alpha = 1)
 {
 	lvl[_lvl].rect[_idx] =
@@ -96,8 +91,7 @@ function fn_menu_lvl_rect_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 		alpha : _alpha,
 	}
 }
-
-	// Triangle trains
+// Triangle trains
 function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpeed = 0, _ySpeed = 0, _alpha = 1, _angle = 0)
 {
 	var l = _lvl;
@@ -117,8 +111,7 @@ function fn_menu_lvl_train_add(_lvl, _idx, _x = undefined, _y = undefined, _xSpe
 		angle : _angle,
 	}
 }
-
-	// Panels
+// Panels
 function fn_menu_lvl_panel_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined, _alpha = 1)
 {
 	var l = _lvl;
@@ -154,8 +147,7 @@ function fn_menu_lvl_panel_title_add(_lvl, _idx, _title_label_text = undefined)
 		}
 	}
 }
-
-	// Cards
+// Cards
 function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width = undefined, _height = undefined)
 {
 	var l = _lvl;
@@ -171,8 +163,7 @@ function fn_menu_lvl_card_add(_lvl, _idx, _x = undefined, _y = undefined, _width
 		height : _height
 	}
 }
-
-	// Labels
+// Labels
 function fn_menu_lvl_label_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _colors = undefined, _xAlign = fa_left, _yAlign = fa_top)
 {
 	var l = _lvl;
@@ -207,10 +198,9 @@ function fn_menu_lvl_label_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 }
 function fn_menu_lvl_label_icon_xGap_getDflt(_lvl, _idx)
 {
-	return (fn_spr_width(lvl[_lvl].label[_idx].icon.spr) + 5)
+	return (fn_sprite_width(lvl[_lvl].label[_idx].icon.spr) + 5)
 }
-
-	// Decorations
+// Decorations
 function fn_menu_lvl_decor_add(_lvl, _idx, _spr = undefined, _img = 0, _x = undefined, _y = undefined, _color = c_white, _alpha = 1)
 {
 	var l = _lvl;
@@ -226,7 +216,7 @@ function fn_menu_lvl_decor_add(_lvl, _idx, _spr = undefined, _img = 0, _x = unde
 	}
 }
 
-/* Options */
+	/* Options */
 function fn_menu_lvl_option_add(_lvl, _idx, _text = undefined, _x = undefined, _y = undefined, _select_act = true)
 {	
 	var l = _lvl;
@@ -270,10 +260,10 @@ function fn_menu_lvl_option_getWidthMax(_lvl)
 	var l = _lvl;
 	var _widthMax = 0;
 	for (var o = 0; o < array_length(lvl[l].option); o++)
-		_widthMax = max(_widthMax, fn_text_width(textdata(lvl[l].option[o].text)));
+		_widthMax = max(_widthMax, fn_text_width(fn_config_lang_data(lvl[l].option[o].text)));
 	return _widthMax;
 }
-// Icon
+	// Icon
 function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 {
 	var l = _lvl;
@@ -291,9 +281,9 @@ function fn_menu_lvl_option_icon_add(_lvl, _idx, _spr = undefined, _img = 0)
 }
 function fn_menu_lvl_option_icon_xGap_getDflt(_lvl, _idx)
 {
-	return (fn_spr_width(lvl[_lvl].option[_idx].icon.spr) + 5)
+	return (fn_sprite_width(lvl[_lvl].option[_idx].icon.spr) + 5)
 }
-// Value
+	// Value
 function fn_menu_lvl_option_value_add(_lvl, _idx, _xGap = 32)
 {
 	var l = _lvl;
@@ -357,11 +347,11 @@ function fn_menu_lvl_option_value_getWidthMax(_lvl)
 	{
 		var _opt = lvl[l].option[o];
 		if (_opt.value != -1)
-			_widthMax = max(_widthMax, fn_text_width(textdata(lvl[l].option[o].value.text)));
+			_widthMax = max(_widthMax, fn_text_width(fn_config_lang_data(lvl[l].option[o].value.text)));
 	}
 	return _widthMax;
 }
-// Checkbox
+	// Checkbox
 function fn_menu_lvl_option_check_add(_lvl, _idx)
 {
 	var l = _lvl;
@@ -391,7 +381,7 @@ function fn_menu_lvl_option_check_add(_lvl, _idx)
 		}
 	}
 }
-// Button
+	// Button
 function fn_menu_lvl_option_button_add(_lvl, _idx)
 {
 	var l = _lvl;

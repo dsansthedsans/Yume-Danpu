@@ -1,6 +1,6 @@
 
-fn_obj_img( , , , , 0);
-fn_obj_depth( , -15000);
+fn_object_imageSetup( , , , , 0);
+fn_object_depth( , -15000);
 
 // Graphics
 	// Resolution

@@ -4,7 +4,12 @@ event_inherited();
 // Walking movement sequence
 if (walk.active == true)
 {
-	// Movement sequence is inactive, waiting/preparing to activate
+	// Movement sequence is inactive and cannot be activated
+	if (walk.stage == -2)
+	{
+		
+	}
+	// Movement sequence is inactive and waiting/preparing to activate
 	if (walk.stage == -1)
 	{
 		walk.delay.time -= 1;
@@ -86,7 +91,7 @@ if (walk.active == true)
 			}
 		}
 		fn_actor_stage_loop();
-		fn_obj_depth(, -myself.y);
+		fn_object_depth(, -myself.y);
 	}
 }
 // Sliding movement sequence
@@ -148,7 +153,9 @@ if (slide.active == true)
 					}
 					myself.shake.time = (slide.crash.shake.timeMin + ((slide.crash.shake.timeMax - slide.crash.shake.timeMin) * (slide.speed / slide.speedLimit)));
 					myself.shake.distance = (slide.crash.shake.distanceMin + ((slide.crash.shake.distanceMax - slide.crash.shake.distanceMin) * (slide.speed / slide.speedLimit)));
-					if (slide.speed >= (slide.speedLimit / 2) && _prop.type == _prop.TYPE_ACTOR && _prop.death.active == true && _prop.death.stage == -1)
+					if (slide.speed >= slide.speedLimit/2 && _prop.talk.active == true && _prop.talk.stage == -1 && _prop.talk.bell.active == true)
+						_prop.talk.stage = 0;
+					if (slide.speed >= slide.speedLimit && _prop.type == _prop.TYPE_ACTOR && _prop.death.active == true && _prop.death.stage == -1)
 						_prop.death.stage = 0;
 					slide.speed = 0;
 				}
@@ -185,7 +192,7 @@ if (death.active == true && death.stage >= 0)
 		if (myself.alpha <= 0)
 		{
 			fn_audio_stop(death.audio_id);
-			fn_obj_destroy();
+			fn_object_destroy();
 		}
 	}
 }

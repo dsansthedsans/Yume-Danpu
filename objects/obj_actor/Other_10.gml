@@ -11,7 +11,6 @@
 /* Custom (per-object customization) */
 switch (object_index)
 {
-	// User
 	case obj_actor_user:
 		talk.active = true;
 		talk.trigger.active = true;

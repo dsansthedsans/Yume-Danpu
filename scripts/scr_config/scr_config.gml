@@ -1,15 +1,11 @@
-
-//////// Functions related to the user's settings 
-
 function fn_config_setup()
 {
-	/* Config */
 	global.config =
 	{
 		name : "Yume Danpu",
 		version : 0.05,
 		
-		// Languages
+		/* Languages */
 		lang : [-1],
 		lang_fnt :
 		{
@@ -18,9 +14,11 @@ function fn_config_setup()
 		lang_data : -1,
 		lang_curr : 0,
 		lang_hasChosen : false,
-		// Keybinds
+		
+		/* Keybinds */
 		key : [-1],
-		// Graphics
+		
+		/* Graphics */
 		video :
 		{
 			// Resolution
@@ -64,12 +62,14 @@ function fn_config_setup()
 				name : "config_video_showBdr_name"
 			},
 		},
-		// Music & Sounds
+		
+		/* Music & Sounds */
 		audio :
 		{
 			emitter : [-1]
 		},
-		// Accessibility
+		
+		/* Accessibility*/
 		access :
 		{
 			// Reduced Motion
@@ -79,9 +79,13 @@ function fn_config_setup()
 				name : "config_access_reduceMotion_name"
 			}
 		},	
+		
+		/* File handling */
+		file_name : undefined,
+		file_msg : undefined,
 	}
 	
-	// File (Creates the file directory if needed; Loads the previously selected language if there's already a file)
+	/* File handling (Creates file directory if there isn't one, else the language is set to the one saved on the file) */
 	global.config.file_name = string(global.config.version) + "/config.ini";
 	global.config.file_msg = choose("There's an in-game options menu. I think you'll like it.", "Is this Notepad World?" /*Reference to Yume Nikki*/, "Are you by any chance on Linux?", "Looking for super-secret settings?" /*Reference to Minecraft*/, "You're probably looking for the other file.", "The Booleans!" /*Reference to Back to the Future (1985)*/, "Look how cool you are, changing your settings directly in the file.", "How about exploring in-game?");
 	if (directory_exists(global.config.version) == false)
@@ -89,12 +93,13 @@ function fn_config_setup()
 	else if (file_exists(global.config.file_name) == true)
 	{
 		if (irandom_range(1, 100) <= 5)
-			global.config.name = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume-Danpu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy", "Yum Djampp", "Danbu Yambu", "Dumpgame 2");		
+			global.config.name = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume-Danpu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy", "Yum Djampp", "Danbu Yambu", "Dumpgame 2", "Homestuck");		
 		ini_open(global.config.file_name);
 		global.config.lang_curr = ini_read_real("lang", "curr", CONFIG_LANG.enUS);
 		ini_close();
 	}	
-	// Languages
+	
+	/* Languages */
 	global.config.lang_data = load_csv("config_lang_data.csv");
 	enum CONFIG_LANG
 	{
@@ -103,7 +108,8 @@ function fn_config_setup()
 	}
 	fn_config_lang_add(CONFIG_LANG.enUS, "enUS");
 	fn_config_lang_add(CONFIG_LANG.ptBR, "ptBR");
-	// Keybinds
+	
+	/* Keybinds */
 	enum CONFIG_KEY
 	{
 		WEST,			// Left
@@ -129,7 +135,8 @@ function fn_config_setup()
 	fn_config_key_add(CONFIG_KEY.FULLSCREEN,	"fullscreen",	vk_f4, vk_f11);
 	fn_config_key_add(CONFIG_KEY.MENU_USER,		"menu_user",	ord("C"), vk_control);
 	fn_config_key_add(CONFIG_KEY.MENU_PAUSE,	"menu_pause",	vk_escape);
-	// Graphics
+	
+	/* Graphics */
 	window_set_caption(global.config.name);
 	window_set_color(c_black);
 	var i = 0;
@@ -137,7 +144,8 @@ function fn_config_setup()
 	fn_config_video_resolution_add(i++, 640, 480);
 	fn_config_video_resolution_add(i++, 960, 720);
 	fn_config_video_resolution_add(i++, 1280, 960);
-	// Music & Sounds
+	
+	/* Music & Sounds */
 	enum CONFIG_AUDIO_EMITTER
 	{
 		MASTER, // Master
@@ -155,13 +163,15 @@ function fn_config_setup()
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.USER,		"user");
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.PROP,		"prop");
 	fn_config_audio_emitter_add(CONFIG_AUDIO_EMITTER.ACTOR,		"actor");
-		// File
+		
+	/* File handling (Saves to a new file if there isn't one, else it loads from the pre-existing file) */
 	if (file_exists(global.config.file_name) == false)
 		fn_config_file_save();
 	else
 		fn_config_file_load();
 }
-	// File
+
+/* File handling */
 function fn_config_file_save()
 {
 	ini_open(global.config.file_name);
@@ -218,7 +228,8 @@ function fn_config_file_erase()
 {
 	file_delete(global.config.file_name)
 }
-	// Languages
+
+/* Languages */
 function fn_config_lang_add(_index, _code)
 {
 	global.config.lang[_index] =
@@ -233,7 +244,7 @@ function fn_config_lang_mod(_new)
 	global.config.lang_curr = _new;
 	fn_config_file_save();
 }
-function textdata(_key)
+function fn_config_lang_data(_key)
 {
 	var _grid = global.config.lang_data;
 	var _text = undefined;
@@ -245,7 +256,6 @@ function textdata(_key)
 			fn_log($"The function lang_data() was called and unable to retrieve the desired text. The provided key was \"{_key}\".");
 		_text = _key;
 	}
-	
 	if (global.config_dbg.textdataCorruption == true)
 	{
 		var _text_old = _text;
@@ -253,10 +263,10 @@ function textdata(_key)
 		for (var i = 0; i < string_length(_text_old); i++)
 			_text = $"{_text}Â"
 	}
-	
 	return _text;
 }
-	// Keybinds
+
+/* Keybinds */
 function fn_config_key_add(_index, _code, _main, _alt = -1)
 {
 	global.config.key[_index] =
@@ -284,7 +294,8 @@ function fn_config_key_lazy()
 		pressed[k] = fn_config_key_pressed(k);
 	}
 }
-	// Graphics
+
+/* Graphics */
 function fn_config_video_resolution_add(_index, _width, _height)
 {
 	global.config.video.resolution[_index] =
@@ -293,7 +304,8 @@ function fn_config_video_resolution_add(_index, _width, _height)
 		height : _height,
 	}
 }
-	// Music & Sounds
+
+/* Music & Sounds */
 function fn_config_audio_emitter_add(_index, _code, _volume = 1, _pitch = 1)
 {
 	global.config.audio.emitter[_index] =

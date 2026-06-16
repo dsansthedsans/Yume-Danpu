@@ -57,11 +57,11 @@ function fn_fader_event_create()
 
 function fn_fader_obj_create(_target_rm = undefined)
 {
-	fader_obj = fn_obj_create(obj_fader, , , {source : {rm : room, obj : object_index, objId : id}});
+	fader_obj = fn_object_create(obj_fader, , , {source : {rm : room, obj : object_index, objId : id}});
 	if (_target_rm != undefined)
 		fader_obj.target.rm = _target_rm;
 	
-	//fader = fn_obj_create(obj_fader);
+	//fader = fn_object_create(obj_fader);
 	//fader.source.rm = room;
 	//fader.source.obj = object_index;
 	//fader.source.obj_id = id;

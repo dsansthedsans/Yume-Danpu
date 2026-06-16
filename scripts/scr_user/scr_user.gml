@@ -4,51 +4,59 @@ function fn_user_setup(_file_curr = undefined)
 	{
 		name : "Eleanor",
 		asleep : false,
-		
 		// Money
 		money :
 		{
 			amt : [(choose(10, 20) + (choose(1, 3, 7, 9) * choose(-1, 1))), 0],
 			ccy : ["R$ ", "₢$ "],
 		},
-		// Effects
+		
+		/* Effects */
 		effect : undefined,
 		effect_curr : undefined, // Determines which effect is currently active (undefined == none)
-		// Items
+		
+		/* Functions */
 		func : undefined,
 		func_curr : undefined, // Determines which item is currently active (undefined == none)
-		// Themes
+		
+		/* Themes */
 		theme : undefined,
-		theme_curr : 0, // Determines which theme is currently active
-		// Save files
+		theme_curr : 0, // Determines which theme is currently active (0 == DEFAULT)
+		
+		/* Save files */
 		file : undefined,
 		file_curr : _file_curr, // Determines which save file is currently active (undefined == none)
 		file_lengthMax : 3,
 	}
 	
-		// Effects
+	/* Effects */
 	enum USER_EFFECT
 	{
 		
 	}
-		// Functions
+	
+	/* Functions */
 	enum USER_FUNC
 	{
 		KART
 	}
+	// Kart
 	fn_user_func_add(USER_FUNC.KART, "kart", true);
-		// Themes
+	
+	/* Themes */
 	enum USER_THEME
 	{
 		DFLT,	// Default theme
 		MADOT,	// Madotsuki theme
 	}
-	fn_user_theme_add(USER_THEME.DFLT, "dflt", true, #FFFFFF, #FFFFFF, #595959, #595959, c_black, c_black); // Default theme
+	// Default
+	fn_user_theme_add(USER_THEME.DFLT, "dflt", true, #FFFFFF, #FFFFFF, #595959, #595959, c_black, c_black);
 	global.user.theme[USER_THEME.DFLT].alpha.shadow = 0;
 	global.user.theme[USER_THEME.DFLT].alpha.panel_title_label = 0.5;
-	fn_user_theme_add(USER_THEME.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, #290831); // Madotsuki theme
+	// Classic
+	fn_user_theme_add(USER_THEME.MADOT, "madot", true, #DEB2E7, #9C619C, #7B5184, #420439, #290831, #290831);
 	
-	// Save files
+	/* Save files */
 	for (var f = 0; f < global.user.file_lengthMax; f++)
 	{
 		global.user.file[f] =
@@ -65,7 +73,8 @@ function fn_user_setup(_file_curr = undefined)
 			fn_user_file_load();
 	}
 }
-	// Effects
+
+/* Effects */
 function fn_user_effect_add(_idx, _code, _unlocked = false)
 {
 	global.user.effect[_idx] =
@@ -78,7 +87,8 @@ function fn_user_effect_add(_idx, _code, _unlocked = false)
 		icon_img : 0
 	}
 }
-	// Functions
+
+/* Functions */
 function fn_user_func_add(_idx, _code, _unlocked = false)
 {
 	global.user.func[_idx] =
@@ -91,7 +101,8 @@ function fn_user_func_add(_idx, _code, _unlocked = false)
 		icon_img : 1
 	}
 }
-	// Themes
+
+/* Themes */
 function fn_user_theme_add(_index, _code, _unlocked = false, _color_whiteLight, _color_whiteDark, _color_grayLight, _color_grayDark, _color_blackLight, _color_blackDark)
 {
 	global.user.theme[_index] =
@@ -155,7 +166,8 @@ function fn_user_theme_asset(_asset_name_noCode, _code)
 		_asset = asset_get_index($"{_asset_name_noCode}{global.user.theme[0].code}");
 	return _asset;
 }
-	// Save files
+
+/* Save files */
 function fn_user_file_save()
 {
 	var _file = global.user.file[global.user.file_curr];	

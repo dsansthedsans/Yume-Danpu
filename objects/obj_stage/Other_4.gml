@@ -24,9 +24,9 @@ view_set_camera(0, cam.id);
 // Background
 for (var b = 0; b < bg_lengthMax; b++)
 {
-	if (bg[b] != -1 && fn_obj_exists(bg[b]) == true)
+	if (bg[b] != -1 && fn_object_exists(bg[b]) == true)
 	{
-		fn_obj_destroy(b);
+		fn_object_destroy(b);
 		bg[b] = -1;
 	}
 }

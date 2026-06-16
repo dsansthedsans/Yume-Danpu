@@ -22,8 +22,8 @@ function fn_menu_unlock_event_create_0()
 		// Icon
 	main_nameIco_spr = spr_menu_inv_optIco;
 	main_nameIco_img = menu_info[0];
-	main_nameIco_w = fn_spr_width(main_nameIco_spr);
-	main_nameIco_h = fn_spr_height(main_nameIco_spr);
+	main_nameIco_w = fn_sprite_width(main_nameIco_spr);
+	main_nameIco_h = fn_sprite_height(main_nameIco_spr);
 	var _nameIco_xTextGap = round(draw_dist / 4);
 	var _nameIco_wAll = (main_nameIco_w + _nameIco_xTextGap + info_w[l, 0]);
 	main_nameIco_x = (box_x[l, 0] + round(box_w[l, 0] / 2) - round(_nameIco_wAll / 2) - 1);

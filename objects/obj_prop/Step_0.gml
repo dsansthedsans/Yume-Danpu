@@ -1,6 +1,11 @@
 /* Interaction sequence */
 if (talk.active == true)
 {
+	// Interaction sequence is inactive and cannot be activated
+	if (talk.stage == -2)
+	{
+		
+	}
 	// Interaction sequence is inactive
 	if (talk.stage == -1)
 	{

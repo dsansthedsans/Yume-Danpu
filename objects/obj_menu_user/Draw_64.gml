@@ -21,8 +21,8 @@ if (is_array(lvl) == true)
 		lvl[l].panel[0].height = _panel_height;
 			// User's picture frame decor
 		var _picFrame_spr = global.user.theme[global.user.theme_curr].spr.picFrame;
-		var _picFrame_width = fn_spr_width(_picFrame_spr);
-		var _picFrame_height = fn_spr_height(_picFrame_spr);
+		var _picFrame_width = fn_sprite_width(_picFrame_spr);
+		var _picFrame_height = fn_sprite_height(_picFrame_spr);
 		var _picFrame_x = (_panel_x + round(_panel_width / 2) - round(_picFrame_width / 2));
 		var _picFrame_y = (_panel_y + 16);
 		lvl[l].decor[0].spr = _picFrame_spr;
@@ -30,8 +30,8 @@ if (is_array(lvl) == true)
 		lvl[l].decor[0].y = _picFrame_y;
 			// User's picture
 		var _pic_spr = lvl[l].decor[1].spr;
-		lvl[l].decor[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_spr_width(_pic_spr) / 2));
-		lvl[l].decor[1].y = (_picFrame_y + round(_picFrame_height / 2) + round(fn_spr_height(_pic_spr) / 2));
+		lvl[l].decor[1].x = (_picFrame_x + round(_picFrame_width / 2) - round(fn_sprite_width(_pic_spr) / 2));
+		lvl[l].decor[1].y = (_picFrame_y + round(_picFrame_height / 2) + round(fn_sprite_height(_pic_spr) / 2));
 			// User's name
 		var _name = lvl[l].label[0];
 		_name.text = global.user.name;

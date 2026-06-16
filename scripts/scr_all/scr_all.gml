@@ -1,37 +1,68 @@
-
-//////// Functions that are basic for the game to work
-
-// Window
-function fn_wnd_name(_text)
+// Text-related
+function fn_text_width(_text) // Returns the width of the specified text
 {
-	if (_text == global.config.name)
+	if (font_exists(global.config.lang[global.config.lang_curr].fnt) == true)
 	{
-		if (irandom_range(1, 100) <= 5)
-			_text = choose("Danpu Nikki", "Yume Nikki", "Yume Dapnu", "Yume Danpy", "Yume Dangu", "Yume Fanpu", "Dume Yanpu", "Yume Champu", "Yummy Danpu", "Yummy Nicky", "Yum Dnampy", "Yume Dhanpy");
+		draw_set_font(global.config.lang[global.config.lang_curr].fnt);
+		return string_width(_text);
 	}
-	window_set_caption(_text);
+	else
+		return 0;
 }
-
-// Objects
-function fn_obj_create(_asset = id, _x = 0, _y = 0, _varStruct = {})
+function fn_text_height(_text) // Returns the height of the specified text
 {
-	obj_id = instance_create_layer(_x, _y, "Instances", _asset, _varStruct);
-	return obj_id;
+	if (font_exists(global.config.lang[global.config.lang_curr].fnt) == true)
+	{
+		draw_set_font(global.config.lang[global.config.lang_curr].fnt);
+		return string_height(_text);
+	}
+	else
+		return 0;
 }
-function fn_obj_destroy(_asset = id)
+function fn_textdata_width(_text) // Returns the width of the specified textdata
 {
-	instance_destroy(_asset);
+	return fn_text_width(fn_config_lang_data(_text));
 }
-function fn_obj_exists(_asset)
+function fn_textdata_height(_text) // Returns the height of the specified textdata
 {
-	return instance_exists(_asset);
+	return fn_text_height(fn_config_lang_data(_text));
 }
-function fn_obj_img(_asset = id, _spd = 0, _idx = 0, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = 1, _angle = 0)
+// Sprite-related
+function fn_sprite_width(_asset) // Returns the width of the specified sprite
+{
+	if (_asset != -1)
+		return sprite_get_width(_asset);
+	else
+	{
+		fn_log("The function fn_sprite_width() was called with an invalid sprite asset");
+		return 0;
+	}
+}
+function fn_sprite_height(_asset) // Returns the height of the specified sprite
+{
+	if (_asset != -1)
+		return sprite_get_height(_asset);
+	else
+	{
+		fn_log("The function fn_sprite_height() was called with an invalid sprite asset");
+		return 0;
+	}
+}
+// Object-related
+function fn_object_create(_asset, _x = 0, _y = 0, _varStruct = {})
+{
+	return instance_create_layer(_x, _y, "Instances", _asset, _varStruct);
+}
+function fn_object_depth(_asset = id, _val = -_asset.y)
+{
+	_asset.depth = _val;
+}
+function fn_object_imageSetup(_asset = id, _imageSpeed = 0, _image = 0, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = 1, _angle = 0)
 {
 	with (_asset)
 	{
-		image_speed = _spd;
-		image_index = _idx;
+		image_speed = _imageSpeed;
+		image_index = _image;
 		image_blend = _color;
 		image_alpha = _alpha;
 		image_xscale = _scaleX;
@@ -39,13 +70,24 @@ function fn_obj_img(_asset = id, _spd = 0, _idx = 0, _color = c_white, _alpha = 
 		image_angle = _angle;
 	}
 }
-function fn_obj_depth(_asset = id, _val = -_asset.y)
+function fn_object_exists(_asset)
 {
-	_asset.depth = _val;
+	return instance_exists(_asset);
+}
+function fn_object_destroy(_asset = id)
+{
+	instance_destroy(_asset);
 }
 
-// Drawing
-	// Text
+/* Graphics */
+function fn_lerp_color(_colorCurr, _colorTarget, _speed)
+{
+	var _color_hue = lerp(color_get_hue(_colorCurr), color_get_hue(_colorTarget), _speed);
+	var _color_sat = lerp(color_get_saturation(_colorCurr), color_get_saturation(_colorTarget), _speed);
+	var _color_val = lerp(color_get_value(_colorCurr), color_get_value(_colorTarget), _speed);
+	return make_color_hsv(_color_hue, _color_sat, _color_val);
+}
+// Text-related
 function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _scaleX = 1, _scaleY = 1, _xAlign = fa_left, _yAlign = fa_top, _shadow_colors = undefined, _shadow_alpha = 1)
 {
 	var _fnt = global.config.lang[global.config.lang_curr].fnt;
@@ -59,19 +101,19 @@ function fn_draw_text(_text, _x, _y, _colors, _alpha = 1, _scaleX = 1, _scaleY =
 		draw_text_ext_transformed_color(_x, _y, _text, -1, 640, _scaleX, _scaleY, 0, _colors[0], _colors[0], _colors[1], _colors[1], _alpha);
 	}
 }
-	// Rectangles
+// Rectangle-related
 function fn_draw_rect(_x, _y, _width, _height, _colors, _alpha)
 {
 	draw_sprite_general(spr_px, 0, 0, 0, 1, 1, _x, _y, _width, _height, 0, _colors[0], _colors[1], _colors[2], _colors[3], _alpha);
 }
-	// Circles
+// Circle-related
 function fn_draw_circle(_x, _y, _radius, _precision, _colors = [c_white, c_white], _alpha = 1)
 {
 	draw_set_alpha(_alpha);
 	draw_set_circle_precision(_precision);
 	draw_circle_color(_x, _y, _radius, _colors[0], _colors[1], false);
 }
-	// Sprites
+// Sprite-related
 function fn_draw_spr(_spr, _img, _x, _y, _color = c_white, _alpha = 1, _scaleX = 1, _scaleY = _scaleX, _angle = 0, _shadow_color = undefined, _shadow_alpha = 0)
 {
 	if (_spr != -1)
@@ -99,7 +141,7 @@ function fn_draw_spr_part(_spr, _img, _x, _y, _lt, _top, _width, _height, _color
 	else
 		fn_log("The function fn_draw_spr_part() was called with an invalid sprite ID");
 }
-	// Lines
+// Line-related
 function fn_draw_line(_x1, _y1, _x2, _y2, _color = c_white, _alpha = 1, _thickness = 1)
 {
 	draw_set_color(_color);
@@ -107,8 +149,7 @@ function fn_draw_line(_x1, _y1, _x2, _y2, _color = c_white, _alpha = 1, _thickne
 	draw_line_width(_x1, _y1, _x2, _y2, _thickness);
 }
 
-
-/* Audio */
+/* Music & Sounds */
 function fn_audio_play(_asset, _emitter, _vol = 1, _pitch = 1, _offset = 0, _loops = false)
 {
 	var _id = audio_play_sound(_asset, 0, false);
@@ -312,90 +353,11 @@ function fn_audio_offsetData(_asset, _ofs)
 	// one of the WORST fucking FUNCTIONS i've EVER made in my LIFE Part II: The Hype Never Dies.  Jesus       !!!!!
 }
 
-
-// Functions related to sprites
-function fn_spr_width(_asset) // Returns the width of the specified sprite
-{
-	if (_asset != -1)
-		return sprite_get_width(_asset);
-	else
-	{
-		fn_log("The function fn_spr_width() was called with an invalid sprite asset");
-		return 0;
-	}
-}
-function fn_spr_height(_asset) // Returns the height of the specified sprite
-{
-	if (_asset != -1)
-		return sprite_get_height(_asset);
-	else
-	{
-		fn_log("The function fn_spr_height() was called with an invalid sprite asset");
-		return 0;
-	}
-}
-
-// Functions related to text
-function fn_text_width(_text) // Returns the width of the specified text
-{
-	var _fnt = global.config.lang[global.config.lang_curr].fnt;
-	if (font_exists(_fnt) == true)
-	{
-		draw_set_font(_fnt);
-		return string_width(_text);
-	}
-	else
-		return 0;
-}
-function fn_text_height(_text) // Returns the height of the specified text
-{
-	var _fnt = global.config.lang[global.config.lang_curr].fnt;
-	if (font_exists(_fnt) == true)
-	{
-		draw_set_font(_fnt);
-		return string_height(_text);
-	}
-	else
-		return 0;
-}
-function fn_textdata_width(_text) // Returns the width of the specified textdata
-{
-	return fn_text_width(textdata(_text));
-}
-function fn_textdata_height(_text) // Returns the height of the specified textdata
-{
-	return fn_text_height(textdata(_text));
-}
-
-// Functions related to math
-function fn_lerp(_valCur, _valTarget, _spd)
-{
-	return lerp(_valCur, _valTarget, _spd);
-}
-function fn_lerp_col(_colCur, _colTarget, _spd)
-{
-	var _colCur_hue = color_get_hue(_colCur);
-	var _colCur_sat = color_get_saturation(_colCur);
-	var _colCur_vAl = color_get_value(_colCur);
-	
-	var _colTarget_hue = color_get_hue(_colTarget);
-	var _colTarget_sat = color_get_saturation(_colTarget);
-	var _colTarget_vAl = color_get_value(_colTarget);
-	
-	var _col_hue = fn_lerp(_colCur_hue, _colTarget_hue, _spd);
-	var _col_sat = fn_lerp(_colCur_sat, _colTarget_sat, _spd);
-	var _col_vAl = fn_lerp(_colCur_vAl, _colTarget_vAl, _spd);
-	
-	return make_color_hsv(_col_hue, _col_sat, _col_vAl);
-}
-
-// Other functions
-function fn_log(_msg) // Sends a message to the log
+/* Debug */
+function fn_log(_msg)
 {
 	show_debug_message($"[{current_time}]  [{object_get_name(object_index)}]  {_msg}");
 }
-
-
 
 
 //  MISERABLE.  I AM MISERABLE.  THAT'S WHAT I AM. MISERABLE.  BUT. DON'T CALL ME THAT. DON'T CALL ME MISERABLE.  BECAUSE.  THAT WILL MAKE ME.  EVEN MORE.  MISERABLE.

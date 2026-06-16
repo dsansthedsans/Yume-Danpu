@@ -148,7 +148,7 @@ if (move.active == true)
 						_chase_tgt.y = 432;
 						_chase_tgt.myself.x = _chase_tgt.x;
 						_chase_tgt.myself.y = _chase_tgt.y;
-						fn_obj_depth(_chase_tgt);
+						fn_object_depth(_chase_tgt);
 						fn_audio_play(snd_actor_macaco_monkey_0, CONFIG_AUDIO_EMITTER.ACTOR, , 0.5);
 					}
 					

@@ -111,12 +111,12 @@ function fn_actor_qwewqeqwewqewqeqweevent_stepBegin() // Step Event determined b
 
 function fn_actor_dir(_obj, _dir)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 		_obj.dir_curr = _dir;
 }
 function fn_actor_dir_spr(_obj, _lt_spr, _rt_spr = _lt_spr, _up_spr = _lt_spr, _dn_spr = _lt_spr)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 	{
 		_obj.dir[_obj.DIR_LT].spr = _lt_spr;
 		_obj.dir[_obj.DIR_RT].spr = _rt_spr;
@@ -128,28 +128,28 @@ function fn_actor_dir_spr(_obj, _lt_spr, _rt_spr = _lt_spr, _up_spr = _lt_spr, _
 
 function fn_actor_xRound(_obj, _x)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 		return (16 * round(_x / 16));
 	else
 		return 0;
 }
 function fn_actor_yRound(_obj, _y)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 		return (16 * round(_y / 16));
 	else
 		return 0;
 }
 function fn_actor_xAhead(_obj, _x, _dir, _dist)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 		return (_x + ((_dist * _obj.dir[_dir].sign) * (_obj.dir[_dir].axis == _obj.DIR_AXIS_HOR)));
 	else
 		return 0;
 }
 function fn_actor_yAhead(_obj, _y, _dir, _dist)
 {
-	if (fn_obj_exists(_obj) == true)
+	if (fn_object_exists(_obj) == true)
 		return (_y + ((_dist * _obj.dir[_dir].sign) * (_obj.dir[_dir].axis == _obj.DIR_AXIS_VER)));
 	else
 		return 0;

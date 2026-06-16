@@ -25,8 +25,8 @@ if (is_array(lvl) == true)
 		
 		// Options' icon
 		var _flag_spr = spr_menu_home_flag;
-		var _flag_width = fn_spr_width(_flag_spr);
-		var _flag_height = fn_spr_height(_flag_spr);
+		var _flag_width = fn_sprite_width(_flag_spr);
+		var _flag_height = fn_sprite_height(_flag_spr);
 		var _flag_xGap = (_flag_width + 16); // Horizontal distance between each flag
 		var _flag_widthAll = ((_flag_xGap * (_opt_len - 1)) + _flag_width);
 		
@@ -82,7 +82,7 @@ if (is_array(lvl) == true)
 		var _train = lvl[l].train[0];
 		_train.spr = global.user.theme[global.user.theme_curr].spr.train;
 		_train.x = 0;
-		_train.y = (_panel_y - fn_spr_height(_train.spr));
+		_train.y = (_panel_y - fn_sprite_height(_train.spr));
 		_train.xSpeed = -0.25;
 		_train.alpha = 0.75;
 		
@@ -129,8 +129,8 @@ if (is_array(lvl) == true)
 		
 		// Logo decoration
 		var _logo_spr = spr_menu_home_logo;
-		var _logo_width = fn_spr_width(_logo_spr);
-		var _logo_height = fn_spr_height(_logo_spr);
+		var _logo_width = fn_sprite_width(_logo_spr);
+		var _logo_height = fn_sprite_height(_logo_spr);
 		lvl[l].decor[0].spr = _logo_spr;
 		lvl[l].decor[0].x = round(_panel_x + _panel_width + ((_res_width - (_panel_x + _panel_width)) / 2) - (_logo_width / 2));
 		lvl[l].decor[0].y = round((_res_height * 0.35) - (_logo_height / 2));

@@ -8,8 +8,8 @@ for (var p = 0; (p < passengers_lengthMax && passengers[p].id != undefined); p++
 	_passenger.myself.x = myself.x;
 	_passenger.myself.y = myself.y;
 	_passenger.myself.alpha = 0;
-	if (_passenger.type == _passenger.TYPE_ACTOR)
-		_passenger.walk.active = false;
+	if (_passenger.type == _passenger.TYPE_ACTOR && _passenger.walk.active == true)
+		_passenger.walk.stage = -2;
 	//
 	if (passengers[p].exit_active == true && fn_config_key_pressed(passengers[p].exit_key) == true)
 	{

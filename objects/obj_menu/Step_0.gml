@@ -2,7 +2,6 @@
 if (is_array(lvl) == true)
 {
 	var l = lvl_curr;
-	
 	// Fade transition is inactive
 	if (lvl_fader.stage == -1)
 	{
@@ -61,10 +60,8 @@ if (is_array(lvl) == true)
 			// Confirmation
 			if (lvl[l].option_confirm.active == true && fn_config_key_pressed(lvl[l].option_confirm.key) == true)
 			{
-				// Option's checkbox
-				if (is_struct(lvl[l].option[o].check) == true)
-					lvl[l].option[o].check.mark.active = !lvl[l].option[o].check.mark.active;
-				
+				if (is_struct(lvl[l].option[o].check) == true) // Option's checkbox
+					lvl[l].option[o].check.mark.active = !lvl[l].option[o].check.mark.active;		
 				_confirm_snd = ((is_struct(lvl[l].option[o].value) == false) ? ((lvl[l].option_confirm.snd != undefined) ? lvl[l].option_confirm.snd : global.user.theme[global.user.theme_curr].audio.confirm) : undefined);
 				event_user(0);
 				if (_confirm_snd != undefined)
@@ -101,17 +98,16 @@ if (is_array(lvl) == true)
 			}
 		}
 	}
-	
 	// Fade transition is active
 	else if (lvl_fader.stage > -1)
 	{
-		lvl[lvl_curr].alpha = fn_lerp(lvl[lvl_curr].alpha, 0, lvl_fader.alpSpeed);
+		lvl[lvl_curr].alpha = lerp(lvl[lvl_curr].alpha, 0, lvl_fader.alpSpeed);
 		if (lvl_fader.prev.snd != undefined)
 			fn_audio_play(lvl_fader.prev.snd, CONFIG_AUDIO_EMITTER.MENU);
 		lvl_fader.prev.snd = undefined;
 		if (lvl_fader.next.wait_dur <= 0)
 		{
-			lvl[lvl_fader.next.lvl].alpha = fn_lerp(lvl[lvl_fader.next.lvl].alpha, 1, lvl_fader.alpSpeed);
+			lvl[lvl_fader.next.lvl].alpha = lerp(lvl[lvl_fader.next.lvl].alpha, 1, lvl_fader.alpSpeed);
 			if (lvl[lvl_fader.next.lvl].alpha >= (1 - lvl_fader.alpJump))
 			{
 				lvl[lvl_curr].alpha = 0;
@@ -123,9 +119,9 @@ if (is_array(lvl) == true)
 				lvl_fader.next.snd = undefined;
 				if (lvl_fader.next.destroy == true)
 				{
-					if (fn_obj_exists(obj_actor_user) == true && obj_actor_user.move.active == false)
+					if (fn_object_exists(obj_actor_user) == true && obj_actor_user.move.active == false)
 						obj_actor_user.move.active = true;
-					fn_obj_destroy();
+					fn_object_destroy();
 				}
 				if (lvl_fader.next.endgame == true)
 					game_end();

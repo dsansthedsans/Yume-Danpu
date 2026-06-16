@@ -1,4 +1,3 @@
-/* Actors */
 function fn_actor_facing_x(_object, _x, _facing, _distance)
 {
 	return (_x + ((_distance * _object.facing[_facing].sign) * (_object.facing[_facing].axis == _object.FACING_AXIS_HORIZ)));
@@ -12,7 +11,7 @@ function fn_actor_stage_loop()
 	var _xDist = 0;
 	var _yDist = 0;
 	var _stg = obj_stage;
-	if (fn_obj_exists(_stg) == true)
+	if (fn_object_exists(_stg) == true)
 	{
 		if (_stg.loop.xAct == true)
 		{
