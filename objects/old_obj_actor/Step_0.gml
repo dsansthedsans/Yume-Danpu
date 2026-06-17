@@ -141,7 +141,7 @@ if (move.active == true)
 				}
 				else
 				{
-					if (move.mode.auto.chase_act == true && distance_to_object(move.mode.auto.chase_tgt) <= 16 && move.mode.auto.chase_tgt.move.stage == -1 && room == rm_dbgwrld)
+					if (move.mode.auto.chase_act == true && distance_to_object(move.mode.auto.chase_tgt) <= 16 && move.mode.auto.chase_tgt.move.stage == -1 && room == room_debugworld)
 					{
 						var _chase_tgt = move.mode.auto.chase_tgt;
 						_chase_tgt.x = 112;

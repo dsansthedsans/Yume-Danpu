@@ -4,7 +4,7 @@ event_inherited();
 
 
 
-if (global.config_dbg.active == true) || (room == rm_dbgwrld)
+if (global.config_dbg.active == true) || (room == room_debugworld)
 {
 	draw_set_alpha(0.5);
 			

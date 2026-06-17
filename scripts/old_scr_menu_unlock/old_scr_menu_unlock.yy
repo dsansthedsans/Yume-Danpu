@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_menu_inv",
+  "%Name":"old_scr_menu_unlock",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_menu_inv",
+  "name":"old_scr_menu_unlock",
   "parent":{
-    "name":"inv",
-    "path":"folders/[!] Unused + Old/old menu/inv.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

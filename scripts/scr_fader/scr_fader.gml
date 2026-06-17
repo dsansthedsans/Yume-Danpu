@@ -13,26 +13,26 @@ function fn_fader_event_create()
 			break;
 		/* Menus */
 		case obj_menu_home:
-			target.rm = rm_nexus;
+			target.rm = room_nexus;
 			type.fade.active = true;
 			break;
 		/* Props */
 		// Bed in Eleanor's Apartment
 		case obj_prop_condo_apt_bed:
-			target.rm = rm_nexus;
+			target.rm = room_nexus;
 			type.fade.active = true;
 			break;
 		// Door of Macacolandia
 		case obj_prop_macaco_door:
 			type.fade.active = true;
-			if (source.rm == rm_nexus)
+			if (source.rm == room_nexus)
 			{
-				target.rm = rm_macaco;
+				target.rm = room_macacolandia;
 				type.fade.iris.active = true;
 			}
-			else if (source.rm == rm_macaco)
+			else if (source.rm == room_macacolandia)
 			{
-				target.rm = rm_nexus;
+				target.rm = room_nexus;
 				target.user.x = 160;
 				target.user.y = 112;
 			}
@@ -40,14 +40,14 @@ function fn_fader_event_create()
 		// Door of Debug World
 		case obj_prop_dbgwrld_door:
 			type.fade.active = true;
-			if (source.rm == rm_nexus)
+			if (source.rm == room_nexus)
 			{
-				target.rm = rm_dbgwrld;
+				target.rm = room_debugworld;
 				type.fade.iris.active = true;
 			}
-			else if (source.rm == rm_dbgwrld)
+			else if (source.rm == room_debugworld)
 			{
-				target.rm = rm_nexus;
+				target.rm = room_nexus;
 				target.user.x = 272;
 				target.user.y = 224;
 			}

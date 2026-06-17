@@ -1,5 +1,5 @@
 
-if (global.config_dbg.active == true) || (room == rm_dbgwrld)
+if (global.config_dbg.active == true) || (room == room_debugworld)
 {
 	// Room limits
 	draw_set_color(c_red);

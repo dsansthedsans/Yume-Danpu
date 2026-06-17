@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_menu_unlock",
+  "%Name":"old_scr_menu_pse",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_menu_unlock",
+  "name":"old_scr_menu_pse",
   "parent":{
-    "name":"unlock",
-    "path":"folders/[!] Unused + Old/old menu/unlock.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

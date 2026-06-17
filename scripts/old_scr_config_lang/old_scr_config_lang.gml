@@ -22,8 +22,8 @@ fn_config_lang_data_addText("menu_pse_main_opt_3", "Quit to Menu", "Voltar ao Me
 	
 	
 // Rooms
-fn_config_lang_data_addText("rm_menu_home", "Main Menu", "Menu Principal");
-fn_config_lang_data_addText("rm_nexus", "Nexus", "Nexus");
-fn_config_lang_data_addText("rm_macaco", "Macacolandia", "Macacolândia");
-fn_config_lang_data_addText("rm_dbgwrld", "Debug World", "Mundo Debug");
+fn_config_lang_data_addText("room_menu_home", "Main Menu", "Menu Principal");
+fn_config_lang_data_addText("room_nexus", "Nexus", "Nexus");
+fn_config_lang_data_addText("room_macacolandia", "Macacolandia", "Macacolândia");
+fn_config_lang_data_addText("room_debugworld", "Debug World", "Mundo Debug");
 */

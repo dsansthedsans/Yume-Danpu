@@ -3,6 +3,7 @@ switch (object_index)
 {
 	// Vehicles
 	case obj_actor_user_func_kart:
+	{
 		if (passengers[0].id != undefined)
 		{
 			var _passenger_sprite = passengers[0].id.facing[facing_curr].sprite;
@@ -12,4 +13,5 @@ switch (object_index)
 			fn_draw_spr(spr_actor_user_func_kart_1, facing_curr, _myself_x, _myself_y, myself.color, myself.alpha, myself.scaleX, myself.scaleY, myself.angle);
 		}
 		break;
+	}
 }

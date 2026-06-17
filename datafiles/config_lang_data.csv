@@ -1,52 +1,63 @@
-config_lang_enUS,English (US),Inglês (EUA)
-config_lang_ptBR,Portuguese (BR),Português (BR)
-config_key_west,Left,Esquerda
-config_key_east,Right,Direita
-config_key_north,Up,Cima
-config_key_south,Down,Baixo
-config_key_confirm,Confirm,Confirmar
-config_key_cancel,Cancel,Cancelar
-config_key_use,Effect/func,Efeito/Função
-config_key_autowalk,Autowalk,Autowalk
-config_key_fullscreen,Fullscreen,Tela Cheia
-config_key_menu_user,Inventory,Inventário
-config_key_menu_pause,Pause,Pausar
-config_video_resolution_name,Resolution,Resolução
-config_video_fullscreen_name,Fullscreen,Tela Cheia
-config_video_vsync_name,Vsync,Vsync
-config_video_hideCursor_name,Hide Cursor,Esconder Cursor
-config_video_showVer_name,Show Version,Mostrar Versão
-config_video_showFps_name,Show FPS,Mostrar FPS
-config_video_showBdr_name,Show Border,Mostrar Borda
-config_audio_emitter_master,Master,Geral
-config_audio_emitter_mus,Music,Música
-config_audio_emitter_amb,Ambience,Ambiente
-config_audio_emitter_menu,Menu,Menu
-config_audio_emitter_user,Player,Jogador
-config_audio_emitter_prop,Props,Objetos
-config_audio_emitter_actor,Entities,Entidades
-config_access_reduceMotion_name,Reduce Motion,Reduzir Movimento
-user_effect_name_sal0,Salenis 0,Salenis 0
-user_effect_name_sal1,Salenis 1,Salenis 1
-user_effect_name_sal2,Salenis 2,Salenis 2
-user_effect_desc_sal0,Salenis is a world-famous dish.\nIt tastes funny.,O Salenis é uma comida muito famosa.\nO gosto dele é peculiar.
-user_effect_desc_sal1,Salenis is a fascinating creation.\nIts smell is pleasing.,O Salenis é uma criação fascinante.\nO cheiro dele é delicioso.
-user_effect_desc_sal2,Salenis is a political symbol.\nIts texture is horrifying.,O Salenis é um símbolo político.\nA textura dele é horrível.
-user_func_name_kart,Kart,Kart
-user_func_desc_kart,The fastest in the West.,O mais rápido do Oeste.
-user_theme_name_dflt,Default,Padrão
-user_theme_name_madot,Diary,Diário
-user_theme_desc_dflt,"Simple, yet elegant.","Simples, mas elegante."
-user_theme_desc_madot,,
-menu_home_main_option_0,Start,Jogar
-menu_home_main_option_1,Settings,Opções
-menu_home_main_option_2,Shut down,Desligar
-menu_config_main_option_0,Language,Idioma
-menu_config_main_option_1,Graphics,Gráficos
-menu_config_main_option_2,Music & Sounds,Músicas & Sons
-menu_config_main_option_3,Accessibility,Acessibilidade
-menu_config_all_option_value_0,No,Não
-menu_config_all_option_value_1,Yes,Sim
-menu_user_main_option_0,Effects,Efeitos
-menu_user_main_option_1,Functions,Funções
-menu_user_main_option_2,Themes,Temas
+config_lang_enUS,English (US),English (US),English (US)
+config_lang_ptBR,Português (BR),Português (BR),Português (BR)
+config_lang_jaJP,日本語,日本語,日本語
+config_key_west,Left,Esquerda,左
+config_key_east,Right,Direita,右
+config_key_north,Up,Cima,上
+config_key_south,Down,Baixo,下
+config_key_confirm,Confirm,Confirmar,決定
+config_key_cancel,Cancel,Cancelar,キャンセル
+config_key_use,Effect/Function,Efeito/Função,
+config_key_autowalk,Autowalk,Autowalk,
+config_key_fullscreen,Fullscreen,Tela Cheia,フルスクリーン
+config_key_menu_user,Inventory,Inventário,インベントリ
+config_key_menu_pause,Pause,Pausar,ポーズ
+config_video_resolution_name,Resolution,Resolução,解像度
+config_video_fullscreen_name,Fullscreen,Tela Cheia,フルスクリーン
+config_video_vsync_name,V-sync,Vsync,垂直同期
+config_video_hideCursor_name,Hide Cursor,Esconder Cursor,
+config_video_showVer_name,Show Version,Mostrar Versão,
+config_video_showFps_name,Show FPS,Mostrar FPS,
+config_video_showBdr_name,Show Border,Mostrar Borda,
+config_audio_emitter_master,Master,Geral,
+config_audio_emitter_mus,Music,Música,音楽
+config_audio_emitter_amb,Ambience,Ambiente,
+config_audio_emitter_menu,Menu,Menu,
+config_audio_emitter_user,Player,Jogador,
+config_audio_emitter_prop,Props,Objetos,
+config_audio_emitter_actor,Entities,Entidades,
+config_access_reduceMotion_name,Reduce Motion,Reduzir Movimento,
+user_effect_name_sal0,Salenis 0,Salenis 0,
+user_effect_name_sal1,Salenis 1,Salenis 1,
+user_effect_name_sal2,Salenis 2,Salenis 2,
+user_effect_desc_sal0,Salenis is a world-famous dish.\nIt tastes funny.,O Salenis é uma comida muito famosa.\nO gosto dele é peculiar.,
+user_effect_desc_sal1,Salenis is a fascinating creation.\nIts smell is pleasing.,O Salenis é uma criação fascinante.\nO cheiro dele é delicioso.,
+user_effect_desc_sal2,Salenis is a political symbol.\nIts texture is horrifying.,O Salenis é um símbolo político.\nA textura dele é horrível.,
+user_func_name_kart,Kart,Kart,
+user_func_desc_kart,The fastest in the West.,O mais rápido do Oeste.,
+user_theme_name_dflt,Default,Padrão,
+user_theme_name_madot,Diary,Diário,
+user_theme_desc_dflt,"Simple, yet elegant.","Simples, mas elegante.",
+user_theme_desc_madot,,,
+menu_home_main_option_0,Start,Jogar,
+menu_home_main_option_1,Settings,Opções,設定
+menu_home_main_option_2,Shut down,Desligar,
+menu_config_main_option_0,Language,Idioma,言語
+menu_config_main_option_1,Graphics,Gráficos,グラフィック
+menu_config_main_option_2,Music & Sounds,Músicas & Sons,
+menu_config_main_option_3,Accessibility,Acessibilidade,
+menu_config_all_option_value_0,No,Não,いいえ
+menu_config_all_option_value_1,Yes,Sim,はい
+menu_user_main_option_0,Effects,Efeitos,
+menu_user_main_option_0_,Êggects,Êgeitos,
+menu_user_main_option_1,Functions,Funções,
+menu_user_main_option_2,Themes,Temas,
+menu_pause_main_option_0,Resume,Continuar,
+menu_pause_main_option_1,Instructions,Instruções,
+menu_pause_main_option_2,Quit to Menu,Voltar ao Menu,
+room_menu_home,Main Menu,Menu Principal,
+room_nexus,Nexus,Nexus,
+room_macacolandia,Macacolandia,Macacolândia,
+room_debugworld,Debug World,Mundo Debug,
+room_fendabopikini,Fenda bo Pikini,Fenda bo Pikini,
+room_boredomworld,Boredom World,Mundo do Tédio,

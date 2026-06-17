@@ -73,18 +73,22 @@
 </ul>
 <h4>Special Thanks</h4>
 <ul>
+  <li>KIKIYAMA (ききやま)</li>
   <li>Toby Fox</li>
   <li>Temmie Chang</li>
   <li>Tophat Interactive</li>
   <li>Arsi "Hakita" Patala</li>
   <li>Garry Newman</li>
+  <li>Markus Persson</li>
   <li>Playdead</li>
+  <li>Ryoji Yoshitomi</li>
+  <li>Stephen Hillenburg</li>
+  <li>Tom Kenny</li>
   <li>YoYo Games</li>
   <li>Image-Line Software</li>
+  <li>Peyton Burnham</li>
   <li>JPiggs</li>
   <li>clarinhah.</li>
 </ul>
 <br>
-<p align="left">
-  <a href="https://www.youtube.com/watch?v=QmpXxMto50k" target="_blank"><img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" alt="If you're reading this, I messed up somehow."></a>
-</p>
+<p align="left"><a href="https://www.youtube.com/watch?v=QmpXxMto50k" target="_blank"><img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" alt="If you're reading this, I messed up somehow."></a></p>

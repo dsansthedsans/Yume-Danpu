@@ -5,12 +5,12 @@ function fn_stage_event_create()
 {
 	/* Not asleep */
 	// Eleanor's Apartment
-	if (room == rm_condo_apt)
+	if (room == room_condo_apartment)
 		global.user.asleep = false;
 	
 	/* Asleep */
 	// Nexus
-	else if (room == rm_nexus)
+	else if (room == room_nexus)
 	{
 		global.user.asleep = true;
 		cam.lock.x = 0;
@@ -20,7 +20,7 @@ function fn_stage_event_create()
 		loop.yAct = true;
 	}
 	// Macacolandia
-	else if (room == rm_macaco)
+	else if (room == room_macacolandia)
 	{
 		global.user.asleep = true;
 		fn_stage_bg_sky_add(0, spr_rmCtrl_bg_sky_macaco, , , 0.25, 270, 270);
@@ -29,7 +29,7 @@ function fn_stage_event_create()
 		loop.yAct = true;
 	}
 	// Debug World
-	else if (room == rm_dbgwrld)
+	else if (room == room_debugworld)
 	{
 		global.user.asleep = true;
 		var _sky_spr = -1;
@@ -57,7 +57,7 @@ function fn_stage_event_stepBegin()
 {
 	/* Menus */
 	// Main Menu
-	if (room == rm_menu_home)
+	if (room == room_menu_home)
 	{
 		if (global.config.lang_hasChosen == true && fn_object_exists(obj_menu) == true && obj_menu.lvl_fader.next.wait_dur <= 0 && obj_menu.lvl_fader.next.endgame == false)
 			fn_stage_music_add(0, mus_menu_home);
@@ -65,13 +65,13 @@ function fn_stage_event_stepBegin()
 	
 	/* Asleep */
 	// Nexus
-	else if (room == rm_nexus)
+	else if (room == room_nexus)
 		fn_stage_music_add(0, mus_nexus);
 	// Macacolandia
-	else if (room == rm_macaco)
+	else if (room == room_macacolandia)
 		fn_stage_music_add(0, mus_macaco);
 	// Debug World
-	else if (room == rm_dbgwrld)
+	else if (room == room_debugworld)
 		fn_stage_music_add(0, mus_dbgwrld);
 	
 	// Resets all music if the transition is active

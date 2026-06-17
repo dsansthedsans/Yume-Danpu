@@ -1,15 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"temp_obj_menu_load",
+  "%Name":"old_obj_menu_load",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"temp_obj_menu_load",
+  "name":"old_obj_menu_load",
   "overriddenProperties":[],
   "parent":{
-    "name":"load",
-    "path":"folders/[!] Unused + Old/old menu/load.yy",
+    "name":"[!] Unused + Old",
+    "path":"folders/[!] Unused + Old.yy",
   },
   "parentObjectId":null,
   "persistent":false,
