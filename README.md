@@ -67,8 +67,24 @@
 <blockquote>Development started on October 21, 2024, but Yume Danpu only became open-source on March 23, 2025.</blockquote>
 <br>
 <h2>Credits</h2>
-...
+<ul>
+  <li>dsansthedsans<i> 〜 Programmer, Artist, Concept Artist, Animator, Sound Designer, Writer, Designer, Localization</i></li>
+  <li>migel8022<i> 〜 Composer, Sound Designer, Art Assistant, Concept Artist, Writer, Beta Tester</i></li>
+</ul>
+<h4>Special Thanks</h4>
+<ul>
+  <li>Toby Fox</li>
+  <li>Temmie Chang</li>
+  <li>Tophat Interactive</li>
+  <li>Arsi "Hakita" Patala</li>
+  <li>Garry Newman</li>
+  <li>Playdead</li>
+  <li>YoYo Games</li>
+  <li>Image-Line Software</li>
+  <li>JPiggs</li>
+  <li>clarinhah.</li>
+</ul>
 <br>
-<p align="center">
+<p align="left">
   <a href="https://www.youtube.com/watch?v=QmpXxMto50k" target="_blank"><img src="https://raw.githubusercontent.com/dsansthedsans/Yume-Danpu/refs/heads/main/sprites/spr_actor_macaco_monkey/946136f4-8ae6-4231-b343-edfa8566b646.png" height="16" alt="If you're reading this, I messed up somehow."></a>
 </p>
